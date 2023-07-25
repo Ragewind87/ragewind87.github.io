@@ -1,37 +1,68 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { GridSection, IGridSectionProps } from './GridSection';
+import { GridImage, GridSection, IGridSectionProps, IMainGrid } from './GridSection';
 import { Stack } from '@fluentui/react';
 
 
 function App() {
 
   const nextId = React.useRef<number>(0);
+  const gridHeight = React.useRef<number>(6);
+  const gridWidth = React.useRef<number>(6);
+
+  const mouseButtonToImage = (mouseEvent: React.MouseEvent) : GridImage => {
+    if (mouseEvent.shiftKey)
+      return GridImage.Zoey2
+    else
+      return GridImage.Zoey1
+  }
+
+  const toggleButtonToken = (event: React.MouseEvent, y: number, x: number) => {
+    let tempGrid = playGrid.grid;
+    tempGrid[y][x].image = mouseButtonToImage(event);
+    setPlayGrid({...playGrid, grid: tempGrid});
+  }
+
+  const onButtonClick = React.useCallback(
+    (event: React.MouseEvent, y: number, x: number) => {
+      toggleButtonToken(event, y, x);
+  }, [toggleButtonToken]);
 
   const getUniqueId = () => {
-    console.log(`getUniqueId() ${nextId.current}`)
     return nextId.current++;
   }
 
-  const getInitialGrid = () : IGridSectionProps[][] => {
+  const getInitialGrid = () : IMainGrid => {
     let grid = [];
-    for (let row = 0; row < 6; row++) {
+    for (let row = 0; row < gridHeight.current; row++) {
       let gridRow = [];
-      for (let column = 0; column < 6; column++) {
+      for (let col = 0; col < gridWidth.current; col++) {
         gridRow.push({
-          id: getUniqueId()
-        } as IGridSectionProps)
+          id: getUniqueId(),
+          y: row,
+          x: col,
+          image: GridImage.Transparent,
+          onClick: onButtonClick,
+        } as IGridSectionProps);
       }
-      grid.push(gridRow)
+      grid.push(gridRow);
     }  
-    return grid;
+    return {
+      grid: grid
+    };
   }
 
-  const [playGrid, setPlayGrid] = React.useState<IGridSectionProps[][]>(getInitialGrid());
+  const [playGrid, setPlayGrid] = React.useState<IMainGrid>(getInitialGrid());
 
+  // React.useEffect(() => {
+  //   console.log(`useEffect`)
+  //   console.log(playGrid);
+  // }, [playGrid]);
 
   const renderGrid = () : React.ReactNode => {
+    if (!playGrid.grid)
+      return
 
     const renderRow = (cells: IGridSectionProps[]) : React.ReactNode => {
       return (
@@ -41,7 +72,7 @@ function App() {
       )
     }
 
-    let grid = playGrid.map(gridRow => {
+    let grid = playGrid.grid.map(gridRow => {
       return (
         <Stack>
           {renderRow(gridRow)}
@@ -55,10 +86,15 @@ function App() {
   return (
     <div className="App" key="app">
 
-      <div style={{alignContent: 'center', fontSize: '20', fontWeight: 'bold'}}>
+      <div style={{alignContent: 'center', fontSize: '50', fontWeight: 'bold'}}>
         {"Connect Four"}
       </div>
-      {renderGrid()}
+      <div style={{
+        display: 'block',
+        margin: '25px auto 25px auto'
+      }}>
+        {renderGrid()}
+      </div>
 
 
       {/* <header className="App-header">
