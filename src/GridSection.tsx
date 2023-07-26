@@ -30,7 +30,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
         height: '100px',
         borderRadius: '5px',
         boxShadow:'none',
-    }      
+    }
 
     const getGridImage = (image: GridImage) : string => {
         let srcString = '';
@@ -59,8 +59,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
                 src={getGridImage(props.image)}
                 alt={'X'}
                 width={'100%'}
-                height={'100%'}
-            >
+                height={'100%'}>
             </img>
         </button>
     )

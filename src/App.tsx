@@ -9,7 +9,9 @@ function App() {
 
   const nextId = React.useRef<number>(0);
   const gridHeight = React.useRef<number>(6);
-  const gridWidth = React.useRef<number>(6);
+  const gridWidth = React.useRef<number>(7);
+  const [playerTurn, setPlayerTurn] = React.useState<number>(0)
+  const [gameStarted, setGameStarted] = React.useState<boolean>(false)
 
   const mouseButtonToImage = (mouseEvent: React.MouseEvent) : GridImage => {
     if (mouseEvent.shiftKey)
@@ -66,38 +68,65 @@ function App() {
 
     const renderRow = (cells: IGridSectionProps[]) : React.ReactNode => {
       return (
-        <Stack horizontal>
+        <Stack horizontal style={{alignSelf: 'center'}}>
           {cells.map(c => <GridSection {...c} />)}
         </Stack>
       )
     }
 
-    let grid = playGrid.grid.map(gridRow => {
-      return (
-        <Stack>
-          {renderRow(gridRow)}
-        </Stack>
-      )
-    })
+    let grid = 
+      <Stack>
+        {playGrid.grid.map(gridRow => {
+          return renderRow(gridRow)
+        })}
+      </Stack>    
 
     return grid;
   }
 
-  return (
-    <div className="App" key="app">
+  const getCurrentPlayerNumber = () => {    
+    return (
+      `Turn: Player ${playerTurn}`
+    )
+  }
 
-      <div style={{alignContent: 'center', fontSize: '50', fontWeight: 'bold'}}>
-        {"Connect Four"}
-      </div>
-      <div style={{
-        display: 'block',
-        margin: '25px auto 25px auto'
-      }}>
+  const onStartGameClick = () => {
+
+  }
+
+  return (
+    <div className="grid-container" key="app" style={{border: "1px solid blue"}}>
+      <div className="main" style={{alignContent: 'center', fontSize: '50', fontWeight: 'bold'}}>
         {renderGrid()}
       </div>
+      <div className="header" style={{border: "1px solid red"}}>
+        Connect Four
+      </div>
+      <div className="leftPanel" style={{border: "1px solid black"}}>
+        <Stack style={{alignItems: 'center'}}>
+          {getCurrentPlayerNumber()}
+          {!gameStarted &&
+            <button
+              onClick={onStartGameClick}
+              style={{width: '200px', height: '30px', marginTop:'20px'}}
+            >
+              Start Game Yaya
+            </button>
+          }
+        </Stack>
 
+      </div>
+      <div className="rightPanel" style={{border: "1px solid black"}}>
+        rightPanel
+      </div>
 
-      {/* <header className="App-header">
+    </div>
+  );
+}
+
+export default App;
+
+{/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -111,8 +140,3 @@ function App() {
           Learn React
         </a>
       </header> */}
-    </div>
-  );
-}
-
-export default App;
