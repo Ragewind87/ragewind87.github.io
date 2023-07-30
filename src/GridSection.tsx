@@ -1,8 +1,8 @@
 import React from 'react';
-import DiscordIcon from './Icons/discordIcon.png';
 import TransparentIcon from './Icons/transparentIcon.png';
 import ZoeyIcon1 from './Icons/zoeyIcon1.jpg';
 import ZoeyIcon2 from './Icons/zoeyIcon2.jpg';
+import ZoeyIcon3 from './Icons/zoeyIcon3.png';
 import KayBearIcon from './Icons/kaybearIcon.png';
 
 
@@ -35,7 +35,6 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
         borderRadius: '5px',
         boxShadow:'none',
         backgroundColor: props.winningCell ? 'green' : undefined,
-        whiteSpace: 'nowrap'
     }
 
     const getGridImage = () : string => {
@@ -47,7 +46,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
             case Status.Player1Owned:
                 return KayBearIcon;
             case Status.Player2Owned:
-                return ZoeyIcon2;
+                return ZoeyIcon3;
         }
     }
 

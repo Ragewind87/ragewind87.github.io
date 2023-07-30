@@ -249,14 +249,14 @@ function App() {
     left = right = -1;
     for (let row = y, col = x; row >= 0 && col >= 0; row--, col--) {
       if (grid[row][col].status === getCurrentPlayerStatus()) {
-        right = col;
+        left = col;
         winCells.push(grid[row][col])
       }
       else break;
     }
     for (let row = y, col = x; row < gridHeight.current && col < gridWidth.current; row++, col++) {
       if (grid[row][col].status === getCurrentPlayerStatus()) {
-        left = col;
+        right = col;
         winCells.push(grid[row][col])
       }
       else break;
