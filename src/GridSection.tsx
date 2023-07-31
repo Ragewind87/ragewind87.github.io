@@ -1,9 +1,9 @@
 import React from 'react';
-import TransparentIcon from './Icons/transparentIcon.png';
-import ZoeyIcon1 from './Icons/zoeyIcon1.jpg';
-import ZoeyIcon2 from './Icons/zoeyIcon2.jpg';
-import ZoeyIcon3 from './Icons/zoeyIcon3.png';
-import KayBearIcon from './Icons/kaybearIcon.png';
+import ZoeyWindow from './Icons/zoeyWindow.png';
+import KayBearWindow from './Icons/kaybearWindow.png';
+import ZoeyWindowWin from './Icons/zoeyWindowWin.png';
+import KayBearWindowWin from './Icons/kaybearWindowWin.png';
+import TransparentWindow from './Icons/transparentWindow.png';
 
 
 export enum Status {
@@ -20,7 +20,7 @@ export interface IGridSectionProps {
     status: Status
     disabled: boolean
     winningCell: boolean
-    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, y: number, x: number) => void;
+    onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, y: number, x: number) => void;
 }
 
 export interface IMainGrid {
@@ -29,12 +29,14 @@ export interface IMainGrid {
 
 export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) => {
 
+    const [isMouseOver, setIsMouseOver] = React.useState<boolean>(false);
+
     const buttonStyle: React.CSSProperties = {
         width: '100px',
         height: '100px',
         borderRadius: '5px',
         boxShadow:'none',
-        backgroundColor: props.winningCell ? 'green' : undefined,
+        backgroundColor: ((isMouseOver && !props.disabled) || props.winningCell) ? 'green' : undefined,
     }
 
     const getGridImage = () : string => {
@@ -42,19 +44,29 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
             default:
             case Status.Empty:
             case Status.Playable:
-                return TransparentIcon;
-            case Status.Player1Owned:
-                return KayBearIcon;
+                return TransparentWindow;
+            case Status.Player1Owned: {
+                return props.winningCell ? KayBearWindowWin : KayBearWindow;
+            }
             case Status.Player2Owned:
-                return ZoeyIcon3;
+                return props.winningCell ? ZoeyWindowWin : ZoeyWindow;
         }
     }
 
+    const onMouseOver = (event: React.MouseEvent<HTMLDivElement>) => {
+        setIsMouseOver(true)
+    }
+
+    const handleOnMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
+        setIsMouseOver(false)
+    }
+
     return (
-        <button 
+        <div 
             style={buttonStyle}
-            onClick={(event) => props.onClick(event, props.x, props.y)}
-            disabled={props.disabled}
+            onClick={props.disabled ? undefined : (event) => props.onClick(event, props.x, props.y)}
+            onMouseOver={onMouseOver}
+            onMouseLeave={handleOnMouseLeave}
         >
             <img 
                 src={getGridImage()}
@@ -62,6 +74,6 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
                 width={'100%'}
                 height={'100%'}>
             </img>
-        </button>
+        </div>
     )
 }

@@ -10,7 +10,6 @@ function App() {
   const gridHeight = React.useRef<number>(6);
   const gridWidth = React.useRef<number>(7);
   const [playerTurn, setPlayerTurn] = React.useState<number>(0);
-  const [gameStarted, setGameStarted] = React.useState<boolean>(false);
   const [gameWinner, setGameWinner] = React.useState<number>(-1);
   const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
 
@@ -62,13 +61,16 @@ function App() {
           x: col,
           disabled: true,
           winningCell: false,
+          gameOver: false,
           onClick: onButtonClick,
           status: CellStatus.Empty,
         } as IGridSectionProps);
       }
       if (row === gridHeight.current - 1) {
-        for (let col = 0; col < gridWidth.current; col++)
+        for (let col = 0; col < gridWidth.current; col++){
           gridRow[col].status = CellStatus.Playable;
+          gridRow[col].disabled = false;
+        }
       }
 
       grid.push(gridRow);
@@ -90,8 +92,10 @@ function App() {
       }
 
       if (row === gridHeight.current - 1) {
-        for (let col = 0; col < gridWidth.current; col++)
+        for (let col = 0; col < gridWidth.current; col++){
           tempGrid[row][col].status = CellStatus.Playable;
+          tempGrid[row][col].disabled = false;
+        }
       }
     }
     setPlayGrid({...playGrid, grid: tempGrid});
@@ -144,20 +148,9 @@ function App() {
   }
 
   const onResetButtonClick = () => {
-    setPlayerTurn(0);
-    setGameStarted(false);
     resetPlayGrid();
     setGameWinner(-1);
-  }
-
-  const onStartGameClick = () => {
-    let tempGrid = playGrid.grid;
-    for (let col = 0; col < gridWidth.current; col++){
-      tempGrid[gridHeight.current-1][col].disabled = false;
-    }
     setPlayerTurn(1);
-    setGameStarted(true);
-    setPlayGrid({...playGrid, grid: tempGrid});
   }
 
   const highlightWinningCells = () => {
@@ -288,22 +281,14 @@ function App() {
       </div>
       <div className="leftPanel">
         <Stack style={{alignItems: 'center', minWidth: '150px'}}>
-          {!gameStarted &&
-            <button
-              onClick={onStartGameClick}
-              style={buttonStyle}
-            >
-              Start Game Yaya
-            </button>
-          }
-          {gameStarted &&
-            <button
-              onClick={onResetButtonClick}
-              style={buttonStyle}
-            >
-              Reset Game
-            </button>
-          }
+
+          <button
+            onClick={onResetButtonClick}
+            style={buttonStyle}
+          >
+            Reset Game
+          </button>
+          
           {gameWinner === -1 &&
             getCurrentPlayerText()
           }
