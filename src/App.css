@@ -28,8 +28,8 @@
   color: #d10000;
 }
 
-.header { 
-  grid-area: header;
+/* .header { 
+  min-height: 100px;
 }
 .main { 
   grid-area: main;
@@ -39,7 +39,7 @@
 }
 .rightPanel { 
   grid-area: right; 
-}
+} */
 
 .grid-container {
   display: grid;

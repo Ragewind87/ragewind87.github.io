@@ -4,7 +4,7 @@ import KayBearWindow from './Icons/kaybearWindow.png';
 import ZoeyWindowWin from './Icons/zoeyWindowWin.png';
 import KayBearWindowWin from './Icons/kaybearWindowWin.png';
 import TransparentWindow from './Icons/transparentWindow.png';
-
+import EmptyCell from './Icons/emptyCell.png';
 
 export enum Status {
     Empty,
@@ -31,20 +31,12 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
 
     const [isMouseOver, setIsMouseOver] = React.useState<boolean>(false);
 
-    const buttonStyle: React.CSSProperties = {
-        width: '100px',
-        height: '100px',
-        borderRadius: '5px',
-        boxShadow:'none',
-        backgroundColor: ((isMouseOver && !props.disabled) || props.winningCell) ? 'green' : undefined,
-    }
-
     const getGridImage = () : string => {
         switch (props.status) {
             default:
             case Status.Empty:
             case Status.Playable:
-                return TransparentWindow;
+                return EmptyCell;
             case Status.Player1Owned: {
                 return props.winningCell ? KayBearWindowWin : KayBearWindow;
             }
@@ -63,10 +55,16 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
 
     return (
         <div 
-            style={buttonStyle}
             onClick={props.disabled ? undefined : (event) => props.onClick(event, props.x, props.y)}
             onMouseOver={onMouseOver}
             onMouseLeave={handleOnMouseLeave}
+            style={{
+                maxWidth: '13%',
+                maxHeight: '13%',
+                minWidth: '13%',
+                minHeight: '13%',
+                backgroundColor: ((isMouseOver && !props.disabled) || props.winningCell) ? 'green' : undefined,
+            }}
         >
             <img 
                 src={getGridImage()}

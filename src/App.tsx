@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from './GridSection';
 import { Stack } from '@fluentui/react';
+import KayBearIcon from './Icons/kaybearIcon.png';
+import ZoeyIcon from './Icons/zoeyIcon.png';
 
 
 function App() {
@@ -18,7 +20,6 @@ function App() {
 
   React.useEffect(() => {
     turnRef.current = playerTurn
-
   }, [playerTurn]);
 
   const getUniqueId = () => {
@@ -115,7 +116,7 @@ function App() {
 
     const renderRow = (cells: IGridSectionProps[], idx: number) : React.ReactNode => {
       return (
-        <Stack horizontal key={`row-${idx}`} style={{alignSelf: 'center'}}>
+        <Stack horizontal key={`row-${idx}`} style={{margin: '0px -30px 0px -30px'}}>
           {cells.map((c, i) => <GridSection key={`cell-${idx}-${i}}`} {...c} />)}
         </Stack>
       )
@@ -271,36 +272,61 @@ function App() {
     whiteSpace: 'nowrap'
   }
 
+  const getWinnerImage = (player: number) : string => {
+    return player === 1 ? KayBearIcon : ZoeyIcon;
+    }
+
   return (
-    <div className="grid-container">
-      <div className="main" style={{alignContent: 'center', fontSize: '50', fontWeight: 'bold'}}>
-        {renderGrid()}
-      </div>
-      <div className="header">
-        Connect Four
-      </div>
-      <div className="leftPanel">
-        <Stack style={{alignItems: 'center', minWidth: '150px'}}>
+    <div style={{backgroundColor: '#2e2e2e'}}>
+      <Stack>
+        <div className="header" style={{height: '10vh', border: '2px solid black', alignItems: 'center'}}>
+          Connect Four
+        </div>
 
-          <button
-            onClick={onResetButtonClick}
-            style={buttonStyle}
-          >
-            Reset Game
-          </button>
-          
-          {gameWinner === -1 &&
-            getCurrentPlayerText()
-          }
-          {gameWinner != -1 &&
-            getWinnerText()
-          }     
-        </Stack>
-      </div>
-      <div className="rightPanel" style={{border: "1px solid black"}}>
-        rightPanel
-      </div>
+        <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
+          <div className="leftPanel" style={{padding: '30px'}}>
+            <Stack style={{alignItems: 'center', width: '50%', minWidth: '150px'}}>
+
+              <button onClick={onResetButtonClick} style={buttonStyle}>
+                Reset Game
+              </button>
+              
+              {gameWinner === -1 &&
+                getCurrentPlayerText()
+              }
+              {gameWinner != -1 &&
+                getWinnerText()
+              }
+              {gameWinner != -1 &&
+                <img 
+                  src={getWinnerImage(gameWinner)}
+                  style={{marginTop: '20px'}}
+                />
+              }
+            </Stack>
+          </div>
+
+          <div 
+            className="main" 
+            style={{
+              border: '2px solid black',
+              alignContent: 'center', 
+              width: '55%',
+              padding: '20px',
+              overflow: 'hidden',
+              backgroundColor: '#808080',
+            }}
+          >            
+            {renderGrid()}
+          </div>
+
+          <div className="rightPanel" style={{border: '2px solid black', width: '50%'}}>
+            rightPanel
+          </div>
+
+        </Stack>      
+      </Stack>
     </div>
   );
 }
