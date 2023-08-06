@@ -3,8 +3,8 @@ import ZoeyWindow from './Icons/zoeyWindow.png';
 import KayBearWindow from './Icons/kaybearWindow.png';
 import ZoeyWindowWin from './Icons/zoeyWindowWin.png';
 import KayBearWindowWin from './Icons/kaybearWindowWin.png';
-import TransparentWindow from './Icons/transparentWindow.png';
 import EmptyCell from './Icons/emptyCell.png';
+import EmptyCellGreen from './Icons/emptyCellGreen.png';
 
 export enum Status {
     Empty,
@@ -20,6 +20,7 @@ export interface IGridSectionProps {
     status: Status
     disabled: boolean
     winningCell: boolean
+    columnIsMouseover: boolean
     onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, y: number, x: number) => void;
 }
 
@@ -35,11 +36,14 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
         switch (props.status) {
             default:
             case Status.Empty:
-            case Status.Playable:
                 return EmptyCell;
-            case Status.Player1Owned: {
-                return props.winningCell ? KayBearWindowWin : KayBearWindow;
-            }
+
+            case Status.Playable: 
+                return (isMouseOver && !props.disabled) ? EmptyCellGreen : EmptyCell;
+
+            case Status.Player1Owned:
+                return props.winningCell ? KayBearWindowWin : KayBearWindow;   
+
             case Status.Player2Owned:
                 return props.winningCell ? ZoeyWindowWin : ZoeyWindow;
         }
@@ -59,11 +63,11 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
             onMouseOver={onMouseOver}
             onMouseLeave={handleOnMouseLeave}
             style={{
-                maxWidth: '13%',
-                maxHeight: '13%',
-                minWidth: '13%',
-                minHeight: '13%',
-                backgroundColor: ((isMouseOver && !props.disabled) || props.winningCell) ? 'green' : undefined,
+                maxWidth: '14vh',
+                maxHeight: '14vh',
+                // minWidth: '13%',
+                // minHeight: '13%',
+                //backgroundColor: ((isMouseOver && !props.disabled) || props.winningCell) ? 'green' : undefined,
             }}
         >
             <img 

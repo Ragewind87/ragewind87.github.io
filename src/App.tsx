@@ -16,7 +16,7 @@ function App() {
   const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
 
   // use this inside event handlers like onClick to get the latest state
-  const turnRef = React.useRef(0);  
+  const turnRef = React.useRef(0);
 
   React.useEffect(() => {
     turnRef.current = playerTurn
@@ -32,10 +32,10 @@ function App() {
     else
       return CellStatus.Player2Owned
   };
- 
+
   const onButtonClick = (event: React.MouseEvent, x: number, y: number) => {
     let tempGrid = playGrid.grid;
-    tempGrid[y][x].status = getCurrentPlayerStatus(); 
+    tempGrid[y][x].status = getCurrentPlayerStatus();
     tempGrid[y][x].disabled = true;
 
     if (y > 0){
@@ -65,6 +65,7 @@ function App() {
           gameOver: false,
           onClick: onButtonClick,
           status: CellStatus.Empty,
+          columnIsMouseover: false,
         } as IGridSectionProps);
       }
       if (row === gridHeight.current - 1) {
@@ -75,7 +76,7 @@ function App() {
       }
 
       grid.push(gridRow);
-    }  
+    }
     return {
       grid: grid
     };
@@ -115,19 +116,27 @@ function App() {
   const renderGrid = () : React.ReactNode => {
 
     const renderRow = (cells: IGridSectionProps[], idx: number) : React.ReactNode => {
+      const rowStyle: React.CSSProperties = {
+        display: 'flex',
+        justifyContent: 'center',
+        // marginTop: `${idx === 0 ? -5 : 0}px`,
+        // marginRight: '-20px',
+        // marginBottom: `${idx === gridHeight.current-1 ? -5 : 0}px`,
+        // marginLeft: '-20px'
+      }
       return (
-        <Stack horizontal key={`row-${idx}`} style={{margin: '0px -30px 0px -30px'}}>
+        <div style={rowStyle}>
           {cells.map((c, i) => <GridSection key={`cell-${idx}-${i}}`} {...c} />)}
-        </Stack>
+        </div>
       )
     }
 
-    let grid = 
+    let grid =
       <Stack>
         {playGrid.grid.map((gridRow, i) => {
           return renderRow(gridRow, i)
         })}
-      </Stack>    
+      </Stack>
 
     return grid;
   }
@@ -136,15 +145,15 @@ function App() {
     return (
       <div style={{marginTop: '20px', fontFamily: 'Verdana, sans-serif', fontSize: '20px', color: 'white'}}>
         {playerTurn !== 0 ? `Player ${playerTurn}` : ''}
-      </div>      
+      </div>
     )
   }
 
-  const getWinnerText = () => {  
+  const getWinnerText = () => {
       return (
         <div style={{marginTop: '20px', fontFamily: 'Verdana, sans-serif', fontSize: '20px', color: 'white'}}>
           {`PLAYER ${playerTurn} WINS`}
-        </div>      
+        </div>
       )
   }
 
@@ -265,10 +274,10 @@ function App() {
   }
 
   const buttonStyle: React.CSSProperties = {
-    width: '80%', 
-    minWidth: '125px', 
-    height: '30px', 
-    overflow: 'hidden', 
+    width: '80%',
+    minWidth: '125px',
+    height: '30px',
+    overflow: 'hidden',
     whiteSpace: 'nowrap'
   }
 
@@ -277,7 +286,7 @@ function App() {
     }
 
   return (
-    <div style={{backgroundColor: '#2e2e2e'}}>
+    <div style={{backgroundColor: '#2e2e2e', height: '100vh'}}>
       <Stack>
         <div className="header" style={{height: '10vh', border: '2px solid black', alignItems: 'center'}}>
           Connect Four
@@ -285,13 +294,13 @@ function App() {
 
         <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
-          <div className="leftPanel" style={{padding: '30px'}}>
+          <div className="leftPanel" style={{padding: '30px', maxWidth: '15vw'}}>
             <Stack style={{alignItems: 'center', width: '50%', minWidth: '150px'}}>
 
               <button onClick={onResetButtonClick} style={buttonStyle}>
                 Reset Game
               </button>
-              
+
               {gameWinner === -1 &&
                 getCurrentPlayerText()
               }
@@ -299,7 +308,7 @@ function App() {
                 getWinnerText()
               }
               {gameWinner != -1 &&
-                <img 
+                <img
                   src={getWinnerImage(gameWinner)}
                   style={{marginTop: '20px'}}
                 />
@@ -307,25 +316,27 @@ function App() {
             </Stack>
           </div>
 
-          <div 
-            className="main" 
+          <div
+            className="main"
             style={{
               border: '2px solid black',
-              alignContent: 'center', 
-              width: '55%',
+              alignContent: 'center',
+              // width: '55%',
               padding: '20px',
               overflow: 'hidden',
               backgroundColor: '#808080',
+              maxWidth: '70vw',
+              maxHeight: '84vh'
             }}
-          >            
+          >
             {renderGrid()}
           </div>
 
-          <div className="rightPanel" style={{border: '2px solid black', width: '50%'}}>
+          <div className="rightPanel" style={{border: '2px solid black', maxWidth: '15vw'}}>
             rightPanel
           </div>
 
-        </Stack>      
+        </Stack>
       </Stack>
     </div>
   );
