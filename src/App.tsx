@@ -4,7 +4,12 @@ import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from 
 import { Stack } from '@fluentui/react';
 import KayBearIcon from './Icons/kaybearIcon.png';
 import ZoeyIcon from './Icons/zoeyIcon.png';
+import Xarrow, { Xwrapper } from 'react-xarrows';
 
+interface ArrowStartEnd {
+  start: string;
+  end: string;
+}
 
 function App() {
 
@@ -14,8 +19,8 @@ function App() {
   const [playerTurn, setPlayerTurn] = React.useState<number>(0);
   const [gameWinner, setGameWinner] = React.useState<number>(-1);
   const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
-
   const [mouseOverColumn, setMouseOverColumn] = React.useState<number>(-1);
+  const [arrowStartEnd, setArrowStartEnd] = React.useState<ArrowStartEnd>({start: '', end: ''});
 
   // use this inside event handlers like onClick to get the latest state
   const turnRef = React.useRef(0);
@@ -23,6 +28,10 @@ function App() {
   React.useEffect(() => {
     turnRef.current = playerTurn
   }, [playerTurn]);
+
+  React.useEffect(() => {
+    console.log(arrowStartEnd);
+  }, [arrowStartEnd])
 
   const getUniqueId = () => {
     return nextId.current++;
@@ -42,22 +51,19 @@ function App() {
   const onCellClick = (event: React.MouseEvent, x: number, y: number) => {
     let tempGrid = playGrid.grid;
 
-    let found = false;
     let playableY = 0;
     while (tempGrid[playableY][x].status !== CellStatus.Playable) {
       playableY++;
     }
-    if (tempGrid[playableY][x].status !== CellStatus.Playable) {
+
+    if (tempGrid[playableY][x].status !== CellStatus.Playable)
       return;
-    }
+
 
     tempGrid[playableY][x].status = getCurrentPlayerStatus();
-    //tempGrid[playableY][x].disabled = true;
 
-    if (playableY > 0){
+    if (playableY > 0)
       tempGrid[playableY-1][x].status = CellStatus.Playable;
-      //tempGrid[playableY-1][x].disabled = false;
-    }
 
     if (!checkWinCondition(tempGrid, x, playableY))
       setPlayerTurn(turnRef.current === 1 ? 2 : 1)
@@ -144,10 +150,10 @@ function App() {
       return (
         <div style={rowStyle}>
           {cells.map((c, i) => {
-            let props = {...c, columnIsMouseover: i === mouseOverColumn} as IGridSectionProps 
-            return ( 
-              <GridSection 
-                key={`cell-${idx}-${i}}`} 
+            let props = {...c, columnIsMouseover: i === mouseOverColumn} as IGridSectionProps
+            return (
+              <GridSection
+                key={`cell-${idx}-${i}}`}
                 {...props}
               />
             )
@@ -199,7 +205,6 @@ function App() {
   const doWin = () => {
     setGameWinner(turnRef.current);
     disablePlayGrid();
-    console.log(winningCellsRef.current);
     highlightWinningCells();
     setMouseOverColumn(-1);
   }
@@ -218,6 +223,11 @@ function App() {
       else {
         winCells.push(grid[row][x])
         if (winCells.length >= 4) {
+          setArrowStartEnd({
+            ...arrowStartEnd, 
+            start: `${winCells[0].y}, ${winCells[0].x}`,
+            end: `${winCells[winCells.length-1].y}, ${winCells[winCells.length-1].x}`
+          })
           winningCellsRef.current = winCells;
           return true
         }
@@ -246,6 +256,11 @@ function App() {
     }
     if (hRight - hLeft >= 3) {
       winningCellsRef.current = winCells;
+      setArrowStartEnd({
+        ...arrowStartEnd, 
+        start: `${y}, ${hLeft}`,
+        end: `${y}, ${hRight}`
+      })
       return true;
     }
 
@@ -270,6 +285,36 @@ function App() {
     }
     if (right - left >= 3) {
       winningCellsRef.current = winCells;
+
+      let start = winCells.find(c => c.x === right);
+      let end = winCells.find(c => c.x === left);
+
+      // let start = -1;
+      // let end = -1;
+      // let minX = 10;
+      // let maxX = -1;
+      // winCells.forEach((c, i) => {
+      //   if (c.x < minX){
+      //     minX = c.x;
+      //     start = i;
+      //   }
+      //   if (c.x > maxX){
+      //     maxX = c.x;
+      //     end = i;
+      //   }
+      // })
+      // setArrowStartEnd({
+      //   ...arrowStartEnd, 
+      //   start: `${winCells[start].y}, ${winCells[start].x}`,
+      //   end: `${winCells[end].y}, ${winCells[end].x}`
+      // })
+      if (start && end)
+        setArrowStartEnd({
+          ...arrowStartEnd, 
+          start: `${start.y}, ${start.x}`,
+          end: `${end.y}, ${end.x}`
+        })
+
       return true;
     }
 
@@ -292,6 +337,30 @@ function App() {
     }
     if (right - left >= 3) {
       winningCellsRef.current = winCells;
+
+      let start = winCells.find(c => c.x === right);
+      let end = winCells.find(c => c.x === left);
+
+      // let start = -1;
+      // let end = -1;
+      // let minX = 10;
+      // let maxX = -1;
+      // winCells.forEach((c, i) => {
+      //   if (c.x < minX){
+      //     minX = c.x;
+      //     start = i;
+      //   }
+      //   if (c.x > maxX){
+      //     maxX = c.x;
+      //     end = i;
+      //   }
+      // })
+      if (start && end)
+        setArrowStartEnd({
+          ...arrowStartEnd, 
+          start: `${start.y}, ${start.x}`,
+          end: `${end.y}, ${end.x}`
+        })
       return true;
     }
 
@@ -330,10 +399,10 @@ function App() {
               {gameWinner === -1 &&
                 getCurrentPlayerText()
               }
-              {gameWinner != -1 &&
+              {gameWinner !== -1 &&
                 getWinnerText()
               }
-              {gameWinner != -1 &&
+              {gameWinner !== -1 &&
                 <img
                   src={getWinnerImage(gameWinner)}
                   style={{marginTop: '20px', height: '100%', width: '100%'}}
@@ -342,26 +411,39 @@ function App() {
             </Stack>
           </div>
 
-          <div
-            className="main"
-            style={{
-              border: '2px solid black',
-              alignContent: 'center',
-              padding: '20px',
-              overflow: 'hidden',
-              backgroundColor: '#808080',
-              minWidth: '45vw',
-              maxWidth: '45vw',
-              minHeight: '83.5vh',
-              maxHeight: '83.5vh'
-            }}
-          >
-            {renderGrid()}
-          </div>
+          <Xwrapper>
+            <div
+              className="main"
+              style={{
+                border: '2px solid black',
+                alignContent: 'center',
+                padding: '20px',
+                overflow: 'hidden',
+                backgroundColor: '#808080',
+                minWidth: '45vw',
+                maxWidth: '45vw',
+                minHeight: '83.5vh',
+                maxHeight: '83.5vh'
+              }}
+            >
+                {renderGrid()}
+                {gameWinner !== -1 &&
+                <Xarrow
+                  start={arrowStartEnd.start}
+                  end={arrowStartEnd.end}
+                  color={"red"}
+                  startAnchor={"middle"}
+                  endAnchor={"middle"}
+                  strokeWidth={10}
+                  showHead={false}
+                  path={'straight'}
+                />}
+            </div>
+          </Xwrapper>
 
           <div className="rightPanel" style={{
             border: '2px solid black',
-             minWidth: '18vw', 
+             minWidth: '18vw',
              maxWidth: '18vw'
           }}>
             rightPanel
