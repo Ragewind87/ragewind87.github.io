@@ -228,8 +228,9 @@ function App() {
             start: `${winCells[0].y}, ${winCells[0].x}`,
             end: `${winCells[winCells.length-1].y}, ${winCells[winCells.length-1].x}`
           })
+
           winningCellsRef.current = winCells;
-          return true
+          return true;
         }
       }
     }
@@ -254,13 +255,15 @@ function App() {
       }
       else break;
     }
+
     if (hRight - hLeft >= 3) {
-      winningCellsRef.current = winCells;
       setArrowStartEnd({
         ...arrowStartEnd, 
         start: `${y}, ${hLeft}`,
         end: `${y}, ${hRight}`
       })
+
+      winningCellsRef.current = winCells;
       return true;
     }
 
@@ -284,30 +287,8 @@ function App() {
       else break;
     }
     if (right - left >= 3) {
-      winningCellsRef.current = winCells;
-
       let start = winCells.find(c => c.x === right);
       let end = winCells.find(c => c.x === left);
-
-      // let start = -1;
-      // let end = -1;
-      // let minX = 10;
-      // let maxX = -1;
-      // winCells.forEach((c, i) => {
-      //   if (c.x < minX){
-      //     minX = c.x;
-      //     start = i;
-      //   }
-      //   if (c.x > maxX){
-      //     maxX = c.x;
-      //     end = i;
-      //   }
-      // })
-      // setArrowStartEnd({
-      //   ...arrowStartEnd, 
-      //   start: `${winCells[start].y}, ${winCells[start].x}`,
-      //   end: `${winCells[end].y}, ${winCells[end].x}`
-      // })
       if (start && end)
         setArrowStartEnd({
           ...arrowStartEnd, 
@@ -315,6 +296,7 @@ function App() {
           end: `${end.y}, ${end.x}`
         })
 
+      winningCellsRef.current = winCells;
       return true;
     }
 
@@ -336,31 +318,16 @@ function App() {
       else break;
     }
     if (right - left >= 3) {
-      winningCellsRef.current = winCells;
-
       let start = winCells.find(c => c.x === right);
       let end = winCells.find(c => c.x === left);
-
-      // let start = -1;
-      // let end = -1;
-      // let minX = 10;
-      // let maxX = -1;
-      // winCells.forEach((c, i) => {
-      //   if (c.x < minX){
-      //     minX = c.x;
-      //     start = i;
-      //   }
-      //   if (c.x > maxX){
-      //     maxX = c.x;
-      //     end = i;
-      //   }
-      // })
       if (start && end)
         setArrowStartEnd({
           ...arrowStartEnd, 
           start: `${start.y}, ${start.x}`,
           end: `${end.y}, ${end.x}`
         })
+
+      winningCellsRef.current = winCells;
       return true;
     }
 
