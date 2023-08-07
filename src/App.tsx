@@ -15,6 +15,8 @@ function App() {
   const [gameWinner, setGameWinner] = React.useState<number>(-1);
   const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
 
+  const [mouseOverColumn, setMouseOverColumn] = React.useState<number>(-1);
+
   // use this inside event handlers like onClick to get the latest state
   const turnRef = React.useRef(0);
 
@@ -33,17 +35,31 @@ function App() {
       return CellStatus.Player2Owned
   };
 
-  const onButtonClick = (event: React.MouseEvent, x: number, y: number) => {
-    let tempGrid = playGrid.grid;
-    tempGrid[y][x].status = getCurrentPlayerStatus();
-    tempGrid[y][x].disabled = true;
+  const updateMouseoverColumn = React.useCallback((column: number) => {
+    setMouseOverColumn(column);
+  }, []);
 
-    if (y > 0){
-      tempGrid[y-1][x].status = CellStatus.Playable;
-      tempGrid[y-1][x].disabled = false;
+  const onCellClick = (event: React.MouseEvent, x: number, y: number) => {
+    let tempGrid = playGrid.grid;
+
+    let found = false;
+    let playableY = 0;
+    while (tempGrid[playableY][x].status !== CellStatus.Playable) {
+      playableY++;
+    }
+    if (tempGrid[playableY][x].status !== CellStatus.Playable) {
+      return;
     }
 
-    if (!checkWinCondition(tempGrid, x, y))
+    tempGrid[playableY][x].status = getCurrentPlayerStatus();
+    //tempGrid[playableY][x].disabled = true;
+
+    if (playableY > 0){
+      tempGrid[playableY-1][x].status = CellStatus.Playable;
+      //tempGrid[playableY-1][x].disabled = false;
+    }
+
+    if (!checkWinCondition(tempGrid, x, playableY))
       setPlayerTurn(turnRef.current === 1 ? 2 : 1)
     else
       doWin();
@@ -60,12 +76,13 @@ function App() {
           id: getUniqueId(),
           y: row,
           x: col,
-          disabled: true,
+          disabled: false,
           winningCell: false,
           gameOver: false,
-          onClick: onButtonClick,
+          onClick: onCellClick,
           status: CellStatus.Empty,
           columnIsMouseover: false,
+          setMouseoverColumn: updateMouseoverColumn
         } as IGridSectionProps);
       }
       if (row === gridHeight.current - 1) {
@@ -89,7 +106,7 @@ function App() {
     for (let row = 0; row < gridHeight.current; row++){
       for (let col = 0; col < gridWidth.current; col++){
         tempGrid[row][col].status = CellStatus.Empty;
-        tempGrid[row][col].disabled = true;
+        tempGrid[row][col].disabled = false;
         tempGrid[row][col].winningCell = false;
       }
 
@@ -126,7 +143,15 @@ function App() {
       }
       return (
         <div style={rowStyle}>
-          {cells.map((c, i) => <GridSection key={`cell-${idx}-${i}}`} {...c} />)}
+          {cells.map((c, i) => {
+            let props = {...c, columnIsMouseover: i === mouseOverColumn} as IGridSectionProps 
+            return ( 
+              <GridSection 
+                key={`cell-${idx}-${i}}`} 
+                {...props}
+              />
+            )
+          })}
         </div>
       )
     }
@@ -176,6 +201,7 @@ function App() {
     disablePlayGrid();
     console.log(winningCellsRef.current);
     highlightWinningCells();
+    setMouseOverColumn(-1);
   }
 
   const checkWinCondition = (grid: IGridSectionProps[][], x: number, y: number) : boolean => {
@@ -294,8 +320,8 @@ function App() {
 
         <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
-          <div className="leftPanel" style={{padding: '30px', maxWidth: '15vw'}}>
-            <Stack style={{alignItems: 'center', width: '50%', minWidth: '150px'}}>
+          <div className="leftPanel" style={{padding: '30px', minWidth: '30vw', maxWidth: '30vw'}}>
+            <Stack style={{alignItems: 'center', minWidth: '150px'}}>
 
               <button onClick={onResetButtonClick} style={buttonStyle}>
                 Reset Game
@@ -310,7 +336,7 @@ function App() {
               {gameWinner != -1 &&
                 <img
                   src={getWinnerImage(gameWinner)}
-                  style={{marginTop: '20px'}}
+                  style={{marginTop: '20px', height: '100%', width: '100%'}}
                 />
               }
             </Stack>
@@ -321,18 +347,23 @@ function App() {
             style={{
               border: '2px solid black',
               alignContent: 'center',
-              // width: '55%',
               padding: '20px',
               overflow: 'hidden',
               backgroundColor: '#808080',
-              maxWidth: '70vw',
-              maxHeight: '84vh'
+              minWidth: '45vw',
+              maxWidth: '45vw',
+              minHeight: '83.5vh',
+              maxHeight: '83.5vh'
             }}
           >
             {renderGrid()}
           </div>
 
-          <div className="rightPanel" style={{border: '2px solid black', maxWidth: '15vw'}}>
+          <div className="rightPanel" style={{
+            border: '2px solid black',
+             minWidth: '18vw', 
+             maxWidth: '18vw'
+          }}>
             rightPanel
           </div>
 

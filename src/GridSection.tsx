@@ -21,6 +21,7 @@ export interface IGridSectionProps {
     disabled: boolean
     winningCell: boolean
     columnIsMouseover: boolean
+    setMouseoverColumn: React.Dispatch<React.SetStateAction<number>>;
     onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, y: number, x: number) => void;
 }
 
@@ -30,16 +31,14 @@ export interface IMainGrid {
 
 export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) => {
 
-    const [isMouseOver, setIsMouseOver] = React.useState<boolean>(false);
+    // const [isMouseOver, setIsMouseOver] = React.useState<boolean>(false);
 
     const getGridImage = () : string => {
         switch (props.status) {
             default:
             case Status.Empty:
-                return EmptyCell;
-
             case Status.Playable: 
-                return (isMouseOver && !props.disabled) ? EmptyCellGreen : EmptyCell;
+                return (props.columnIsMouseover && props.y === 0) ? EmptyCellGreen : EmptyCell;
 
             case Status.Player1Owned:
                 return props.winningCell ? KayBearWindowWin : KayBearWindow;   
@@ -50,16 +49,20 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
     }
 
     const onMouseOver = (event: React.MouseEvent<HTMLDivElement>) => {
-        setIsMouseOver(true)
+        //setIsMouseOver(true)
+        if (!props.disabled)
+            props.setMouseoverColumn(props.x)
     }
 
     const handleOnMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
-        setIsMouseOver(false)
+        //setIsMouseOver(false)
+        if (!props.disabled)
+            props.setMouseoverColumn(-1)
     }
 
     return (
         <div 
-            onClick={props.disabled ? undefined : (event) => props.onClick(event, props.x, props.y)}
+            onClick={!props.disabled ? (event) => props.onClick(event, props.x, props.y) : undefined}
             onMouseOver={onMouseOver}
             onMouseLeave={handleOnMouseLeave}
             style={{
