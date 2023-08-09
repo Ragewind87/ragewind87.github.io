@@ -9,6 +9,13 @@ import Xarrow, { Xwrapper } from 'react-xarrows';
 interface ArrowStartEnd {
   start: string;
   end: string;
+  startOffset: Coordinate;
+  endOffset: Coordinate;
+}
+
+interface Coordinate {
+  x: number;
+  y: number;
 }
 
 function App() {
@@ -20,7 +27,9 @@ function App() {
   const [gameWinner, setGameWinner] = React.useState<number>(-1);
   const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
   const [mouseOverColumn, setMouseOverColumn] = React.useState<number>(-1);
-  const [arrowStartEnd, setArrowStartEnd] = React.useState<ArrowStartEnd>({start: '', end: ''});
+  const [arrowStartEnd, setArrowStartEnd] = React.useState<ArrowStartEnd>({
+    start: '', end: '', startOffset: {x: 0, y: 0}, endOffset: {x: 0, y: 0}
+  });
 
   // use this inside event handlers like onClick to get the latest state
   const turnRef = React.useRef(0);
@@ -227,7 +236,9 @@ function App() {
           setArrowStartEnd({
             ...arrowStartEnd, 
             start: `${winCells[0].y}, ${winCells[0].x}`,
-            end: `${winCells[winCells.length-1].y}, ${winCells[winCells.length-1].x}`
+            end: `${winCells[winCells.length-1].y}, ${winCells[winCells.length-1].x}`,
+            startOffset: {x: 0, y: -25},
+            endOffset: {x: 0, y: 25}
           })
 
           winningCellsRef.current = winCells;
@@ -261,7 +272,9 @@ function App() {
       setArrowStartEnd({
         ...arrowStartEnd, 
         start: `${y}, ${hLeft}`,
-        end: `${y}, ${hRight}`
+        end: `${y}, ${hRight}`,
+        startOffset: {x: -25, y: 0},
+        endOffset: {x: 25, y: 0}
       })
 
       winningCellsRef.current = winCells;
@@ -269,7 +282,7 @@ function App() {
     }
 
     // check for diagonal win
-    // to top right and bottom left
+    // to top right 
     winCells = [];
     let left = -1;
     let right = -1;
@@ -280,6 +293,7 @@ function App() {
       }
       else break;
     }
+    // to bottom left
     for (let row = y, col = x; row < gridHeight.current && col >= 0; row++, col--) {
       if (grid[row][col].status === getCurrentPlayerStatus()) {
         left = col;
@@ -288,20 +302,22 @@ function App() {
       else break;
     }
     if (right - left >= 3) {
-      let start = winCells.find(c => c.x === right);
-      let end = winCells.find(c => c.x === left);
+      let start = winCells.find(c => c.x === left);
+      let end = winCells.find(c => c.x === right);
       if (start && end)
         setArrowStartEnd({
           ...arrowStartEnd, 
           start: `${start.y}, ${start.x}`,
-          end: `${end.y}, ${end.x}`
+          end: `${end.y}, ${end.x}`,
+          startOffset: {x: -25, y: 25},
+          endOffset: {x: 25, y: -25}
         })
 
       winningCellsRef.current = winCells;
       return true;
     }
 
-    // to top left and bottom right
+    // to top left
     winCells = [];
     left = right = -1;
     for (let row = y, col = x; row >= 0 && col >= 0; row--, col--) {
@@ -311,6 +327,7 @@ function App() {
       }
       else break;
     }
+    // to bottom right
     for (let row = y, col = x; row < gridHeight.current && col < gridWidth.current; row++, col++) {
       if (grid[row][col].status === getCurrentPlayerStatus()) {
         right = col;
@@ -319,13 +336,15 @@ function App() {
       else break;
     }
     if (right - left >= 3) {
-      let start = winCells.find(c => c.x === right);
-      let end = winCells.find(c => c.x === left);
+      let start = winCells.find(c => c.x === left);
+      let end = winCells.find(c => c.x === right);
       if (start && end)
         setArrowStartEnd({
           ...arrowStartEnd, 
           start: `${start.y}, ${start.x}`,
-          end: `${end.y}, ${end.x}`
+          end: `${end.y}, ${end.x}`,
+          startOffset: {x: -25, y: -25},
+          endOffset: {x: 25, y: 25}
         })
 
       winningCellsRef.current = winCells;
@@ -401,7 +420,7 @@ function App() {
               Connect Four
             </h1>
             <h2 style={subHeaderStyle}>
-              A Game by CordyGoat
+              By CordyGoat
             </h2>
           </div>
         </div>
@@ -464,9 +483,9 @@ function App() {
               <Xarrow
                 start={arrowStartEnd.start}
                 end={arrowStartEnd.end}
+                startAnchor={{position: 'middle', offset: {x: arrowStartEnd.startOffset.x, y: arrowStartEnd.startOffset.y}}}
+                endAnchor={{position: 'middle', offset: {x: arrowStartEnd.endOffset.x, y: arrowStartEnd.endOffset.y}}}
                 color={"red"}
-                startAnchor={"middle"}
-                endAnchor={"middle"}
                 strokeWidth={10}
                 showHead={false}
                 path={'straight'}
