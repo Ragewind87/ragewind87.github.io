@@ -202,6 +202,7 @@ function App() {
     setPlayGrid({...playGrid, grid: tempGrid});
   }
 
+
   const doWin = () => {
     setGameWinner(turnRef.current);
     disablePlayGrid();
@@ -335,87 +336,165 @@ function App() {
     return false;
   }
 
-  const buttonStyle: React.CSSProperties = {
-    width: '80%',
-    minWidth: '125px',
-    height: '30px',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap'
-  }
-
   const getWinnerImage = (player: number) : string => {
     return player === 1 ? KayBearIcon : ZoeyIcon;
-    }
+  }
+
+
+  const leftPanelStyle: React.CSSProperties = {
+    border: '1px solid black',
+    margin: '15px auto', 
+    minWidth: '30vw', 
+    maxWidth: '30vw',
+  }
+
+  const rightPanelStyle: React.CSSProperties = {
+    border: '1px solid black',
+    margin: '15px auto', 
+    minWidth: '18vw',
+    maxWidth: '18vw'
+  }
+
+  const centerPanelStyle: React.CSSProperties = {
+    border: '2px solid black',
+    alignContent: 'center',
+    padding: '20px',
+    overflow: 'hidden',
+    backgroundColor: 'rgb(74, 74, 74)',
+    minWidth: '45vw',
+    maxWidth: '45vw',
+    minHeight: '83.5vh',
+    maxHeight: '83.5vh'
+  }
+  
+  const headerStyle: React.CSSProperties = {
+    color: `#7c795d`,
+    fontFamily: 'Trocchi',
+    fontSize: `32px`,
+    fontWeight: `1000`,
+    lineHeight: `0px`,
+    marginTop: '26px',
+    marginBottom: '-3px'
+  }
+
+  const subHeaderStyle: React.CSSProperties = {
+    color: '#ffcc66',
+    fontSize: `17px`,
+    fontWeight: `300`,
+    marginBottom: '48px',
+    marginLeft: '30px'
+  }
+  
+  const sidePanelsColor = 'black'
 
   return (
     <div style={{backgroundColor: '#2e2e2e', height: '100vh'}}>
       <Stack>
-        <div className="header" style={{height: '10vh', border: '2px solid black', alignItems: 'center'}}>
-          Connect Four
+        <div id={'headerPanel'} style={{
+            height: '10vh', 
+            border: '1px solid black',
+            display: 'flex',
+            justifyContent: 'center',
+            paddingLeft: '10%'}}>
+          <div>
+            <h1 style={headerStyle}>
+              Connect Four
+            </h1>
+            <h2 style={subHeaderStyle}>
+              A Game by CordyGoat
+            </h2>
+          </div>
         </div>
 
+        {/* Three bottom panels */}
         <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
-          <div className="leftPanel" style={{padding: '30px', minWidth: '30vw', maxWidth: '30vw'}}>
-            <Stack style={{alignItems: 'center', minWidth: '150px'}}>
-
-              <button onClick={onResetButtonClick} style={buttonStyle}>
-                Reset Game
-              </button>
-
-              {gameWinner === -1 &&
-                getCurrentPlayerText()
-              }
-              {gameWinner !== -1 &&
-                getWinnerText()
-              }
-              {gameWinner !== -1 &&
-                <img
-                  src={getWinnerImage(gameWinner)}
-                  style={{marginTop: '20px', height: '100%', width: '100%'}}
-                />
-              }
+          <div id="leftPanel" style={leftPanelStyle}>
+            <Stack style={{height: '100%', width: '100%'}}>
+              <div id={'top'}
+                style={{
+                  alignItems: 'center', 
+                  alignContent: 'flex-start', 
+                  height: '80%', 
+                  backgroundColor: sidePanelsColor}}>
+                {gameWinner === -1 &&
+                  getCurrentPlayerText()}
+                {gameWinner !== -1 &&
+                  getWinnerText()}
+                {gameWinner !== -1 &&
+                <div style={{margin: '25px'}}>
+                  <img
+                    src={getWinnerImage(gameWinner)}
+                    style={{width: '100%'}}
+                  />
+                </div>}
+              </div>  
+              <div id={'bottom'}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  height: '20%', 
+                  backgroundColor: sidePanelsColor,
+                  paddingBottom: '20px'
+                }}>
+                
+                <button onClick={onResetButtonClick} 
+                  style={{ 
+                    width: '80%',
+                    height: '30px',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    overflow: 'clip'
+                  }}>
+                  Reset Game
+                </button>
+              </div>
             </Stack>
+
           </div>
 
           <Xwrapper>
             <div
               className="main"
-              style={{
-                border: '2px solid black',
-                alignContent: 'center',
-                padding: '20px',
-                overflow: 'hidden',
-                backgroundColor: '#808080',
-                minWidth: '45vw',
-                maxWidth: '45vw',
-                minHeight: '83.5vh',
-                maxHeight: '83.5vh'
-              }}
+              style={centerPanelStyle}
             >
-                {renderGrid()}
-                {gameWinner !== -1 &&
-                <Xarrow
-                  start={arrowStartEnd.start}
-                  end={arrowStartEnd.end}
-                  color={"red"}
-                  startAnchor={"middle"}
-                  endAnchor={"middle"}
-                  strokeWidth={10}
-                  showHead={false}
-                  path={'straight'}
-                />}
+              {renderGrid()}
+
+              {gameWinner !== -1 &&
+              <Xarrow
+                start={arrowStartEnd.start}
+                end={arrowStartEnd.end}
+                color={"red"}
+                startAnchor={"middle"}
+                endAnchor={"middle"}
+                strokeWidth={10}
+                showHead={false}
+                path={'straight'}
+              />}
             </div>
           </Xwrapper>
 
-          <div className="rightPanel" style={{
-            border: '2px solid black',
-             minWidth: '18vw',
-             maxWidth: '18vw'
-          }}>
-            rightPanel
-          </div>
+          <div id="rightPanel" style={rightPanelStyle}>
+            <Stack style={{height: '100%', width: '100%'}}>
+              <div id={'top'}
+                style={{
+                  alignItems: 'center', 
+                  alignContent: 'flex-start', 
+                  height: '50%', 
+                  backgroundColor: sidePanelsColor
+                }}>              
+              </div>  
+              <div id={'bottom'}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  height: '50%', 
+                  backgroundColor: sidePanelsColor
+                }}>
+              </div>
+            </Stack>
 
+          </div>
         </Stack>
       </Stack>
     </div>
