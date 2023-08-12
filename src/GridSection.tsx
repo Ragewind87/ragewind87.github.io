@@ -63,8 +63,8 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
 					onMouseOver={onMouseOver}
 					onMouseLeave={handleOnMouseLeave}
 					style={{
-						maxWidth: '14vh',
-						maxHeight: '14vh',
+						maxWidth: '15.0vh',
+						maxHeight: '15.0vh',
 					}}
 			>
 				<img
