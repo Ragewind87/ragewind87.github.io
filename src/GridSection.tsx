@@ -1,8 +1,10 @@
 import React from 'react';
-import ZoeyWindow from './Icons/zoeyWindow.png';
-import KayBearWindow from './Icons/kaybearWindow.png';
-import ZoeyWindowWin from './Icons/zoeyWindowWin.png';
-import KayBearWindowWin from './Icons/kaybearWindowWin.png';
+import ZoeyWindow from './Icons/Zoey/zoeyWindow.png';
+import ZoeyWindowWin from './Icons/Zoey/zoeyWindowWin.png';
+import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
+import KayBearWindowWin from './Icons/Kaybear/kaybearWindowWin.png';
+import SkyeWindow from './Icons/Skye/skyeWindow.png';
+import SkyeWindowWin from './Icons/Skye/skyeWindowWin.png';
 import EmptyCell from './Icons/emptyCell.png';
 import EmptyCellGreen from './Icons/emptyCellGreen.png';
 
@@ -39,7 +41,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
 				return (props.columnIsMouseover && props.y === 0) ? EmptyCellGreen : EmptyCell;
 
 			case Status.Player1Owned:
-				return props.winningCell ? KayBearWindowWin : KayBearWindow;
+				return props.winningCell ? SkyeWindowWin : SkyeWindow;
 
 			case Status.Player2Owned:
 				return props.winningCell ? ZoeyWindowWin : ZoeyWindow;

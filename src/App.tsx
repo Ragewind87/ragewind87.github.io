@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from './GridSection';
-import { Stack } from '@fluentui/react';
-import KayBearIcon from './Icons/kaybearIcon.png';
-import ZoeyIcon from './Icons/zoeyIcon.png';
-import KayBearBg from './Icons/kaybearBg.jpg';
-import ZoeyBg from './Icons/zoeyBg.jpg';
+import { IDropdownOption, Stack } from '@fluentui/react';
+import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
+import KayBearBg from './Icons/Kaybear/kaybearBg.png';
+import ZoeyIcon from './Icons/Zoey/zoeyIcon.png';
+import ZoeyBg from './Icons/Zoey/zoeyBg.png';
+import SkyeIcon from './Icons/Skye/skyeIcon.png';
+import SkyeBg from './Icons/Skye/skyeBg.png';
 import Xarrow, { Xwrapper } from 'react-xarrows';
+import { FormDialog } from './FormDialog';
 
 interface ArrowStartEnd {
   start: string;
@@ -18,6 +21,13 @@ interface ArrowStartEnd {
 interface Coordinate {
   x: number;
   y: number;
+}
+
+interface Player {
+  key: string,
+  icon: string,
+  background: string,
+  dropdown: IDropdownOption
 }
 
 function App() {
@@ -32,6 +42,37 @@ function App() {
   const [arrowStartEnd, setArrowStartEnd] = React.useState<ArrowStartEnd>({
     start: '', end: '', startOffset: {x: 0, y: 0}, endOffset: {x: 0, y: 0}
   });
+  const [dialogOpen, setDialogOpen] = React.useState<boolean>(true);
+
+  const playerOptions = [
+    {
+      key: 'kaybear',
+      icon: KayBearIcon,
+      background: KayBearBg,
+      dropdown: {
+        key: 'kayBear',
+        text: 'Kay Bear'
+      },
+    },
+    {
+      key: 'zoey',
+      icon: ZoeyIcon,
+      background: ZoeyBg,
+      dropdown: {
+        key: 'zoey',
+        text: 'Zoey'
+      },
+    },
+    {
+      key: 'skye',
+      icon: SkyeIcon,
+      background: SkyeBg,
+      dropdown: {
+        key: 'skye',
+        text: 'Skye'
+      },
+    }
+  ] as Player[]
 
   // use this inside event handlers like onClick to get the latest state
   const turnRef = React.useRef(0);
@@ -187,6 +228,7 @@ function App() {
     resetPlayGrid();
     setGameWinner(-1);
     setPlayerTurn(1);
+    setDialogOpen(true)
   }
 
   const highlightWinningCells = () => {
@@ -196,7 +238,6 @@ function App() {
     })
     setPlayGrid({...playGrid, grid: tempGrid});
   }
-
 
   const doWin = () => {
     setGameWinner(turnRef.current);
@@ -342,7 +383,11 @@ function App() {
   }
 
   const getPlayerImage = (player: number) : string => {
-    return player === 1 ? KayBearIcon : ZoeyIcon;
+    return player === 1 ? SkyeIcon : ZoeyIcon;
+  }
+
+  const handleCloseClicked = () => {
+    setDialogOpen(false);
   }
 
   const sidePanelsColor = 'black';
@@ -354,8 +399,9 @@ function App() {
     borderRight: `10px solid ${mainBgColor}`,
     minWidth: '22vw', 
     maxWidth: '22vw',
-    backgroundImage: `url(${playerTurn === 1 ? KayBearBg : ZoeyBg})`,
-    backgroundPosition: 'center',
+    backgroundImage: `url(${playerTurn === 1 ? SkyeBg : ZoeyBg})`,
+    backgroundPositionX: 'left',
+    backgroundPositionY: 'bottom',
     backgroundSize: 'cover'
   }
 
@@ -403,7 +449,14 @@ function App() {
   } 
 
   return (
-    <div style={{backgroundColor: mainBgColor, height: '100vh'}}>      
+    <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
+    
+      <FormDialog
+        isOpen={dialogOpen}
+        playerOptions={playerOptions.map(op => op.dropdown)}
+        closeClicked={handleCloseClicked}
+      />
+
       <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
         {/* Left Panel */}
@@ -413,19 +466,20 @@ function App() {
               
               {/* Current player panel */}
               {gameWinner === -1 &&
-                <div style={{display: 'flex', justifyContent: 'right', alignSelf: 'top', width: '100%', height: '36%'}}>
+                <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
                   <Stack style={{
                     display: 'flex',
                     justifyContent: 'top',
                     border: '2px solid white',
                     backgroundColor: 'black',
                     padding: '5px',
-                    margin: '5px',
+                    margin: '10px',
                     }}>
                     
                     {/* Image */}
                     <div style={{maxWidth: '150px', maxHeight: '150px'}}>
                       <img
+                        alt="Player Icon"
                         src={getPlayerImage(playerTurn)}
                         style={{width: '100%'}}
                       />
@@ -462,6 +516,7 @@ function App() {
               <Stack>
                 <div style={{margin: '60px 25px 25px 25px'}}>
                   <img
+                    alt="Game Winner Icon"
                     src={getPlayerImage(gameWinner)}
                     style={{width: '100%'}}
                   />
