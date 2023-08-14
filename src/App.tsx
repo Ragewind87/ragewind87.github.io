@@ -4,12 +4,18 @@ import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from 
 import { IDropdownOption, Stack } from '@fluentui/react';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
+import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
+import KayBearWindowWin from './Icons/Kaybear/kaybearWindowWin.png';
 import ZoeyIcon from './Icons/Zoey/zoeyIcon.png';
 import ZoeyBg from './Icons/Zoey/zoeyBg.png';
+import ZoeyWindow from './Icons/Zoey/zoeyWindow.png';
+import ZoeyWindowWin from './Icons/Zoey/zoeyWindowWin.png';
 import SkyeIcon from './Icons/Skye/skyeIcon.png';
 import SkyeBg from './Icons/Skye/skyeBg.png';
+import SkyeWindow from './Icons/Skye/skyeWindow.png';
+import SkyeWindowWin from './Icons/Skye/skyeWindowWin.png';
 import Xarrow, { Xwrapper } from 'react-xarrows';
-import { FormDialog } from './FormDialog';
+import { FormDialog, PlayerChoice } from './FormDialog';
 
 interface ArrowStartEnd {
   start: string;
@@ -23,11 +29,18 @@ interface Coordinate {
   y: number;
 }
 
-interface Player {
+interface PlayerOption {
   key: string,
   icon: string,
+  normalCell: string,
+  wincell: string,
   background: string,
   dropdown: IDropdownOption
+}
+
+export interface Player {
+  id: number,
+  options?: PlayerOption,
 }
 
 function App() {
@@ -43,12 +56,15 @@ function App() {
     start: '', end: '', startOffset: {x: 0, y: 0}, endOffset: {x: 0, y: 0}
   });
   const [dialogOpen, setDialogOpen] = React.useState<boolean>(true);
+  const playersRef = React.useRef<Player[]>();
 
   const playerOptions = [
     {
-      key: 'kaybear',
+      key: 'kayBear',
       icon: KayBearIcon,
-      background: KayBearBg,
+      normalCell: KayBearWindow,
+      wincell: KayBearWindowWin,
+      background: KayBearBg,      
       dropdown: {
         key: 'kayBear',
         text: 'Kay Bear'
@@ -57,6 +73,8 @@ function App() {
     {
       key: 'zoey',
       icon: ZoeyIcon,
+      normalCell: ZoeyWindow,
+      wincell: ZoeyWindowWin,
       background: ZoeyBg,
       dropdown: {
         key: 'zoey',
@@ -66,13 +84,15 @@ function App() {
     {
       key: 'skye',
       icon: SkyeIcon,
+      normalCell: SkyeWindow,
+      wincell: SkyeWindowWin,
       background: SkyeBg,
       dropdown: {
         key: 'skye',
         text: 'Skye'
       },
     }
-  ] as Player[]
+  ] as PlayerOption[]
 
   // use this inside event handlers like onClick to get the latest state
   const turnRef = React.useRef(0);
@@ -134,6 +154,7 @@ function App() {
           id: getUniqueId(),
           y: row,
           x: col,
+          players: [{id: 1}, {id: 2}],
           disabled: false,
           winningCell: false,
           gameOver: false,
@@ -202,13 +223,13 @@ function App() {
       return (
         <div style={rowStyle}>
           {cells.map((c, i) => {
-            let props = {...c, columnIsMouseover: i === mouseOverColumn} as IGridSectionProps
-            return (
-              <GridSection
-                key={`cell-${idx}-${i}}`}
-                {...props}
-              />
-            )
+            let props = {
+              ...c,
+              columnIsMouseover: i === mouseOverColumn,
+              players: playersRef.current
+            } as IGridSectionProps
+
+            return ( <GridSection key={`cell-${idx}-${i}}`} {...props} />)            
           })}
         </div>
       )
@@ -382,11 +403,11 @@ function App() {
     return false;
   }
 
-  const getPlayerImage = (player: number) : string => {
-    return player === 1 ? SkyeIcon : ZoeyIcon;
+  const getPlayerImage = (playerId: number) : string => {
+    return playersRef.current?.find(p => p.id === playerId)?.options?.icon ?? '';
   }
 
-  const handleCloseClicked = () => {
+  const handleCloseDialog = () => {
     setDialogOpen(false);
   }
 
@@ -399,7 +420,7 @@ function App() {
     borderRight: `10px solid ${mainBgColor}`,
     minWidth: '22vw', 
     maxWidth: '22vw',
-    backgroundImage: `url(${playerTurn === 1 ? SkyeBg : ZoeyBg})`,
+    backgroundImage: `url(${playersRef.current?.find(p => p.id === playerTurn)?.options?.background ?? ''})`,
     backgroundPositionX: 'left',
     backgroundPositionY: 'bottom',
     backgroundSize: 'cover'
@@ -448,13 +469,33 @@ function App() {
     marginLeft: '30px'
   } 
 
+  const handleSetPlayerChoices = (choices: PlayerChoice[]) => {    
+    let players: Player[] = [];
+
+    console.log(choices);
+
+    choices.forEach(c => {
+      const id = c.player;
+      const choiceKey = c.choice;
+      
+      players.push({
+        id: id,
+        options: playerOptions.find(po => po.key === choiceKey)
+      } as Player);
+    })
+    playersRef.current = players;
+    console.log(`handleSetPlayerChoices() fired`)
+    console.log(playersRef.current)
+  }
+
   return (
     <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
     
       <FormDialog
         isOpen={dialogOpen}
         playerOptions={playerOptions.map(op => op.dropdown)}
-        closeClicked={handleCloseClicked}
+        closeDialog={handleCloseDialog}
+        setPlayerChoices={handleSetPlayerChoices}
       />
 
       <Stack horizontal={true} style={{justifyContent: 'center'}}>
