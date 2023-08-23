@@ -7,10 +7,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Dropdown, IDropdownOption } from '@fluentui/react';
+import { PlayerOption } from './App';
+import { IPlayerCardProps, PlayerCard } from './PlayerCard';
 
 export interface IFormDialogProps {
     isOpen: boolean;
-    playerOptions: IDropdownOption[];
+    playerOptions: PlayerOption[];
     closeDialog: () => void;
     setPlayerChoices: (choices: PlayerChoice[]) => void;
 }
@@ -24,46 +26,61 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
     const [player, setPlayer] = React.useState<number>(1);
     const playerChoicesRef = React.useRef<PlayerChoice[]>([])
     const [selectedKey, setSelectedKey] = React.useState<string | number>() 
-    const [dropdownOptions, setDropdownOptions] = React.useState<IDropdownOption[]>([])
+    const [playerCardOptions, setPlayerCardOptions] = React.useState<IPlayerCardProps[]>([])
     const [defaultOptionApplied, setDefaultOptionApplied] = React.useState<boolean>(false)
     const [defaultKey, setDefaultKey] = React.useState<string>('')
 
+    // React.useEffect(() => {
+    //     console.log(props.playerOptions)
+    // }, [props.playerOptions])
+
+    React.useEffect(() => {
+        if (!props.isOpen){
+            playerChoicesRef.current = [];
+            setPlayer(1);
+        }
+    }, [props.isOpen])
     // const [open, setOpen] = React.useState(false);
 
     // const handleClickOpen = () => {
     //     setOpen(true);
     // };
 
-    const handleClose = React.useCallback((reason: string) => () => {
+    // const handleClose = React.useCallback((reason: string) => () => {
+    //     if (reason === 'backdropClick')
+    //         return;
+    // }, []);
+
+    const handleClose = (reason: string) => {
         if (reason === 'backdropClick')
             return;
-    }, []);
+    };
 
-    React.useEffect(() => {
-        if (props.playerOptions){
-            setDropdownOptions(props.playerOptions)
-            if (!defaultOptionApplied){
-                setSelectedKey(props.playerOptions[0].key.toString());
-                setDefaultKey(props.playerOptions[0].key.toString());
-                setDefaultOptionApplied(true);
-                console.log(`setting selected key to ${props.playerOptions[0].key}`)
-            }
-        }
-    }, [props.playerOptions]);
+    // React.useEffect(() => {
+    //     if (props.playerOptions){
+    //         setDropdownOptions(props.playerOptions)
+    //         if (!defaultOptionApplied){
+    //             setSelectedKey(props.playerOptions[0].key.toString());
+    //             setDefaultKey(props.playerOptions[0].key.toString());
+    //             setDefaultOptionApplied(true);
+    //             console.log(`setting selected key to ${props.playerOptions[0].key}`)
+    //         }
+    //     }
+    // }, [props.playerOptions]);
 
-    const handleLockInClicked = () => {
-        if (!selectedKey){
-            console.log(`selectedKey = ${selectedKey}`)
-            return;
-        }
+    const handleOnClick = (key: string) => {
+        console.log(`handleOnClick() | key = ${key} player = ${player}`)
+        // if (!selectedKey){
+        //     console.log(`selectedKey = ${selectedKey}`)
+        //     return;
+        // }
 
-        console.log(`handleLockInClicked player = ${player}`)
-        playerChoicesRef.current = [...playerChoicesRef.current, {player: player, choice: selectedKey.toString()}]
+        playerChoicesRef.current = [...playerChoicesRef.current, {player: player, choice: key.toString()}]
         if (player === 1){
-            const options = props.playerOptions.filter(op => op.key !== selectedKey)
-            setDropdownOptions(options)
-            setSelectedKey(options[0].key)
-            setDefaultKey(options[0].key.toString());
+            //const options = props.playerOptions.filter(op => op.key !== key)
+            //setDropdownOptions(options)
+            // setSelectedKey(options[0].key)
+            // setDefaultKey(options[0].key.toString());
             setPlayer(2)
         }
         else if (player === 2){
@@ -79,19 +96,45 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
         setSelectedKey(option?.key ?? '')
     };
 
+    const renderPlayerChoiceCards = () => {
+        return (
+            props.playerOptions.map((op) => { 
+                const disabled = playerChoicesRef.current.findIndex(pc => pc.choice === op.id) !== -1;           
+                return (
+                    <PlayerCard
+                        key={op.id}
+                        id={op.id}
+                        cardName={op.name}
+                        cardImage={op.icon}
+                        onClick={handleOnClick}
+                        disabled={disabled}
+                    />
+                )
+            })
+        )
+    }
+
     return (
     <div>
         <Dialog open={props.isOpen} onClose={handleClose} disableEscapeKeyDown={true}>
-            <DialogTitle>{`Player ${player}`}</DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Select your fighter!
+            <DialogTitle
+                style={{fontSize: '24px', alignSelf: 'center'}}
+            >
+                Choose Your Fighter
+            </DialogTitle>
+            <DialogContent style={{minWidth: '200px'}}>
+                <DialogContentText style={{fontSize: '24px', fontWeight: '850', textAlign: 'center', color: '#FF5733'}}>
+                    {`Player ${player}`}
                 </DialogContentText>
-                <Dropdown
+
+                {renderPlayerChoiceCards()}
+
+                {/* <Dropdown
                     options={dropdownOptions}
                     onChange={handleDropdownChange}
                     defaultSelectedKey={defaultKey}
-                />
+                    style={{marginTop: '30px'}}
+                /> */}
                 {/* <TextField
                     autoFocus
                     margin="dense"
@@ -103,7 +146,15 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
                 /> */}
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleLockInClicked}>Lock In</Button>
+                {/* <Button 
+                    onClick={handleLockInClicked}
+                    style={{ 
+                        fontSize: `26px`,
+                        fontWeight: `1000`
+                    }}
+                >
+                    Lock In
+                </Button> */}
             </DialogActions>
         </Dialog>
     </div>

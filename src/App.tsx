@@ -14,6 +14,7 @@ import SkyeIcon from './Icons/Skye/skyeIcon.png';
 import SkyeBg from './Icons/Skye/skyeBg.png';
 import SkyeWindow from './Icons/Skye/skyeWindow.png';
 import SkyeWindowWin from './Icons/Skye/skyeWindowWin.png';
+import QuestionMarkIcon from './Icons/questionMark.png';
 import Xarrow, { Xwrapper } from 'react-xarrows';
 import { FormDialog, PlayerChoice } from './FormDialog';
 
@@ -29,8 +30,9 @@ interface Coordinate {
   y: number;
 }
 
-interface PlayerOption {
-  key: string,
+export interface PlayerOption {
+  id: string,
+  name: string,
   icon: string,
   normalCell: string,
   wincell: string,
@@ -43,13 +45,18 @@ export interface Player {
   options?: PlayerOption,
 }
 
-function App() {
+export interface IAppProps {
+  key: string
+}
+
+export const App: React.FunctionComponent = (props) => {
 
   const nextId = React.useRef<number>(0);
   const gridHeight = React.useRef<number>(6);
   const gridWidth = React.useRef<number>(7);
   const [playerTurn, setPlayerTurn] = React.useState<number>(1);
   const [gameWinner, setGameWinner] = React.useState<number>(-1);
+  const [gameStarted, setGameStarted] = React.useState<boolean>(false);
   const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
   const [mouseOverColumn, setMouseOverColumn] = React.useState<number>(-1);
   const [arrowStartEnd, setArrowStartEnd] = React.useState<ArrowStartEnd>({
@@ -60,37 +67,40 @@ function App() {
 
   const playerOptions = [
     {
-      key: 'kayBear',
+      id: 'kayBear',
+      name: 'Kaylaena Bear',
       icon: KayBearIcon,
       normalCell: KayBearWindow,
       wincell: KayBearWindowWin,
       background: KayBearBg,      
-      dropdown: {
-        key: 'kayBear',
-        text: 'Kay Bear'
-      },
+      // dropdown: {
+      //   key: 'kayBear',
+      //   text: 'Kay Bear'
+      // },
     },
     {
-      key: 'zoey',
+      id: 'zoey',
+      name: 'Zoeynator 6000',
       icon: ZoeyIcon,
       normalCell: ZoeyWindow,
       wincell: ZoeyWindowWin,
       background: ZoeyBg,
-      dropdown: {
-        key: 'zoey',
-        text: 'Zoey'
-      },
+      // dropdown: {
+      //   key: 'zoey',
+      //   text: 'Zoey'
+      // },
     },
     {
-      key: 'skye',
+      id: 'skye',
+      name: 'Skye the Fleshripper',
       icon: SkyeIcon,
       normalCell: SkyeWindow,
       wincell: SkyeWindowWin,
       background: SkyeBg,
-      dropdown: {
-        key: 'skye',
-        text: 'Skye'
-      },
+      // dropdown: {
+      //   key: 'skye',
+      //   text: 'Skye'
+      // },
     }
   ] as PlayerOption[]
 
@@ -221,7 +231,7 @@ function App() {
         // marginLeft: '-20px'
       }
       return (
-        <div style={rowStyle}>
+        <div key={`row-${idx}`} style={rowStyle}>
           {cells.map((c, i) => {
             let props = {
               ...c,
@@ -250,6 +260,7 @@ function App() {
     setGameWinner(-1);
     setPlayerTurn(1);
     setDialogOpen(true)
+    setGameStarted(false);
   }
 
   const highlightWinningCells = () => {
@@ -408,7 +419,12 @@ function App() {
   }
 
   const handleCloseDialog = () => {
+    setGameStarted(true);
     setDialogOpen(false);
+  }
+
+  const getLeftPanelBgImage = () : string | undefined => {
+      return `url(${playersRef.current?.find(p => p.id === playerTurn)?.options?.background ?? ''})`;
   }
 
   const sidePanelsColor = 'black';
@@ -420,7 +436,8 @@ function App() {
     borderRight: `10px solid ${mainBgColor}`,
     minWidth: '22vw', 
     maxWidth: '22vw',
-    backgroundImage: `url(${playersRef.current?.find(p => p.id === playerTurn)?.options?.background ?? ''})`,
+    backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
+    backgroundColor: gameStarted ? undefined: 'black',
     backgroundPositionX: 'left',
     backgroundPositionY: 'bottom',
     backgroundSize: 'cover'
@@ -480,7 +497,7 @@ function App() {
       
       players.push({
         id: id,
-        options: playerOptions.find(po => po.key === choiceKey)
+        options: playerOptions.find(po => po.id === choiceKey)
       } as Player);
     })
     playersRef.current = players;
@@ -493,7 +510,7 @@ function App() {
     
       <FormDialog
         isOpen={dialogOpen}
-        playerOptions={playerOptions.map(op => op.dropdown)}
+        playerOptions={playerOptions}
         closeDialog={handleCloseDialog}
         setPlayerChoices={handleSetPlayerChoices}
       />
@@ -506,7 +523,7 @@ function App() {
             <div id={'top'} style={{alignItems: 'center', alignContent: 'flex-start', height: '92%'}}>
               
               {/* Current player panel */}
-              {gameWinner === -1 &&
+              {gameStarted && gameWinner === -1 &&
                 <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
                   <Stack style={{
                     display: 'flex',
