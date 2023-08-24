@@ -114,49 +114,63 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
         )
     }
 
+    const titleStyle : React.CSSProperties = {
+        fontFamily: 'Candara', fontSize: '30px', fontWeight: 'bold', color: 'black',
+        textAlign: 'center', lineHeight: '22px'
+    }
+
+    const subTitleStyle : React.CSSProperties = {
+        fontFamily: 'Segoe UI Black', fontSize: '26px', fontWeight: 'bold',        
+        marginBottom: '20px', textAlign: 'center', 
+        color: player === 1 ? '#ad1f00' : '#0b00ad',
+    }
+
     return (
-    <div>
-        <Dialog open={props.isOpen} onClose={handleClose} disableEscapeKeyDown={true}>
-            <DialogTitle
-                style={{fontSize: '24px', alignSelf: 'center'}}
-            >
-                Choose Your Fighter
-            </DialogTitle>
-            <DialogContent style={{minWidth: '200px'}}>
-                <DialogContentText style={{fontSize: '24px', fontWeight: '850', textAlign: 'center', color: '#FF5733'}}>
-                    {`Player ${player}`}
-                </DialogContentText>
-
-                {renderPlayerChoiceCards()}
-
-                {/* <Dropdown
-                    options={dropdownOptions}
-                    onChange={handleDropdownChange}
-                    defaultSelectedKey={defaultKey}
-                    style={{marginTop: '30px'}}
-                /> */}
-                {/* <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Email Address"
-                    type="email"
-                    fullWidth
-                    variant="standard"
-                /> */}
-            </DialogContent>
-            <DialogActions>
-                {/* <Button 
-                    onClick={handleLockInClicked}
-                    style={{ 
-                        fontSize: `26px`,
-                        fontWeight: `1000`
-                    }}
+        <div>
+            <Dialog open={props.isOpen} onClose={handleClose} disableEscapeKeyDown={true} >
+                {/* <DialogTitle
+                    style={{fontSize: '24px', alignSelf: 'center'}}
                 >
-                    Lock In
-                </Button> */}
-            </DialogActions>
-        </Dialog>
-    </div>
+                    Choose Your Fighter
+                </DialogTitle> */}
+                <DialogContent style={{minWidth: '200px', height: '100%', backgroundColor: '#a7a7a7'}}>
+                    <DialogContentText style={titleStyle}>
+                        {`Choose Your Fighter!`}
+                    </DialogContentText>
+                    <DialogContentText style={subTitleStyle}>
+                        {`Player ${player}`}
+                    </DialogContentText>
+
+                    {renderPlayerChoiceCards()}
+
+                    {/* <Dropdown
+                        options={dropdownOptions}
+                        onChange={handleDropdownChange}
+                        defaultSelectedKey={defaultKey}
+                        style={{marginTop: '30px'}}
+                    /> */}
+                    {/* <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                        variant="standard"
+                    /> */}
+                </DialogContent>
+                {/* <DialogActions>
+                    <Button 
+                        onClick={handleLockInClicked}
+                        style={{ 
+                            fontSize: `26px`,
+                            fontWeight: `1000`
+                        }}
+                    >
+                        Lock In
+                    </Button>
+                </DialogActions> */}
+            </Dialog>
+        </div>
     );
 }

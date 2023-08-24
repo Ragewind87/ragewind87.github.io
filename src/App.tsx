@@ -526,14 +526,9 @@ export const App: React.FunctionComponent = (props) => {
               {gameStarted && gameWinner === -1 &&
                 <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
                   <Stack style={{
-                    display: 'flex',
-                    justifyContent: 'top',
-                    border: '2px solid white',
-                    backgroundColor: 'black',
-                    padding: '5px',
-                    margin: '10px',
-                    }}>
-                    
+                    display: 'flex', justifyContent: 'top', border: '2px solid white',
+                    backgroundColor: 'black', padding: '5px', margin: '10px',height: 'fit-content'
+                  }}>                    
                     {/* Image */}
                     <div style={{maxWidth: '150px', maxHeight: '150px'}}>
                       <img
@@ -545,26 +540,13 @@ export const App: React.FunctionComponent = (props) => {
 
                     {/* Text */}
                     <div style={{textAlign: 'center', width: '100%'}}>
-                      <h1 style={{
-                        color: 'white',
-                        fontFamily: 'Trocchi',
-                        fontSize: '24px',
-                        fontWeight: '700',
-                        lineHeight: '0px',
-                        marginBottom: '-3px'
-                      }}>
+                      <div style={{fontFamily: 'Trocchi', fontSize: '24px', fontWeight: '700', color: 'white',lineHeight: '20px'}}>
                         {playerTurn !== 0 ? `Player ${playerTurn}` : ''}
-                      </h1>
-                      <h2 style={{
-                        color: '#ffcc66',
-                        fontSize: `17px`,
-                        fontWeight: `300`,
-                        marginBottom: '48px'
-                      }}>
+                      </div >
+                      <div style={{fontSize: `17px`, fontWeight: `300`, color: '#ffcc66', marginBottom: '10px'}}>
                         Turn
-                      </h2>
-                    </div>
-                    
+                      </div>
+                    </div>                    
                   </Stack>
                 </div>
               }
