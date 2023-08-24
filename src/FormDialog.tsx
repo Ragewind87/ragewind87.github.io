@@ -25,14 +25,6 @@ export interface PlayerChoice {
 export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => {
     const [player, setPlayer] = React.useState<number>(1);
     const playerChoicesRef = React.useRef<PlayerChoice[]>([])
-    const [selectedKey, setSelectedKey] = React.useState<string | number>() 
-    const [playerCardOptions, setPlayerCardOptions] = React.useState<IPlayerCardProps[]>([])
-    const [defaultOptionApplied, setDefaultOptionApplied] = React.useState<boolean>(false)
-    const [defaultKey, setDefaultKey] = React.useState<string>('')
-
-    // React.useEffect(() => {
-    //     console.log(props.playerOptions)
-    // }, [props.playerOptions])
 
     React.useEffect(() => {
         if (!props.isOpen){
@@ -40,47 +32,15 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
             setPlayer(1);
         }
     }, [props.isOpen])
-    // const [open, setOpen] = React.useState(false);
-
-    // const handleClickOpen = () => {
-    //     setOpen(true);
-    // };
-
-    // const handleClose = React.useCallback((reason: string) => () => {
-    //     if (reason === 'backdropClick')
-    //         return;
-    // }, []);
 
     const handleClose = (reason: string) => {
         if (reason === 'backdropClick')
             return;
     };
 
-    // React.useEffect(() => {
-    //     if (props.playerOptions){
-    //         setDropdownOptions(props.playerOptions)
-    //         if (!defaultOptionApplied){
-    //             setSelectedKey(props.playerOptions[0].key.toString());
-    //             setDefaultKey(props.playerOptions[0].key.toString());
-    //             setDefaultOptionApplied(true);
-    //             console.log(`setting selected key to ${props.playerOptions[0].key}`)
-    //         }
-    //     }
-    // }, [props.playerOptions]);
-
     const handleOnClick = (key: string) => {
-        console.log(`handleOnClick() | key = ${key} player = ${player}`)
-        // if (!selectedKey){
-        //     console.log(`selectedKey = ${selectedKey}`)
-        //     return;
-        // }
-
         playerChoicesRef.current = [...playerChoicesRef.current, {player: player, choice: key.toString()}]
         if (player === 1){
-            //const options = props.playerOptions.filter(op => op.key !== key)
-            //setDropdownOptions(options)
-            // setSelectedKey(options[0].key)
-            // setDefaultKey(options[0].key.toString());
             setPlayer(2)
         }
         else if (player === 2){
@@ -88,13 +48,6 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
             props.closeDialog()
         }
     }
-
-    const handleDropdownChange =
-        (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => {     
-            console.log(`handleDropdownChange | option`)   
-            console.log(option)   
-        setSelectedKey(option?.key ?? '')
-    };
 
     const renderPlayerChoiceCards = () => {
         return (
@@ -143,21 +96,6 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
 
                     {renderPlayerChoiceCards()}
 
-                    {/* <Dropdown
-                        options={dropdownOptions}
-                        onChange={handleDropdownChange}
-                        defaultSelectedKey={defaultKey}
-                        style={{marginTop: '30px'}}
-                    /> */}
-                    {/* <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Email Address"
-                        type="email"
-                        fullWidth
-                        variant="standard"
-                    /> */}
                 </DialogContent>
                 {/* <DialogActions>
                     <Button 

@@ -73,10 +73,6 @@ export const App: React.FunctionComponent = (props) => {
       normalCell: KayBearWindow,
       wincell: KayBearWindowWin,
       background: KayBearBg,      
-      // dropdown: {
-      //   key: 'kayBear',
-      //   text: 'Kay Bear'
-      // },
     },
     {
       id: 'zoey',
@@ -85,10 +81,6 @@ export const App: React.FunctionComponent = (props) => {
       normalCell: ZoeyWindow,
       wincell: ZoeyWindowWin,
       background: ZoeyBg,
-      // dropdown: {
-      //   key: 'zoey',
-      //   text: 'Zoey'
-      // },
     },
     {
       id: 'skye',
@@ -97,10 +89,6 @@ export const App: React.FunctionComponent = (props) => {
       normalCell: SkyeWindow,
       wincell: SkyeWindowWin,
       background: SkyeBg,
-      // dropdown: {
-      //   key: 'skye',
-      //   text: 'Skye'
-      // },
     }
   ] as PlayerOption[]
 
@@ -110,10 +98,6 @@ export const App: React.FunctionComponent = (props) => {
   React.useEffect(() => {
     turnRef.current = playerTurn
   }, [playerTurn]);
-
-  React.useEffect(() => {
-    console.log(arrowStartEnd);
-  }, [arrowStartEnd])
 
   const getUniqueId = () => {
     return nextId.current++;
@@ -225,10 +209,6 @@ export const App: React.FunctionComponent = (props) => {
       const rowStyle: React.CSSProperties = {
         display: 'flex',
         justifyContent: 'center',
-        // marginTop: `${idx === 0 ? -5 : 0}px`,
-        // marginRight: '-20px',
-        // marginBottom: `${idx === gridHeight.current-1 ? -5 : 0}px`,
-        // marginLeft: '-20px'
       }
       return (
         <div key={`row-${idx}`} style={rowStyle}>
@@ -489,8 +469,6 @@ export const App: React.FunctionComponent = (props) => {
   const handleSetPlayerChoices = (choices: PlayerChoice[]) => {    
     let players: Player[] = [];
 
-    console.log(choices);
-
     choices.forEach(c => {
       const id = c.player;
       const choiceKey = c.choice;
@@ -501,8 +479,6 @@ export const App: React.FunctionComponent = (props) => {
       } as Player);
     })
     playersRef.current = players;
-    console.log(`handleSetPlayerChoices() fired`)
-    console.log(playersRef.current)
   }
 
   return (
@@ -561,14 +537,9 @@ export const App: React.FunctionComponent = (props) => {
                     style={{width: '100%'}}
                   />
                 </div>
-                <div style={{
-                  marginTop: '-30px',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                  textAlign: 'center',
-                  width: '70%',
-                  wordWrap: 'normal', 
-                  color: 'white', fontSize: '36px', fontWeight: '1000'}}
+                <div style={{marginTop: '-30px', marginLeft: 'auto', marginRight: 'auto',
+                  textAlign: 'center', width: '70%', wordWrap: 'normal', 
+                  fontSize: '36px', fontWeight: '1000', color: 'white'}}
                 >
                   {`PLAYER ${playerTurn}\nWINS`}
                 </div>
@@ -577,22 +548,11 @@ export const App: React.FunctionComponent = (props) => {
             </div>  
             <div id={'bottom'}
               style={{
-                borderTop: `10px solid ${mainBgColor}`,
-                display: 'flex',
-                alignItems: 'flex-end',
-                height: '8%', 
-                paddingBottom: '20px',
-                backgroundColor: sidePanelsColor,
+                display: 'flex', alignItems: 'flex-end', height: '8%', paddingBottom: '20px',
+                borderTop: `10px solid ${mainBgColor}`, backgroundColor: sidePanelsColor
               }}>
-              
               <button onClick={onResetButtonClick} 
-                style={{ 
-                  width: '80%',
-                  height: '30px',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                  overflow: 'clip'
-                }}>
+                style={{ width: '80%', height: '30px', marginLeft: 'auto', marginRight: 'auto', overflow: 'clip'}}>
                 Reset Game
               </button>
             </div>
