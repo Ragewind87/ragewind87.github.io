@@ -1,4 +1,7 @@
 import React from 'react';
+import * as ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 import './App.css';
 import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from './GridSection';
 import { IDropdownOption, Stack } from '@fluentui/react';
@@ -51,6 +54,7 @@ export interface Player {
 export interface IAppProps {
   key: string
 }
+
 
 export const App: React.FunctionComponent = (props) => {
 
