@@ -14,7 +14,10 @@ import SkyeIcon from './Icons/Skye/skyeIcon.png';
 import SkyeBg from './Icons/Skye/skyeBg.png';
 import SkyeWindow from './Icons/Skye/skyeWindow.png';
 import SkyeWindowWin from './Icons/Skye/skyeWindowWin.png';
-import QuestionMarkIcon from './Icons/questionMark.png';
+import BiskyIcon from './Icons/Bisky/biskyIcon.png';
+import BiskyBg from './Icons/Bisky/biskyBg.png';
+import BiskyWindow from './Icons/Bisky/biskyWindow.png';
+import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
 import Xarrow, { Xwrapper } from 'react-xarrows';
 import { FormDialog, PlayerChoice } from './FormDialog';
 
@@ -76,7 +79,7 @@ export const App: React.FunctionComponent = (props) => {
     },
     {
       id: 'zoey',
-      name: 'Zoeynator 6000',
+      name: 'Z-Bomb',
       icon: ZoeyIcon,
       normalCell: ZoeyWindow,
       wincell: ZoeyWindowWin,
@@ -84,11 +87,19 @@ export const App: React.FunctionComponent = (props) => {
     },
     {
       id: 'skye',
-      name: 'Skye the Fleshripper',
+      name: 'Skibby Bibbies',
       icon: SkyeIcon,
       normalCell: SkyeWindow,
       wincell: SkyeWindowWin,
       background: SkyeBg,
+    },
+    {
+      id: 'bisky',
+      name: 'Risky Bisky',
+      icon: BiskyIcon,
+      normalCell: BiskyWindow,
+      wincell: BiskyWindowWin,
+      background: BiskyBg,
     }
   ] as PlayerOption[]
 
@@ -503,7 +514,7 @@ export const App: React.FunctionComponent = (props) => {
                 <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
                   <Stack style={{
                     display: 'flex', justifyContent: 'top', border: '2px solid white',
-                    backgroundColor: 'black', padding: '5px', margin: '10px',height: 'fit-content'
+                    backgroundColor: 'black', margin: '10px',height: 'fit-content'
                   }}>                    
                     {/* Image */}
                     <div style={{maxWidth: '150px', maxHeight: '150px'}}>
@@ -515,7 +526,7 @@ export const App: React.FunctionComponent = (props) => {
                     </div>
 
                     {/* Text */}
-                    <div style={{textAlign: 'center', width: '100%'}}>
+                    <div style={{textAlign: 'center', width: '100%', paddingTop: '15px', border: '1px solid white'}}>
                       <div style={{fontFamily: 'Trocchi', fontSize: '24px', fontWeight: '700', color: 'white',lineHeight: '20px'}}>
                         {playerTurn !== 0 ? `Player ${playerTurn}` : ''}
                       </div >
@@ -572,7 +583,7 @@ export const App: React.FunctionComponent = (props) => {
               startAnchor={{position: 'middle', offset: {x: arrowStartEnd.startOffset.x, y: arrowStartEnd.startOffset.y}}}
               endAnchor={{position: 'middle', offset: {x: arrowStartEnd.endOffset.x, y: arrowStartEnd.endOffset.y}}}
               color={"red"}
-              strokeWidth={10}
+              strokeWidth={15}
               showHead={false}
               path={'straight'}
             />}

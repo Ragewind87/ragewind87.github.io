@@ -18,9 +18,9 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (props) => 
     }, [props])
 
     const cardNameStyle: React.CSSProperties = {
-        width: '100%', height: '100%', margin: '12px 20px 12px 25px', display: 'flex', 
-        fontFamily: 'Candara', textAlign: 'center', fontSize: `20px`, fontWeight: `750`,
-        color: props.disabled ? 'lightGrey' : 'black'
+        width: '100%', margin: '12px 20px 12px 25px', display: 'flex', alignItems: 'center',
+        fontFamily: 'Candara', fontSize: `20px`, fontWeight: `750`,
+        color: props.disabled ? 'grey' : 'black', justifyContent: 'center'
     }
 
     return (
@@ -32,7 +32,6 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (props) => 
             border: '1px solid black',
         }}>
             <button
-                //onClick={handleOnClick(props.id)}
                 onClick={() => props.onClick(props.id)}
                 style ={{
                     width: '100%',
@@ -45,7 +44,8 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (props) => 
             >
                 <Stack horizontal style={{height: '100%', width: '100%'}}>
                     <img
-                        style={{height: '100%', border: '1px solid black', filter: props.disabled ? 'grayscale(100%)' : undefined}}
+                        style={{border: '1px solid black', opacity: props.disabled ? '.5' : '1',
+                                filter: props.disabled ? 'grayscale(100%)' : undefined}}
                         src={props.cardImage}
                         alt="Fighter Name"
                     />
