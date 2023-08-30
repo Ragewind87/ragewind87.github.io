@@ -55,6 +55,41 @@ export interface IAppProps {
   key: string
 }
 
+const playerOptions = [
+  {
+    id: 'kayBear',
+    name: 'Kaylaena Bear',
+    icon: KayBearIcon,
+    normalCell: KayBearWindow,
+    wincell: KayBearWindowWin,
+    background: KayBearBg,      
+  },
+  {
+    id: 'zoey',
+    name: 'Z-Bomb',
+    icon: ZoeyIcon,
+    normalCell: ZoeyWindow,
+    wincell: ZoeyWindowWin,
+    background: ZoeyBg,
+  },
+  {
+    id: 'skye',
+    name: 'Skibby Bibbies',
+    icon: SkyeIcon,
+    normalCell: SkyeWindow,
+    wincell: SkyeWindowWin,
+    background: SkyeBg,
+  },
+  {
+    id: 'bisky',
+    name: 'Risky Bisky',
+    icon: BiskyIcon,
+    normalCell: BiskyWindow,
+    wincell: BiskyWindowWin,
+    background: BiskyBg,
+  }
+] as PlayerOption[];
+
 
 export const App: React.FunctionComponent = (props) => {
 
@@ -71,41 +106,6 @@ export const App: React.FunctionComponent = (props) => {
   });
   const [dialogOpen, setDialogOpen] = React.useState<boolean>(true);
   const playersRef = React.useRef<Player[]>();
-
-  const playerOptions = [
-    {
-      id: 'kayBear',
-      name: 'Kaylaena Bear',
-      icon: KayBearIcon,
-      normalCell: KayBearWindow,
-      wincell: KayBearWindowWin,
-      background: KayBearBg,      
-    },
-    {
-      id: 'zoey',
-      name: 'Z-Bomb',
-      icon: ZoeyIcon,
-      normalCell: ZoeyWindow,
-      wincell: ZoeyWindowWin,
-      background: ZoeyBg,
-    },
-    {
-      id: 'skye',
-      name: 'Skibby Bibbies',
-      icon: SkyeIcon,
-      normalCell: SkyeWindow,
-      wincell: SkyeWindowWin,
-      background: SkyeBg,
-    },
-    {
-      id: 'bisky',
-      name: 'Risky Bisky',
-      icon: BiskyIcon,
-      normalCell: BiskyWindow,
-      wincell: BiskyWindowWin,
-      background: BiskyBg,
-    }
-  ] as PlayerOption[]
 
   // use this inside event handlers like onClick to get the latest state
   const turnRef = React.useRef(0);
@@ -497,142 +497,97 @@ export const App: React.FunctionComponent = (props) => {
   }
 
   return (
-    <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
-    
-      <FormDialog
-        isOpen={dialogOpen}
-        playerOptions={playerOptions}
-        closeDialog={handleCloseDialog}
-        setPlayerChoices={handleSetPlayerChoices}
-      />
+    <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
-      <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
-        {/* Left Panel */}
-        <div style={leftPanelStyle}>
-          <Stack style={{height: '100%', width: '100%'}}>
-            <div id={'top'} style={{alignItems: 'center', alignContent: 'flex-start', height: '92%'}}>
-              
-              {/* Current player panel */}
-              {gameStarted && gameWinner === -1 &&
-                <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
-                  <Stack style={{
-                    display: 'flex', justifyContent: 'top', border: '2px solid white',
-                    backgroundColor: 'black', margin: '10px',height: 'fit-content'
-                  }}>                    
-                    {/* Image */}
-                    <div style={{maxWidth: '150px', maxHeight: '150px'}}>
-                      <img
-                        alt="Player Icon"
-                        src={getPlayerImage(playerTurn)}
-                        style={{width: '100%'}}
-                      />
+      {/* Left Panel */}
+      <div style={leftPanelStyle}> 
+      {"Actual Left Panel"}
+        <Stack style={{height: '100%', width: '100%'}}>
+          <div id={'top'} style={{alignItems: 'center', alignContent: 'flex-start', height: '92%'}}>
+            
+            {/* Current player panel */}
+            {gameStarted && gameWinner === -1 &&
+              <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
+                <Stack style={{
+                  display: 'flex', justifyContent: 'top', border: '2px solid white',
+                  backgroundColor: 'black', margin: '10px',height: 'fit-content'
+                }}>                    
+                  {/* Image */}
+                  <div style={{maxWidth: '150px', maxHeight: '150px'}}>
+                    <img
+                      alt="Player Icon"
+                      src={getPlayerImage(playerTurn)}
+                      style={{width: '100%'}}
+                    />
+                  </div>
+
+                  {/* Text */}
+                  <div style={{textAlign: 'center', width: '100%', paddingTop: '15px', border: '1px solid white'}}>
+                    <div style={{fontFamily: 'Trocchi', fontSize: '24px', fontWeight: '700', color: 'white',lineHeight: '20px'}}>
+                      {playerTurn !== 0 ? `Player ${playerTurn}` : ''}
+                    </div >
+                    <div style={{fontSize: `17px`, fontWeight: `300`, color: '#ffcc66', marginBottom: '10px'}}>
+                      Turn
                     </div>
+                  </div>                    
+                </Stack>
+              </div>
+            }
 
-                    {/* Text */}
-                    <div style={{textAlign: 'center', width: '100%', paddingTop: '15px', border: '1px solid white'}}>
-                      <div style={{fontFamily: 'Trocchi', fontSize: '24px', fontWeight: '700', color: 'white',lineHeight: '20px'}}>
-                        {playerTurn !== 0 ? `Player ${playerTurn}` : ''}
-                      </div >
-                      <div style={{fontSize: `17px`, fontWeight: `300`, color: '#ffcc66', marginBottom: '10px'}}>
-                        Turn
-                      </div>
-                    </div>                    
-                  </Stack>
-                </div>
-              }
-
-              {/* Game winner image / text */}
-              {gameWinner !== -1 &&
-              <Stack>
-                <div style={{margin: '60px 25px 25px 25px'}}>
-                  <img
-                    alt="Game Winner Icon"
-                    src={getPlayerImage(gameWinner)}
-                    style={{width: '100%'}}
-                  />
-                </div>
-                <div style={{marginTop: '-30px', marginLeft: 'auto', marginRight: 'auto',
-                  textAlign: 'center', width: '70%', wordWrap: 'normal', 
-                  fontSize: '36px', fontWeight: '1000', color: 'white'}}
-                >
-                  {`PLAYER ${playerTurn}\nWINS`}
-                </div>
-              </Stack>}
-
-            </div>  
-            <div id={'bottom'}
-              style={{
-                display: 'flex', alignItems: 'flex-end', height: '8%', paddingBottom: '20px',
-                borderTop: `10px solid ${mainBgColor}`, backgroundColor: sidePanelsColor
-              }}>
-              <button onClick={onResetButtonClick} 
-                style={{ width: '80%', height: '30px', marginLeft: 'auto', marginRight: 'auto', overflow: 'clip'}}>
-                Reset Game
-              </button>
-            </div>
-          </Stack>
-        </div>
-
-        {/* Main Panel */}
-        <Xwrapper>
-          <div className="main" style={centerPanelStyle}>
-
-            {renderGrid()}
-
+            {/* Game winner image / text */}
             {gameWinner !== -1 &&
-            <Xarrow
-              start={arrowStartEnd.start}
-              end={arrowStartEnd.end}
-              startAnchor={{position: 'middle', offset: {x: arrowStartEnd.startOffset.x, y: arrowStartEnd.startOffset.y}}}
-              endAnchor={{position: 'middle', offset: {x: arrowStartEnd.endOffset.x, y: arrowStartEnd.endOffset.y}}}
-              color={"red"}
-              strokeWidth={15}
-              showHead={false}
-              path={'straight'}
-            />}
+            <Stack>
+              <div style={{margin: '60px 25px 25px 25px'}}>
+                <img
+                  alt="Game Winner Icon"
+                  src={getPlayerImage(gameWinner)}
+                  style={{width: '100%'}}
+                />
+              </div>
+              <div style={{marginTop: '-30px', marginLeft: 'auto', marginRight: 'auto',
+                textAlign: 'center', width: '70%', wordWrap: 'normal', 
+                fontSize: '36px', fontWeight: '1000', color: 'white'}}
+              >
+                {`PLAYER ${playerTurn}\nWINS`}
+              </div>
+            </Stack>}
+
+          </div>  
+          <div id={'bottom'}
+            style={{
+              display: 'flex', alignItems: 'flex-end', height: '8%', paddingBottom: '20px',
+              borderTop: `10px solid ${mainBgColor}`, backgroundColor: sidePanelsColor
+            }}>
+            <button onClick={onResetButtonClick} 
+              style={{ width: '80%', height: '30px', marginLeft: 'auto', marginRight: 'auto', overflow: 'clip'}}>
+              Reset Game
+            </button>
           </div>
-        </Xwrapper>
+        </Stack>
+      </div>
 
-        {/* Right Panel */}
-        <div style={rightPanelStyle}>
-          <Stack style={{height: '100%', width: '100%'}}>
-            <div id={'top'}
-              style={{
-                alignItems: 'center', 
-                alignContent: 'flex-start', 
-                height: '50%', 
-              }}>
+      {/* Main Panel */}
+      <Xwrapper>
+        <div className="main" style={centerPanelStyle}>
+        {"Actual Main Panel"}
 
-              <div id={'headerPanel'} style={{
-                height: '10vh', 
-                border: '2px solid black',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: mainBgColor,
-              }}>
-                <div>
-                  <h1 style={headerStyle}>
-                    Connect Four
-                  </h1>
-                  <h2 style={subHeaderStyle}>
-                    By CordyGoat
-                  </h2>
-                </div>
-              </div>  
+          {renderGrid()}
 
-            </div>  
-            <div id={'bottom'}
-              style={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                height: '50%', 
-              }}>
-            </div>
-          </Stack>
+          {gameWinner !== -1 &&
+          <Xarrow
+            start={arrowStartEnd.start}
+            end={arrowStartEnd.end}
+            startAnchor={{position: 'middle', offset: {x: arrowStartEnd.startOffset.x, y: arrowStartEnd.startOffset.y}}}
+            endAnchor={{position: 'middle', offset: {x: arrowStartEnd.endOffset.x, y: arrowStartEnd.endOffset.y}}}
+            color={"red"}
+            strokeWidth={15}
+            showHead={false}
+            path={'straight'}
+          />}
         </div>
-      </Stack>
-    </div>
+      </Xwrapper>
+    </Stack>
   );
 }
 

@@ -5,14 +5,30 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
+import Root, { loader as rootLoader } from './Root';
+import { EmptyPanel } from './EmptyPanel';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
-    errorElement: <ErrorPage/>
-  },
+    element: <Root/>,
+    errorElement: <ErrorPage/>,
+    loader: rootLoader,
+    children: [
+      {
+        path: "connectFour",
+        element: <App />,
+      },
+      {
+        path: "/",
+        element: <EmptyPanel />,
+      },
+    ],
+  },  
 ]);
+
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
