@@ -1,0 +1,74 @@
+.turn {
+    background-color: rgba(255,255,255,1);
+    height: 47.5%;
+    border: 6px solid #ec9300;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.notTurn {
+    background-color: rgb(85, 85, 85);
+    color: rgb(48, 48, 48);
+    height: 47.5%;
+    border: 6px solid #2c2c2c;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.turnCheck {
+    background-color: rgb(200, 76, 0);
+    height: 47.5%;
+    border: 6px solid #ffa100;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.checkMate {
+    background-color: rgb(255, 0, 29);
+    height: 47.5%;
+    border: 6px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.staleMate {
+    background-color: rgb(255, 211, 0);
+    height: 47.5%;
+    border: 6px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.ffButton {
+    border-radius: 10px;
+    background-color: white;
+    border-color: red;
+    transition-duration: 0.5s;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.ffButton:hover:enabled {
+    border-radius: 10px;
+    background-color: red;
+    border-color: red;
+    color: white;
+}
+
+.ffButton[disabled] {
+    border-radius: 10px;
+    background-color: #555555;
+    border-color: #2C2C2C;
+    color: #2C2C2C;
+}
+
+.dungeonImage {
+    width: 12.5%;
+    max-width: 75px;
+}
+hr {
+    border-top: 1px solid #000;
+}
+.height-adjust {
+    height: 45%;
+}
