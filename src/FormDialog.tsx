@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Dropdown, IDropdownOption } from '@fluentui/react';
-import { IPlayerOption } from './App';
+import { IPlayerOption } from './ConnectFour';
 import { IPlayerCardProps, PlayerCard } from './PlayerCard';
 
 export interface IFormDialogProps {

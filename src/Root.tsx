@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, Link, Outlet, RouterProvider, useLoaderData } from "react-router-dom";
 import "./index.css";
-import './App.css';
+import './ConnectFour.css';
 import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from './GridSection';
 import { IDropdownOption, Stack } from '@fluentui/react';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
@@ -176,6 +176,7 @@ export const Root: React.FunctionComponent = (props) => {
 
       <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
+        {/* renders child elements */}
         <Outlet />
 
         {/* Right Panel */}
@@ -197,12 +198,17 @@ export const Root: React.FunctionComponent = (props) => {
                 backgroundColor: mainBgColor,
               }}>
                 <div>
-                  <h1 style={headerStyle}>
+                  <Link to={`CordyGameHub`}>
+                    <h1 style={headerStyle}>
+                      Connect Four
+                    </h1>
+                  </Link>
+                  {/* <h1 style={headerStyle}>
                     Connect Four
                   </h1>
                   <h2 style={subHeaderStyle}>
                     By CordyGoat
-                  </h2>
+                  </h2> */}
                 </div>
               </div>  
 
@@ -213,7 +219,7 @@ export const Root: React.FunctionComponent = (props) => {
                 alignItems: 'flex-end',
                 height: '50%', 
               }}>
-              <Link to={`connectFour`}>ConnectFour</Link>
+              
             </div>
           </Stack>
         </div>

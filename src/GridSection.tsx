@@ -7,7 +7,7 @@ import SkyeWindow from './Icons/Skye/skyeWindow.png';
 import SkyeWindowWin from './Icons/Skye/skyeWindowWin.png';
 import EmptyCell from './Icons/emptyCell.png';
 import EmptyCellGreen from './Icons/emptyCellGreen.png';
-import { Player } from './App';
+import { Player } from './ConnectFour';
 
 export enum Status {
 	Empty,

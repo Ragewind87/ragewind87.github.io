@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import './App.css';
+import './ConnectFour.css';
 import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from './GridSection';
 import { IDropdownOption, Stack } from '@fluentui/react';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
@@ -91,7 +91,7 @@ const playerOptions: IPlayerOption[] = [
 ] as IPlayerOption[];
 
 
-export const App: React.FunctionComponent = (props) => {
+export const ConnectFour: React.FunctionComponent = (props) => {
 
   const nextId = React.useRef<number>(0);
   const gridHeight = React.useRef<number>(6);
@@ -506,6 +506,15 @@ export const App: React.FunctionComponent = (props) => {
         <Stack style={{height: '100%', width: '100%'}}>
           <div id={'top'} style={{alignItems: 'center', alignContent: 'flex-start', height: '92%'}}>
             
+            <Stack style={{textAlign: 'center'}}>
+              <h1 style={headerStyle}>
+                Connect Four
+              </h1>
+              <h2 style={subHeaderStyle}>
+                By CordyGoat
+              </h2>
+            </Stack>
+
             {/* Current player panel */}
             {gameStarted && gameWinner === -1 &&
               <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
@@ -591,4 +600,4 @@ export const App: React.FunctionComponent = (props) => {
   );
 }
 
-export default App;
+export default ConnectFour;
