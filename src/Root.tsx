@@ -164,9 +164,6 @@ export const Root: React.FunctionComponent = (props) => {
     playersRef.current = players;
   }
 
-
-  
-
   return (
     <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
     {"Root"}
@@ -178,8 +175,6 @@ export const Root: React.FunctionComponent = (props) => {
       />
 
       <Stack horizontal={true} style={{justifyContent: 'center'}}>
-
-
 
         <Outlet />
 

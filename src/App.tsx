@@ -36,7 +36,7 @@ interface Coordinate {
   y: number;
 }
 
-export interface PlayerOption {
+export interface IPlayerOption {
   id: string,
   name: string,
   icon: string,
@@ -48,14 +48,14 @@ export interface PlayerOption {
 
 export interface Player {
   id: number,
-  options?: PlayerOption,
+  options?: IPlayerOption,
 }
 
 export interface IAppProps {
   key: string
 }
 
-const playerOptions = [
+const playerOptions: IPlayerOption[] = [
   {
     id: 'kayBear',
     name: 'Kaylaena Bear',
@@ -88,7 +88,7 @@ const playerOptions = [
     wincell: BiskyWindowWin,
     background: BiskyBg,
   }
-] as PlayerOption[];
+] as IPlayerOption[];
 
 
 export const App: React.FunctionComponent = (props) => {

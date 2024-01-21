@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     loader: rootLoader,
     children: [
       {
-        path: "connectFour",
+        path: "CordyGameHub",
         element: <App />,
       },
       {

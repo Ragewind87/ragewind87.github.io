@@ -7,12 +7,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Dropdown, IDropdownOption } from '@fluentui/react';
-import { PlayerOption } from './App';
+import { IPlayerOption } from './App';
 import { IPlayerCardProps, PlayerCard } from './PlayerCard';
 
 export interface IFormDialogProps {
     isOpen: boolean;
-    playerOptions: PlayerOption[];
+    playerOptions: IPlayerOption[];
     closeDialog: () => void;
     setPlayerChoices: (choices: PlayerChoice[]) => void;
 }
