@@ -140,7 +140,6 @@ export const ConnectFour: React.FunctionComponent = (props) => {
     if (tempGrid[playableY][x].status !== CellStatus.Playable)
       return;
 
-
     tempGrid[playableY][x].status = getCurrentPlayerStatus();
 
     if (playableY > 0)
@@ -575,6 +574,14 @@ export const ConnectFour: React.FunctionComponent = (props) => {
           </div>
         </Stack>
       </div>
+
+      {/* Player Selection Dialog */}
+      <FormDialog
+        isOpen={dialogOpen}
+        playerOptions={playerOptions}
+        closeDialog={handleCloseDialog}
+        setPlayerChoices={handleSetPlayerChoices}
+      />
 
       {/* Main Panel */}
       <Xwrapper>

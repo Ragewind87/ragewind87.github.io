@@ -34,7 +34,7 @@ const Directions = {
     UP_LEFT: 7,
 };
 
-const App = (props) => {
+const TspChess = (props) => {
 
     // REMEMBER: These states CANNOT be changed without using the corresponding SET methods.
     // Attempting to set them manually will NOT result in errors, but WILL cause unintended buggy behavior
@@ -85,7 +85,7 @@ const App = (props) => {
                     case Players.BLACK:   return  "White";
                 }
             }
-            case Themes.DOGSandCATS: {
+            case Themes.DOGS_CATS: {
                 switch ( currentPlayer ) {
                     case Players.WHITE:   return  "Cats";
                     case Players.BLACK:   return  "Dogs";
@@ -1543,4 +1543,4 @@ const App = (props) => {
 };
 
 
-export default App;
+export default TspChess;

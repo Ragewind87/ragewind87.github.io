@@ -87,7 +87,7 @@ const PlayerBox = (props) => {
                     case "2":   return  "Black";
                 }
             }
-            case Themes.DOGSandCATS: {
+            case Themes.DOGS_CATS: {
                 switch ( props.playerNumber ) {
                     case "1":   return  "Dogs";
                     case "2":   return  "Cats";

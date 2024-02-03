@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, Link, Outlet, RouterProvider, useLoaderData } from "react-router-dom";
 import "./index.css";
 import './ConnectFour.css';
 import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from './GridSection';
-import { IDropdownOption, Stack } from '@fluentui/react';
+import { IDropdownOption, Label, Stack } from '@fluentui/react';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
 import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
@@ -62,21 +62,21 @@ export async function loader() {
 
 export const Root: React.FunctionComponent = (props) => {
 
-  const nextId = React.useRef<number>(0);
-  const gridHeight = React.useRef<number>(6);
-  const gridWidth = React.useRef<number>(7);
-  const [playerTurn, setPlayerTurn] = React.useState<number>(1);
-  const [gameWinner, setGameWinner] = React.useState<number>(-1);
-  const [gameStarted, setGameStarted] = React.useState<boolean>(false);
-  const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
-  const [mouseOverColumn, setMouseOverColumn] = React.useState<number>(-1);
-  const [arrowStartEnd, setArrowStartEnd] = React.useState<ArrowStartEnd>({
-    start: '', end: '', startOffset: {x: 0, y: 0}, endOffset: {x: 0, y: 0}
-  });
-  const [dialogOpen, setDialogOpen] = React.useState<boolean>(false);
-  const playersRef = React.useRef<Player[]>();
+  // const nextId = React.useRef<number>(0);
+  // const gridHeight = React.useRef<number>(6);
+  // const gridWidth = React.useRef<number>(7);
+  // const [playerTurn, setPlayerTurn] = React.useState<number>(1);
+  // const [gameWinner, setGameWinner] = React.useState<number>(-1);
+  // const [gameStarted, setGameStarted] = React.useState<boolean>(false);
+  // const winningCellsRef =  React.useRef<IGridSectionProps[]>([]);
+  // const [mouseOverColumn, setMouseOverColumn] = React.useState<number>(-1);
+  // const [arrowStartEnd, setArrowStartEnd] = React.useState<ArrowStartEnd>({
+  //   start: '', end: '', startOffset: {x: 0, y: 0}, endOffset: {x: 0, y: 0}
+  // });
+  // const [dialogOpen, setDialogOpen] = React.useState<boolean>(true);
+  // const playersRef = React.useRef<Player[]>();
 
-  const contacts = useLoaderData() as PlayerOption[];
+  // const contacts = useLoaderData() as PlayerOption[];
 
 
   const playerOptions = [
@@ -114,10 +114,10 @@ export const Root: React.FunctionComponent = (props) => {
     }
   ] as PlayerOption[];
 
-  const handleCloseDialog = () => {
-    setGameStarted(true);
-    setDialogOpen(false);
-  }
+  // const handleCloseDialog = () => {
+  //   setGameStarted(true);
+  //   setDialogOpen(false);
+  // }
 
   const sidePanelsColor = 'black';
   const mainBgColor = '#2e2e2e';
@@ -149,31 +149,34 @@ export const Root: React.FunctionComponent = (props) => {
     marginLeft: '30px'
   } 
 
-  const handleSetPlayerChoices = (choices: PlayerChoice[]) => {    
-    let players: Player[] = [];
+  // const handleSetPlayerChoices = (choices: PlayerChoice[]) => {    
+  //   let players: Player[] = [];
 
-    choices.forEach(c => {
-      const id = c.player;
-      const choiceKey = c.choice;
+  //   choices.forEach(c => {
+  //     const id = c.player;
+  //     const choiceKey = c.choice;
       
-      players.push({
-        id: id,
-        options: playerOptions.find(po => po.id === choiceKey)
-      } as Player);
-    })
-    playersRef.current = players;
+  //     players.push({
+  //       id: id,
+  //       options: playerOptions.find(po => po.id === choiceKey)
+  //     } as Player);
+  //   })
+  //   playersRef.current = players;
+  // }
+
+  const linkStyle: React.CSSProperties = {
+    marginTop: '20px',
+    marginBottom: '20px',
+    color: `#7c795d`,
+    fontFamily: 'Trocchi',
+    fontSize: `32px`,
+    fontWeight: `1000`,
+    lineHeight: `0px`,
   }
 
   return (
     <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
-    {"Root"}
-      <FormDialog
-        isOpen={dialogOpen}
-        playerOptions={playerOptions}
-        closeDialog={handleCloseDialog}
-        setPlayerChoices={handleSetPlayerChoices}
-      />
-
+      {"Root"}
       <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
         {/* renders child elements */}
@@ -198,17 +201,21 @@ export const Root: React.FunctionComponent = (props) => {
                 backgroundColor: mainBgColor,
               }}>
                 <div>
-                  <Link to={`CordyGameHub`}>
-                    <h1 style={headerStyle}>
+                  <Stack>
+
+                  </Stack>
+
+                    <Label style={linkStyle}>
+                      <Link to={`ConnectFour`}>
                       Connect Four
-                    </h1>
+                      </Link>
+                    </Label>                  
+
+                  <Link to={`Chess`}>
+                    <Label style={linkStyle}>
+                      TSP Chess
+                    </Label>
                   </Link>
-                  {/* <h1 style={headerStyle}>
-                    Connect Four
-                  </h1>
-                  <h2 style={subHeaderStyle}>
-                    By CordyGoat
-                  </h2> */}
                 </div>
               </div>  
 

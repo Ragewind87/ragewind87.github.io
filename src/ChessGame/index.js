@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import App from './Components/App';
+import TspChess from './Components/TspChess';
 
 document.title = "React Chess";
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<TspChess />, document.getElementById('root'));
 
 

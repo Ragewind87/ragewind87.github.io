@@ -71,7 +71,7 @@ import blackPawnFaded3 from "../Assets/RWBYTheme/blackPawnFaded3.png";
 // themes enum
 export const Themes = {
     TRADITIONAL: 0,
-    DOGSandCATS: 1,
+    DOGS_CATS: 1,
     POKEMON: 2,
     RWBY: 3
 };
@@ -116,7 +116,7 @@ const Square = (props) => {
 function color1(x) {
     switch(x) {
         case Themes.TRADITIONAL: return '#ffddca';
-        case Themes.DOGSandCATS: return '#d9d9d9';
+        case Themes.DOGS_CATS: return '#d9d9d9';
         case Themes.POKEMON: return '#6e6e6e';
         case Themes.RWBY: return '#c282ff';
     }
@@ -124,7 +124,7 @@ function color1(x) {
 function color2(x) {
     switch(x) {
         case Themes.TRADITIONAL: return '#d9a989';
-        case Themes.DOGSandCATS: return '#a3a8ff';
+        case Themes.DOGS_CATS: return '#a3a8ff';
         case Themes.POKEMON: return '#470000';
         case Themes.RWBY: return '#5400a3';
     }
@@ -192,7 +192,7 @@ export function determineImage( props ){
         }
 
         // DOGS vs CATS
-        case Themes.DOGSandCATS: {
+        case Themes.DOGS_CATS: {
             switch (props.ownedBy) {
                 case Players.WHITE: {
                     switch (props.pieceType) {

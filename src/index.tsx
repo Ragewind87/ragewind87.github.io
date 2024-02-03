@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import Root, { loader as rootLoader } from './Root';
 import { EmptyPanel } from './EmptyPanel';
+import TspChess from './ChessGame/Components/TspChess';
 
 
 const router = createBrowserRouter([
@@ -17,8 +18,12 @@ const router = createBrowserRouter([
     loader: rootLoader,
     children: [
       {
-        path: "CordyGameHub",
+        path: "ConnectFour",
         element: <ConnectFour />,
+      },
+      {
+        path: "Chess",
+        element: <TspChess />,
       },
       {
         path: "/",
