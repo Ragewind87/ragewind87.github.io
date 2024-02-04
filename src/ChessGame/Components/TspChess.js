@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/App.css';
+import '../Style/TspChess.css';
 import PlayerBox from './PlayerBox';
 import ThemeDropDown from "./ThemeDropDown";
 import Board, {initializeBoard} from './Board';
@@ -1471,8 +1471,7 @@ const TspChess = (props) => {
 
     // renders the game
     return (
-        <div className="App">
-
+        <div className="TspChess">
             <div className="row" style={{margin: '0 0 10px 20px'}}>
                 <ThemeDropDown
                     theme={getTheme}

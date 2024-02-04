@@ -41,7 +41,7 @@ body {
 button:focus {
   outline: none;
 }
-.App {
+.TspChess {
   background-color: rgb(55, 57, 57);
   width: 100%;
   margin: 0;

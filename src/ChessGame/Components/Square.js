@@ -88,12 +88,12 @@ export const Themes = {
  *  canCastle       is this Square a rook that can castle this move
  *  pieceType       the type of piece on this square
  *  ownedBy         the player who owns the piece on this square
- *  onClick:        FUNCTION passed from App that activates when Square is clicked
+ *  onClick:        FUNCTION passed from TspChess that activates when Square is clicked
  **/
 const Square = (props) => {
 
     // onClick() triggers the pieceClicked()
-    // method located in App. The coordinates of the
+    // method located in TspChess. The coordinates of the
     // piece that was clicked are sent through the callback
     return (
         <button

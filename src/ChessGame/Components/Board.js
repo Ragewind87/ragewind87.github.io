@@ -78,7 +78,7 @@ export const Pieces = {
 
 const Board = (props) => {
 
-    // renders the board based on the boardState passed from App
+    // renders the board based on the boardState passed from TspChess
     return (
         <div className="board">
             {createBoardJSX()}

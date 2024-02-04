@@ -1,12 +1,5 @@
-import React from 'react'
-//import 'semantic-ui-css/semantic.min.css'
 import {determineImage, Themes} from "./Square"
 import { Dropdown } from '@fluentui/react';
-
-/*
-    DOCUMENTATION FOR DROPDOWN SELECTOR
-    https://react.semantic-ui.com/modules/dropdown/
- */
 
 /*
     Adding Themes:
@@ -16,7 +9,7 @@ import { Dropdown } from '@fluentui/react';
     4. add enum for it in Square.js
     5. add theme in themeOptions below
     6. add switch case for determineTitle in PlayerBox.js
-    7. add switch case for winnerTitle in App.js
+    7. add switch case for winnerTitle in TspChess.js
     8. add switch cases for the color functions in Square.js for changing determining the color of the board
  */
 

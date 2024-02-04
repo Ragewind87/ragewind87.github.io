@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import ConnectFour from './ConnectFour';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -8,7 +7,8 @@ import ErrorPage from './ErrorPage';
 import Root, { loader as rootLoader } from './Root';
 import { EmptyPanel } from './EmptyPanel';
 import TspChess from './ChessGame/Components/TspChess';
-
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const router = createBrowserRouter([
   {

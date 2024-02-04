@@ -179,7 +179,7 @@ export const Root: React.FunctionComponent = (props) => {
       {"Root"}
       <Stack horizontal={true} style={{justifyContent: 'center'}}>
 
-        {/* renders child elements */}
+        {/* renders child element */}
         <Outlet />
 
         {/* Right Panel */}

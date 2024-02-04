@@ -45,11 +45,11 @@ import {Players} from '../Components/Board';
 // APP-LEVEL TESTS
 describe('APP STRUCTURE', () => {
 
-    let app = null;         // wrapper for the App Component
+    let app = null;         // wrapper for the TspChess Component
 
     test('renders without crashing', () => {
 
-        // this test WILL fail if <App /> doesn't render
+        // this test WILL fail if <TspChess /> doesn't render
         app = shallow(
             <TspChess
                 test = {true}
@@ -75,7 +75,7 @@ describe('APP STRUCTURE', () => {
 // BOARD TESTS
 describe('BOARD STRUCTURE', () => {
 
-    let app = mount(<TspChess test = {true} />);       // wrapper for the App Component
+    let app = mount(<TspChess test = {true} />);       // wrapper for the TspChess Component
     let board = null;               // wrapper for the Board Component
     let boardDiv = null;            // wrapper for the actual board div inside Board Component
 
@@ -145,7 +145,7 @@ describe('BOARD STRUCTURE', () => {
 
 // BOARD SETUP TESTS
 describe('GAME SETUP', () => {
-    let app = mount(<TspChess test = {true} />);                       // wrapper for the App Component
+    let app = mount(<TspChess test = {true} />);    // wrapper for the TspChess Component
     let board = app.find('Board');                  // wrapper for the Board Component
     let boardDiv = board.find('div.board');         // wrapper for the actual board div inside Board Component
 
@@ -281,7 +281,7 @@ describe('GAME SETUP', () => {
 // basic game-state test
 describe('BASIC GAME-STATE TESTS', () => {
 
-    let app = null;             // wrapper for the App Component
+    let app = null;             // wrapper for the TspChess Component
     let board = null;           // wrapper for the Board Component
     let boardDiv = null;        // wrapper for the actual board div inside Board Component
     let button = null;          // wrapper for button to click
@@ -391,7 +391,7 @@ describe('BASIC GAME-STATE TESTS', () => {
  *     testing all kinds of things along the way. The most tests we have the better.               *
  *                                                                                                 *
  *                                                                                                 *
- *     use        app = mount(<App />);                                                            *
+ *     use        app = mount(<TspChess />);                                                            *
  *                board = app.find('Board')                                                        *
  *                boardDiv = board.find('div.board');     if you want to re-render a new game      *
  *                                                                                                 *
