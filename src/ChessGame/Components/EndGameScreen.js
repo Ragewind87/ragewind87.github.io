@@ -28,7 +28,7 @@ const EndGameScreen = (props) => {
 
     function determineHeadingText(){
         if ( ! props.staleMate )
-            return props.winner + "Wins!";
+            return props.winner + " Wins!";
         else
             return "Stalemate!"
     }

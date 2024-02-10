@@ -9,27 +9,36 @@ const PlayerBox = (props) => {
 
     return (
         <div className={determineClassName()}>
-            <div className={"row"}>
-                <div className={"col-sm-6 text-left"}>
+            <div className='col'>
+                <div className={"row"}>
+                    <div className={"col-sm-6 text-left"}>
 
-                    <h2>{determineHeading()}</h2>
+                        <h2>{determineHeading()}</h2>
+                    </div>
+                    <div className={"col-sm-6 text-right"}>
+                        <Timer
+                            isTurn =            {props.isTurn}
+                            isEndGame =         {props.isEndGame}
+                            triggerGameOver =   {props.triggerGameOver}
+                            isStalemate =       {props.staleMate}
+                        />
+                    </div>
                 </div>
-                <div className={"col-sm-6 text-right"}>
-                    <Timer
-                        isTurn =            {props.isTurn}
-                        isEndGame =         {props.isEndGame}
-                        triggerGameOver =   {props.triggerGameOver}
-                        isStalemate =       {props.staleMate}
-                    />
+                <hr />
+                <div className={"row height-adjust"}>
+                    {/* Used to place the dungeon elements */}
+                    <div className={"col-sm-12"} id={props.playerNumber} />
                 </div>
-            </div>
-            <hr />
-            <div className={"row height-adjust"}>
-                <div className={"col-sm-12"} id={props.playerNumber} />
-            </div>
-            <hr />
-            <div className={"row"}>
-                <div className={"col-sm-12"}>
+                <hr />
+                {/* <div className={"row"}>
+                    <div className={"col-sm-12"}>
+                        <SurrenderButton
+                            disable =           {!props.isTurn}
+                            triggerGameOver =   {props.triggerGameOver}
+                        />
+                    </div>
+                </div> */}
+                <div className={"row"}>
                     <SurrenderButton
                         disable =           {!props.isTurn}
                         triggerGameOver =   {props.triggerGameOver}

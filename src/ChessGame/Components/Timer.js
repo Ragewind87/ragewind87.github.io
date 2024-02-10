@@ -89,7 +89,7 @@ export default class Timer extends Component {
         const { minutes, seconds } = this.state;
         return (
             <div>
-                <h2>Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h2>
+                <h4 style={{textAlign: 'center'}}>Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h4>
             </div>
         )
     }

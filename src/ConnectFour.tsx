@@ -465,11 +465,11 @@ export const ConnectFour: React.FunctionComponent = (props) => {
   const headerStyle: React.CSSProperties = {
     color: `#7c795d`,
     fontFamily: 'Trocchi',
-    fontSize: `32px`,
+    fontSize: `32px`,        
     fontWeight: `1000`,
     lineHeight: `0px`,
     marginTop: '26px',
-    marginBottom: '-3px'
+    //marginBottom: '-3px'
   }
 
   const subHeaderStyle: React.CSSProperties = {
@@ -519,7 +519,7 @@ export const ConnectFour: React.FunctionComponent = (props) => {
               <div style={{display: 'flex', justifyContent: 'flex-end', alignSelf: 'top', width: '100%', height: '36%'}}>
                 <Stack style={{
                   display: 'flex', justifyContent: 'top', border: '2px solid white',
-                  backgroundColor: 'black', margin: '10px',height: 'fit-content'
+                  backgroundColor: 'black', margin: '10px', height: 'fit-content'
                 }}>                    
                   {/* Image */}
                   <div style={{maxWidth: '150px', maxHeight: '150px'}}>
@@ -532,7 +532,7 @@ export const ConnectFour: React.FunctionComponent = (props) => {
 
                   {/* Text */}
                   <div style={{textAlign: 'center', width: '100%', paddingTop: '15px', border: '1px solid white'}}>
-                    <div style={{fontFamily: 'Trocchi', fontSize: '24px', fontWeight: '700', color: 'white',lineHeight: '20px'}}>
+                    <div style={{fontFamily: 'Trocchi', fontSize: '24px', fontWeight: '700', color: 'white', lineHeight: '20px'}}>
                       {playerTurn !== 0 ? `Player ${playerTurn}` : ''}
                     </div >
                     <div style={{fontSize: `17px`, fontWeight: `300`, color: '#ffcc66', marginBottom: '10px'}}>

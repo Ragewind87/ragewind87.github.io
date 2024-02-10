@@ -174,61 +174,48 @@ export const Root: React.FunctionComponent = (props) => {
     lineHeight: `0px`,
   }
 
+  const linkButtonStyle: React.CSSProperties = {
+    //margin: '10px 0px 10px 0px',
+    height: '50px',
+    borderRadius: '10px',
+    width: '100%',
+    backgroundColor: 'rgb(100, 100, 100)'
+  }
+
   return (
     <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
       {"Root"}
-      <Stack horizontal={true} style={{justifyContent: 'center'}}>
+      <Stack horizontal={true} style={{justifyContent: 'center'}}> 
 
-        {/* renders child element */}
+        {/* renders current game */}
         <Outlet />
 
         {/* Right Panel */}
         <div style={rightPanelStyle}>
           {"RightPanel"}
-          <Stack style={{height: '100%', width: '100%'}}>
+          {/* <Stack style={{ height: '100%', width: '100%', backgroundColor: mainBgColor }}> childrenGap={10} */}
+
             <div id={'top'}
               style={{
                 alignItems: 'center', 
                 alignContent: 'flex-start', 
-                height: '50%', 
-              }}>
-
-              <div id={'headerPanel'} style={{
-                height: '10vh', 
-                border: '2px solid black',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: mainBgColor,
-              }}>
-                <div>
-                  <Stack>
-
-                  </Stack>
-
-                    <Label style={linkStyle}>
-                      <Link to={`ConnectFour`}>
-                      Connect Four
-                      </Link>
-                    </Label>                  
-
-                  <Link to={`Chess`}>
-                    <Label style={linkStyle}>
-                      TSP Chess
-                    </Label>
-                  </Link>
-                </div>
-              </div>  
-
+                height: '100%', 
+                padding: '10px',
+              }}
+            >
+              <Stack style={{ height: '100%' }} tokens={{ childrenGap: '10px' }}>
+                <Link to={`ConnectFour`}>
+                  <button style={linkButtonStyle}>
+                    Connect Four
+                  </button>
+                </Link>
+                <Link to={`Chess`}>
+                  <button style={linkButtonStyle}>
+                    TSP Chess
+                  </button>                    
+                </Link>
+              </Stack>
             </div>  
-            <div id={'bottom'}
-              style={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                height: '50%', 
-              }}>
-              
-            </div>
-          </Stack>
         </div>
       </Stack>
     </div>
