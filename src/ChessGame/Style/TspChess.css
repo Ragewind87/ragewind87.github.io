@@ -19,8 +19,8 @@ body {
 .SubTitle {
   /* max-width: 450px; */
   height: auto;
-  margin: 15px auto 0px auto;
-  padding: 5px;
+  margin: -10px;
+  /* padding: 5px; */
 
   text-align: center;
   text-shadow: -1px -1px #1f1f1f;
@@ -30,7 +30,7 @@ body {
 }
 .SubTitle2 {
   /* max-width: 450px; */
-  margin: 0 auto;
+  margin: 8px auto 15px auto;
   text-align: center;
   text-shadow: -1px -1px #1f1f1f;
   color: rgb(221, 199, 0);
