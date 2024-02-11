@@ -1,7 +1,7 @@
 import React from 'react';
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
+import "../index.css";
 import './ConnectFour.css';
 import { GridSection, IGridSectionProps, IMainGrid, Status as CellStatus } from './GridSection';
 import { IDropdownOption, Stack } from '@fluentui/react';

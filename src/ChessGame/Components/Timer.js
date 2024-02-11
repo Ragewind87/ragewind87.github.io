@@ -16,7 +16,6 @@ export default class Timer extends Component {
         };
     }
 
-
     // Begins the timer by using an interval
     componentDidMount() {
         this.myInterval = setInterval(() => {
@@ -86,10 +85,16 @@ export default class Timer extends Component {
     }
 
     render() {
+        const timerStyle = {
+            maxWidth: '120px',
+            textAlign: 'center',
+            display: 'flex',
+            fontSize: '22px'
+        }
         const { minutes, seconds } = this.state;
         return (
-            <div>
-                <h4 style={{textAlign: 'center'}}>Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h4>
+            <div style={timerStyle}>
+                {`Remaining\n`}{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
             </div>
         )
     }

@@ -2,7 +2,6 @@ import React, { CSSProperties } from 'react';
 import * as ReactDOM from "react-dom/client";
 import { Link, Outlet } from "react-router-dom";
 import "./index.css";
-import './ConnectFour.css';
 import { IDropdownOption, Stack } from '@fluentui/react';
 
 
@@ -87,7 +86,7 @@ export const Root: React.FunctionComponent = (props) => {
                 </button>                    
               </Link>
             </Stack>
-            
+
           </div>  
         </div>
       </Stack>
