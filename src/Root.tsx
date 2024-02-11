@@ -182,6 +182,11 @@ export const Root: React.FunctionComponent = (props) => {
     backgroundColor: 'rgb(100, 100, 100)'
   }
 
+  const linkTextStyle: React.CSSProperties = {
+    fontSize: '20px',
+    fontWeight: '600'
+  }
+
   return (
     <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
       {"Root"}
@@ -206,12 +211,12 @@ export const Root: React.FunctionComponent = (props) => {
               <Stack style={{ height: '100%' }} tokens={{ childrenGap: '10px' }}>
                 <Link to={`ConnectFour`}>
                   <button style={linkButtonStyle}>
-                    Connect Four
+                    <span style={linkTextStyle}>Connect Four</span>                    
                   </button>
                 </Link>
                 <Link to={`Chess`}>
                   <button style={linkButtonStyle}>
-                    TSP Chess
+                    <span style={linkTextStyle}>TSP Chess</span>                    
                   </button>                    
                 </Link>
               </Stack>
