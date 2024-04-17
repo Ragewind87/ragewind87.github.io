@@ -64,33 +64,33 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
 		}
 	}
 
-		const onMouseOver = (event: React.MouseEvent<HTMLDivElement>) => {
-			if (!props.disabled)
-				props.setMouseoverColumn(props.x)
-		}
+	const onMouseOver = (event: React.MouseEvent<HTMLDivElement>) => {
+		if (!props.disabled)
+			props.setMouseoverColumn(props.x)
+	}
 
-		const handleOnMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
-			if (!props.disabled)
-				props.setMouseoverColumn(-1)
-		}
+	const handleOnMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
+		if (!props.disabled)
+			props.setMouseoverColumn(-1)
+	}
 
-		return (
-			<div
-				id={`${props.y}, ${props.x}`}
-					onClick={!props.disabled ? (event) => props.onClick(event, props.x, props.y) : undefined}
-					onMouseOver={onMouseOver}
-					onMouseLeave={handleOnMouseLeave}
-					style={{
-						maxWidth: '15.0vh',
-						maxHeight: '15.0vh',
-					}}
-			>
-				<img
-					src={getGridImage()}
-					alt={'X'}
-					width={'100%'}
-					height={'100%'}>
-				</img>
-			</div>
+	return (
+		<div
+			id={`${props.y}, ${props.x}`}
+			onClick={!props.disabled ? (event) => props.onClick(event, props.x, props.y) : undefined}
+			onMouseOver={onMouseOver}
+			onMouseLeave={handleOnMouseLeave}
+			style={{
+				maxWidth: '15.0vh',
+				maxHeight: '15.0vh',
+			}}
+		>
+			<img
+				src={getGridImage()}
+				alt={'X'}
+				width={'100%'}
+				height={'100%'}>
+			</img>
+		</div>
 	)
 }

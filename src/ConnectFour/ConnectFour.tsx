@@ -240,11 +240,11 @@ export const ConnectFour: React.FunctionComponent = (props) => {
     }
 
     let grid =
-      <Stack>
-        {playGrid.grid.map((gridRow, i) => {
-          return renderRow(gridRow, i)
-        })}
-      </Stack>
+        <Stack>
+          {playGrid.grid.map((gridRow, i) => {
+            return renderRow(gridRow, i)
+          })}
+        </Stack>
 
     return grid;
   }
@@ -447,6 +447,7 @@ export const ConnectFour: React.FunctionComponent = (props) => {
   }
 
   const centerPanelStyle: React.CSSProperties = {
+    display: 'flex',
     borderLeft: `2px solid black`,
     borderRight: `2px solid black`,
     borderBottom: `2px solid black`,
@@ -497,7 +498,6 @@ export const ConnectFour: React.FunctionComponent = (props) => {
 
   return (
     <Stack horizontal={true} style={{justifyContent: 'center'}}>
-
 
       {/* Left Panel */}
       <div style={leftPanelStyle}> 
@@ -586,7 +586,7 @@ export const ConnectFour: React.FunctionComponent = (props) => {
       {/* Main Panel */}
       <Xwrapper>
         <div className="main" style={centerPanelStyle}>
-        {"Actual Main Panel"}
+        {/* {"Actual Main Panel"} */}
 
           {renderGrid()}
 
