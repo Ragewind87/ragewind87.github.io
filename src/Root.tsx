@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import "./index.css";
 import { IDropdownOption, Stack } from '@fluentui/react';
 import { Button } from '@fluentui/react-components';
+import { HouseIcon } from './ConnectFour/Icons/HouseIcon';
 
 
 export interface PlayerOption {
@@ -78,7 +79,8 @@ export const Root: React.FunctionComponent = (props) => {
             <Stack style={{ height: '100%' }} tokens={{ childrenGap: '10px' }}>
               <Link to={`WelcomePage`}>
                 <Button style={linkButtonStyle}>
-                  <span style={linkTextStyle}>Welcome Page</span>                    
+                  <HouseIcon fill="black" width='25px' style={{marginRight: '10px'}}/>  
+                  <span style={linkTextStyle}>Welcome Page</span>            
                 </Button>
               </Link>
               <Link to={`ConnectFour`}>

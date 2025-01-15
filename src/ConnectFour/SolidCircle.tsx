@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface ISvgProps {
-    fill: string
-    borderColor?: string
+    width?: string;
+    height?: string;
+    fill?: string;
+    borderColor?: string;
+    style?: React.CSSProperties;
 }
 
 export const SolidCircle: React.FunctionComponent<ISvgProps> = (props) => {
