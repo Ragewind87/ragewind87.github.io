@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react';
-import * as ReactDOM from "react-dom/client";
 import { Link, Outlet } from "react-router-dom";
 import "./index.css";
 import { IDropdownOption, Stack } from '@fluentui/react';
+import { Button } from '@fluentui/react-components';
 
 
 export interface PlayerOption {
@@ -52,11 +52,12 @@ export const Root: React.FunctionComponent = (props) => {
 
   const linkTextStyle: React.CSSProperties = {
     fontSize: '20px',
-    fontWeight: '600'
+    fontWeight: '600',
+    color: 'black',
   }
 
   return (
-    <div style={{backgroundColor: mainBgColor, height: '100vh'}}>
+    <div style={{backgroundColor: mainBgColor, height: '100vh', color: 'white'}}>
       {"Root"}
       <Stack horizontal={true} style={{justifyContent: 'center'}}> 
 
@@ -75,15 +76,20 @@ export const Root: React.FunctionComponent = (props) => {
             }}
           >
             <Stack style={{ height: '100%' }} tokens={{ childrenGap: '10px' }}>
+              <Link to={`WelcomePage`}>
+                <Button style={linkButtonStyle}>
+                  <span style={linkTextStyle}>Welcome Page</span>                    
+                </Button>
+              </Link>
               <Link to={`ConnectFour`}>
-                <button style={linkButtonStyle}>
+                <Button style={linkButtonStyle}>
                   <span style={linkTextStyle}>Connect Four</span>                    
-                </button>
+                </Button>
               </Link>
               <Link to={`Chess`}>
-                <button style={linkButtonStyle}>
+                <Button style={linkButtonStyle}>
                   <span style={linkTextStyle}>TSP Chess</span>                    
-                </button>                    
+                </Button>                    
               </Link>
             </Stack>
 

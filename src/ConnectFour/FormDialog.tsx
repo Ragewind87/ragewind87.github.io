@@ -28,8 +28,10 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (props) => 
 
     React.useEffect(() => {
         if (!props.isOpen){
-            playerChoicesRef.current = [];
-            setPlayer(1);
+            setTimeout(() => {
+                playerChoicesRef.current = [];
+                setPlayer(1);
+            }, 500);       
         }
     }, [props.isOpen])
 

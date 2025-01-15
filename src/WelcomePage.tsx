@@ -1,6 +1,6 @@
 import { Stack } from "@fluentui/react";
 
-export const EmptyPanel: React.FunctionComponent = (props) => {
+export const WelcomePage: React.FunctionComponent = (props) => {
 
     const sidePanelsColor = 'black';
     const mainBgColor = '#2e2e2e';
@@ -39,11 +39,13 @@ export const EmptyPanel: React.FunctionComponent = (props) => {
             {/* Left Panel */}
             <div style={leftPanelStyle}> 
             {"EmptyPanel Left Panel"}
+
             </div>
 
             {/* Main Panel */}
             <div className="main" style={centerPanelStyle}>
-            {"EmptyPanel Center Panel"}
+              <div style={{display: 'flex', alignContent:'flex-start', marginTop: '0px'}}>EmptyPanel Center Panel</div>
+            Welcome to CordyGoat Game Hub!
             </div>
         </Stack>
     )
