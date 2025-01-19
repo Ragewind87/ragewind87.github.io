@@ -510,7 +510,7 @@ export const ConnectFour: React.FunctionComponent = (props) => {
                 Connect Four
               </h1>
               <h2 style={subHeaderStyle}>
-                By CordyGoat
+                By Joe Kurtz
               </h2>
             </Stack>
 

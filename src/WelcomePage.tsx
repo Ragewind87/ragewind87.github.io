@@ -45,7 +45,7 @@ export const WelcomePage: React.FunctionComponent = (props) => {
             {/* Main Panel */}
             <div className="main" style={centerPanelStyle}>
               <div style={{display: 'flex', alignContent:'flex-start', marginTop: '0px'}}>EmptyPanel Center Panel</div>
-            Welcome to CordyGoat Game Hub!
+            Welcome to Jwk Game Hub!
             </div>
         </Stack>
     )
