@@ -1,0 +1,59 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
+.Header {
+  text-align: center;
+  text-shadow: -2px -2px #1f1f1f;
+  color: rgb(163, 163, 163);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 45px;
+  padding-top: 15px;
+}
+.SubTitle {
+  /* max-width: 450px; */
+  height: auto;
+  margin: -10px;
+  /* padding: 5px; */
+
+  text-align: center;
+  text-shadow: -1px -1px #1f1f1f;
+  color: rgb(124, 124, 124);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+.SubTitle2 {
+  /* max-width: 450px; */
+  margin: 8px auto 15px auto;
+  text-align: center;
+  text-shadow: -1px -1px #1f1f1f;
+  color: rgb(221, 199, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+button:focus {
+  outline: none;
+}
+.TspChess {
+  background-color: rgb(55, 57, 57);
+  width: 100%;
+  margin: 0;
+  min-height: 100%;
+  padding: 10px;
+}
+.spacer {
+  height: 2%;
+}
+.boardRow {
+  display: flex;
+}
+.row {
+  margin: 0;
+}

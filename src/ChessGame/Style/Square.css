@@ -1,0 +1,15 @@
+.square {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 18pt;
+    color: black;
+    text-shadow: -2px 2px white;
+    border: 0;
+    /* background-image: url(../Assets/test.png); */
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

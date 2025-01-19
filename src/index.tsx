@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import ConnectFour from './ConnectFour/ConnectFour';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import Root, { loader as rootLoader } from './Root';
-import { EmptyPanel } from './EmptyPanel';
-
+import { WelcomePage } from './WelcomePage';
+import TspChess from './ChessGame/Components/TspChess';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const router = createBrowserRouter([
   {
@@ -17,18 +18,20 @@ const router = createBrowserRouter([
     loader: rootLoader,
     children: [
       {
-        path: "connectFour",
-        element: <App />,
+        path: "ConnectFour",
+        element: <ConnectFour />,
       },
       {
-        path: "/",
-        element: <EmptyPanel />,
+        path: "Chess",
+        element: <TspChess />,
+      },
+      {
+        path: "WelcomePage",
+        element: <WelcomePage />,
       },
     ],
   },  
 ]);
-
-
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

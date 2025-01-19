@@ -1,11 +1,12 @@
 {
-  "name": "connect-four",
+  "name": "cordy-game-hub",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fluentui/react": "^8.110.10",
+    "@fluentui/react-components": "^9.57.0",
     "@mui/material": "^5.14.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -14,13 +15,18 @@
     "@types/node": "^16.18.39",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "bootstrap": "^4.6.2",
+    "chai": "^4.2.0",
+    "eslint": "^8.56.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
+    "node": "^21.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
     "react-xarrows": "^2.0.2",
+    "semantic-ui-css": "^2.4.1",
     "sort-by": "^1.2.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -30,12 +36,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -48,5 +48,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.23.3",
+    "semantic-ui-react": "^0.88.1"
   }
 }
