@@ -1,4 +1,4 @@
-## JoeKurtz Game Hub
+## Jwk Game Hub
 
 This project contains a web board game hub.
 The goal of this project is to be capable of hosting two (possibly more) players at once to asynchronously play turn-based board games with one another online.
