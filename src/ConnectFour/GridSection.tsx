@@ -1,10 +1,4 @@
 import React from 'react';
-import ZoeyWindow from './Icons/Zoey/zoeyWindow.png';
-import ZoeyWindowWin from './Icons/Zoey/zoeyWindowWin.png';
-import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
-import KayBearWindowWin from './Icons/Kaybear/kaybearWindowWin.png';
-import SkyeWindow from './Icons/Skye/skyeWindow.png';
-import SkyeWindowWin from './Icons/Skye/skyeWindowWin.png';
 import EmptyCell from './Icons/emptyCell.png';
 import EmptyCellGreen from './Icons/emptyCellGreen.png';
 import { Player } from './ConnectFour';

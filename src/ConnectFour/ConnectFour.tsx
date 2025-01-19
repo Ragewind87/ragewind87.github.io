@@ -9,10 +9,10 @@ import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
 import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
 import KayBearWindowWin from './Icons/Kaybear/kaybearWindowWin.png';
-import ZoeyIcon from './Icons/Zoey/zoeyIcon.png';
-import ZoeyBg from './Icons/Zoey/zoeyBg.png';
-import ZoeyWindow from './Icons/Zoey/zoeyWindow.png';
-import ZoeyWindowWin from './Icons/Zoey/zoeyWindowWin.png';
+import DuckIcon from './Icons/Duck/duckIcon.png';
+import DuckBg from './Icons/Duck/duckBg.png';
+import DuckWindow from './Icons/Duck/duckWindow.png';
+import DuckWindowWin from './Icons/Duck/duckWindowWin.png';
 import SkyeIcon from './Icons/Skye/skyeIcon.png';
 import SkyeBg from './Icons/Skye/skyeBg.png';
 import SkyeWindow from './Icons/Skye/skyeWindow.png';
@@ -65,12 +65,12 @@ const playerOptions: IPlayerOption[] = [
     background: KayBearBg,      
   },
   {
-    id: 'zoey',
-    name: 'Z-Bomb',
-    icon: ZoeyIcon,
-    normalCell: ZoeyWindow,
-    wincell: ZoeyWindowWin,
-    background: ZoeyBg,
+    id: 'duck',
+    name: 'Happy Duck',
+    icon: DuckIcon,
+    normalCell: DuckWindow,
+    wincell: DuckWindowWin,
+    background: DuckBg,
   },
   {
     id: 'skye',
