@@ -35,7 +35,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fix": "xo --fix"
   },
   "browserslist": {
     "production": [
@@ -51,6 +52,38 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
-    "semantic-ui-react": "^0.88.1"
+    "eslint-config-prettier": "^10.0.1",
+    "prettier": "^3.4.2",
+    "semantic-ui-react": "^0.88.1",
+    "xo": "^0.60.0"
+  },
+  "xo": {
+    "extends": [
+      "prettier"
+    ],
+    "rules": {
+      "brace-style": [
+        "error",
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "unicorn/prevent-abbreviations": "off",
+      "unicorn/filename-case": "off",
+      "unicorn/unicorn/prevent-abbreviations": "off",
+      "@typescript-eslint/naming-convention": "off"
+    }
+  },
+  "eslintConfig": {
+    "rules": {
+      "camelcase": [
+        "error",
+        {
+          "properties": "always"
+        }
+      ],
+      "no-empty": "off"
+    }
   }
 }
