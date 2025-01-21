@@ -79,6 +79,8 @@
       "unicorn/filename-case": "off",
       "unicorn/unicorn/prevent-abbreviations": "off",
       "@typescript-eslint/naming-convention": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
       "file-extension-in-import": "off",
       "n/file-extension-in-import": "off",
       "capitalized-comments": "off",
@@ -106,6 +108,8 @@
       "react/prop-types": 0,
       "jsx-a11y/click-events-have-key-events": 0,
       "file-extension-in-import": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
       "prettier/prettier": [
         "error",
         {

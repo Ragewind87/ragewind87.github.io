@@ -30,7 +30,7 @@ export async function loader() {
     return contacts;
 }
 
-export const Root: React.FunctionComponent = (properties) => {
+export const Root: React.FunctionComponent = () => {
     const sidePanelsColor = 'black';
     const mainBgColor = '#2e2e2e';
 

@@ -67,13 +67,13 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (properti
         }
     };
 
-    const onMouseOver = (event: React.MouseEvent<HTMLDivElement>) => {
+    const onMouseOver = () => {
         if (!properties.disabled) {
             properties.setMouseoverColumn(properties.x);
         }
     };
 
-    const handleOnMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
+    const handleOnMouseLeave = () => {
         if (!properties.disabled) {
             properties.setMouseoverColumn(-1);
         }
