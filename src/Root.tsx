@@ -1,8 +1,9 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './index.css';
 import { type IDropdownOption, Stack } from '@fluentui/react';
 import { Button } from '@fluentui/react-components';
+
 import { HouseIcon } from './ConnectFour/Icons/HouseIcon.js';
 
 export type PlayerOption = {
@@ -102,5 +103,3 @@ export const Root: React.FunctionComponent = (properties) => {
         </div>
     );
 };
-
-export default Root;

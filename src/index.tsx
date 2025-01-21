@@ -1,21 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.css';
-import ConnectFour from './ConnectFour/ConnectFour.js';
-import reportWebVitals from './reportWebVitals.js';
-import ErrorPage from './ErrorPage.js';
-import Root, { loader as rootLoader } from './Root.js';
-import { WelcomePage } from './WelcomePage.js';
+import ErrorPage from './ErrorPage.tsx';
 import TspChess from './ChessGame/Components/TspChess.js';
-import './index.css';
+import { ConnectFour } from './ConnectFour/ConnectFour.tsx';
+import { WelcomePage } from './WelcomePage.tsx';
+import { Root } from './Root.tsx';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root />,
         errorElement: <ErrorPage />,
-        loader: rootLoader,
         children: [
             {
                 path: 'ConnectFour',

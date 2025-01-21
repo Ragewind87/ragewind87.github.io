@@ -1,16 +1,15 @@
 import React from 'react';
-import * as ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Xarrow, { Xwrapper } from 'react-xarrows';
 import '../index.css';
 import './ConnectFour.css';
+import { type IDropdownOption, Stack } from '@fluentui/react';
+import Xarrow, { Xwrapper } from 'react-xarrows';
+
 import {
     GridSection,
     type IGridSectionProps,
     type IMainGrid,
     Status as CellStatus,
 } from './GridSection.js';
-import { type IDropdownOption, Stack } from '@fluentui/react';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
 import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
@@ -27,7 +26,7 @@ import BiskyIcon from './Icons/Bisky/biskyIcon.png';
 import BiskyBg from './Icons/Bisky/biskyBg.png';
 import BiskyWindow from './Icons/Bisky/biskyWindow.png';
 import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
-import { FormDialog, type PlayerChoice } from './FormDialog.js';
+import { FormDialog, type PlayerChoice } from './FormDialog.tsx';
 
 type ArrowStartEnd = {
     start: string;
@@ -292,16 +291,19 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
             if (grid[row][x].status === getCurrentPlayerStatus()) {
                 winCells.push(grid[row][x]);
                 if (winCells.length >= 4) {
-                    setArrowStartEnd({
-                        ...arrowStartEnd,
-                        start: `${winCells[0].y}, ${winCells[0].x}`,
-                        end: `${winCells.at(-1).y}, ${winCells.at(-1).x}`,
-                        startOffset: { x: 0, y: -25 },
-                        endOffset: { x: 0, y: 25 },
-                    });
+                    const lastCell = winCells.at(-1);
+                    if (lastCell) {
+                        setArrowStartEnd({
+                            ...arrowStartEnd,
+                            start: `${winCells[0].y}, ${winCells[0].x}`,
+                            end: `${lastCell.y}, ${lastCell.x}`,
+                            startOffset: { x: 0, y: -25 },
+                            endOffset: { x: 0, y: 25 },
+                        });
 
-                    winningCellsReference.current = winCells;
-                    return true;
+                        winningCellsReference.current = winCells;
+                        return true;
+                    }
                 }
             } else {
                 break;
@@ -533,10 +535,16 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                             height: '92%',
                         }}
                     >
-                        <Stack style={{ textAlign: 'center' }}>
+                        <div
+                            style={{
+                                textAlign: 'center',
+                                display: 'flex',
+                                flexDirection: 'column',
+                            }}
+                        >
                             <h1 style={headerStyle}>Connect Four</h1>
                             <h2 style={subHeaderStyle}>By Joe Kurtz</h2>
-                        </Stack>
+                        </div>
 
                         {/* Current player panel */}
                         {gameStarted && gameWinner === -1 && (
@@ -707,5 +715,3 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         </Stack>
     );
 };
-
-export default ConnectFour;

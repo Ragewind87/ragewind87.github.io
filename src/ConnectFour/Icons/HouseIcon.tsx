@@ -6,7 +6,6 @@ export const HouseIcon: React.FC<ISvgProps> = (properties) => (
         style={properties.style}
         width={properties.width}
         height={properties.height}
-        // Fill={props.fill ?? 'none'}
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
     >
