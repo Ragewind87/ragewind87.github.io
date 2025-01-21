@@ -1,7 +1,8 @@
 import React from 'react';
+
 import EmptyCell from './Icons/emptyCell.png';
 import EmptyCellGreen from './Icons/emptyCellGreen.png';
-import { type Player } from './ConnectFour.js';
+import { type Player } from './ConnectFour.tsx';
 
 export enum Status {
     Empty,

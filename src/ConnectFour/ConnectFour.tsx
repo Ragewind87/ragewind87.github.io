@@ -9,7 +9,7 @@ import {
     type IGridSectionProps,
     type IMainGrid,
     Status as CellStatus,
-} from './GridSection.js';
+} from './GridSection.tsx';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
 import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';

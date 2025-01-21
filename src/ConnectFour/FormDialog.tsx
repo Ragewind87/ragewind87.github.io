@@ -7,8 +7,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Dropdown, IDropdownOption } from '@fluentui/react';
+
 import { type IPlayerOption } from './ConnectFour.js';
-import { IPlayerCardProps, PlayerCard } from './PlayerCard.js';
+import { IPlayerCardProps, PlayerCard } from './PlayerCard.tsx';
 
 export type IFormDialogProps = {
     isOpen: boolean;
@@ -36,8 +37,8 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties
     }, [properties.isOpen]);
 
     const handleClose = (reason: string) => {
-        if (reason === 'backdropClick') {
-        }
+        // if (reason === 'backdropClick') {
+        // }
     };
 
     const handleOnClick = (key: string) => {

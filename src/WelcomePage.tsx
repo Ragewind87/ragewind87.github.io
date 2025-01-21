@@ -1,6 +1,7 @@
 import { Stack } from '@fluentui/react';
-import CordyTank from './ConnectFour/Icons/cordyTank.png';
 import * as React from 'react';
+
+import CordyTank from './ConnectFour/Icons/cordyTank.png';
 
 const contactEmail = 'mailto:ragewind48@gmail.com';
 

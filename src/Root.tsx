@@ -4,7 +4,7 @@ import './index.css';
 import { type IDropdownOption, Stack } from '@fluentui/react';
 import { Button } from '@fluentui/react-components';
 
-import { HouseIcon } from './ConnectFour/Icons/HouseIcon.js';
+import { HouseIcon } from './ConnectFour/Icons/HouseIcon.tsx';
 
 export type PlayerOption = {
     id: string;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { type ISvgProps } from '../SolidCircle.js';
 
 export const HouseIcon: React.FC<ISvgProps> = (properties) => (
