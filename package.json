@@ -36,7 +36,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fix": "xo --fix"
+    "fix": "xo --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -55,6 +57,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",
+    "gh-pages": "^6.3.0",
     "prettier": "^3.4.2",
     "semantic-ui-react": "^0.88.1",
     "xo": "^0.60.0"
