@@ -1,5 +1,9 @@
 # Jwk Game Hub
 
+Play the deployed app here: [https://ragewind87.github.io](https://ragewind87.github.io)
+
+---
+
 This project contains a client-side board game hub.
 It is very much a work in progress. 
 
