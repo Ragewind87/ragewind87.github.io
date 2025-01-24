@@ -8,6 +8,7 @@
     "@fluentui/react": "^8.110.10",
     "@fluentui/react-components": "^9.57.0",
     "@fluentui/react-icons": "^2.0.271",
+    "@mui/material": "^6.4.1",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.39",
     "@types/react": "^18.2.15",
