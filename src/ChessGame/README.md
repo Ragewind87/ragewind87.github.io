@@ -4,4 +4,4 @@ This game was developed as part of the "Team Software Project" course in the Fal
 It was built by four students, known as team "Pawn Stars". We're very proud of what we were able to create in a single semester.
 
 The project is being hosted here:
-https://joskur4.dreamhosters.com/
+https://ragewind87.github.io/chess
