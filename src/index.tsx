@@ -24,14 +24,13 @@ const router = createBrowserRouter([
                 element: <TspChess />,
             },
             {
-                path: 'WelcomePage',
+                path: '/',
                 element: <WelcomePage />,
             },
         ],
     },
 ]);
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 ReactDOM.createRoot(document.querySelector('#root')!).render(
     <React.StrictMode>
         <RouterProvider router={router} />

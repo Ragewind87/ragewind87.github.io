@@ -91,7 +91,7 @@ export const Root: React.FunctionComponent = () => {
                         }}
                     >
                         <Stack style={{ height: '100%' }} tokens={{ childrenGap: '10px' }}>
-                            <Link to={'WelcomePage'}>
+                            <Link to={'/'}>
                                 <Button style={linkButtonStyle}>
                                     <HouseIcon fill="white" width="25px" style={iconStyle} />
                                     <span style={linkTextStyle}>Welcome Page</span>

@@ -61,8 +61,7 @@
       "prettier"
     ],
     "plugins": [
-      "import",
-      "prettier"
+      "import"
     ],
     "rules": {
       "prettier/prettier": "error",
