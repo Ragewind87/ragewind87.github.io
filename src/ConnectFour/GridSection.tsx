@@ -38,9 +38,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (properti
         switch (properties.status) {
             case Status.Empty:
             case Status.Playable: {
-                return properties.columnIsMouseover && properties.y === 0
-                    ? EmptyCellGreen
-                    : EmptyCell;
+                return properties.columnIsMouseover && properties.y === 0 ? EmptyCellGreen : EmptyCell;
             }
 
             case Status.Player1Owned: {
@@ -49,9 +47,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (properti
                     return EmptyCell;
                 }
 
-                return properties.winningCell
-                    ? player.options?.wincell
-                    : player.options?.normalCell;
+                return properties.winningCell ? player.options?.wincell : player.options?.normalCell;
             }
 
             case Status.Player2Owned: {
@@ -60,9 +56,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (properti
                     return EmptyCell;
                 }
 
-                return properties.winningCell
-                    ? player.options?.wincell
-                    : player.options?.normalCell;
+                return properties.winningCell ? player.options?.wincell : player.options?.normalCell;
             }
         }
     };

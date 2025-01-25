@@ -1,160 +1,126 @@
 {
-  "name": "cordy-game-hub",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@fluentui/react": "^8.110.10",
-    "@fluentui/react-components": "^9.57.0",
-    "@fluentui/react-icons": "^2.0.271",
-    "@mui/material": "^6.4.1",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.39",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "bootstrap": "^4.6.2",
-    "chai": "^4.2.0",
-    "eslint": "^8.56.0",
-    "node": "^21.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
-    "react-scripts": "5.0.1",
-    "react-xarrows": "^2.0.2",
-    "semantic-ui-css": "^2.4.1",
-    "typescript": "^4.9.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "fix": "xo --fix",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.23.3",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.2.3",
-    "gh-pages": "^6.3.0",
-    "prettier": "^3.4.2",
-    "semantic-ui-react": "^0.88.1",
-    "xo": "^0.60.0"
-  },
-  "xo": {
-    "extends": [
-      "prettier"
-    ],
-    "plugins": [
-      "import"
-    ],
-    "rules": {
-      "prettier/prettier": "error",
-      "brace-style": [
-        "error",
-        "1tbs",
-        {
-          "allowSingleLine": true
+    "name": "cordy-game-hub",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@fluentui/react": "^8.110.10",
+        "@fluentui/react-components": "^9.57.0",
+        "@fluentui/react-icons": "^2.0.271",
+        "@mui/material": "^6.4.1",
+        "@types/jest": "^27.5.2",
+        "@types/node": "^16.18.39",
+        "@types/react": "^18.2.15",
+        "@types/react-dom": "^18.2.7",
+        "bootstrap": "^4.6.2",
+        "chai": "^4.2.0",
+        "node": "^21.2.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.15.0",
+        "react-scripts": "5.0.1",
+        "react-xarrows": "^2.0.2",
+        "semantic-ui-css": "^2.4.1",
+        "typescript": "^4.9.5"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "fix": "xo --fix",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.23.3",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-prettier": "^5.2.3",
+        "gh-pages": "^6.3.0",
+        "prettier": "^3.4.2",
+        "semantic-ui-react": "^0.88.1",
+        "xo": "^0.60.0"
+    },
+    "xo": {
+        "extends": [
+            "prettier"
+        ],
+        "plugins": [
+            "import",
+            "prettier"
+        ],
+        "rules": {
+            "prettier/prettier": "error",
+            "brace-style": [
+                "error",
+                "1tbs",
+                {
+                    "allowSingleLine": true
+                }
+            ],
+            "import/order": [
+                "error",
+                {
+                    "groups": [
+                        [
+                            "builtin",
+                            "external",
+                            "internal"
+                        ]
+                    ],
+                    "newlines-between": "always"
+                }
+            ],
+            "arrow-body-style": "off",
+            "@typescript-eslint/padding-line-between-statements": "off",
+            "@typescript-eslint/consistent-type-definitions": "off",
+            "unicorn/filename-case": [
+                "off"
+            ],
+            "react/prop-types": "off",
+            "unicorn/prevent-abbreviations": "off",
+            "unicorn/expiring-todo-comments": "off",
+            "react/jsx-no-useless-fragment": "off",
+            "curly": "off",
+            "unicorn/no-zero-fractions": "off",
+            "max-depth": "off",
+            "max-nested-callbacks": "off",
+            "max-params": "off",
+            "capitalized-comments": "off",
+            "object-shorthand": "off",
+            "react/boolean-prop-naming": "off",
+            "@typescript-eslint/naming-convention": "off",
+            "@typescript-eslint/consistent-type-assertions": "off",
+            "@typescript-eslint/indent": "off",
+            "@typescript-eslint/no-unsafe-argument": "off",
+            "@typescript-eslint/no-unsafe-assignment": "off",
+            "@typescript-eslint/no-unsafe-enum-comparison": "off",
+            "@typescript-eslint/class-literal-property-style": "off",
+            "@typescript-eslint/ban-types": "off",
+            "@typescript-eslint/member-ordering": "off",
+            "@typescript-eslint/prefer-nullish-coalescing": "off",
+            "logical-assignment-operators": "off",
+            "no-await-in-loop": "off",
+            "n/file-extension-in-import": "off",
+            "import/extensions": "off",
+            "unicorn/prefer-module": "off",
+            "unicorn/prefer-spread": "off",
+            "no-bitwise": "off",
+            "promise/prefer-await-to-then": "off"
         }
-      ],
-      "unicorn/prevent-abbreviations": "off",
-      "unicorn/filename-case": "off",
-      "unicorn/unicorn/prevent-abbreviations": "off",
-      "@typescript-eslint/naming-convention": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "file-extension-in-import": "off",
-      "n/file-extension-in-import": "off",
-      "capitalized-comments": "off",
-      "import/order": [
-        "error",
-        {
-          "groups": [
-            [
-              "builtin",
-              "external",
-              "internal"
-            ]
-          ],
-          "newlines-between": "always"
-        }
-      ]
     }
-  },
-  "eslintConfig": {
-    "rules": {
-      "no-console": 0,
-      "react/state-in-constructor": 0,
-      "indent": 0,
-      "linebreak-style": 0,
-      "react/prop-types": 0,
-      "jsx-a11y/click-events-have-key-events": 0,
-      "file-extension-in-import": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "trailingComma": "es5",
-          "singleQuote": true,
-          "printWidth": 100,
-          "tabWidth": 4,
-          "semi": true,
-          "endOfLine": "auto"
-        }
-      ],
-      "import/order": [
-        "error",
-        {
-          "groups": [
-            [
-              "builtin",
-              "external",
-              "internal"
-            ]
-          ],
-          "newlines-between": "always"
-        }
-      ]
-    },
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react",
-      "@typescript-eslint",
-      "prettier",
-      "import"
-    ]
-  }
 }

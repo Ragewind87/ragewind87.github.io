@@ -42,10 +42,7 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties
     };
 
     const handleOnClick = (key: string) => {
-        playerChoicesReference.current = [
-            ...playerChoicesReference.current,
-            { player, choice: key.toString() },
-        ];
+        playerChoicesReference.current = [...playerChoicesReference.current, { player, choice: key.toString() }];
         if (player === 1) {
             setPlayer(2);
         } else if (player === 2) {
@@ -102,12 +99,8 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties
                         backgroundColor: '#a7a7a7',
                     }}
                 >
-                    <DialogContentText style={titleStyle}>
-                        {'Choose Your Fighter!'}
-                    </DialogContentText>
-                    <DialogContentText style={subTitleStyle}>
-                        {`Player ${player}`}
-                    </DialogContentText>
+                    <DialogContentText style={titleStyle}>{'Choose Your Fighter!'}</DialogContentText>
+                    <DialogContentText style={subTitleStyle}>{`Player ${player}`}</DialogContentText>
 
                     {renderPlayerChoiceCards()}
                 </DialogContent>

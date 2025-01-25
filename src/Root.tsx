@@ -3,13 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import './index.css';
 import { type IDropdownOption, Stack } from '@fluentui/react';
 import { Button } from '@fluentui/react-components';
-import {
-    Circle20Filled,
-    CircleRegular,
-    FluentIconsProps,
-    bundleIcon,
-    wrapIcon,
-} from '@fluentui/react-icons';
+import { Circle20Filled, CircleRegular, FluentIconsProps, bundleIcon, wrapIcon } from '@fluentui/react-icons';
 
 import { HouseIcon } from './ConnectFour/Icons/HouseIcon.tsx';
 import whiteKnight from './ChessGame/Assets/whiteKnight.png';
@@ -105,10 +99,7 @@ export const Root: React.FunctionComponent = () => {
                             </Link>
                             <Link to={'Chess'}>
                                 <Button style={linkButtonStyle}>
-                                    <img
-                                        src={whiteKnight}
-                                        style={{ ...iconStyle, width: '30px', height: '30px' }}
-                                    />
+                                    <img src={whiteKnight} style={{ ...iconStyle, width: '30px', height: '30px' }} />
                                     <span style={linkTextStyle}>TSP Chess</span>
                                 </Button>
                             </Link>

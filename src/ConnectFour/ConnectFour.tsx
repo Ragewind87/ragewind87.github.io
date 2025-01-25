@@ -4,12 +4,7 @@ import './ConnectFour.css';
 import { type IDropdownOption, Stack } from '@fluentui/react';
 import Xarrow, { Xwrapper } from 'react-xarrows';
 
-import {
-    GridSection,
-    type IGridSectionProps,
-    type IMainGrid,
-    Status as CellStatus,
-} from './GridSection.tsx';
+import { GridSection, type IGridSectionProps, type IMainGrid, Status as CellStatus } from './GridSection.tsx';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
 import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
@@ -400,11 +395,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         }
 
         // To bottom right
-        for (
-            let row = y, col = x;
-            row < gridHeight.current && col < gridWidth.current;
-            row++, col++
-        ) {
+        for (let row = y, col = x; row < gridHeight.current && col < gridWidth.current; row++, col++) {
             if (grid[row][col].status === getCurrentPlayerStatus()) {
                 right = col;
                 winCells.push(grid[row][col]);

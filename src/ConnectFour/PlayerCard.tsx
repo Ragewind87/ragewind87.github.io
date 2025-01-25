@@ -16,7 +16,7 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties
                 properties.onClick(key);
             }
         },
-        [properties]
+        [properties],
     );
 
     const cardNameStyle: React.CSSProperties = {
