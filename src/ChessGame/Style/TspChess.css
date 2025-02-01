@@ -38,11 +38,13 @@ button:focus {
   outline: none;
 }
 .TspChess {
-  background-color: rgb(55, 57, 57);
+  background-color: rgb(74, 74, 74);
   width: 100%;
-  margin: 0;
+  margin-top: 15px;
   min-height: 100%;
   padding: 0px 10px 10px 10px;
+  box-shadow: 10px 10px 15px black;
+  z-index: 5;
 }
 .spacer {
   height: 2%;
@@ -51,5 +53,5 @@ button:focus {
   display: flex;
 }
 .row {
-  margin: 0;
+  margin: 0px auto 0px auto
 }

@@ -23,7 +23,7 @@ import BiskyWindow from './Icons/Bisky/biskyWindow.png';
 import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
 import { FormDialog, type PlayerChoice } from './FormDialog.tsx';
 import { Button } from '@fluentui/react-components';
-import { linkButtonStyle } from 'src/Root.tsx';
+import { linkButtonStyle, mainBgColor, sidePanelsColor } from 'src/Root.tsx';
 
 type ArrowStartEnd = {
     start: string;
@@ -438,9 +438,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     const getLeftPanelBgImage = (): string | undefined =>
         `url(${playersReference.current?.find((p) => p.id === playerTurn)?.options?.background ?? ''})`;
 
-    const sidePanelsColor = 'black';
-    const mainBgColor = '#2e2e2e';
-
     const leftPanelStyle: React.CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
@@ -512,7 +509,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     minWidth: '22vw',
                     maxWidth: '22vw',
                     backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
-                    backgroundColor: gameStarted ? undefined : 'black',
+                    backgroundColor: gameStarted ? sidePanelsColor : 'black',
                     backgroundPositionX: 'left',
                     backgroundPositionY: 'bottom',
                     backgroundSize: 'cover',

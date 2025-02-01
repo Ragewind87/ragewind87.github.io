@@ -1475,77 +1475,77 @@ const TspChess = (props) => {
             <div
                 style={{
                     minWidth: '10vw',            
-                    backgroundColor: 'rgb(55, 57, 57)',
+                    backgroundColor: 'rgb(43, 43, 43)'
                 }}
             >
             </div>
       
-        <div className="TspChess">     
-            <div style={{display:'flex', flexDirection: 'row', marginBottom: '5px'}}>            
-                <ThemeDropDown
-                    theme={getTheme}
-                    setFunc={swapTheme}
-                    dbOwners={dungeonBlack}
-                    dbTypes={dungeonBlackTypes}
-                    dwOwners={dungeonWhite}
-                    dwTypes={dungeonWhiteTypes}
-                />
-                <div style={{display:'flex', flexDirection: 'column', textAlign: 'center', width: '100%'}}>
-                    <div className="Header" >
-                        {"React Chess"}
-                    </div>
-                    <div className="SubTitle" >
-                        {"Created by team \"Pawn Stars\" of MTU's 2019 \"Team Software Project\":"}
-                    </div>
-                    <div className="SubTitle2" >
-                        {"Joe Kurtz, Nick McCarter, Justin Martin, and Caleb Melnychenko"}
+            <div className="TspChess">     
+                <div style={{display:'flex', flexDirection: 'row', margin: '0px 0px 5px 30px'}}>            
+                    <ThemeDropDown
+                        theme={getTheme}
+                        setFunc={swapTheme}
+                        dbOwners={dungeonBlack}
+                        dbTypes={dungeonBlackTypes}
+                        dwOwners={dungeonWhite}
+                        dwTypes={dungeonWhiteTypes}
+                    />
+                    <div style={{display:'flex', flexDirection: 'column', textAlign: 'center', width: '100%'}}>
+                        <div className="Header" >
+                            {"React Chess"}
+                        </div>
+                        <div className="SubTitle" >
+                            {"Created by team \"Pawn Stars\" of MTU's 2019 \"Team Software Project\":"}
+                        </div>
+                        <div className="SubTitle2" >
+                            {"Joe Kurtz, Nick McCarter, Justin Martin, and Caleb Melnychenko"}
+                        </div>
                     </div>
                 </div>
+                <div className="row" style={{}}>
+                    <div className="col-sm-4">
+                        <PlayerBox
+                            isTurn =            {currentPlayer === Players.BLACK}
+                            triggerGameOver =   {endGame}
+                            inCheck =           {boardState[7][8].blackCheck}
+                            checkMate =         {boardState[7][8].blackCheckMate}
+                            staleMate =         {boardState[7][8].blackStaleMate}
+                            playerNumber =      {"2"}
+                            isEndGame =         {boardState[7][8].isGameOver}
+                            theme =             {getTheme}
+                        />
+                        <div className="spacer"/>
+                        <PlayerBox
+                            isTurn =            {currentPlayer === Players.WHITE}
+                            triggerGameOver =   {endGame}
+                            inCheck =           {boardState[7][8].whiteCheck}
+                            checkMate =         {boardState[7][8].whiteCheckMate}
+                            staleMate =         {boardState[7][8].whiteStaleMate}
+                            playerNumber =      {"1"}
+                            isEndGame =         {boardState[7][8].isGameOver}
+                            theme =             {getTheme}
+                        />
+                    </div>
+                    <div className="col-sm-8">
+                        <Board
+                            bState =            {boardState}
+                            pieceClicked =      {squareClicked}
+                            theme =             {getTheme}
+                        />
+                    </div>
+                </div>
+                {boardState[7][8].isGameOver &&
+                    <EndGameScreen winner=      {winnerTitle()}
+                            blackMate=   {boardState[7][8].blackCheckMate}
+                            whiteMate=   {boardState[7][8].whiteCheckMate}
+                            staleMate=   {boardState[7][8].whiteStaleMate} />
+                }
+                {promoteInProgress &&
+                    <PromotionScreen isTheme=   {getTheme}
+                            pcOwner=   {(currentPlayer === Players.WHITE) ? Players.WHITE : Players.BLACK}
+                            update=    {doPromotion} />
+                }
             </div>
-            <div className="row">
-                <div className="col-sm-4">
-                    <PlayerBox
-                        isTurn =            {currentPlayer === Players.BLACK}
-                        triggerGameOver =   {endGame}
-                        inCheck =           {boardState[7][8].blackCheck}
-                        checkMate =         {boardState[7][8].blackCheckMate}
-                        staleMate =         {boardState[7][8].blackStaleMate}
-                        playerNumber =      {"2"}
-                        isEndGame =         {boardState[7][8].isGameOver}
-                        theme =             {getTheme}
-                    />
-                    <div className="spacer"/>
-                    <PlayerBox
-                        isTurn =            {currentPlayer === Players.WHITE}
-                        triggerGameOver =   {endGame}
-                        inCheck =           {boardState[7][8].whiteCheck}
-                        checkMate =         {boardState[7][8].whiteCheckMate}
-                        staleMate =         {boardState[7][8].whiteStaleMate}
-                        playerNumber =      {"1"}
-                        isEndGame =         {boardState[7][8].isGameOver}
-                        theme =             {getTheme}
-                    />
-                </div>
-                <div className="col-sm-8">
-                    <Board
-                        bState =            {boardState}
-                        pieceClicked =      {squareClicked}
-                        theme =             {getTheme}
-                    />
-                </div>
-            </div>
-            {boardState[7][8].isGameOver &&
-                <EndGameScreen winner=      {winnerTitle()}
-                        blackMate=   {boardState[7][8].blackCheckMate}
-                        whiteMate=   {boardState[7][8].whiteCheckMate}
-                        staleMate=   {boardState[7][8].whiteStaleMate} />
-            }
-            {promoteInProgress &&
-                <PromotionScreen isTheme=   {getTheme}
-                        pcOwner=   {(currentPlayer === Players.WHITE) ? Players.WHITE : Players.BLACK}
-                        update=    {doPromotion} />
-            }
-        </div>
         </>
     );
 };

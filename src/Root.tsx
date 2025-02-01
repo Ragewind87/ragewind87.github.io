@@ -34,7 +34,8 @@ export async function loader() {
 
 export const linkButtonStyle: React.CSSProperties = {
     height: '45px',
-    borderRadius: '10px',
+    border: '1.5px solid black',
+    borderRadius: '7px',
     width: '100%',
     backgroundColor: 'rgb(100, 100, 100)',
 };
@@ -52,20 +53,20 @@ const iconStyle: React.CSSProperties = {
     marginRight: '8px',
 };
 
-export const Root: React.FunctionComponent = () => {
-    const sidePanelsColor = 'black';
-    const mainBgColor = '#2e2e2e';
+export const sidePanelsColor = 'rgb(43, 43, 43)';
+export const mainBgColor = 'rgb(43, 43, 43)';
 
+export const Root: React.FunctionComponent = () => {
     return (
         <div
             style={{
                 backgroundColor: mainBgColor,
                 overflowX: 'hidden',
-                height: '100vh',
+                height: '100%',
                 color: 'white',
             }}
         >
-            <Stack horizontal={true} style={{ justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                 <Outlet />
 
                 {/* Right Panel */}
@@ -76,40 +77,32 @@ export const Root: React.FunctionComponent = () => {
                         border: `10px 10px 0px 25px solid ${mainBgColor}`,
                         width: '25vw',
                         backgroundColor: sidePanelsColor,
+                        alignContent: 'center',
+                        gap: '10px',
+                        padding: '15px',
+                        marginLeft: '10px',
                     }}
                 >
-                    <div
-                        id={'top'}
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignContent: 'center',
-                            height: '100%',
-                            padding: '15px',
-                            gap: '10px',
-                        }}
-                    >
-                        <Link to={'/'}>
-                            <Button style={linkButtonStyle}>
-                                <HouseIcon fill="white" width="25px" style={iconStyle} />
-                                <span style={linkTextStyle}>Welcome Page</span>
-                            </Button>
-                        </Link>
-                        <Link to={'ConnectFour'}>
-                            <Button style={linkButtonStyle}>
-                                <Circle20Filled fill="white" width="25px" style={iconStyle} />
-                                <span style={linkTextStyle}>Connect Four</span>
-                            </Button>
-                        </Link>
-                        <Link to={'Chess'}>
-                            <Button style={linkButtonStyle}>
-                                <img src={whiteKnight} style={{ ...iconStyle, width: '30px', height: '30px' }} />
-                                <span style={linkTextStyle}>TSP Chess</span>
-                            </Button>
-                        </Link>
-                    </div>
+                    <Link to={'/'}>
+                        <Button style={linkButtonStyle}>
+                            <HouseIcon fill="white" width="25px" style={iconStyle} />
+                            <span style={linkTextStyle}>Welcome Page</span>
+                        </Button>
+                    </Link>
+                    <Link to={'ConnectFour'}>
+                        <Button style={linkButtonStyle}>
+                            <Circle20Filled fill="white" width="25px" style={iconStyle} />
+                            <span style={linkTextStyle}>Connect Four</span>
+                        </Button>
+                    </Link>
+                    <Link to={'Chess'}>
+                        <Button style={linkButtonStyle}>
+                            <img src={whiteKnight} style={{ ...iconStyle, width: '30px', height: '30px' }} />
+                            <span style={linkTextStyle}>TSP Chess</span>
+                        </Button>
+                    </Link>
                 </div>
-            </Stack>
+            </div>
         </div>
     );
 };

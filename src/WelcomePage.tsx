@@ -2,34 +2,13 @@ import { Stack } from '@fluentui/react';
 import * as React from 'react';
 
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
+import { sidePanelsColor } from './Root';
 
 const contactEmail = 'ragewind48@gmail.com';
 
-const footerStyle: React.CSSProperties = {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    textAlign: 'center',
-    padding: '10px',
-    backgroundColor: 'rgb(50, 50, 50)',
-    color: 'white',
-};
+const footerStyle: React.CSSProperties = {};
 
-const centerPanelStyle: React.CSSProperties = {
-    borderLeft: '2px solid black',
-    borderRight: '2px solid black',
-    borderBottom: '2px solid black',
-    alignContent: 'center',
-    padding: '20px',
-    overflow: 'hidden',
-    backgroundColor: 'rgb(74, 74, 74)',
-    minWidth: '50.5vw',
-    maxWidth: '50.5vw',
-    minHeight: '91.5vh',
-    maxHeight: '91.5vh',
-    boxShadow: '10px 10px 15px black',
-    zIndex: 5,
-};
+const centerPanelStyle: React.CSSProperties = {};
 
 const headingStyle: React.CSSProperties = {
     fontSize: '4rem',
@@ -53,20 +32,12 @@ const paragraphStyle: React.CSSProperties = {
 };
 
 export const WelcomePage: React.FunctionComponent = (properties) => {
-    const sidePanelsColor = 'black';
-    const mainBgColor = '#2e2e2e';
-
     const leftPanelStyle: React.CSSProperties = {
-        borderTop: `10px solid ${mainBgColor}`,
-        borderLeft: `10px solid ${mainBgColor}`,
-        borderRight: `10px solid ${mainBgColor}`,
+        // border: `10px 10px 0px 10px solid ${mainBgColor}`,
         minWidth: '22vw',
         maxWidth: '22vw',
         // BackgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
-        backgroundColor: 'black',
-        backgroundPositionX: 'left',
-        backgroundPositionY: 'bottom',
-        backgroundSize: 'cover',
+        backgroundColor: sidePanelsColor,
     };
 
     return (
@@ -75,7 +46,22 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
             <div style={leftPanelStyle}>{'EmptyPanel Left Panel'}</div>
 
             {/* Main Panel */}
-            <div className="main" style={centerPanelStyle}>
+            <div
+                className="main"
+                style={{
+                    border: '2px solid black',
+                    alignContent: 'center',
+                    padding: '20px',
+                    marginTop: '15px',
+                    backgroundColor: 'rgb(74, 74, 74)',
+                    minWidth: '50.5vw',
+                    maxWidth: '50.5vw',
+                    minHeight: '91.5vh',
+                    maxHeight: '91.5vh',
+                    boxShadow: '10px 10px 15px black',
+                    zIndex: 5,
+                }}
+            >
                 <div
                     style={{
                         display: 'flex',
@@ -102,7 +88,18 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                     </div>
                 </Stack>
             </div>
-            <div style={footerStyle}>
+            <div
+                style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    width: '100vw',
+                    textAlign: 'center',
+                    padding: '10px',
+                    backgroundColor: 'rgb(50, 50, 50)',
+                    color: 'white',
+                }}
+            >
                 Art for this app created by a talented friend. Please direct any inquiries to{' '}
                 <span>
                     <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
