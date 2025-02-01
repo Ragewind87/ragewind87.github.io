@@ -1471,8 +1471,17 @@ const TspChess = (props) => {
 
     // renders the game
     return (
-        <div className="TspChess">
-            <div className="row" style={{margin: '0 0 10px 20px'}}>
+        <>
+            <div
+                style={{
+                    minWidth: '10vw',            
+                    backgroundColor: 'rgb(55, 57, 57)',
+                }}
+            >
+            </div>
+      
+        <div className="TspChess">     
+            <div style={{display:'flex', flexDirection: 'row', marginBottom: '5px'}}>            
                 <ThemeDropDown
                     theme={getTheme}
                     setFunc={swapTheme}
@@ -1481,7 +1490,7 @@ const TspChess = (props) => {
                     dwOwners={dungeonWhite}
                     dwTypes={dungeonWhiteTypes}
                 />
-                <div style={{width: '80%'}}>
+                <div style={{display:'flex', flexDirection: 'column', textAlign: 'center', width: '100%'}}>
                     <div className="Header" >
                         {"React Chess"}
                     </div>
@@ -1525,19 +1534,19 @@ const TspChess = (props) => {
                     />
                 </div>
             </div>
-            {   boardState[7][8].isGameOver &&
-
-            <EndGameScreen winner=      {winnerTitle()}
-                           blackMate=   {boardState[7][8].blackCheckMate}
-                           whiteMate=   {boardState[7][8].whiteCheckMate}
-                           staleMate=   {boardState[7][8].whiteStaleMate} />
+            {boardState[7][8].isGameOver &&
+                <EndGameScreen winner=      {winnerTitle()}
+                        blackMate=   {boardState[7][8].blackCheckMate}
+                        whiteMate=   {boardState[7][8].whiteCheckMate}
+                        staleMate=   {boardState[7][8].whiteStaleMate} />
             }
             {promoteInProgress &&
-            <PromotionScreen isTheme=   {getTheme}
-                             pcOwner=   {(currentPlayer === Players.WHITE) ? Players.WHITE : Players.BLACK}
-                             update=    {doPromotion} />
+                <PromotionScreen isTheme=   {getTheme}
+                        pcOwner=   {(currentPlayer === Players.WHITE) ? Players.WHITE : Players.BLACK}
+                        update=    {doPromotion} />
             }
         </div>
+        </>
     );
 };
 

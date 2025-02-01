@@ -4,7 +4,7 @@ import '../Style/EndGame.css'
 const EndGameScreen = (props) => {
     return (
         <div className={determineBoxLocation()}>
-            <h1>{determineHeadingText()}</h1>
+            <h1 style={{color: 'rgb(55, 57, 57)'}}>{determineHeadingText()}</h1>
             <button
                 className=  "resetButton"
                 onClick=    {()=>{window.location.reload()}}

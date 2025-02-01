@@ -33,7 +33,7 @@ export async function loader() {
 }
 
 export const linkButtonStyle: React.CSSProperties = {
-    height: '50px',
+    height: '45px',
     borderRadius: '10px',
     width: '100%',
     backgroundColor: 'rgb(100, 100, 100)',
@@ -56,22 +56,16 @@ export const Root: React.FunctionComponent = () => {
     const sidePanelsColor = 'black';
     const mainBgColor = '#2e2e2e';
 
-    const rightPanelStyle: React.CSSProperties = {};
-
     return (
         <div
             style={{
                 backgroundColor: mainBgColor,
-                display: 'flex',
-                flexDirection: 'row',
                 overflowX: 'hidden',
                 height: '100vh',
                 color: 'white',
             }}
         >
-            {'Root'}
             <Stack horizontal={true} style={{ justifyContent: 'center' }}>
-                {/* renders current game */}
                 <Outlet />
 
                 {/* Right Panel */}
@@ -80,41 +74,39 @@ export const Root: React.FunctionComponent = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         border: `10px 10px 0px 25px solid ${mainBgColor}`,
-                        width: '20vw',
+                        width: '25vw',
                         backgroundColor: sidePanelsColor,
-                        marginLeft: '40px',
                     }}
                 >
-                    {'RightPanel'}
                     <div
                         id={'top'}
                         style={{
-                            alignItems: 'center',
-                            alignContent: 'flex-start',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignContent: 'center',
                             height: '100%',
-                            padding: '10px',
+                            padding: '15px',
+                            gap: '10px',
                         }}
                     >
-                        <Stack style={{ height: '100%' }} tokens={{ childrenGap: '10px' }}>
-                            <Link to={'/'}>
-                                <Button style={linkButtonStyle}>
-                                    <HouseIcon fill="white" width="25px" style={iconStyle} />
-                                    <span style={linkTextStyle}>Welcome Page</span>
-                                </Button>
-                            </Link>
-                            <Link to={'ConnectFour'}>
-                                <Button style={linkButtonStyle}>
-                                    <Circle20Filled fill="white" width="25px" style={iconStyle} />
-                                    <span style={linkTextStyle}>Connect Four</span>
-                                </Button>
-                            </Link>
-                            <Link to={'Chess'}>
-                                <Button style={linkButtonStyle}>
-                                    <img src={whiteKnight} style={{ ...iconStyle, width: '30px', height: '30px' }} />
-                                    <span style={linkTextStyle}>TSP Chess</span>
-                                </Button>
-                            </Link>
-                        </Stack>
+                        <Link to={'/'}>
+                            <Button style={linkButtonStyle}>
+                                <HouseIcon fill="white" width="25px" style={iconStyle} />
+                                <span style={linkTextStyle}>Welcome Page</span>
+                            </Button>
+                        </Link>
+                        <Link to={'ConnectFour'}>
+                            <Button style={linkButtonStyle}>
+                                <Circle20Filled fill="white" width="25px" style={iconStyle} />
+                                <span style={linkTextStyle}>Connect Four</span>
+                            </Button>
+                        </Link>
+                        <Link to={'Chess'}>
+                            <Button style={linkButtonStyle}>
+                                <img src={whiteKnight} style={{ ...iconStyle, width: '30px', height: '30px' }} />
+                                <span style={linkTextStyle}>TSP Chess</span>
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </Stack>

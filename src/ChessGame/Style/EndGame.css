@@ -1,7 +1,7 @@
 .endGameScreenWhiteWins {
     position: absolute;
-    top: 60%;
-    left: 5%;
+    top: 40%;
+    left: 40%;
     background-color: rgba(255,255,255,1);
     width: 400px;
     border: 6px solid rgb(0, 0, 0);
@@ -12,8 +12,8 @@
 
 .endGameScreenBlackWins {
     position: absolute;
-    top: 20%;
-    left: 4%;
+    top: 40%;
+    left: 40%;
     background-color: rgba(255,255,255,1);
     width: 400px;
     border: 6px solid rgb(0, 0, 0);

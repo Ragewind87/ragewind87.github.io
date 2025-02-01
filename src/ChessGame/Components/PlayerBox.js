@@ -4,19 +4,20 @@ import Timer from './Timer';
 import SurrenderButton from './SurrenderButton';
 import {Themes} from "./Square"
 
-const playerCardStyle = {
-    fontSize: '37px',
-    fontWeight: '700'
-}
-
 const PlayerBox = (props) => {
-
     return (
         <div className={determineClassName()}>
             <div className='col'>
                 <div className={"row"}>
                     <div className={"col-sm-6 text-left"}>
-                        <span style={playerCardStyle}>{determineHeading()}</span>
+                        <span style={{  
+                            color: 'rgb(48, 48, 48)',
+                            fontSize: '37px',
+                            fontWeight: '700'
+                        }}
+                    >
+                        {determineHeading()}
+                    </span>
                     </div>
                     <div className={"col-sm-6"}>
                         <Timer

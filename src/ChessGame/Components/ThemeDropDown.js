@@ -66,9 +66,11 @@ const ThemeDropDown = (props) => {
 
     //renders dropdown
     return (
-        <div style={{alignItems: 'end', display: 'flex'}}>
+        <div style={{display: 'flex', flexDirection: 'column', textAlign: 'center', margin: '15px 0px 0px 35px'}}>
+            Theme
             <Dropdown
-                placeholder='THEME SELECTOR'
+                style={{width: '120px', marginTop: '5px'}}
+                placeholder='Traditional'
                 selection
                 options={themeOptions}
                 onChange={handleChange}
