@@ -59,7 +59,16 @@ export const Root: React.FunctionComponent = () => {
     const rightPanelStyle: React.CSSProperties = {};
 
     return (
-        <div style={{ backgroundColor: mainBgColor, display: 'flex', height: '100vh', color: 'white' }}>
+        <div
+            style={{
+                backgroundColor: mainBgColor,
+                display: 'flex',
+                flexDirection: 'row',
+                overflowX: 'hidden',
+                height: '100vh',
+                color: 'white',
+            }}
+        >
             {'Root'}
             <Stack horizontal={true} style={{ justifyContent: 'center' }}>
                 {/* renders current game */}
@@ -70,12 +79,10 @@ export const Root: React.FunctionComponent = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        borderTop: `10px solid ${mainBgColor}`,
-                        borderLeft: `25px solid ${mainBgColor}`,
-                        borderRight: `10px solid ${mainBgColor}`,
-                        minWidth: '20.5vw',
-                        maxWidth: '20.5vw',
+                        border: `10px 10px 0px 25px solid ${mainBgColor}`,
+                        width: '20vw',
                         backgroundColor: sidePanelsColor,
+                        marginLeft: '40px',
                     }}
                 >
                     {'RightPanel'}

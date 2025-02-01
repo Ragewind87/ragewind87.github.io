@@ -234,13 +234,13 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
             return (
                 <div key={`row-${index}`} style={rowStyle}>
                     {cells.map((c, i) => {
-                        const properties_: IGridSectionProps = {
+                        const gridProps: IGridSectionProps = {
                             ...c,
                             columnIsMouseover: i === mouseOverColumn,
                             players: playersReference.current ?? [],
                         };
 
-                        return <GridSection key={`cell-${index}-${i}}`} {...properties_} />;
+                        return <GridSection key={`cell-${index}-${i}}`} {...gridProps} />;
                     })}
                 </div>
             );
@@ -464,23 +464,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         backgroundColor: sidePanelsColor,
     };
 
-    const centerPanelStyle: React.CSSProperties = {
-        display: 'flex',
-        borderLeft: '2px solid black',
-        borderRight: '2px solid black',
-        borderBottom: '2px solid black',
-        alignContent: 'center',
-        padding: '1.5%',
-        // overflow: 'hidden',
-        backgroundColor: 'rgb(74, 74, 74)',
-        height: 'fit-content',
-        // minWidth: '50.5vw',
-        // maxWidth: '50.5vw',
-        // minHeight: 'fit-content',
-        // maxHeight: '91.5vh',
-        boxShadow: '10px 10px 15px black',
-        zIndex: 5,
-    };
+    const centerPanelStyle: React.CSSProperties = {};
 
     const headerStyle: React.CSSProperties = {
         color: '#7c795d',
@@ -489,7 +473,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         fontWeight: '1000',
         lineHeight: '0px',
         marginTop: '26px',
-        // MarginBottom: '-3px'
     };
 
     const subHeaderStyle: React.CSSProperties = {
@@ -524,6 +507,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     display: 'flex',
                     flexDirection: 'column',
                     flexGrow: 1,
+                    margin: '10px 10px 0px 0px',
                     border: `10px 10px 0px 10px solid ${mainBgColor}`,
                     minWidth: '22vw',
                     maxWidth: '22vw',
@@ -573,7 +557,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                             <img
                                 alt="Player Icon"
                                 src={getPlayerImage(playerTurn)}
-                                style={{ maxWidth: '120px', maxHeight: '120px' }}
+                                style={{ maxWidth: '100px', maxHeight: '100px' }}
                             />
 
                             {/* Text */}
@@ -590,7 +574,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                                 <div
                                     style={{
                                         fontFamily: 'Trocchi',
-                                        fontSize: '24px',
+                                        fontSize: '28px',
                                         fontWeight: '700',
                                         color: 'white',
                                         lineHeight: '15px',
@@ -601,10 +585,9 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                                 </div>
                                 <div
                                     style={{
-                                        fontSize: '17px',
+                                        fontSize: '20px',
                                         fontWeight: '300',
                                         color: '#ffcc66',
-                                        // marginBottom: '10px',
                                         overflow: 'ellipsis',
                                     }}
                                 >
@@ -613,15 +596,41 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                             </div>
                         </div>
                     )}
+                    {/* Game winner image / text */}
+                    {gameWinner !== -1 && (
+                        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, alignContent: 'center' }}>
+                            <div style={{ margin: '20px' }}>
+                                <img
+                                    className="glow"
+                                    alt="Game Winner Icon"
+                                    src={getPlayerImage(gameWinner)}
+                                    style={{ width: '100%' }}
+                                />
+                            </div>
+                            <div
+                                style={{
+                                    margin: '20px auto 0px auto',
+                                    textAlign: 'center',
+                                    width: '70%',
+                                    wordWrap: 'normal',
+                                    fontSize: '36px',
+                                    fontWeight: '1000',
+                                    color: 'white',
+                                }}
+                            >
+                                {`PLAYER ${playerTurn}\nWINS!`}
+                            </div>
+                        </div>
+                    )}
                     <div style={{ flexGrow: 1, height: '100%' }} />
                     <Button
                         appearance="secondary"
                         onClick={onResetButtonClick}
                         style={{
-                            height: '50px',
-                            minHeight: '30px',
+                            maxHeight: '35px',
+                            minHeight: '35px',
                             borderRadius: '5px',
-                            width: '80%',
+                            width: '70%',
                             backgroundColor: 'white',
                             color: 'black',
                             marginBottom: '20px',
@@ -631,30 +640,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     </Button>
                 </div>
             </div>
-
-            {/* Game winner image / text */}
-            {gameWinner !== -1 && (
-                <Stack>
-                    <div style={{ margin: '60px 25px 25px 25px' }}>
-                        <img alt="Game Winner Icon" src={getPlayerImage(gameWinner)} style={{ width: '100%' }} />
-                    </div>
-                    <div
-                        style={{
-                            marginTop: '-30px',
-                            marginLeft: 'auto',
-                            marginRight: 'auto',
-                            textAlign: 'center',
-                            width: '70%',
-                            wordWrap: 'normal',
-                            fontSize: '36px',
-                            fontWeight: '1000',
-                            color: 'white',
-                        }}
-                    >
-                        {`PLAYER ${playerTurn}\nWINS`}
-                    </div>
-                </Stack>
-            )}
 
             {/* Player Selection Dialog */}
             <FormDialog
@@ -666,9 +651,18 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
 
             {/* Main Panel */}
             <Xwrapper>
-                <div style={centerPanelStyle}>
-                    {/* {"Actual Main Panel"} */}
-
+                <div
+                    style={{
+                        display: 'flex',
+                        border: '0px 2px 2px 2px solid black',
+                        alignContent: 'center',
+                        padding: '1.5%',
+                        backgroundColor: 'rgb(74, 74, 74)',
+                        height: 'fit-content',
+                        boxShadow: '10px 10px 15px black',
+                        zIndex: 5,
+                    }}
+                >
                     {renderGrid()}
 
                     {gameWinner !== -1 && (
