@@ -490,7 +490,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     backgroundSize: 'cover',
                 }}
             >
-                {'Actual Left Panel'}
                 <div
                     id={'top'}
                     style={{

@@ -41,7 +41,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
     return (
         <Stack horizontal={true} style={{ justifyContent: 'center' }}>
             {/* Left Panel */}
-            <div style={leftPanelStyle}>{'EmptyPanel Left Panel'}</div>
+            <div style={leftPanelStyle}></div>
 
             {/* Main Panel */}
             <div
@@ -65,9 +65,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                     style={{
                         flex: 1,
                     }}
-                >
-                    EmptyPanel Center Panel
-                </div>
+                ></div>
                 <Stack style={{ display: 'flex', alignItems: 'center' }}>
                     <img className="faint-glow" style={{ maxHeight: '400px' }} src={CordyTank} alt="Cordy Tank" />
                     <div
@@ -91,7 +89,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                         position: 'absolute',
                         bottom: 0,
                         right: 0,
-                        minHeight: '40px',
+                        height: 'fit-content',
                         width: '100%',
                         padding: '8px',
                         textAlign: 'center',
@@ -100,12 +98,29 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                         color: 'white',
                     }}
                 >
-                    The art for this app created by a talented friend. Please direct any inquiries to: &nbsp;&nbsp;
-                    <span>
-                        <a href={`mailto:${contactEmail}`} style={{ color: 'lightblue', textDecoration: 'underline' }}>
-                            {contactEmail}
+                    <div>
+                        This app was built by{' '}
+                        <a
+                            href="https://www.linkedin.com/in/jwkurtz44/"
+                            style={{ color: 'lightblue', textDecoration: 'underline' }}
+                        >
+                            Joe Kurtz
                         </a>
-                    </span>
+                        . I&apos;m a full stack developer with an interest in front-end develeopment.
+                        <br />
+                        This is a personal project I'm building to help solidify my front end skills with React.
+                    </div>
+                    <div style={{ marginTop: '15px' }}>
+                        The art for this app created by a talented friend. Please direct any inquiries to: &nbsp;&nbsp;
+                        <span>
+                            <a
+                                href={`mailto:${contactEmail}`}
+                                style={{ color: 'lightblue', textDecoration: 'underline' }}
+                            >
+                                {contactEmail}
+                            </a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </Stack>
