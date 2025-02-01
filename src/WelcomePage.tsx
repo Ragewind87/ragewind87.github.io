@@ -33,10 +33,8 @@ const paragraphStyle: React.CSSProperties = {
 
 export const WelcomePage: React.FunctionComponent = (properties) => {
     const leftPanelStyle: React.CSSProperties = {
-        // border: `10px 10px 0px 10px solid ${mainBgColor}`,
         minWidth: '22vw',
         maxWidth: '22vw',
-        // BackgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
         backgroundColor: sidePanelsColor,
     };
 
@@ -60,18 +58,18 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                     maxHeight: '91.5vh',
                     boxShadow: '10px 10px 15px black',
                     zIndex: 5,
+                    position: 'relative',
                 }}
             >
                 <div
                     style={{
-                        display: 'flex',
-                        marginTop: '0px',
+                        flex: 1,
                     }}
                 >
                     EmptyPanel Center Panel
                 </div>
                 <Stack style={{ display: 'flex', alignItems: 'center' }}>
-                    <img style={{ maxHeight: '400px' }} src={CordyTank} alt="Cordy Tank" />
+                    <img className="faint-glow" style={{ maxHeight: '400px' }} src={CordyTank} alt="Cordy Tank" />
                     <div
                         style={{
                             display: 'flex', // Make this div a flex container
@@ -81,29 +79,34 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                             fontWeight: 'bold',
                             fontFamily: 'Calibri, sans-serif',
                             marginTop: '30px',
+                            textShadow: '2px 2px 3px black',
                         }}
                     >
                         <span>{'Welcome to Cordy Game Hub!'}</span>
                         <span>{'ONWARD!'}</span>
                     </div>
                 </Stack>
-            </div>
-            <div
-                style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    width: '100vw',
-                    textAlign: 'center',
-                    padding: '10px',
-                    backgroundColor: 'rgb(50, 50, 50)',
-                    color: 'white',
-                }}
-            >
-                Art for this app created by a talented friend. Please direct any inquiries to{' '}
-                <span>
-                    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-                </span>
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        right: 0,
+                        minHeight: '40px',
+                        width: '100%',
+                        padding: '8px',
+                        textAlign: 'center',
+                        borderTop: '1.5px solid black',
+                        backgroundColor: 'rgb(50, 50, 50)',
+                        color: 'white',
+                    }}
+                >
+                    The art for this app created by a talented friend. Please direct any inquiries to: &nbsp;&nbsp;
+                    <span>
+                        <a href={`mailto:${contactEmail}`} style={{ color: 'lightblue', textDecoration: 'underline' }}>
+                            {contactEmail}
+                        </a>
+                    </span>
+                </div>
             </div>
         </Stack>
     );

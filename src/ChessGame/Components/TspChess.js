@@ -1502,7 +1502,7 @@ const TspChess = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="row" style={{}}>
+                <div className="row" >
                     <div className="col-sm-4">
                         <PlayerBox
                             isTurn =            {currentPlayer === Players.BLACK}

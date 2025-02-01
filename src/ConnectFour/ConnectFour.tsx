@@ -438,31 +438,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     const getLeftPanelBgImage = (): string | undefined =>
         `url(${playersReference.current?.find((p) => p.id === playerTurn)?.options?.background ?? ''})`;
 
-    const leftPanelStyle: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1,
-        border: `10px 10px 0px 10px solid ${mainBgColor}`,
-        minWidth: '22vw',
-        maxWidth: '22vw',
-        backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
-        backgroundColor: gameStarted ? undefined : 'black',
-        backgroundPositionX: 'left',
-        backgroundPositionY: 'bottom',
-        backgroundSize: 'cover',
-    };
-
-    const rightPanelStyle: React.CSSProperties = {
-        borderTop: `10px solid ${mainBgColor}`,
-        borderLeft: `25px solid ${mainBgColor}`,
-        borderRight: `10px solid ${mainBgColor}`,
-        minWidth: '20.5vw',
-        maxWidth: '20.5vw',
-        backgroundColor: sidePanelsColor,
-    };
-
-    const centerPanelStyle: React.CSSProperties = {};
-
     const headerStyle: React.CSSProperties = {
         color: '#7c795d',
         fontFamily: 'Trocchi',
@@ -497,7 +472,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     };
 
     return (
-        <Stack horizontal={true} style={{ justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', margin: '15px 15px 0px 0px' }}>
             {/* Left Panel */}
             <div
                 style={{
@@ -688,6 +663,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     )}
                 </div>
             </Xwrapper>
-        </Stack>
+        </div>
     );
 };

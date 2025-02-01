@@ -79,3 +79,7 @@
 .glow {
     animation: glow 2.5s infinite alternate;
 }
+
+.faint-glow {
+    filter: drop-shadow(0 0 4px yellow) drop-shadow(0 0 2px white);
+}
