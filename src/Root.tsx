@@ -32,48 +32,52 @@ export async function loader() {
     return contacts;
 }
 
+export const linkButtonStyle: React.CSSProperties = {
+    height: '50px',
+    borderRadius: '10px',
+    width: '100%',
+    backgroundColor: 'rgb(100, 100, 100)',
+};
+
+const linkTextStyle: React.CSSProperties = {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: 'black',
+};
+
+const iconStyle: React.CSSProperties = {
+    width: '25px',
+    height: '25px',
+    color: 'white',
+    marginRight: '8px',
+};
+
 export const Root: React.FunctionComponent = () => {
     const sidePanelsColor = 'black';
     const mainBgColor = '#2e2e2e';
 
-    const rightPanelStyle: React.CSSProperties = {
-        borderTop: `10px solid ${mainBgColor}`,
-        borderLeft: `25px solid ${mainBgColor}`,
-        borderRight: `10px solid ${mainBgColor}`,
-        minWidth: '20.5vw',
-        maxWidth: '20.5vw',
-        backgroundColor: sidePanelsColor,
-    };
-
-    const linkButtonStyle: React.CSSProperties = {
-        height: '50px',
-        borderRadius: '10px',
-        width: '100%',
-        backgroundColor: 'rgb(100, 100, 100)',
-    };
-
-    const linkTextStyle: React.CSSProperties = {
-        fontSize: '20px',
-        fontWeight: '600',
-        color: 'black',
-    };
-
-    const iconStyle: React.CSSProperties = {
-        width: '25px',
-        height: '25px',
-        color: 'white',
-        marginRight: '8px',
-    };
+    const rightPanelStyle: React.CSSProperties = {};
 
     return (
-        <div style={{ backgroundColor: mainBgColor, height: '100vh', color: 'white' }}>
+        <div style={{ backgroundColor: mainBgColor, display: 'flex', height: '100vh', color: 'white' }}>
             {'Root'}
             <Stack horizontal={true} style={{ justifyContent: 'center' }}>
                 {/* renders current game */}
                 <Outlet />
 
                 {/* Right Panel */}
-                <div style={rightPanelStyle}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        borderTop: `10px solid ${mainBgColor}`,
+                        borderLeft: `25px solid ${mainBgColor}`,
+                        borderRight: `10px solid ${mainBgColor}`,
+                        minWidth: '20.5vw',
+                        maxWidth: '20.5vw',
+                        backgroundColor: sidePanelsColor,
+                    }}
+                >
                     {'RightPanel'}
                     <div
                         id={'top'}
