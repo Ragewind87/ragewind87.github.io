@@ -137,9 +137,9 @@ function determineBG(props){
     }
     if ( props.isHighlighted ){
         if ( props.defaultColor === '#d9a989' )
-            return '#5da675';
+            return '#68b780';   
         else
-            return '#68b780';       // highlighting is slightly darker for dark squares
+            return '#5da675';
     }
     // if ( props.canCastle ){         // highlights rooks in yellow that will be moved
     //     return '#fff18e';           // by the current castling move
