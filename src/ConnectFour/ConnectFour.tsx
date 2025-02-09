@@ -22,9 +22,9 @@ import BiskyBg from './Icons/Bisky/biskyBg.png';
 import BiskyWindow from './Icons/Bisky/biskyWindow.png';
 import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
 import { FormDialog, type PlayerChoice } from './FormDialog.tsx';
-import { Button } from '@fluentui/react-components';
 import { sidePanelsColor } from 'src/Root.tsx';
 import { ArrowReset24Filled } from '@fluentui/react-icons';
+import { Button } from '@fluentui/react-components';
 
 type ArrowStartEnd = {
     start: string;
