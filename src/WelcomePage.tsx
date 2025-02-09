@@ -39,7 +39,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
     };
 
     return (
-        <Stack horizontal={true} style={{ justifyContent: 'center' }}>
+        <Stack horizontal={true} style={{ justifyContent: 'center', flexGrow: 1 }}>
             {/* Left Panel */}
             <div style={leftPanelStyle}></div>
 
@@ -106,9 +106,9 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                         >
                             Joe Kurtz
                         </a>
-                        . I&apos;m a full stack developer with an interest in front-end develeopment.
-                        <br />
-                        This is a personal project I'm building to help solidify my front end skills with React.
+                        . I&apos;m a full stack developer with an interest in the front-end.
+                        <br />I enjoy working with React and this this is a personal project I'm building to help
+                        solidify these skills.
                     </div>
                     <div style={{ marginTop: '15px' }}>
                         The art for this app created by a talented friend. Please direct any inquiries to: &nbsp;&nbsp;

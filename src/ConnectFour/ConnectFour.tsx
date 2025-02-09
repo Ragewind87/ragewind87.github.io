@@ -108,6 +108,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     });
     const [dialogOpen, setDialogOpen] = React.useState<boolean>(true);
     const playersReference = React.useRef<Player[]>();
+    const TOP_COLUMN_Y = 5;
 
     // Use this inside event handlers like onClick to get the latest state
     const turnReference = React.useRef(0);
@@ -130,15 +131,15 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         setMouseOverColumn(column);
     }, []);
 
-    const onCellClick = (event: React.MouseEvent, x: number, y: number) => {
+    const onCellClick = (_e: React.MouseEvent, x: number) => {
         const temporaryGrid = playGrid.grid;
 
         let playableY = 0;
-        while (temporaryGrid[playableY][x].status !== CellStatus.Playable) {
+        while (playableY <= TOP_COLUMN_Y && temporaryGrid[playableY][x].status !== CellStatus.Playable) {
             playableY++;
         }
 
-        if (temporaryGrid[playableY][x].status !== CellStatus.Playable) {
+        if (playableY > TOP_COLUMN_Y || temporaryGrid[playableY][x].status !== CellStatus.Playable) {
             return;
         }
 
@@ -472,7 +473,15 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', margin: '15px 15px 0px 0px' }}>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexGrow: 1,
+                justifyContent: 'center',
+                margin: '15px 15px 0px 0px',
+            }}
+        >
             {/* Left Panel */}
             <div
                 style={{
@@ -481,8 +490,8 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     flexGrow: 1,
                     margin: '10px 10px 0px 0px',
                     border: `10px 10px 0px 10px solid ${mainBgColor}`,
-                    minWidth: '22vw',
-                    maxWidth: '22vw',
+                    // minWidth: '22vw',
+                    // maxWidth: '22vw',
                     backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
                     backgroundColor: gameStarted ? sidePanelsColor : 'black',
                     backgroundPositionX: 'left',
@@ -612,24 +621,18 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                 </div>
             </div>
 
-            {/* Player Selection Dialog */}
-            <FormDialog
-                isOpen={dialogOpen}
-                playerOptions={playerOptions}
-                closeDialog={handleCloseDialog}
-                setPlayerChoices={handleSetPlayerChoices}
-            />
-
             {/* Main Panel */}
             <Xwrapper>
                 <div
                     style={{
                         display: 'flex',
+                        flexGrow: 3,
+                        justifyContent: 'center',
                         border: '0px 2px 2px 2px solid black',
-                        alignContent: 'center',
+                        // alignContent: 'center',
                         padding: '1.5%',
                         backgroundColor: 'rgb(74, 74, 74)',
-                        height: 'fit-content',
+                        // height: 'fit-content',
                         boxShadow: '10px 10px 15px black',
                         zIndex: 5,
                     }}
@@ -662,6 +665,14 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     )}
                 </div>
             </Xwrapper>
+
+            {/* Player Selection Dialog */}
+            <FormDialog
+                isOpen={dialogOpen}
+                playerOptions={playerOptions}
+                closeDialog={handleCloseDialog}
+                setPlayerChoices={handleSetPlayerChoices}
+            />
         </div>
     );
 };

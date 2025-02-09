@@ -61,7 +61,7 @@ export const Root: React.FunctionComponent = () => {
         <div
             style={{
                 backgroundColor: mainBgColor,
-                overflowX: 'hidden',
+                // overflowX: 'hidden',
                 height: '100%',
                 color: 'white',
             }}
@@ -74,13 +74,15 @@ export const Root: React.FunctionComponent = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
+                        flexGrow: 1,
                         border: `10px 10px 0px 25px solid ${mainBgColor}`,
-                        width: '25vw',
+                        minWidth: '18vw',
+                        maxWidth: '18vw',
                         backgroundColor: sidePanelsColor,
                         alignContent: 'center',
                         gap: '10px',
-                        padding: '15px',
-                        marginLeft: '10px',
+                        padding: '15px 15px 5px 5px',
+                        // marginLeft: '10px',
                     }}
                 >
                     <Link to={'/'}>
