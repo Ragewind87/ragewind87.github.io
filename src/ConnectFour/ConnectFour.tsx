@@ -23,7 +23,8 @@ import BiskyWindow from './Icons/Bisky/biskyWindow.png';
 import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
 import { FormDialog, type PlayerChoice } from './FormDialog.tsx';
 import { Button } from '@fluentui/react-components';
-import { linkButtonStyle, mainBgColor, sidePanelsColor } from 'src/Root.tsx';
+import { sidePanelsColor } from 'src/Root.tsx';
+import { ArrowReset24Filled } from '@fluentui/react-icons';
 
 type ArrowStartEnd = {
     start: string;
@@ -108,7 +109,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     });
     const [dialogOpen, setDialogOpen] = React.useState<boolean>(true);
     const playersReference = React.useRef<Player[]>();
-    const TOP_COLUMN_Y = 5;
+    const MAX_COLUMN_Y = 5;
 
     // Use this inside event handlers like onClick to get the latest state
     const turnReference = React.useRef(0);
@@ -120,11 +121,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     const getUniqueId = () => nextId.current++;
 
     const getCurrentPlayerStatus = (): CellStatus => {
-        if (turnReference.current === 1) {
-            return CellStatus.Player1Owned;
-        }
-
-        return CellStatus.Player2Owned;
+        return turnReference.current === 1 ? CellStatus.Player1Owned : CellStatus.Player2Owned;
     };
 
     const updateMouseoverColumn = React.useCallback((column: number) => {
@@ -135,11 +132,11 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         const temporaryGrid = playGrid.grid;
 
         let playableY = 0;
-        while (playableY <= TOP_COLUMN_Y && temporaryGrid[playableY][x].status !== CellStatus.Playable) {
+        while (playableY <= MAX_COLUMN_Y && temporaryGrid[playableY][x].status !== CellStatus.Playable) {
             playableY++;
         }
 
-        if (playableY > TOP_COLUMN_Y || temporaryGrid[playableY][x].status !== CellStatus.Playable) {
+        if (playableY > MAX_COLUMN_Y || temporaryGrid[playableY][x].status !== CellStatus.Playable) {
             return;
         }
 
@@ -488,8 +485,8 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     display: 'flex',
                     flexDirection: 'column',
                     flexGrow: 1,
-                    margin: '10px 10px 0px 0px',
-                    border: `10px 10px 0px 10px solid ${mainBgColor}`,
+                    margin: '0px 5px 0px 15px',
+                    border: `3px solid black`,
                     // minWidth: '22vw',
                     // maxWidth: '22vw',
                     backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
@@ -604,17 +601,20 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     )}
                     <div style={{ flexGrow: 1, height: '100%' }} />
                     <Button
-                        appearance="secondary"
                         onClick={onResetButtonClick}
                         style={{
                             maxHeight: '35px',
                             minHeight: '35px',
-                            borderRadius: '5px',
+                            borderRadius: '4px',
+
                             width: '70%',
                             backgroundColor: 'white',
                             color: 'black',
                             marginBottom: '20px',
+                            // padding: '5px',
+                            gap: '5px',
                         }}
+                        icon={<ArrowReset24Filled />}
                     >
                         Reset Game
                     </Button>
