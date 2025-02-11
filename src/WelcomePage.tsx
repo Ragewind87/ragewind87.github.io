@@ -85,7 +85,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                             Joseph Kurtz
                         </a>
                         . I&apos;m a full stack developer with an interest in the front-end. I enjoy working with React
-                        and this this is a personal project I'm building to help solidify these skills.
+                        and this this is a personal project I'm building to help sharpen my skills.
                     </div>
                     <div style={{ marginTop: '25px' }}>
                         The art for this app created by a talented friend. Please direct any inquiries to: &nbsp;&nbsp;
