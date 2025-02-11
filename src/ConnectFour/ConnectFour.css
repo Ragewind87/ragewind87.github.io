@@ -39,7 +39,8 @@
 }
 .rightPanel { 
   grid-area: right; 
-} */
+} 
+*/
 
 .grid-container {
     display: grid;

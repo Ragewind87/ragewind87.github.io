@@ -5,5 +5,3 @@ import TspChess from './Components/TspChess';
 
 document.title = "React Chess";
 ReactDOM.render(<TspChess />, document.getElementById('root'));
-
-

@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import './index.css';
-import { type IDropdownOption, Stack } from '@fluentui/react';
-import { Button } from '@fluentui/react-components';
-import { Circle20Filled, CircleRegular, FluentIconsProps, bundleIcon, wrapIcon } from '@fluentui/react-icons';
-
+import { type IDropdownOption } from '@fluentui/react';
+import { Button, makeStyles } from '@fluentui/react-components';
+import { Circle20Filled } from '@fluentui/react-icons';
 import { HouseIcon } from './ConnectFour/Icons/HouseIcon.tsx';
 import whiteKnight from './ChessGame/Assets/whiteKnight.png';
+// import './Root.css';
 
 export type PlayerOption = {
     id: string;
@@ -32,36 +31,41 @@ export async function loader() {
     return contacts;
 }
 
-export const linkButtonStyle: React.CSSProperties = {
-    height: '45px',
-    border: '1.5px solid black',
-    borderRadius: '7px',
-    width: '100%',
-    backgroundColor: 'rgb(100, 100, 100)',
-};
-
-const linkTextStyle: React.CSSProperties = {
-    fontSize: '20px',
-    fontWeight: '600',
-    color: 'black',
-};
-
-const iconStyle: React.CSSProperties = {
-    width: '25px',
-    height: '25px',
-    color: 'white',
-    marginRight: '8px',
-};
+const useStyles = makeStyles({
+    button: {
+        height: '45px',
+        border: '1.5px solid black',
+        borderRadius: '5px',
+        width: '100%',
+        backgroundColor: 'rgb(100, 100, 100)',
+        transition: 'background-color 0.3s ease',
+        '&:hover': {
+            border: 'none',
+            backgroundColor: 'rgb(141, 141, 141)',
+        },
+    },
+    linkText: {
+        fontSize: '20px',
+        fontWeight: '600',
+        color: 'black',
+    },
+    icon: {
+        width: '25px',
+        height: '25px',
+        color: 'white',
+        marginRight: '8px',
+    },
+});
 
 export const sidePanelsColor = 'rgb(43, 43, 43)';
 export const mainBgColor = 'rgb(43, 43, 43)';
 
 export const Root: React.FunctionComponent = () => {
+    const styles = useStyles();
     return (
         <div
             style={{
                 backgroundColor: mainBgColor,
-                // overflowX: 'hidden',
                 height: '100%',
                 color: 'white',
             }}
@@ -82,25 +86,26 @@ export const Root: React.FunctionComponent = () => {
                         alignContent: 'center',
                         gap: '10px',
                         padding: '15px 15px 5px 5px',
-                        // marginLeft: '10px',
                     }}
                 >
                     <Link to={'/'}>
-                        <Button style={linkButtonStyle}>
-                            <HouseIcon fill="white" width="25px" style={iconStyle} />
-                            <span style={linkTextStyle}>Welcome Page</span>
+                        <Button className={styles.button} appearance="secondary">
+                            <div className={styles.icon}>
+                                <HouseIcon fill="white" width="25px" />
+                            </div>
+                            <span className={styles.linkText}>Welcome Page</span>
                         </Button>
                     </Link>
                     <Link to={'ConnectFour'}>
-                        <Button style={linkButtonStyle}>
-                            <Circle20Filled fill="white" width="25px" style={iconStyle} />
-                            <span style={linkTextStyle}>Connect Four</span>
+                        <Button className={styles.button}>
+                            <Circle20Filled fill="white" width="25px" className={styles.icon} />
+                            <span className={styles.linkText}>Connect Four</span>
                         </Button>
                     </Link>
                     <Link to={'Chess'}>
-                        <Button style={linkButtonStyle}>
-                            <img src={whiteKnight} style={{ ...iconStyle, width: '30px', height: '30px' }} />
-                            <span style={linkTextStyle}>TSP Chess</span>
+                        <Button className={styles.button}>
+                            <img src={whiteKnight} className={styles.icon} style={{ width: '30px', height: '30px' }} />
+                            <span className={styles.linkText}>TSP Chess</span>
                         </Button>
                     </Link>
                 </div>
