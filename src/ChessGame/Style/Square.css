@@ -1,12 +1,12 @@
 .square {
-    width: 90px;
-    height: 90px;
+    width: 4.7vw;
+    height: 4.7vw;
     display: inline-block;
     padding: 0;
     margin: 0;
     font-weight: bold;
     font-size: 18pt;
-    color: black;
+    color: rgb(194, 147, 147);
     text-shadow: -2px 2px white;
     border: 0;
     /* background-image: url(../Assets/test.png); */
