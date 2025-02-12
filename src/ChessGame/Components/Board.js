@@ -80,7 +80,7 @@ const Board = (props) => {
 
     // renders the board based on the boardState passed from TspChess
     return (
-        <div className="board">
+        <div style={{width: 'fit-content', border: '2px solid black'}}>
             {createBoardJSX()}
         </div>
     );
@@ -97,7 +97,7 @@ const Board = (props) => {
     // creates a row of squares
     function createRow(currentY){
         return(
-            <div className="boardRow" key={'bRow' + currentY}>
+            <div style={{display: 'flex', width: 'fit-content'}} key={'bRow' + currentY}>
                 {create8squares(currentY)}
             </div>
         );

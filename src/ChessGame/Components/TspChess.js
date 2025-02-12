@@ -1481,7 +1481,7 @@ const TspChess = (props) => {
             </div>
       
             <div className="TspChess">     
-                <div style={{display:'flex', flexDirection: 'row', margin: '0px 0px 5px 30px'}}>            
+                <div style={{display:'flex', flexDirection: 'row', width: '100%'}}>            
                     <ThemeDropDown
                         theme={getTheme}
                         setFunc={swapTheme}
@@ -1490,7 +1490,7 @@ const TspChess = (props) => {
                         dwOwners={dungeonWhite}
                         dwTypes={dungeonWhiteTypes}
                     />
-                    <div style={{display:'flex', flexDirection: 'column', textAlign: 'center', width: '100%'}}>
+                    <div style={{display:'flex', flexDirection: 'column', textAlign: 'center',  width: '100%'}}>
                         <div className="Header" >
                             {"React Chess"}
                         </div>
@@ -1502,8 +1502,8 @@ const TspChess = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="row" >
-                    <div className="col-sm-4">
+                <div className="row" style={{width: 'fit-content', marginTop: '10px'}} >
+                    <div style={{padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
                         <PlayerBox
                             isTurn =            {currentPlayer === Players.BLACK}
                             triggerGameOver =   {endGame}
@@ -1514,7 +1514,7 @@ const TspChess = (props) => {
                             isEndGame =         {boardState[7][8].isGameOver}
                             theme =             {getTheme}
                         />
-                        <div className="spacer"/>
+                        <div style={{flexGrow: 1}}></div>
                         <PlayerBox
                             isTurn =            {currentPlayer === Players.WHITE}
                             triggerGameOver =   {endGame}
@@ -1526,7 +1526,7 @@ const TspChess = (props) => {
                             theme =             {getTheme}
                         />
                     </div>
-                    <div className="col-sm-8">
+                    <div style={{marginLeft: '20px', width: 'fit-content'}}>
                         <Board
                             bState =            {boardState}
                             pieceClicked =      {squareClicked}

@@ -89,7 +89,7 @@ export default class Timer extends Component {
             maxWidth: '120px',
             textAlign: 'center',
             display: 'flex',
-            fontSize: '22px',
+            fontSize: '17px',
             color: 'rgb(48, 48, 48)',
         }
         const { minutes, seconds } = this.state;

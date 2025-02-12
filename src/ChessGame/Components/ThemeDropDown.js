@@ -66,14 +66,15 @@ const ThemeDropDown = (props) => {
 
     //renders dropdown
     return (
-        <div style={{display: 'flex', flexDirection: 'column', textAlign: 'center', margin: '15px 0px 0px 35px'}}>
+        <div style={{display: 'flex', alignContent: 'flex-start', flexDirection: 'column', textAlign: 'left', fontSize: '13px', lineHeight: '15px'}}>
             Theme
-            <Dropdown
+            <Dropdown            
                 style={{width: '120px', marginTop: '5px'}}
                 placeholder='Traditional'
                 selection
                 options={themeOptions}
                 onChange={handleChange}
+                iconProps={{ iconName: 'ChevronDown', styles: { root: { color: 'black' } } }}
             />
         </div>
     )

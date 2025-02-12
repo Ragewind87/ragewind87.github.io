@@ -12,7 +12,7 @@ const PlayerBox = (props) => {
                     <div className={"col-sm-6 text-left"}>
                         <span style={{  
                             color: 'rgb(48, 48, 48)',
-                            fontSize: '37px',
+                            fontSize: '28px',
                             fontWeight: '700'
                         }}
                     >

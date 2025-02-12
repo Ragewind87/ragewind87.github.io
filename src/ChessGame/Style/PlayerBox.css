@@ -2,8 +2,9 @@
     background-color: rgba(255,255,255,1);
     height: 47.5%;
     border: 4px solid #ec9300;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.51);
 }
 
 .notTurn {
@@ -11,52 +12,56 @@
     color: rgb(48, 48, 48);
     height: 47.5%;
     border: 4px solid #2c2c2c;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.51);
 }
 
 .turnCheck {
     background-color: rgb(200, 76, 0);
     height: 47.5%;
     border: 4px solid #ffa100;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.51);
 }
 
 .checkMate {
     background-color: rgb(255, 0, 29);
     height: 47.5%;
     border: 4px solid #000000;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.51);
 }
 
 .staleMate {
     background-color: rgb(255, 211, 0);
     height: 47.5%;
     border: 4px solid #000000;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.51);
 }
 
 .ffButton {
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: white;
-    border-color: red;
-    transition-duration: 0.5s;
+    border-color: rgb(199, 0, 0);
+    transition-duration: 0.3s;
     width: 100%;
     padding: 15px 0;
+
 }
 
 .ffButton:hover:enabled {
-    border-radius: 10px;
-    background-color: red;
-    border-color: red;
-    color: white;
+    border-radius: 5px;
+    border-color: rgb(199, 0, 0);
+    background-color: rgba(199, 0, 0, 0.212);
 }
 
 .ffButton[disabled] {
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #555555;
     border-color: #2C2C2C;
     color: #2C2C2C;

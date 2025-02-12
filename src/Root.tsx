@@ -39,6 +39,7 @@ const useStyles = makeStyles({
         width: '100%',
         backgroundColor: 'rgb(100, 100, 100)',
         transition: 'background-color 0.3s ease',
+        boxShadow: '3px 3px 7px rgba(0, 0, 0, 0.51)', // Added shadow
         '&:hover': {
             border: 'none',
             backgroundColor: 'rgb(141, 141, 141)',
@@ -57,7 +58,7 @@ const useStyles = makeStyles({
     },
 });
 
-export const sidePanelsColor = 'rgb(43, 43, 43)';
+export const sidePanelsColor = 'rgb(36, 36, 36)';
 export const mainBgColor = 'rgb(43, 43, 43)';
 
 export const Root: React.FunctionComponent = () => {
@@ -70,7 +71,9 @@ export const Root: React.FunctionComponent = () => {
                 color: 'white',
             }}
         >
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+            <div
+                style={{ display: 'flex', flexDirection: 'row', flexDirection: 'row', justifyContent: 'space-between' }}
+            >
                 <Outlet />
 
                 {/* Right Panel */}
@@ -79,13 +82,16 @@ export const Root: React.FunctionComponent = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         flexGrow: 1,
-                        border: `10px 10px 0px 25px solid ${mainBgColor}`,
+                        // border: `10px 10px 0px 25px solid ${mainBgColor}`,
                         minWidth: '18vw',
                         maxWidth: '18vw',
                         backgroundColor: sidePanelsColor,
                         alignContent: 'center',
                         gap: '10px',
-                        padding: '15px 15px 5px 5px',
+                        padding: '15px',
+                        margin: '15px 15px 0px 0px',
+                        border: '2px solid black',
+                        borderRadius: '5px',
                     }}
                 >
                     <Link to={'/'}>
