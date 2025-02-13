@@ -9,34 +9,27 @@ body {
 }
 .Header {
   text-align: center;
-  text-shadow: 2px 2px #000000;
-  color: rgb(163, 163, 163);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  color: rgb(210, 180, 140);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 42px;
 }
 .SubTitle {
-  height: auto;
   text-align: center;
-  text-shadow: 2px 2px #000000;
-  color: rgb(163, 163, 163);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 17px;
-}
-.SubTitle2 {
-  text-align: center;
-  text-shadow: 2px 2px #000000;
-  color: rgb(221, 199, 0);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  color: rgb(222, 184, 135);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   font-size: 18px;
 }
-.SubTitle3 {
+.SubTitle2 {
+  height: auto;
   text-align: center;
-  text-shadow: 2px 2px #000000;
-  color: rgb(163, 163, 163);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  color: rgb(244, 164, 96);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 button:foc

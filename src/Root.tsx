@@ -80,7 +80,6 @@ export const Root: React.FunctionComponent = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         flexGrow: 1,
-                        // border: `10px 10px 0px 25px solid ${mainBgColor}`,
                         minWidth: '18vw',
                         maxWidth: '18vw',
                         backgroundColor: navPanelColor,
