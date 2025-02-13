@@ -1494,15 +1494,21 @@ const TspChess = (props) => {
                         <div className="Header" >
                             {"React Chess"}
                         </div>
-                        <div className="SubTitle" >
-                            {"Created by team \"Pawn Stars\" of MTU's 2019 \"Team Software Project\":"}
+                        <div className="SubTitle2" style={{marginTop: '5px'}}>
+                            {"Joe Kurtz  |  Nick McCarter  |  Justin Martin  |  Caleb Melnychenko".split('|').join('  |  ')}
                         </div>
-                        <div className="SubTitle2" >
-                            {"Joe Kurtz, Nick McCarter, Justin Martin, and Caleb Melnychenko"}
+                        <div className="SubTitle" >
+                            {"Team \"Pawn Stars\" of MTU's 2019 \"Team Software Project\"."}
+                        </div>
+
+                        <div className="SubTitle3" style={{marginTop: '10px'}}>
+                            {"Preserved and maintained by "}
+                            <span style={{ color: 'rgb(221, 199, 0)' }}>{"Joe Kurtz"}</span>
+                            {"."}
                         </div>
                     </div>
                 </div>
-                <div className="row" style={{width: 'fit-content', marginTop: '10px'}} >
+                <div className="row" style={{width: 'fit-content', marginTop: '20px'}} >
                     <div style={{padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
                         <PlayerBox
                             isTurn =            {currentPlayer === Players.BLACK}

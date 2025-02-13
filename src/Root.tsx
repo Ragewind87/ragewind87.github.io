@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     },
 });
 
-export const sidePanelsColor = 'rgb(36, 36, 36)';
+export const navPanelColor = 'rgb(36, 36, 36)';
 export const mainBgColor = 'rgb(43, 43, 43)';
 
 export const Root: React.FunctionComponent = () => {
@@ -71,9 +71,7 @@ export const Root: React.FunctionComponent = () => {
                 color: 'white',
             }}
         >
-            <div
-                style={{ display: 'flex', flexDirection: 'row', flexDirection: 'row', justifyContent: 'space-between' }}
-            >
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Outlet />
 
                 {/* Right Panel */}
@@ -85,7 +83,7 @@ export const Root: React.FunctionComponent = () => {
                         // border: `10px 10px 0px 25px solid ${mainBgColor}`,
                         minWidth: '18vw',
                         maxWidth: '18vw',
-                        backgroundColor: sidePanelsColor,
+                        backgroundColor: navPanelColor,
                         alignContent: 'center',
                         gap: '10px',
                         padding: '15px',

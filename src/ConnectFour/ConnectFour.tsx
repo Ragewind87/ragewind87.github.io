@@ -22,7 +22,7 @@ import BiskyBg from './Icons/Bisky/biskyBg.png';
 import BiskyWindow from './Icons/Bisky/biskyWindow.png';
 import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
 import { FormDialog, type PlayerChoice } from './FormDialog.tsx';
-import { sidePanelsColor } from 'src/Root.tsx';
+import { navPanelColor } from 'src/Root.tsx';
 import { ArrowReset24Filled } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
 
@@ -490,7 +490,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     // minWidth: '22vw',
                     // maxWidth: '22vw',
                     backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
-                    backgroundColor: gameStarted ? sidePanelsColor : 'black',
+                    backgroundColor: gameStarted ? navPanelColor : 'black',
                     backgroundPositionX: 'left',
                     backgroundPositionY: 'bottom',
                     backgroundSize: 'cover',

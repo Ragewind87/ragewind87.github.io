@@ -2,9 +2,10 @@ import { Stack } from '@fluentui/react';
 import * as React from 'react';
 
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
-import { sidePanelsColor } from './Root';
+import { mainBgColor, navPanelColor } from './Root';
 
 const contactEmail = 'ragewind48@gmail.com';
+const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
 
 const footerStyle: React.CSSProperties = {
     width: '100%',
@@ -58,7 +59,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
     const leftPanelStyle: React.CSSProperties = {
         minWidth: '22vw',
         maxWidth: '22vw',
-        backgroundColor: sidePanelsColor,
+        backgroundColor: mainBgColor,
     };
 
     return (
@@ -78,10 +79,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                 <div style={footerStyle}>
                     <div>
                         This site was built by{' '}
-                        <a
-                            href="https://www.linkedin.com/in/jwkurtz44/"
-                            style={{ color: 'lightblue', textDecoration: 'underline' }}
-                        >
+                        <a href={linkedInAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
                             Joseph Kurtz
                         </a>
                         . I&apos;m a full stack developer with an interest in the front-end. I enjoy working with React
