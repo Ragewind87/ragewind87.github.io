@@ -1497,15 +1497,11 @@ const TspChess = (props) => {
                         <div className="SubTitle" style={{marginTop: '5px'}}>
                             {"Joe Kurtz  |  Nick McCarter  |  Justin Martin  |  Caleb Melnychenko".split('|').join('\u00A0\|\u00A0')}
                         </div>
-                        <div className="SubTitle2" >
-                            {"Team \"Pawn Stars\" of MTU's 2019 \"Team Software Project\""}
+                        <div className="SubTitle2" style={{marginTop: '10px'}} >
+                            {"Built by team \"Pawn Stars\" of MTU's \"Team Software Project\" in 2019"}
+                            <br/>
+                            {"Preserved and maintained by Joe Kurtz"}
                         </div>
-
-                        {/* <div className="SubTitle3" style={{marginTop: '10px'}}>
-                            {"Preserved and maintained by "}
-                            <span style={{ color: 'rgb(221, 199, 0)' }}>{"Joe Kurtz"}</span>
-                            {"."}
-                        </div> */}
                     </div>
                 </div>
                 <div className="row" style={{width: 'fit-content', marginTop: '30px'}} >
