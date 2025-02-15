@@ -39,7 +39,7 @@ const headerTextStyle: React.CSSProperties = {
     display: 'flex',
     textAlign: 'center',
     flexDirection: 'column',
-    fontSize: '32px',
+    fontSize: '36px',
     fontWeight: 'bold',
     fontFamily: 'Calibri, sans-serif',
     textShadow: '2px 2px 3px black',
@@ -48,7 +48,7 @@ const headerTextStyle: React.CSSProperties = {
 
 const imageStyle: React.CSSProperties = {
     maxWidth: '100%',
-    maxHeight: '400px',
+    maxHeight: '85%',
     width: 'auto',
     height: 'auto',
     objectFit: 'contain',
@@ -69,7 +69,7 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
 
             {/* Main Panel */}
             <div className="main" style={cardStyle}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 'auto' }}>
                     <div style={headerTextStyle}>
                         <span>{'Welcome to Cordy Game Hub!'}</span>
                         <span>{'ONWARD!'}</span>
