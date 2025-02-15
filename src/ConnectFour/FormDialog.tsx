@@ -100,6 +100,7 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties
                             minWidth: '200px',
                             height: '100%',
                             backgroundColor: '#a7a7a7',
+                            borderRadius: '6px',
                         }}
                     >
                         <DialogContentText style={titleStyle}>{'Choose Your Fighter!'}</DialogContentText>

@@ -14,7 +14,7 @@ const footerStyle: React.CSSProperties = {
     borderTop: '1.5px solid black',
     backgroundColor: 'rgb(50, 50, 50)',
     color: 'white',
-    lineHeight: '16px',
+    lineHeight: '18px',
 };
 
 const cardStyle: React.CSSProperties = {
@@ -82,11 +82,12 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                         <a href={linkedInAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
                             Joseph Kurtz
                         </a>
-                        . I&apos;m a full stack developer with an interest in the front-end. I enjoy working with React
-                        and this this is a personal project I'm building to help sharpen my skills.
+                        , a full-stack developer with a focus on front-end development. <br />I enjoy working with
+                        React, and this project helps sharpen my skills.
                     </div>
                     <div style={{ marginTop: '25px' }}>
-                        The art for this app created by a talented friend. Please direct any inquiries to: &nbsp;&nbsp;
+                        The artwork for this app was created by a talented friend. For inquiries, contact me
+                        at&nbsp;&nbsp;
                         <span>
                             <a
                                 href={`mailto:${contactEmail}`}
