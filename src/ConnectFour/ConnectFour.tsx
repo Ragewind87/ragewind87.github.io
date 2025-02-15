@@ -484,11 +484,10 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    flexGrow: 1,
+                    // flexGrow: 1,
+                    minWidth: '15vw',
                     margin: '0px 5px 0px 15px',
                     border: `3px solid black`,
-                    // minWidth: '22vw',
-                    // maxWidth: '22vw',
                     backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
                     backgroundColor: gameStarted ? navPanelColor : 'black',
                     backgroundPositionX: 'left',
@@ -611,7 +610,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                             backgroundColor: 'white',
                             color: 'black',
                             marginBottom: '20px',
-                            // padding: '5px',
                             gap: '5px',
                         }}
                         icon={<ArrowReset24Filled />}
@@ -629,12 +627,11 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                         flexGrow: 3,
                         justifyContent: 'center',
                         border: '0px 2px 2px 2px solid black',
-                        // alignContent: 'center',
                         padding: '1.5%',
                         backgroundColor: 'rgb(74, 74, 74)',
-                        // height: 'fit-content',
                         boxShadow: '10px 10px 15px black',
                         zIndex: 5,
+                        position: 'relative', // Added to position the overlay
                     }}
                 >
                     {renderGrid()}
@@ -663,16 +660,34 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                             path={'straight'}
                         />
                     )}
+
+                    {/* Player Selection Dialog Overlay */}
+                    {dialogOpen && (
+                        <div
+                            style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                zIndex: 10,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center', // Added to horizontally align the dialog
+                            }}
+                        >
+                            {/* Player Selection Dialog */}
+                            <FormDialog
+                                isOpen={dialogOpen}
+                                playerOptions={playerOptions}
+                                closeDialog={handleCloseDialog}
+                                setPlayerChoices={handleSetPlayerChoices}
+                            />
+                        </div>
+                    )}
                 </div>
             </Xwrapper>
-
-            {/* Player Selection Dialog */}
-            <FormDialog
-                isOpen={dialogOpen}
-                playerOptions={playerOptions}
-                closeDialog={handleCloseDialog}
-                setPlayerChoices={handleSetPlayerChoices}
-            />
         </div>
     );
 };

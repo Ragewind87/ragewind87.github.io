@@ -85,26 +85,29 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties
     };
 
     return (
-        <div>
-            <Dialog open={properties.isOpen} onClose={handleClose} disableEscapeKeyDown={true}>
-                {/* <DialogTitle
+        // TODO: FIX THIS MESS
+
+        <div style={{ width: 'fit-content' }}>
+            {properties.isOpen && (
+                <div open={properties.isOpen} onClose={handleClose} disableEscapeKeyDown={true}>
+                    {/* <DialogTitle
                     style={{fontSize: '24px', alignSelf: 'center'}}
                 >
                     Choose Your Fighter
                 </DialogTitle> */}
-                <DialogContent
-                    style={{
-                        minWidth: '200px',
-                        height: '100%',
-                        backgroundColor: '#a7a7a7',
-                    }}
-                >
-                    <DialogContentText style={titleStyle}>{'Choose Your Fighter!'}</DialogContentText>
-                    <DialogContentText style={subTitleStyle}>{`Player ${player}`}</DialogContentText>
+                    <DialogContent
+                        style={{
+                            minWidth: '200px',
+                            height: '100%',
+                            backgroundColor: '#a7a7a7',
+                        }}
+                    >
+                        <DialogContentText style={titleStyle}>{'Choose Your Fighter!'}</DialogContentText>
+                        <DialogContentText style={subTitleStyle}>{`Player ${player}`}</DialogContentText>
 
-                    {renderPlayerChoiceCards()}
-                </DialogContent>
-                {/* <DialogActions>
+                        {renderPlayerChoiceCards()}
+                    </DialogContent>
+                    {/* <DialogActions>
                     <Button
                         onClick={handleLockInClicked}
                         style={{
@@ -115,7 +118,8 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties
                         Lock In
                     </Button>
                 </DialogActions> */}
-            </Dialog>
+                </div>
+            )}
         </div>
     );
 };
