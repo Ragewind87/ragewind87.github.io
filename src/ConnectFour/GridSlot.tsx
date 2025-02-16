@@ -1,10 +1,8 @@
 import React from 'react';
 
 import EmptyCellTransparent from './Icons/emptyCellTransparent.png';
-import EmptyCell from './Icons/emptyCell.png';
 import EmptyCellGreen from './Icons/emptyCellGreen.png';
 import { type Player } from './ConnectFour.tsx';
-import { mainBgColor } from 'src/Root.tsx';
 
 export enum Status {
     Empty,
@@ -35,7 +33,7 @@ export type IPlayerIcons = {
     winCell: string;
 };
 
-export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) => {
+export const GridSlot: React.FunctionComponent<IGridSectionProps> = (props) => {
     const getGridImage = (): string => {
         switch (props.status) {
             case Status.Empty:
@@ -87,12 +85,14 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
             }
             onMouseOver={onMouseOver}
             onMouseLeave={handleOnMouseLeave}
+            // Controls the size of the slots
             style={{
                 maxWidth: '14vh',
-                maxHeight: '14 vh',
+                maxHeight: '14vh',
                 position: 'relative',
             }}
         >
+            {/* displays 3D depth shadow behind slot holes */}
             <div
                 style={{
                     position: 'absolute',
@@ -101,11 +101,11 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
                     width: '90%',
                     height: '90%',
                     backgroundColor: 'rgb(39, 39, 39)',
-                    boxShadow: 'inset 10px 10px 15px black', // Updated to inset shadow
+                    boxShadow: 'inset 10px 10px 15px black',
                     borderRadius: '50%',
                     zIndex: 1,
                 }}
-            ></div>
+            />
             <img
                 src={getGridImage()}
                 alt={'X'}

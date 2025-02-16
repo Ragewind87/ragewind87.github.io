@@ -28,11 +28,6 @@ export const PlayerSelectionDialog: React.FunctionComponent<IFormDialogProps> = 
         }
     }, [properties.isOpen]);
 
-    const handleClose = (reason: string) => {
-        // if (reason === 'backdropClick') {
-        // }
-    };
-
     const handleOnClick = (key: string) => {
         playerChoicesReference.current = [...playerChoicesReference.current, { player, choice: key.toString() }];
         if (player === 1) {
@@ -77,8 +72,6 @@ export const PlayerSelectionDialog: React.FunctionComponent<IFormDialogProps> = 
     };
 
     return (
-        // TODO: FIX THIS MESS
-
         <div style={{ width: 'fit-content', boxShadow: '10px 10px 15px black' }}>
             {properties.isOpen && (
                 <div

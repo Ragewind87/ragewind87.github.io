@@ -16,9 +16,9 @@ The long-term goal is to support asynchronous, turn-based multiplayer gameplay f
 
 A Chess game built using `React.js` and `Node.js`.
 
-This game was developed as part of my `Team Software Project` course in Fall 2019 at Michigan Technological University. I led a team of three other students (Team Pawn Stars) to build the game from scratch. We're proud of what we accomplished in a single semester with virtually no prior React experience.
+This game was developed as part of my `Team Software Project` course in Fall 2019 at Michigan Technological University. I led a team of three other students to build the game from scratch. We're proud of what we accomplished in a single semester with virtually no prior React experience.
 
-The game was a hit on presentation day—our professor was especially impressed that we implemented the "En passant" rule.
+The game was a hit on presentation day—our professor was especially impressed that we remembered to implement the "En passant" move.
 
 ---
 

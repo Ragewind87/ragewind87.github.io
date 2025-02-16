@@ -4,7 +4,7 @@ import './ConnectFour.css';
 import { type IDropdownOption, Stack } from '@fluentui/react';
 import Xarrow, { Xwrapper } from 'react-xarrows';
 
-import { GridSection, type IGridSectionProps, type IMainGrid, Status as CellStatus } from './GridSection.tsx';
+import { GridSlot, type IGridSectionProps, type IMainGrid, Status as CellStatus } from './GridSlot.tsx';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
 import KayBearWindow from './Icons/Kaybear/kaybearWindow.png';
@@ -67,20 +67,20 @@ const playerOptions: IPlayerOption[] = [
         background: KayBearBg,
     },
     {
+        id: 'skye',
+        name: 'Skye Bear',
+        icon: SkyeIcon,
+        normalCell: SkyeWindow,
+        wincell: SkyeWindowWin,
+        background: SkyeBg,
+    },
+    {
         id: 'duck',
         name: 'Happy Duck',
         icon: DuckIcon,
         normalCell: DuckWindow,
         wincell: DuckWindowWin,
         background: DuckBg,
-    },
-    {
-        id: 'skye',
-        name: 'Skibby Bibbies',
-        icon: SkyeIcon,
-        normalCell: SkyeWindow,
-        wincell: SkyeWindowWin,
-        background: SkyeBg,
     },
     {
         id: 'bisky',
@@ -344,7 +344,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                             players: playersReference.current ?? [],
                         };
 
-                        return <GridSection key={`cell-${index}-${i}}`} {...gridProps} />;
+                        return <GridSlot key={`cell-${index}-${i}}`} {...gridProps} />;
                     })}
                 </div>
             );
@@ -652,7 +652,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                                 },
                             }}
                             color={'red'}
-                            strokeWidth={15}
+                            strokeWidth={12}
                             showHead={false}
                             path={'straight'}
                         />
@@ -661,7 +661,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
                     {/* Player Selection Dialog Overlay */}
                     {dialogOpen && (
                         <div style={playerSelectionOverlayStyle}>
-                            {/* Player Selection Dialog */}
                             <PlayerSelectionDialog
                                 isOpen={dialogOpen}
                                 playerOptions={playerOptions}

@@ -39,7 +39,7 @@ const useStyles = makeStyles({
         width: '100%',
         backgroundColor: 'rgb(100, 100, 100)',
         transition: 'background-color 0.3s ease',
-        boxShadow: '3px 3px 7px rgba(0, 0, 0, 0.51)', // Added shadow
+        boxShadow: '3px 3px 7px rgba(0, 0, 0, 0.51)',
         '&:hover': {
             border: 'none',
             backgroundColor: 'rgb(141, 141, 141)',

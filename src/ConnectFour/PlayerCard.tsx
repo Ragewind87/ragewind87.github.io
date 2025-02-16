@@ -10,21 +10,28 @@ export type IPlayerCardProps = {
     onClick: (key: string) => void;
 };
 
+const rootPlayerCardStyle = {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'flex-start',
+    padding: '2px 2px 2px 2px',
+};
+
 const useStyles = makeStyles({
     playerCard: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'flex-start',
-        padding: '2px 2px 2px 2px',
+        ...rootPlayerCardStyle,
         '&:hover': {
             border: 'none',
             backgroundColor: 'rgb(141, 141, 141)',
         },
     },
+    playerCardDisabled: {
+        ...rootPlayerCardStyle,
+    },
 });
 
-export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties) => {
+export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (props) => {
     const styles = useStyles();
 
     const cardNameStyle: React.CSSProperties = {
@@ -35,7 +42,7 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties
         fontFamily: 'Candara',
         fontSize: '20px',
         fontWeight: '750',
-        color: properties.disabled ? 'grey' : 'black',
+        color: props.disabled ? 'grey' : 'black',
         justifyContent: 'center',
     };
 
@@ -50,9 +57,9 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties
             }}
         >
             <Button
-                className={styles.playerCard}
+                className={props.disabled ? styles.playerCardDisabled : styles.playerCard}
                 onClick={() => {
-                    properties.onClick(properties.id);
+                    props.onClick(props.id);
                 }}
                 style={{
                     width: '100%',
@@ -61,20 +68,20 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties
                     alignItems: 'flex-start',
                     padding: '2px 2px 2px 2px',
                 }}
-                disabled={properties.disabled}
+                disabled={props.disabled}
             >
                 <Stack horizontal style={{ height: '100%', width: '100%' }}>
                     <img
                         style={{
                             border: '1px solid black',
-                            opacity: properties.disabled ? '.5' : '1',
-                            filter: properties.disabled ? 'grayscale(100%)' : undefined,
+                            opacity: props.disabled ? '.5' : '1',
+                            filter: props.disabled ? 'grayscale(100%)' : undefined,
                             backgroundColor: '#a7a7a7',
                         }}
-                        src={properties.cardImage}
+                        src={props.cardImage}
                         alt="Fighter Name"
                     />
-                    <div style={cardNameStyle}>{properties.cardName}</div>
+                    <div style={cardNameStyle}>{props.cardName}</div>
                 </Stack>
             </Button>
         </div>
