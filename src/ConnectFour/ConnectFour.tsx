@@ -634,6 +634,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
 
                     {gameWinner !== -1 && (
                         <Xarrow
+                            zIndex={3}
                             start={arrowStartEnd.start}
                             end={arrowStartEnd.end}
                             startAnchor={{

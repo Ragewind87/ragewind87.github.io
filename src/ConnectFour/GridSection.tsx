@@ -96,7 +96,7 @@ export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) =
             <div
                 style={{
                     position: 'absolute',
-                    top: '5.5%',
+                    top: '5.2%',
                     left: '4.7%',
                     width: '90%',
                     height: '90%',
