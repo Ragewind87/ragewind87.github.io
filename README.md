@@ -1,34 +1,29 @@
-# Jwk Game Hub
+# Game Hub Web App
 
-Play the deployed app here: [https://ragewind87.github.io](https://ragewind87.github.io)
+Play the live app here: https://ragewind87.github.io
 
----
+This project is a client-side board game hub and is still a work in progress.
 
-This project contains a client-side board game hub.
-It is very much a work in progress.
+### Project Goals
 
-The long-term goal of the project is to be capable of hosting two (possibly more) players at once to asynchronously play turn-based board games with one another online.
-I will likely be hosting it on Azure.
-
-The project currently includes the following games:
+The long-term goal is to support asynchronous, turn-based multiplayer gameplay for various board games. I plan to host the final version on Azure.
 
 ---
 
-### TSP React Chess
+## Current Games:
 
-This is a Chess game built using `React.js` leveraging `Node.js`.
+### ♞ TSP React Chess
 
-This game was developed as part of my "Team Software Project" course in the Fall of 2019 at Michigan Technological University.
-I led a team of three other students, known as team "Pawn Stars" to build the game from scratch.
-We're very proud of what we were able to create in a single semester with virutally no prior experience using React.
+A Chess game built using `React.js` and `Node.js`.
 
-The game was an absolute hit on presentation day. Our professor was impressed that we remembered to implement the "En passant" move.
+This game was developed as part of my `Team Software Project` course in Fall 2019 at Michigan Technological University. I led a team of three other students (Team Pawn Stars) to build the game from scratch. We're proud of what we accomplished in a single semester with virtually no prior React experience.
+
+The game was a hit on presentation day—our professor was especially impressed that we implemented the "En passant" rule.
 
 ---
 
-### Connect Four
+### 🟢 Connect Four (In Progress)
 
-(In progress)
-Connect-Four game built using `React`/`Typescript`
+A `React`/`TypeScript` implementation of Connect Four.
 
-Character selection includes pets and art drawn by friends
+This version features character selection, including pets and custom artwork created by friends.
