@@ -1,15 +1,7 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Dropdown, IDropdownOption } from '@fluentui/react';
 
 import { type IPlayerOption } from './ConnectFour.js';
-import { IPlayerCardProps, PlayerCard } from './PlayerCard.tsx';
+import { PlayerCard } from './PlayerCard.tsx';
 
 export type IFormDialogProps = {
     isOpen: boolean;
@@ -23,7 +15,7 @@ export type PlayerChoice = {
     choice: string;
 };
 
-export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties) => {
+export const PlayerSelectionDialog: React.FunctionComponent<IFormDialogProps> = (properties) => {
     const [player, setPlayer] = React.useState<number>(1);
     const playerChoicesReference = React.useRef<PlayerChoice[]>([]);
 
@@ -87,38 +79,23 @@ export const FormDialog: React.FunctionComponent<IFormDialogProps> = (properties
     return (
         // TODO: FIX THIS MESS
 
-        <div style={{ width: 'fit-content' }}>
+        <div style={{ width: 'fit-content', boxShadow: '10px 10px 15px black' }}>
             {properties.isOpen && (
-                <div open={properties.isOpen} onClose={handleClose} disableEscapeKeyDown={true}>
-                    {/* <DialogTitle
-                    style={{fontSize: '24px', alignSelf: 'center'}}
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        minWidth: '200px',
+                        height: '100%',
+                        backgroundColor: '#a7a7a7',
+                        borderRadius: '6px',
+                        padding: '20px',
+                    }}
                 >
-                    Choose Your Fighter
-                </DialogTitle> */}
-                    <DialogContent
-                        style={{
-                            minWidth: '200px',
-                            height: '100%',
-                            backgroundColor: '#a7a7a7',
-                            borderRadius: '6px',
-                        }}
-                    >
-                        <DialogContentText style={titleStyle}>{'Choose Your Fighter!'}</DialogContentText>
-                        <DialogContentText style={subTitleStyle}>{`Player ${player}`}</DialogContentText>
+                    <span style={titleStyle}>{'Choose Your Fighter!'}</span>
+                    <span style={subTitleStyle}>{`Player ${player}`}</span>
 
-                        {renderPlayerChoiceCards()}
-                    </DialogContent>
-                    {/* <DialogActions>
-                    <Button
-                        onClick={handleLockInClicked}
-                        style={{
-                            fontSize: `26px`,
-                            fontWeight: `1000`
-                        }}
-                    >
-                        Lock In
-                    </Button>
-                </DialogActions> */}
+                    <div>{renderPlayerChoiceCards()}</div>
                 </div>
             )}
         </div>

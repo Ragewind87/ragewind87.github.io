@@ -1,4 +1,5 @@
 import { Stack } from '@fluentui/react';
+import { Button, makeStyles } from '@fluentui/react-components';
 import React from 'react';
 
 export type IPlayerCardProps = {
@@ -9,15 +10,22 @@ export type IPlayerCardProps = {
     onClick: (key: string) => void;
 };
 
-export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties) => {
-    const handleOnClick = React.useCallback(
-        (key: string) => () => {
-            if (properties.id) {
-                properties.onClick(key);
-            }
+const useStyles = makeStyles({
+    playerCard: {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'flex-start',
+        padding: '2px 2px 2px 2px',
+        '&:hover': {
+            border: 'none',
+            backgroundColor: 'rgb(141, 141, 141)',
         },
-        [properties],
-    );
+    },
+});
+
+export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties) => {
+    const styles = useStyles();
 
     const cardNameStyle: React.CSSProperties = {
         width: '100%',
@@ -41,7 +49,8 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties
                 border: '1px solid black',
             }}
         >
-            <button
+            <Button
+                className={styles.playerCard}
                 onClick={() => {
                     properties.onClick(properties.id);
                 }}
@@ -60,13 +69,14 @@ export const PlayerCard: React.FunctionComponent<IPlayerCardProps> = (properties
                             border: '1px solid black',
                             opacity: properties.disabled ? '.5' : '1',
                             filter: properties.disabled ? 'grayscale(100%)' : undefined,
+                            backgroundColor: '#a7a7a7',
                         }}
                         src={properties.cardImage}
                         alt="Fighter Name"
                     />
                     <div style={cardNameStyle}>{properties.cardName}</div>
                 </Stack>
-            </button>
+            </Button>
         </div>
     );
 };

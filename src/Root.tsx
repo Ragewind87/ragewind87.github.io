@@ -61,6 +61,21 @@ const useStyles = makeStyles({
 export const navPanelColor = 'rgb(36, 36, 36)';
 export const mainBgColor = 'rgb(43, 43, 43)';
 
+const rightPanelStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    minWidth: '18vw',
+    maxWidth: '18vw',
+    backgroundColor: navPanelColor,
+    alignContent: 'center',
+    gap: '10px',
+    padding: '15px',
+    margin: '15px 15px 0px 0px',
+    border: '2px solid black',
+    borderRadius: '5px',
+};
+
 export const Root: React.FunctionComponent = () => {
     const styles = useStyles();
     return (
@@ -75,22 +90,7 @@ export const Root: React.FunctionComponent = () => {
                 <Outlet />
 
                 {/* Right Panel */}
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flexGrow: 1,
-                        minWidth: '18vw',
-                        maxWidth: '18vw',
-                        backgroundColor: navPanelColor,
-                        alignContent: 'center',
-                        gap: '10px',
-                        padding: '15px',
-                        margin: '15px 15px 0px 0px',
-                        border: '2px solid black',
-                        borderRadius: '5px',
-                    }}
-                >
+                <div style={rightPanelStyle}>
                     <Link to={'/'}>
                         <Button className={styles.button} appearance="secondary">
                             <div className={styles.icon}>

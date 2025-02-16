@@ -21,7 +21,7 @@ import BiskyIcon from './Icons/Bisky/biskyIcon.png';
 import BiskyBg from './Icons/Bisky/biskyBg.png';
 import BiskyWindow from './Icons/Bisky/biskyWindow.png';
 import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
-import { FormDialog, type PlayerChoice } from './FormDialog.tsx';
+import { PlayerSelectionDialog, type PlayerChoice } from './PlayerSelectionDialog.tsx';
 import { navPanelColor } from 'src/Root.tsx';
 import { ArrowReset24Filled } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
@@ -91,6 +91,112 @@ const playerOptions: IPlayerOption[] = [
         background: BiskyBg,
     },
 ] as IPlayerOption[];
+
+const headerStyle: React.CSSProperties = {
+    color: '#7c795d',
+    fontFamily: 'Trocchi',
+    fontSize: '32px',
+    fontWeight: '1000',
+    lineHeight: '0px',
+    marginTop: '26px',
+};
+
+const subHeaderStyle: React.CSSProperties = {
+    color: '#ffcc66',
+    fontSize: '17px',
+    fontWeight: '300',
+    marginBottom: '48px',
+    marginLeft: '30px',
+};
+
+const playerTurnStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '20px',
+    width: '100%',
+    margin: 'auto 0 auto',
+    textAlign: 'center',
+};
+
+const currentPlayerStyle: React.CSSProperties = {
+    fontFamily: 'Trocchi',
+    fontSize: '22px',
+    fontWeight: '700',
+    color: 'white',
+    lineHeight: '15px',
+    overflow: 'ellipsis',
+};
+
+const yourTurnStyle: React.CSSProperties = {
+    fontSize: '20px',
+    fontWeight: '300',
+    color: '#ffcc66',
+    overflow: 'ellipsis',
+};
+
+const playerWinsStyle: React.CSSProperties = {
+    margin: '20px auto 0px auto',
+    textAlign: 'center',
+    width: '70%',
+    wordWrap: 'normal',
+    fontSize: '36px',
+    fontWeight: '1000',
+    color: 'white',
+};
+
+const resetGameButtonStyle: React.CSSProperties = {
+    maxHeight: '35px',
+    minHeight: '35px',
+    borderRadius: '4px',
+    width: '70%',
+    backgroundColor: 'white',
+    color: 'black',
+    marginBottom: '20px',
+    gap: '5px',
+};
+
+const gameGridContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexGrow: 3,
+    justifyContent: 'center',
+    border: '0px 2px 2px 2px solid black',
+    padding: '1.5%',
+    backgroundColor: 'rgb(74, 74, 74)',
+    boxShadow: '10px 10px 15px black',
+    zIndex: 5,
+    position: 'relative',
+};
+
+const playerSelectionOverlayStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'hsla(0, 0.00%, 0.00%, 0.45)',
+    zIndex: 10,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+};
+
+const activePlayerCardStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexGrow: 1,
+    border: '1px solid white',
+    backgroundColor: 'black',
+    maxWidth: '90%',
+    borderRadius: '4px',
+};
+
+const rootContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexGrow: 1,
+    justifyContent: 'center',
+    margin: '15px 15px 0px 0px',
+};
 
 export const ConnectFour: React.FunctionComponent = (properties) => {
     const nextId = React.useRef<number>(0);
@@ -436,23 +542,6 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
     const getLeftPanelBgImage = (): string | undefined =>
         `url(${playersReference.current?.find((p) => p.id === playerTurn)?.options?.background ?? ''})`;
 
-    const headerStyle: React.CSSProperties = {
-        color: '#7c795d',
-        fontFamily: 'Trocchi',
-        fontSize: '32px',
-        fontWeight: '1000',
-        lineHeight: '0px',
-        marginTop: '26px',
-    };
-
-    const subHeaderStyle: React.CSSProperties = {
-        color: '#ffcc66',
-        fontSize: '17px',
-        fontWeight: '300',
-        marginBottom: '48px',
-        marginLeft: '30px',
-    };
-
     const handleSetPlayerChoices = (choices: PlayerChoice[]) => {
         const players: Player[] = [];
 
@@ -469,171 +558,78 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         playersReference.current = players;
     };
 
+    const leftPanelStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: 1,
+        minWidth: '18vw',
+        maxWidth: '18vw',
+        margin: '0px 5px 0px 15px',
+        border: `3px solid black`,
+        backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
+        backgroundColor: gameStarted ? navPanelColor : 'black',
+        backgroundPositionX: 'left',
+        backgroundPositionY: 'bottom',
+        backgroundSize: 'cover',
+        alignItems: 'center',
+        alignContent: 'center',
+        height: '100%',
+        boxShadow: '10px 10px 15px black',
+    };
+
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexGrow: 1,
-                justifyContent: 'center',
-                margin: '15px 15px 0px 0px',
-            }}
-        >
+        <div style={rootContainerStyle}>
             {/* Left Panel */}
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    // flexGrow: 1,
-                    minWidth: '15vw',
-                    margin: '0px 5px 0px 15px',
-                    border: `3px solid black`,
-                    backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
-                    backgroundColor: gameStarted ? navPanelColor : 'black',
-                    backgroundPositionX: 'left',
-                    backgroundPositionY: 'bottom',
-                    backgroundSize: 'cover',
-                }}
-            >
+            <div style={leftPanelStyle}>
                 <div
-                    id={'top'}
                     style={{
+                        textAlign: 'center',
                         display: 'flex',
                         flexDirection: 'column',
-                        flexGrow: 1,
-                        alignItems: 'center',
-                        alignContent: 'center',
-                        height: '92%',
                     }}
                 >
-                    <div
-                        style={{
-                            textAlign: 'center',
-                            display: 'flex',
-                            flexDirection: 'column',
-                        }}
-                    >
-                        <h1 style={headerStyle}>Connect Four</h1>
-                        <h2 style={subHeaderStyle}>By Joe Kurtz</h2>
-                    </div>
-
-                    {/* Current player panel */}
-                    {gameStarted && gameWinner === -1 && (
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                flexGrow: 1,
-                                border: '1px solid white',
-                                backgroundColor: 'black',
-                                width: '90%',
-                                borderRadius: '4px',
-                            }}
-                        >
-                            <img
-                                alt="Player Icon"
-                                src={getPlayerImage(playerTurn)}
-                                style={{ maxWidth: '100px', maxHeight: '100px' }}
-                            />
-
-                            {/* Text */}
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    padding: '20px',
-                                    width: '100%',
-                                    margin: 'auto 0 auto',
-                                    textAlign: 'center',
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        fontFamily: 'Trocchi',
-                                        fontSize: '28px',
-                                        fontWeight: '700',
-                                        color: 'white',
-                                        lineHeight: '15px',
-                                        overflow: 'ellipsis',
-                                    }}
-                                >
-                                    {playerTurn === 0 ? '' : `Player ${playerTurn}`}
-                                </div>
-                                <div
-                                    style={{
-                                        fontSize: '20px',
-                                        fontWeight: '300',
-                                        color: '#ffcc66',
-                                        overflow: 'ellipsis',
-                                    }}
-                                >
-                                    Your Turn
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                    {/* Game winner image / text */}
-                    {gameWinner !== -1 && (
-                        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, alignContent: 'center' }}>
-                            <div style={{ margin: '20px' }}>
-                                <img
-                                    className="glow"
-                                    alt="Game Winner Icon"
-                                    src={getPlayerImage(gameWinner)}
-                                    style={{ width: '100%' }}
-                                />
-                            </div>
-                            <div
-                                style={{
-                                    margin: '20px auto 0px auto',
-                                    textAlign: 'center',
-                                    width: '70%',
-                                    wordWrap: 'normal',
-                                    fontSize: '36px',
-                                    fontWeight: '1000',
-                                    color: 'white',
-                                }}
-                            >
-                                {`PLAYER ${playerTurn}\nWINS!`}
-                            </div>
-                        </div>
-                    )}
-                    <div style={{ flexGrow: 1, height: '100%' }} />
-                    <Button
-                        onClick={onResetButtonClick}
-                        style={{
-                            maxHeight: '35px',
-                            minHeight: '35px',
-                            borderRadius: '4px',
-
-                            width: '70%',
-                            backgroundColor: 'white',
-                            color: 'black',
-                            marginBottom: '20px',
-                            gap: '5px',
-                        }}
-                        icon={<ArrowReset24Filled />}
-                    >
-                        Reset Game
-                    </Button>
+                    <h1 style={headerStyle}>Connect Four</h1>
+                    <h2 style={subHeaderStyle}>By Joe Kurtz</h2>
                 </div>
+
+                {/* Current player panel */}
+                {gameStarted && gameWinner === -1 && (
+                    <div style={activePlayerCardStyle}>
+                        <img
+                            src={getPlayerImage(playerTurn)}
+                            style={{ maxWidth: '40%', height: 'auto', objectFit: 'contain' }}
+                        />
+
+                        {/* Text */}
+                        <div style={playerTurnStyle}>
+                            <div style={currentPlayerStyle}>{playerTurn === 0 ? '' : `Player ${playerTurn}`}</div>
+                            <div style={yourTurnStyle}>Your Turn</div>
+                        </div>
+                    </div>
+                )}
+                {/* Game winner image / text */}
+                {gameWinner !== -1 && (
+                    <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, alignItems: 'center' }}>
+                        <div style={{ textAlign: 'center' }}>
+                            <img
+                                className="glow"
+                                alt="Game Winner Icon"
+                                src={getPlayerImage(gameWinner)}
+                                style={{ width: '65%' }}
+                            />
+                        </div>
+                        <div style={playerWinsStyle}>{`PLAYER ${playerTurn}\nWINS!`}</div>
+                    </div>
+                )}
+                <div style={{ flexGrow: 1, height: '100%' }} />
+                <Button onClick={onResetButtonClick} style={resetGameButtonStyle} icon={<ArrowReset24Filled />}>
+                    Reset Game
+                </Button>
             </div>
 
             {/* Main Panel */}
             <Xwrapper>
-                <div
-                    style={{
-                        display: 'flex',
-                        flexGrow: 3,
-                        justifyContent: 'center',
-                        border: '0px 2px 2px 2px solid black',
-                        padding: '1.5%',
-                        backgroundColor: 'rgb(74, 74, 74)',
-                        boxShadow: '10px 10px 15px black',
-                        zIndex: 5,
-                        position: 'relative', // Added to position the overlay
-                    }}
-                >
+                <div style={gameGridContainerStyle}>
                     {renderGrid()}
 
                     {gameWinner !== -1 && (
@@ -663,22 +659,9 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
 
                     {/* Player Selection Dialog Overlay */}
                     {dialogOpen && (
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                zIndex: 10,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center', // Added to horizontally align the dialog
-                            }}
-                        >
+                        <div style={playerSelectionOverlayStyle}>
                             {/* Player Selection Dialog */}
-                            <FormDialog
+                            <PlayerSelectionDialog
                                 isOpen={dialogOpen}
                                 playerOptions={playerOptions}
                                 closeDialog={handleCloseDialog}

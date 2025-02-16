@@ -48,6 +48,7 @@
     "devDependencies": {
         "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-prettier": "^5.2.3",
+        "eslint-plugin-react-hooks": "^4.6.2",
         "gh-pages": "^6.3.0",
         "prettier": "^3.4.2",
         "semantic-ui-react": "^0.88.1",
@@ -59,7 +60,8 @@
         ],
         "plugins": [
             "import",
-            "prettier"
+            "prettier",
+            "react-hooks"
         ],
         "rules": {
             "prettier/prettier": "error",
@@ -89,10 +91,12 @@
             "unicorn/filename-case": [
                 "off"
             ],
-            "react/prop-types": "off",
             "unicorn/prevent-abbreviations": "off",
             "unicorn/expiring-todo-comments": "off",
+            "react/prop-types": "off",
             "react/jsx-no-useless-fragment": "off",
+            "react/boolean-prop-naming": "off",
+            "react-hooks/exhaustive-deps": "error",
             "curly": "off",
             "unicorn/no-zero-fractions": "off",
             "max-depth": "off",
@@ -100,7 +104,6 @@
             "max-params": "off",
             "capitalized-comments": "off",
             "object-shorthand": "off",
-            "react/boolean-prop-naming": "off",
             "@typescript-eslint/naming-convention": "off",
             "@typescript-eslint/consistent-type-assertions": "off",
             "@typescript-eslint/indent": "off",

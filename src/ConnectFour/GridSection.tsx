@@ -1,8 +1,10 @@
 import React from 'react';
 
+import EmptyCellTransparent from './Icons/emptyCellTransparent.png';
 import EmptyCell from './Icons/emptyCell.png';
 import EmptyCellGreen from './Icons/emptyCellGreen.png';
 import { type Player } from './ConnectFour.tsx';
+import { mainBgColor } from 'src/Root.tsx';
 
 export enum Status {
     Empty,
@@ -33,64 +35,87 @@ export type IPlayerIcons = {
     winCell: string;
 };
 
-export const GridSection: React.FunctionComponent<IGridSectionProps> = (properties) => {
+export const GridSection: React.FunctionComponent<IGridSectionProps> = (props) => {
     const getGridImage = (): string => {
-        switch (properties.status) {
+        switch (props.status) {
             case Status.Empty:
             case Status.Playable: {
-                return properties.columnIsMouseover && properties.y === 0 ? EmptyCellGreen : EmptyCell;
+                return props.columnIsMouseover && props.y === 0 ? EmptyCellGreen : EmptyCellTransparent;
             }
 
             case Status.Player1Owned: {
-                const player = properties.players.find((p) => p.id === 1) ?? properties.players[0];
+                const player = props.players.find((p) => p.id === 1) ?? props.players[0];
                 if (!player.options) {
-                    return EmptyCell;
+                    return EmptyCellTransparent;
                 }
 
-                return properties.winningCell ? player.options?.wincell : player.options?.normalCell;
+                return props.winningCell ? player.options.wincell : player.options.normalCell;
             }
 
             case Status.Player2Owned: {
-                const player = properties.players.find((p) => p.id === 2) ?? properties.players[0];
+                const player = props.players.find((p) => p.id === 2) ?? props.players[0];
                 if (!player.options) {
-                    return EmptyCell;
+                    return EmptyCellTransparent;
                 }
 
-                return properties.winningCell ? player.options?.wincell : player.options?.normalCell;
+                return props.winningCell ? player.options.wincell : player.options.normalCell;
             }
         }
     };
 
     const onMouseOver = () => {
-        if (!properties.disabled) {
-            properties.setMouseoverColumn(properties.x);
+        if (!props.disabled) {
+            props.setMouseoverColumn(props.x);
         }
     };
 
     const handleOnMouseLeave = () => {
-        if (!properties.disabled) {
-            properties.setMouseoverColumn(-1);
+        if (!props.disabled) {
+            props.setMouseoverColumn(-1);
         }
     };
 
     return (
         <div
-            id={`${properties.y}, ${properties.x}`}
+            id={`${props.y}, ${props.x}`}
             onClick={
-                properties.disabled
+                props.disabled
                     ? undefined
                     : (event) => {
-                          properties.onClick(event, properties.x, properties.y);
+                          props.onClick(event, props.x, props.y);
                       }
             }
             onMouseOver={onMouseOver}
             onMouseLeave={handleOnMouseLeave}
             style={{
-                maxWidth: '15.5vh',
-                maxHeight: '15.5 vh',
+                maxWidth: '14vh',
+                maxHeight: '14 vh',
+                position: 'relative',
             }}
         >
-            <img src={getGridImage()} alt={'X'} width={'100%'} height={'100%'}></img>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '5.5%',
+                    left: '4.7%',
+                    width: '90%',
+                    height: '90%',
+                    backgroundColor: 'rgb(39, 39, 39)',
+                    boxShadow: 'inset 10px 10px 15px black', // Updated to inset shadow
+                    borderRadius: '50%',
+                    zIndex: 1,
+                }}
+            ></div>
+            <img
+                src={getGridImage()}
+                alt={'X'}
+                width={'100%'}
+                height={'100%'}
+                style={{
+                    position: 'relative',
+                    zIndex: 2,
+                }}
+            ></img>
         </div>
     );
 };
