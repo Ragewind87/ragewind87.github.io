@@ -67,13 +67,38 @@ const rightPanelStyle: React.CSSProperties = {
     flexGrow: 1,
     minWidth: '18vw',
     maxWidth: '18vw',
+    height: '100%',
+    gap: '10px',
+    margin: '15px 15px 0px 0px',
+};
+
+const rightPanelSectionStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
     backgroundColor: navPanelColor,
     alignContent: 'center',
+    maxHeight: '50%',
     gap: '10px',
     padding: '15px',
-    margin: '15px 15px 0px 0px',
     border: '2px solid black',
     borderRadius: '5px',
+};
+
+const listHeadingStyle: React.CSSProperties = {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    textShadow: '1px 1px 2px black',
+};
+
+const listItemStyle: React.CSSProperties = {
+    lineHeight: '1.2',
+    marginTop: '12px',
+};
+
+const listStyle: React.CSSProperties = {
+    fontSize: '14px',
+    textAlign: 'left',
 };
 
 export const Root: React.FunctionComponent = () => {
@@ -86,31 +111,59 @@ export const Root: React.FunctionComponent = () => {
                 color: 'white',
             }}
         >
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    height: '95vh',
+                }}
+            >
                 <Outlet />
 
                 {/* Right Panel */}
                 <div style={rightPanelStyle}>
-                    <Link to={'/'}>
-                        <Button className={styles.button} appearance="secondary">
-                            <div className={styles.icon}>
-                                <HouseIcon fill="white" width="25px" />
-                            </div>
-                            <span className={styles.linkText}>Welcome Page</span>
-                        </Button>
-                    </Link>
-                    <Link to={'ConnectFour'}>
-                        <Button className={styles.button}>
-                            <Circle20Filled fill="white" width="25px" className={styles.icon} />
-                            <span className={styles.linkText}>Connect Four</span>
-                        </Button>
-                    </Link>
-                    <Link to={'Chess'}>
-                        <Button className={styles.button}>
-                            <img src={whiteKnight} className={styles.icon} style={{ width: '30px', height: '30px' }} />
-                            <span className={styles.linkText}>TSP Chess</span>
-                        </Button>
-                    </Link>
+                    <div style={rightPanelSectionStyle}>
+                        <Link to={'/'}>
+                            <Button className={styles.button} appearance="secondary">
+                                <div className={styles.icon}>
+                                    <HouseIcon fill="white" width="25px" />
+                                </div>
+                                <span className={styles.linkText}>Welcome Page</span>
+                            </Button>
+                        </Link>
+                        <Link to={'ConnectFour'}>
+                            <Button className={styles.button}>
+                                <Circle20Filled fill="white" width="25px" className={styles.icon} />
+                                <span className={styles.linkText}>Connect Four</span>
+                            </Button>
+                        </Link>
+                        <Link to={'Chess'}>
+                            <Button className={styles.button}>
+                                <img
+                                    src={whiteKnight}
+                                    className={styles.icon}
+                                    style={{ width: '30px', height: '30px' }}
+                                />
+                                <span className={styles.linkText}>TSP Chess</span>
+                            </Button>
+                        </Link>
+                    </div>
+                    <div style={{ ...rightPanelSectionStyle, paddingLeft: '0px' }}>
+                        <h2 style={listHeadingStyle}>Todo List:</h2>
+                        <ul style={listStyle}>
+                            <li style={{ ...listItemStyle, marginTop: '0px' }}>
+                                Add LinkedIn section to welcome page right panel 1
+                            </li>
+                            <li style={listItemStyle}>Add resume link section, possible a viewer</li>
+                            <li style={listItemStyle}>Possibly add "confirm switch" dialog between games</li>
+                        </ul>
+                        <h2 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h2>
+                        <ul style={listStyle}>
+                            <li style={{ ...listItemStyle, marginTop: '0px' }}>Add async network gameplay</li>
+                            <li style={listItemStyle}>Possibly add Auth0 login</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
