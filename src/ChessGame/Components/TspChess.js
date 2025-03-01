@@ -1505,7 +1505,7 @@ const TspChess = (props) => {
                     </div>
                 </div>
                 <div className="row" style={{width: 'fit-content', marginTop: '30px'}} >
-                    <div style={{padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                    <div style={{padding: '0px', display: 'flex', flexDirection: 'column', gap: '10px'}}>
                         <PlayerBox
                             isTurn =            {currentPlayer === Players.BLACK}
                             triggerGameOver =   {endGame}
@@ -1516,7 +1516,6 @@ const TspChess = (props) => {
                             isEndGame =         {boardState[7][8].isGameOver}
                             theme =             {getTheme}
                         />
-                        <div style={{flexGrow: 1}}></div>
                         <PlayerBox
                             isTurn =            {currentPlayer === Players.WHITE}
                             triggerGameOver =   {endGame}

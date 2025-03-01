@@ -86,8 +86,8 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                         React, and this project helps sharpen my skills.
                     </div>
                     <div style={{ marginTop: '25px' }}>
-                        The artwork for this app was created by a talented friend. For inquiries, contact me
-                        at&nbsp;&nbsp;
+                        The artwork for this app was created by a talented friend. <br />
+                        For inquiries, contact me at&nbsp;
                         <span>
                             <a
                                 href={`mailto:${contactEmail}`}

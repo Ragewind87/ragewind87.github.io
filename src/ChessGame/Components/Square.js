@@ -139,7 +139,7 @@ function determineBG(props){
         if ( props.defaultColor === '#d9a989' )
             return 'rgb(180 208 188)';
         else
-            return 'rgb(124 190 144)';
+            return 'rgb(132 192 150)';
     }
     // if ( props.canCastle ){         // highlights rooks in yellow that will be moved
     //     return '#fff18e';           // by the current castling move

@@ -97,7 +97,7 @@ const listItemStyle: React.CSSProperties = {
 };
 
 const listStyle: React.CSSProperties = {
-    fontSize: '14px',
+    fontSize: '16px',
     textAlign: 'left',
 };
 
@@ -116,7 +116,7 @@ export const Root: React.FunctionComponent = () => {
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    height: '95vh',
+                    height: '96vh',
                 }}
             >
                 <Outlet />
