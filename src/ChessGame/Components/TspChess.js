@@ -34,6 +34,8 @@ const Directions = {
     UP_LEFT: 7,
 };
 
+const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
+
 const TspChess = (props) => {
 
     // REMEMBER: These states CANNOT be changed without using the corresponding SET methods.
@@ -1498,9 +1500,13 @@ const TspChess = (props) => {
                             {"Joe Kurtz  |  Nick McCarter  |  Justin Martin  |  Caleb Melnychenko".split('|').join('\u00A0\|\u00A0')}
                         </div>
                         <div className="SubTitle2" style={{marginTop: '10px'}} >
-                            {"Built by team \"Pawn Stars\" of MTU's \"Team Software Project\" in 2019"}
+                            {"Built by team \"Pawn Stars\" of MTU's \"Team Software Project\" in 2019."}
                             <br/>
-                            {"Preserved and maintained by Joe Kurtz"}
+                            {"Preserved and maintained by "}
+                            <a href={linkedInAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
+                                Joe Kurtz
+                            </a>
+                            {" as a historical archive of my student work."}
                         </div>
                     </div>
                 </div>
