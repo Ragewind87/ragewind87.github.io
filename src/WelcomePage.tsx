@@ -4,6 +4,7 @@ import * as React from 'react';
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
 import { mainBgColor, navPanelColor } from './Root';
 import SelfPortrait from './Images/joehc4.jpg';
+import { Divider } from '@fluentui/react-components';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
@@ -19,12 +20,14 @@ const footerStyle: React.CSSProperties = {
     lineHeight: '18px',
 };
 
+const cardColor = 'rgb(74, 74, 74)';
+
 const cardStyle: React.CSSProperties = {
     border: '2px solid black',
     borderRadius: '7px',
     alignContent: 'center',
     // marginTop: '15px',
-    backgroundColor: 'rgb(74, 74, 74)',
+    backgroundColor: cardColor,
     // minWidth: '50.5vw',
     // maxWidth: '50.5vw',
     width: '100%',
@@ -63,20 +66,25 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
     const leftPanelStyle: React.CSSProperties = {
         minWidth: '22vw',
         maxWidth: '22vw',
-        backgroundColor: mainBgColor,
+
+        padding: '15px',
+        backgroundColor: navPanelColor,
+        border: '2px solid black',
+        borderRadius: '5px',
+        // backgroundColor: cardColor
     };
 
     return (
-        <Stack horizontal={true} style={{ flexGrow: 1 }}>
+        <Stack horizontal={true} style={{ flexGrow: 1, gap: '15px' }}>
             {/* Left Panel */}
             <div style={leftPanelStyle}>
-                <div
+                {/* <div
                     style={{
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         height: '25vh',
-                        marginLeft: '-15px',
+                        // marginLeft: '-15px',
                     }}
                 >
                     <img
@@ -85,48 +93,64 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                         style={{
                             maxWidth: '100%',
                             maxHeight: '100%',
-                            borderRadius: '10%',
-                            border: '3px solid black',
+                            borderRadius: '8px',
+                            border: '2px solid black',
                             // boxShadow: '5px 5px 15px black',
                         }}
                     />
-                </div>
+                </div> */}
                 <div style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
                     <div
                         style={{
-                            border: '3px solid black',
-                            borderRadius: '5px',
-                            padding: '5px 15px 15px 15px',
-                            width: '70%',
+                            // border: '1px solid black',
+                            // borderRadius: '5px',
+                            padding: '15px',
+                            width: '100%',
                             margin: 'auto',
+                            // backgroundColor: cardColor,
                         }}
                     >
-                        <div style={{ fontSize: '24px', fontWeight: 'bold', textShadow: '2px 2px 3px black' }}>
-                            Joseph Kurtz
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <img
+                                src={SelfPortrait}
+                                alt="Self Portrait"
+                                style={{
+                                    // maxWidth: '100%',
+                                    maxHeight: '200px',
+                                    borderRadius: '8px',
+                                    border: '1px solid black',
+                                    marginBottom: '10px',
+                                }}
+                            />
+                            <div style={{ fontSize: '24px', fontWeight: 'bold', textShadow: '2px 2px 3px black' }}>
+                                Joseph Kurtz
+                            </div>
+                            <div style={{ fontSize: '18px', marginTop: '2px' }}>Full-Stack Developer</div>
+                            <div style={{ fontSize: '16px', lineHeight: '0.5' }}>4 years experience</div>
+                            <div style={{ fontSize: '18px', marginTop: '15px' }}>
+                                Employed at{' '}
+                                <a href={politeMailAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
+                                    PoliteMail Software
+                                </a>
+                            </div>
                         </div>
-                        <div style={{ fontSize: '18px' }}>Full-Stack Developer</div>
-                        <div style={{ fontSize: '16px', lineHeight: '1.0' }}>4 years experience</div>
                     </div>
-                    <div style={{ fontSize: '18px', marginTop: '15px' }}>
-                        Employed at{' '}
-                        <a href={politeMailAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
-                            PoliteMail Software
-                        </a>
-                    </div>
-                    <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                    <Divider appearance="subtle" color="grey" />
+                    {/* <hr style={{ border: '0.5px solid white', margin: '20px 0' }} /> */}
+                    <div style={{ marginTop: '10px', fontSize: '22px' }}>
                         <strong>Skills:</strong>
-                        <ul style={{ listStyleType: 'disc', textAlign: 'left' }}>
+                        <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
                             <li>React/TS</li>
                             <li>C# OData WebAPI</li>
                             <li>SQL Server</li>
                             <li>JavaScript</li>
                         </ul>
                     </div>
-                    <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                    <div style={{ marginTop: '10px', fontSize: '22px' }}>
                         <strong>Interests:</strong>
-                        <ul style={{ listStyleType: 'disc', textAlign: 'left' }}>
+                        <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
                             <li>Programming</li>
-                            <li>Video games</li>
+                            <li>PC Gaming</li>
                             <li>Mountain Biking</li>
                             <li>Running</li>
                         </ul>
