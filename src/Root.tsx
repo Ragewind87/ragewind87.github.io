@@ -157,7 +157,7 @@ export const Root: React.FunctionComponent = () => {
                             <li style={{ ...listItemStyle, marginTop: '0px', textDecoration: 'line-through' }}>
                                 Add LinkedIn section to Welcome Page right panel
                             </li>
-                            <li style={{ ...listItemStyle, textDecoration: 'line-through' }}>
+                            <li style={listItemStyle}>
                                 Add clickable resume section that allows viewing and downloading
                             </li>
                             <li style={listItemStyle}>Possibly add "confirm switch" dialog between games?</li>

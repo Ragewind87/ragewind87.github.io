@@ -4,7 +4,7 @@ import * as React from 'react';
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
 import { mainBgColor, navPanelColor } from './Root';
 import SelfPortrait from './Images/joehc4.jpg';
-import { Divider } from '@fluentui/react-components';
+import { Open20Regular } from '@fluentui/react-icons';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
@@ -26,14 +26,9 @@ const cardStyle: React.CSSProperties = {
     border: '2px solid black',
     borderRadius: '7px',
     alignContent: 'center',
-    // marginTop: '15px',
     backgroundColor: cardColor,
-    // minWidth: '50.5vw',
-    // maxWidth: '50.5vw',
     width: '100%',
     height: '100%',
-    // minHeight: '91.5vh',
-    // maxHeight: '91.5vh',
     boxShadow: '10px 10px 15px black',
     zIndex: 5,
     display: 'flex',
@@ -68,62 +63,38 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
     const leftPanelStyle: React.CSSProperties = {
         minWidth: '22vw',
         maxWidth: '22vw',
-
         padding: '15px',
         backgroundColor: navPanelColor,
         border: '2px solid black',
         borderRadius: '5px',
-        // backgroundColor: cardColor
     };
 
     return (
         <Stack horizontal={true} style={{ flexGrow: 1, gap: '15px' }}>
             {/* Left Panel */}
             <div style={leftPanelStyle}>
-                {/* <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: '25vh',
-                        // marginLeft: '-15px',
-                    }}
-                >
-                    <img
-                        src={SelfPortrait}
-                        alt="Self Portrait"
-                        style={{
-                            maxWidth: '100%',
-                            maxHeight: '100%',
-                            borderRadius: '8px',
-                            border: '2px solid black',
-                            // boxShadow: '5px 5px 15px black',
-                        }}
-                    />
-                </div> */}
                 <div style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
                     <div
                         style={{
-                            // border: '1px solid black',
-                            // borderRadius: '5px',
                             padding: '15px',
                             width: '100%',
                             margin: 'auto',
-                            // backgroundColor: cardColor,
                         }}
                     >
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <img
-                                src={SelfPortrait}
-                                alt="Self Portrait"
-                                style={{
-                                    // maxWidth: '100%',
-                                    maxHeight: '200px',
-                                    borderRadius: '8px',
-                                    border: '1px solid black',
-                                    marginBottom: '10px',
-                                }}
-                            />
+                            <a href={linkedInAddress} target="_blank" rel="noopener noreferrer">
+                                <img
+                                    src={SelfPortrait}
+                                    alt="Self Portrait"
+                                    style={{
+                                        // maxWidth: '100%',
+                                        maxHeight: '200px',
+                                        borderRadius: '8px',
+                                        border: '1px solid black',
+                                        marginBottom: '10px',
+                                    }}
+                                />
+                            </a>
                             <div style={{ fontSize: '24px', fontWeight: 'bold', textShadow: '2px 2px 3px black' }}>
                                 Joseph Kurtz
                             </div>
@@ -134,6 +105,10 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                                 <a href={politeMailAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
                                     PoliteMail Software
                                 </a>
+                            </div>
+                            <div style={{ fontSize: '16px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+                                Resume (coming soon)
+                                <Open20Regular style={{ marginLeft: '5px' }} />
                             </div>
                         </div>
                     </div>
@@ -152,13 +127,12 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                             </li>
                             <li>.NET OData WebAPI</li>
                             <li>SQL Server</li>
-                            <li>Javascript</li>
-                            <li>CSS</li>
+                            <li>Javascript / CSS</li>
                             <li>Git</li>
                         </ul>
                     </div>
                     <div style={{ marginTop: '10px', fontSize: '22px' }}>
-                        <strong>Interests:</strong>
+                        <strong>Interests</strong>
                         <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
                             <li>Programming</li>
                             <li>PC Gaming</li>
@@ -180,15 +154,11 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                 </div>
                 <div style={footerStyle}>
                     <div>
-                        This site was built by{' '}
-                        <a href={linkedInAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
-                            Joseph Kurtz
-                        </a>
-                        , a full-stack developer with a focus on front-end development. <br />I enjoy working with
-                        React, and this project helps sharpen my skills.
+                        I made this site to help sharpen my skills. I enjoy working with React and TypeScript. <br />
+                        Explore the games and have fun!
                     </div>
                     <div style={{ marginTop: '25px' }}>
-                        The artwork for this app was created by a talented friend. <br />
+                        The artwork for this site was created by a talented friend. <br />
                         For inquiries, contact me at&nbsp;
                         <span>
                             <a
