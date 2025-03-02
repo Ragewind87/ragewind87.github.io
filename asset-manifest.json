@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7501fe4f.css",
-    "main.js": "/static/js/main.088f781f.js",
+    "main.js": "/static/js/main.0061d73b.js",
     "static/media/whiteQueen3.png": "/static/media/whiteQueen3.0b31f3b6ae1415c213e9.png",
     "static/media/whiteKing3.png": "/static/media/whiteKing3.b00b9dab154ea4b31a81.png",
     "static/media/whitePawn3.png": "/static/media/whitePawn3.461ded9b3ab33b3684b6.png",
@@ -27,6 +27,7 @@
     "static/media/whiteKnight3.png": "/static/media/whiteKnight3.c07b878efcb9074bef66.png",
     "static/media/duckIcon.png": "/static/media/duckIcon.42e8036b402d7f29c606.png",
     "static/media/skyeBg.png": "/static/media/skyeBg.9782bcf5faab7e9b630f.png",
+    "static/media/joehc4.jpg": "/static/media/joehc4.d43bac988d74b9644bc4.jpg",
     "static/media/blackPawn3.png": "/static/media/blackPawn3.5a48eab2d1aca0eae3b9.png",
     "static/media/blackPawnFaded3.png": "/static/media/blackPawnFaded3.836d1651b46760385c18.png",
     "static/media/whiteBishop3.png": "/static/media/whiteBishop3.09664f81f4a61d28bae2.png",
@@ -64,10 +65,10 @@
     "static/media/emptyCellTransparent.png": "/static/media/emptyCellTransparent.77187cfba340d838a263.png",
     "index.html": "/index.html",
     "main.7501fe4f.css.map": "/static/css/main.7501fe4f.css.map",
-    "main.088f781f.js.map": "/static/js/main.088f781f.js.map"
+    "main.0061d73b.js.map": "/static/js/main.0061d73b.js.map"
   },
   "entrypoints": [
     "static/css/main.7501fe4f.css",
-    "static/js/main.088f781f.js"
+    "static/js/main.0061d73b.js"
   ]
 }
