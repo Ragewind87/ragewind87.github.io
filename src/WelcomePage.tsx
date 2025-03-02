@@ -7,6 +7,7 @@ import SelfPortrait from './Images/joehc4.jpg';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
+const politeMailAddress = 'https://politemail.com/';
 
 const footerStyle: React.CSSProperties = {
     width: '100%',
@@ -69,7 +70,15 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
         <Stack horizontal={true} style={{ flexGrow: 1 }}>
             {/* Left Panel */}
             <div style={leftPanelStyle}>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '33vh' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '25vh',
+                        marginLeft: '-15px',
+                    }}
+                >
                     <img
                         src={SelfPortrait}
                         alt="Self Portrait"
@@ -77,10 +86,51 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                             maxWidth: '100%',
                             maxHeight: '100%',
                             borderRadius: '10%',
-                            border: '2px solid black',
-                            boxShadow: '5px 5px 15px black',
+                            border: '3px solid black',
+                            // boxShadow: '5px 5px 15px black',
                         }}
                     />
+                </div>
+                <div style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
+                    <div
+                        style={{
+                            border: '3px solid black',
+                            borderRadius: '5px',
+                            padding: '5px 15px 15px 15px',
+                            width: '70%',
+                            margin: 'auto',
+                        }}
+                    >
+                        <div style={{ fontSize: '24px', fontWeight: 'bold', textShadow: '2px 2px 3px black' }}>
+                            Joseph Kurtz
+                        </div>
+                        <div style={{ fontSize: '18px' }}>Full-Stack Developer</div>
+                        <div style={{ fontSize: '16px', lineHeight: '1.0' }}>4 years experience</div>
+                    </div>
+                    <div style={{ fontSize: '18px', marginTop: '15px' }}>
+                        Employed at{' '}
+                        <a href={politeMailAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
+                            PoliteMail Software
+                        </a>
+                    </div>
+                    <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                        <strong>Skills:</strong>
+                        <ul style={{ listStyleType: 'disc', textAlign: 'left' }}>
+                            <li>React/TS</li>
+                            <li>C# OData WebAPI</li>
+                            <li>SQL Server</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                        <strong>Interests:</strong>
+                        <ul style={{ listStyleType: 'disc', textAlign: 'left' }}>
+                            <li>Programming</li>
+                            <li>Video games</li>
+                            <li>Mountain Biking</li>
+                            <li>Running</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
