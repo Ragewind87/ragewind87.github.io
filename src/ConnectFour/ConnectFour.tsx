@@ -195,7 +195,8 @@ const rootContainerStyle: React.CSSProperties = {
     flexDirection: 'row',
     flexGrow: 1,
     justifyContent: 'center',
-    margin: '15px 15px 0px 0px',
+    gap: '20px',
+    // margin: '15px 15px 0px 0px',
 };
 
 export const ConnectFour: React.FunctionComponent = (properties) => {
@@ -564,7 +565,7 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         flexGrow: 1,
         minWidth: '18vw',
         maxWidth: '18vw',
-        margin: '0px 5px 0px 15px',
+        // marginRight: '15px',
         border: `3px solid black`,
         backgroundImage: gameStarted ? getLeftPanelBgImage() : undefined,
         backgroundColor: gameStarted ? navPanelColor : 'black',

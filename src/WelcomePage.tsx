@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
 import { mainBgColor, navPanelColor } from './Root';
+import SelfPortrait from './Images/joehc4.jpg';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
@@ -21,12 +22,14 @@ const cardStyle: React.CSSProperties = {
     border: '2px solid black',
     borderRadius: '7px',
     alignContent: 'center',
-    marginTop: '15px',
+    // marginTop: '15px',
     backgroundColor: 'rgb(74, 74, 74)',
-    minWidth: '50.5vw',
-    maxWidth: '50.5vw',
-    minHeight: '91.5vh',
-    maxHeight: '91.5vh',
+    // minWidth: '50.5vw',
+    // maxWidth: '50.5vw',
+    width: '100%',
+    height: '100%',
+    // minHeight: '91.5vh',
+    // maxHeight: '91.5vh',
     boxShadow: '10px 10px 15px black',
     zIndex: 5,
     display: 'flex',
@@ -63,12 +66,26 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
     };
 
     return (
-        <Stack horizontal={true} style={{ justifyContent: 'center', flexGrow: 1 }}>
+        <Stack horizontal={true} style={{ flexGrow: 1 }}>
             {/* Left Panel */}
-            <div style={leftPanelStyle}></div>
+            <div style={leftPanelStyle}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '33vh' }}>
+                    <img
+                        src={SelfPortrait}
+                        alt="Self Portrait"
+                        style={{
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            borderRadius: '10%',
+                            border: '2px solid black',
+                            boxShadow: '5px 5px 15px black',
+                        }}
+                    />
+                </div>
+            </div>
 
             {/* Main Panel */}
-            <div className="main" style={cardStyle}>
+            <div style={cardStyle}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 'auto' }}>
                     <div style={headerTextStyle}>
                         <span>{'Welcome to Cordy Game Hub!'}</span>

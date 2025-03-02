@@ -69,7 +69,7 @@ const rightPanelStyle: React.CSSProperties = {
     maxWidth: '18vw',
     height: '100%',
     gap: '10px',
-    margin: '15px 15px 0px 0px',
+    // margin: '15px 15px 0px 0px',
 };
 
 const rightPanelSectionStyle: React.CSSProperties = {
@@ -109,6 +109,7 @@ export const Root: React.FunctionComponent = () => {
                 backgroundColor: mainBgColor,
                 height: '100%',
                 color: 'white',
+                padding: '15px',
             }}
         >
             <div
@@ -117,6 +118,7 @@ export const Root: React.FunctionComponent = () => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     height: '96vh',
+                    gap: '20px',
                 }}
             >
                 <Outlet />
