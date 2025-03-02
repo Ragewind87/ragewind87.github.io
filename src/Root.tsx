@@ -34,7 +34,7 @@ export async function loader() {
 const useStyles = makeStyles({
     button: {
         height: '45px',
-        border: '1.5px solid black',
+        border: '2px solid black',
         borderRadius: '5px',
         width: '100%',
         backgroundColor: 'rgb(100, 100, 100)',
@@ -78,7 +78,7 @@ const rightPanelSectionStyle: React.CSSProperties = {
     flexGrow: 1,
     backgroundColor: navPanelColor,
     alignContent: 'center',
-    maxHeight: '50%',
+
     gap: '10px',
     padding: '15px',
     border: '2px solid black',
@@ -125,7 +125,7 @@ export const Root: React.FunctionComponent = () => {
 
                 {/* Right Panel */}
                 <div style={rightPanelStyle}>
-                    <div style={rightPanelSectionStyle}>
+                    <div style={{ ...rightPanelSectionStyle, maxHeight: '40%' }}>
                         <Link to={'/'}>
                             <Button className={styles.button} appearance="secondary">
                                 <div className={styles.icon}>
@@ -151,14 +151,16 @@ export const Root: React.FunctionComponent = () => {
                             </Button>
                         </Link>
                     </div>
-                    <div style={{ ...rightPanelSectionStyle, paddingLeft: '0px' }}>
-                        <h2 style={listHeadingStyle}>Todo List:</h2>
+                    <div style={{ ...rightPanelSectionStyle, paddingLeft: '0px', maxHeight: '60%' }}>
+                        <h2 style={listHeadingStyle}>Site Todo List:</h2>
                         <ul style={listStyle}>
-                            <li style={{ ...listItemStyle, marginTop: '0px' }}>
-                                Add LinkedIn section to welcome page right panel 1
+                            <li style={{ ...listItemStyle, marginTop: '0px', textDecoration: 'line-through' }}>
+                                Add LinkedIn section to Welcome Page right panel
                             </li>
-                            <li style={listItemStyle}>Add resume link section, possible a viewer</li>
-                            <li style={listItemStyle}>Possibly add "confirm switch" dialog between games</li>
+                            <li style={{ ...listItemStyle, textDecoration: 'line-through' }}>
+                                Add clickable resume section that allows viewing and downloading
+                            </li>
+                            <li style={listItemStyle}>Possibly add "confirm switch" dialog between games?</li>
                         </ul>
                         <h2 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h2>
                         <ul style={listStyle}>

@@ -62,6 +62,8 @@ const imageStyle: React.CSSProperties = {
     padding: '20px',
 };
 
+const skillStyle: React.CSSProperties = { fontStyle: 'italic', fontSize: '12px', color: 'rgb(210, 180, 140)' };
+
 export const WelcomePage: React.FunctionComponent = (properties) => {
     const leftPanelStyle: React.CSSProperties = {
         minWidth: '22vw',
@@ -135,15 +137,24 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                             </div>
                         </div>
                     </div>
-                    <Divider appearance="subtle" color="grey" />
-                    {/* <hr style={{ border: '0.5px solid white', margin: '20px 0' }} /> */}
-                    <div style={{ marginTop: '10px', fontSize: '22px' }}>
-                        <strong>Skills:</strong>
+                    <hr style={{ borderTop: '0.2px solid white', margin: '20px 0px 25px 0px' }} />
+                    <div style={{ fontSize: '22px' }}>
+                        <strong>Skills</strong>
                         <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
-                            <li>React/TS</li>
-                            <li>C# OData WebAPI</li>
+                            <li>
+                                React&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
+                            </li>
+                            <li>
+                                TypeScript&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
+                            </li>
+                            <li>
+                                C#&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
+                            </li>
+                            <li>.NET OData WebAPI</li>
                             <li>SQL Server</li>
-                            <li>JavaScript</li>
+                            <li>Javascript</li>
+                            <li>CSS</li>
+                            <li>Git</li>
                         </ul>
                     </div>
                     <div style={{ marginTop: '10px', fontSize: '22px' }}>
