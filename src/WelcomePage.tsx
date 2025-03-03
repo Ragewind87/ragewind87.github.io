@@ -100,10 +100,10 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
                             </div>
                             <div style={{ fontSize: '18px', marginTop: '2px' }}>Full-Stack Developer</div>
                             <div style={{ fontSize: '16px', lineHeight: '0.5' }}>4 years experience</div>
-                            <div style={{ fontSize: '18px', marginTop: '15px' }}>
-                                Employed at{' '}
+                            <div style={{ fontSize: '16px', marginTop: '15px' }}>
+                                Software Engineer at{' '}
                                 <a href={politeMailAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
-                                    PoliteMail Software
+                                    PoliteMail
                                 </a>
                             </div>
                             <div style={{ fontSize: '16px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>

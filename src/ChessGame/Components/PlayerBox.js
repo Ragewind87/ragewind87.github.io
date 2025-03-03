@@ -6,7 +6,7 @@ import {Themes} from "./Square"
 
 const PlayerBox = (props) => {
     return (
-        <div className={determineClassName()}>
+        <div className={determineClassName()} style={{maxWidth: '16vw'}}>
             <div className='col'>
                 <div className={"row"}>
                     <div className={"col-sm-6 text-left"}>
