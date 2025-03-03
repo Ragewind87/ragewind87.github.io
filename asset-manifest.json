@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7501fe4f.css",
-    "main.js": "/static/js/main.0061d73b.js",
+    "main.css": "/static/css/main.b97cca85.css",
+    "main.js": "/static/js/main.df425cc8.js",
     "static/media/whiteQueen3.png": "/static/media/whiteQueen3.0b31f3b6ae1415c213e9.png",
     "static/media/whiteKing3.png": "/static/media/whiteKing3.b00b9dab154ea4b31a81.png",
     "static/media/whitePawn3.png": "/static/media/whitePawn3.461ded9b3ab33b3684b6.png",
@@ -19,6 +19,7 @@
     "static/media/skyeWindow.png": "/static/media/skyeWindow.2987d2ede49dda3a23a4.png",
     "static/media/skyeWindowWin.png": "/static/media/skyeWindowWin.d322a47641338a81c3d2.png",
     "static/media/skyeIcon.png": "/static/media/skyeIcon.893ef422bdae3657d04a.png",
+    "static/media/jk_resume_v19.pdf": "/static/media/jk_resume_v19.cc2a5e39643a309eb8d9.pdf",
     "static/media/biskyBg.png": "/static/media/biskyBg.e53cfde593f5991c093e.png",
     "static/media/blackBishop1.png": "/static/media/blackBishop1.7797752756925ac6f260.png",
     "static/media/duckWindow.png": "/static/media/duckWindow.59843296aeb9f7e69835.png",
@@ -64,11 +65,11 @@
     "static/media/cordyTank.png": "/static/media/cordyTank.593449ef9531b98ebd71.png",
     "static/media/emptyCellTransparent.png": "/static/media/emptyCellTransparent.77187cfba340d838a263.png",
     "index.html": "/index.html",
-    "main.7501fe4f.css.map": "/static/css/main.7501fe4f.css.map",
-    "main.0061d73b.js.map": "/static/js/main.0061d73b.js.map"
+    "main.b97cca85.css.map": "/static/css/main.b97cca85.css.map",
+    "main.df425cc8.js.map": "/static/js/main.df425cc8.js.map"
   },
   "entrypoints": [
-    "static/css/main.7501fe4f.css",
-    "static/js/main.0061d73b.js"
+    "static/css/main.b97cca85.css",
+    "static/js/main.df425cc8.js"
   ]
 }
