@@ -1,10 +1,12 @@
 import { Stack } from '@fluentui/react';
 import * as React from 'react';
-
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
 import { mainBgColor, navPanelColor } from './Root';
-import SelfPortrait from './Images/joehc4.jpg';
-import { Open20Regular } from '@fluentui/react-icons';
+import SelfPortrait from './Media/joehc4.jpg';
+import { Open24Regular } from '@fluentui/react-icons';
+import { Button } from '@fluentui/react-components';
+import { ResumeDialog } from './ResumeDialog';
+import jkResume from './Media/jk_resume_v19.pdf';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
@@ -59,7 +61,12 @@ const imageStyle: React.CSSProperties = {
 
 const skillStyle: React.CSSProperties = { fontStyle: 'italic', fontSize: '12px', color: 'rgb(210, 180, 140)' };
 
-export const WelcomePage: React.FunctionComponent = (properties) => {
+// interface IWelcomePageProps {
+//     setShowResumeDialog: React.Dispatch<React.SetStateAction<boolean>>;
+// }
+
+export const WelcomePage: React.FunctionComponent = () => {
+    const [showResumeDialog, setShowResumeDialog] = React.useState(false);
     const leftPanelStyle: React.CSSProperties = {
         minWidth: '22vw',
         maxWidth: '22vw',
@@ -69,108 +76,154 @@ export const WelcomePage: React.FunctionComponent = (properties) => {
         borderRadius: '5px',
     };
 
+    const onResumeClicked = () => {
+        setShowResumeDialog(true);
+    };
+
     return (
-        <Stack horizontal={true} style={{ flexGrow: 1, gap: '15px' }}>
-            {/* Left Panel */}
-            <div style={leftPanelStyle}>
-                <div style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
-                    <div
-                        style={{
-                            padding: '15px',
-                            width: '100%',
-                            margin: 'auto',
-                        }}
-                    >
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <a href={linkedInAddress} target="_blank" rel="noopener noreferrer">
-                                <img
-                                    src={SelfPortrait}
-                                    alt="Self Portrait"
-                                    style={{
-                                        // maxWidth: '100%',
-                                        maxHeight: '200px',
-                                        borderRadius: '8px',
-                                        border: '1px solid black',
-                                        marginBottom: '10px',
-                                    }}
-                                />
-                            </a>
-                            <div style={{ fontSize: '24px', fontWeight: 'bold', textShadow: '2px 2px 3px black' }}>
-                                Joseph Kurtz
-                            </div>
-                            <div style={{ fontSize: '18px', marginTop: '2px' }}>Full-Stack Developer</div>
-                            <div style={{ fontSize: '16px', lineHeight: '0.5' }}>4 years experience</div>
-                            <div style={{ fontSize: '16px', marginTop: '15px' }}>
-                                Software Engineer at{' '}
-                                <a href={politeMailAddress} style={{ color: 'lightblue', textDecoration: 'underline' }}>
-                                    PoliteMail
+        <>
+            <Stack horizontal={true} style={{ flexGrow: 1, gap: '15px' }}>
+                {/* Left Panel */}
+                <div style={leftPanelStyle}>
+                    <div style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
+                        <div
+                            style={{
+                                padding: '15px',
+                                width: '100%',
+                                margin: 'auto',
+                            }}
+                        >
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <a href={linkedInAddress} target="_blank" rel="noopener noreferrer">
+                                    <img
+                                        src={SelfPortrait}
+                                        alt="Self Portrait"
+                                        style={{
+                                            // maxWidth: '100%',
+                                            maxHeight: '200px',
+                                            borderRadius: '8px',
+                                            border: '1px solid black',
+                                            marginBottom: '10px',
+                                        }}
+                                    />
                                 </a>
-                            </div>
-                            <div style={{ fontSize: '16px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
-                                Resume (coming soon)
-                                <Open20Regular style={{ marginLeft: '5px' }} />
+                                <div style={{ fontSize: '24px', fontWeight: 'bold', textShadow: '2px 2px 3px black' }}>
+                                    Joseph Kurtz
+                                </div>
+                                <div style={{ fontSize: '18px', marginTop: '2px' }}>Full-Stack Developer</div>
+                                <div style={{ fontSize: '16px', lineHeight: '0.5' }}>4 years experience</div>
+                                <div style={{ fontSize: '16px', marginTop: '15px' }}>
+                                    Software Engineer at{' '}
+                                    <a
+                                        href={politeMailAddress}
+                                        style={{ color: 'lightblue', textDecoration: 'underline' }}
+                                    >
+                                        PoliteMail
+                                    </a>
+                                </div>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        justifyContent: 'center',
+                                        marginTop: '15px',
+                                    }}
+                                >
+                                    <Button
+                                        onClick={() => setShowResumeDialog(true)}
+                                        appearance="transparent"
+                                        style={{
+                                            marginLeft: '5px',
+                                            paddingRight: '20px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '10px',
+                                        }}
+                                        onMouseOver={(e) => {
+                                            e.currentTarget.style.color = 'lightblue';
+                                        }}
+                                        onMouseOut={(e) => {
+                                            e.currentTarget.style.color = 'white';
+                                        }}
+                                    >
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                            <span>View my Resume</span>
+                                            <Open24Regular />
+                                        </span>
+                                    </Button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <hr style={{ borderTop: '0.2px solid white', margin: '20px 0px 25px 0px' }} />
-                    <div style={{ fontSize: '22px' }}>
-                        <strong>Skills</strong>
-                        <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
-                            <li>
-                                React&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
-                            </li>
-                            <li>
-                                TypeScript&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
-                            </li>
-                            <li>
-                                C#&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
-                            </li>
-                            <li>.NET OData WebAPI</li>
-                            <li>SQL Server</li>
-                            <li>Javascript / CSS</li>
-                            <li>Git</li>
-                        </ul>
-                    </div>
-                    <div style={{ marginTop: '10px', fontSize: '22px' }}>
-                        <strong>Interests</strong>
-                        <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
-                            <li>Programming</li>
-                            <li>PC Gaming</li>
-                            <li>Mountain Biking</li>
-                            <li>Running</li>
-                        </ul>
+                        <hr style={{ borderTop: '0.2px solid white', margin: '20px 0px 25px 0px' }} />
+                        <div style={{ fontSize: '22px' }}>
+                            <strong>Skills</strong>
+                            <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
+                                <li>
+                                    React&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
+                                </li>
+                                <li>
+                                    TypeScript&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
+                                </li>
+                                <li>
+                                    C#&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
+                                </li>
+                                <li>.NET OData WebAPI</li>
+                                <li>SQL Server</li>
+                                <li>Javascript / CSS</li>
+                                <li>Git</li>
+                            </ul>
+                        </div>
+                        {/* <div style={{ marginTop: '10px', fontSize: '22px' }}>
+                  <strong>Interests</strong>
+                  <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
+                      <li>Programming</li>
+                      <li>PC Gaming</li>
+                      <li>Mountain Biking</li>
+                      <li>Running</li>
+                  </ul>
+              </div> */}
                     </div>
                 </div>
-            </div>
 
-            {/* Main Panel */}
-            <div style={cardStyle}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 'auto' }}>
-                    <div style={headerTextStyle}>
-                        <span>{'Welcome to Cordy Game Hub!'}</span>
-                        <span>{'ONWARD!'}</span>
+                {/* Main Panel */}
+                <div style={cardStyle}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 'auto' }}>
+                        <div style={headerTextStyle}>
+                            <span>{'Welcome to Cordy Game Hub!'}</span>
+                            <span>{'ONWARD!'}</span>
+                        </div>
+                        <img className="faint-glow" style={imageStyle} src={CordyTank} alt="Cordy Tank" />
                     </div>
-                    <img className="faint-glow" style={imageStyle} src={CordyTank} alt="Cordy Tank" />
+                    <div style={footerStyle}>
+                        <div>
+                            I made this site to help sharpen my skills. I enjoy working with React and TypeScript.{' '}
+                            <br />
+                            Explore the games and have fun!
+                        </div>
+                        <div style={{ marginTop: '25px' }}>
+                            The artwork for this site was created by a talented friend. <br />
+                            For inquiries, contact me at&nbsp;
+                            <span>
+                                <a
+                                    href={`mailto:${contactEmail}`}
+                                    style={{ color: 'lightblue', textDecoration: 'underline' }}
+                                >
+                                    {contactEmail}
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div style={footerStyle}>
-                    <div>
-                        I made this site to help sharpen my skills. I enjoy working with React and TypeScript. <br />
-                        Explore the games and have fun!
-                    </div>
-                    <div style={{ marginTop: '25px' }}>
-                        The artwork for this site was created by a talented friend. <br />
-                        For inquiries, contact me at&nbsp;
-                        <span>
-                            <a
-                                href={`mailto:${contactEmail}`}
-                                style={{ color: 'lightblue', textDecoration: 'underline' }}
-                            >
-                                {contactEmail}
-                            </a>
-                        </span>
-                    </div>
-                </div>
+            </Stack>
+            <div>
+                {showResumeDialog && (
+                    <ResumeDialog
+                        isOpen={showResumeDialog}
+                        setShowResumeDialog={setShowResumeDialog}
+                        pdfFile={jkResume}
+                    />
+                )}
             </div>
-        </Stack>
+        </>
     );
 };

@@ -2,10 +2,11 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { type IDropdownOption } from '@fluentui/react';
 import { Button, makeStyles } from '@fluentui/react-components';
-import { Circle20Filled } from '@fluentui/react-icons';
+import { Circle20Filled, Open24Regular } from '@fluentui/react-icons';
 import { HouseIcon } from './ConnectFour/Icons/HouseIcon.tsx';
 import whiteKnight from './ChessGame/Assets/whiteKnight.png';
-// import './Root.css';
+import { ResumeDialog } from './ResumeDialog.tsx';
+import jkResume from './Media/jk_resume_v19.pdf';
 
 export type PlayerOption = {
     id: string;
@@ -102,6 +103,7 @@ const listStyle: React.CSSProperties = {
 };
 
 export const Root: React.FunctionComponent = () => {
+    const [showResumeDialog, setShowResumeDialog] = React.useState(false);
     const styles = useStyles();
     return (
         <div
@@ -170,6 +172,9 @@ export const Root: React.FunctionComponent = () => {
                     </div>
                 </div>
             </div>
+            {/* {showResumeDialog && (
+                <ResumeDialog isOpen={showResumeDialog} setShowResumeDialog={setShowResumeDialog} pdfFile={jkResume} />
+            )} */}
         </div>
     );
 };
