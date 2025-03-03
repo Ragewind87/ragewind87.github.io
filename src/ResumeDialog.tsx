@@ -11,7 +11,6 @@ import {
 
 import { Dismiss20Regular } from '@fluentui/react-icons';
 import '@react-pdf-viewer/core/lib/styles/index.css';
-import { DialogContent } from '@fluentui/react';
 
 interface CustomZoomPlugin extends Plugin {
     zoomTo(scale: number | SpecialZoomLevel): void;
@@ -43,13 +42,43 @@ interface IResumeDialogProps {
     pdfFile: string;
 }
 
+enum ZoomDirection {
+    In,
+    Out,
+}
+
+const ZOOM_STEP = 0.2;
+
 export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResumeDialog, pdfFile }) => {
+    const [zoomLevel, setZoomLevel] = React.useState(1);
     const containerRef = React.useRef<HTMLDivElement>(null);
 
-    if (containerRef.current) {
-        const scaleFactor = 1;
-        containerRef.current.style.setProperty('--scale-factor', scaleFactor.toString());
-    }
+    React.useEffect(() => {
+        if (containerRef.current) {
+            const scaleFactor = zoomLevel;
+            containerRef.current.style.setProperty('--scale-factor', scaleFactor.toString());
+        }
+    }, [zoomLevel]);
+
+    const updateZoom = (direction: ZoomDirection) => {
+        if (direction === ZoomDirection.In) {
+            setZoomLevel((prevZoomLevel) => {
+                const newZoom = Math.min(prevZoomLevel + ZOOM_STEP, 3);
+                zoomTo(newZoom);
+                return newZoom;
+            });
+        } else {
+            setZoomLevel((prevZoomLevel) => {
+                const newZoom = Math.max(prevZoomLevel - ZOOM_STEP, 1);
+                if (prevZoomLevel > 1) {
+                    zoomTo(newZoom);
+                    return newZoom;
+                }
+                zoomTo(SpecialZoomLevel.PageFit);
+                return 1;
+            });
+        }
+    };
 
     const customZoomPluginInstance = customZoomPlugin();
     const { zoomTo } = customZoomPluginInstance;
@@ -67,21 +96,6 @@ export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResu
 
     return (
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
-            <div
-                style={{
-                    display: 'flex',
-                    flexGrow: 1,
-                    flex: 1,
-                    overflow: 'hidden',
-                }}
-            >
-                <Viewer
-                    fileUrl={pdfFile}
-                    defaultScale={SpecialZoomLevel.PageFit}
-                    plugins={[customZoomPluginInstance]}
-                    renderLoader={() => <div style={{ display: 'none' }}></div>}
-                />
-            </div>
             <DialogSurface
                 ref={containerRef}
                 style={{
@@ -91,6 +105,16 @@ export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResu
                     backgroundColor: 'white',
                     border: '1px solid black',
                     borderRadius: '10px',
+                }}
+                onWheel={(e) => {
+                    e.preventDefault();
+                    if (e.deltaY < 0) {
+                        updateZoom(ZoomDirection.In);
+                        // setZoomLevel((prevZoomLevel) => Math.min(prevZoomLevel + 0.2, 3));
+                    } else {
+                        updateZoom(ZoomDirection.Out);
+                        // setZoomLevel((prevZoomLevel) => Math.max(prevZoomLevel - 0.2, 0.2));
+                    }
                 }}
             >
                 <DialogTitle style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -106,14 +130,14 @@ export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResu
                     <Viewer
                         fileUrl={pdfFile}
                         defaultScale={SpecialZoomLevel.PageFit}
-                        // plugins={[customZoomPluginInstance]}
+                        plugins={[customZoomPluginInstance]}
                     />
                 </Worker>
-                <DialogContent>
+                {/* <DialogContent>
                     <Button style={{ backgroundColor: 'black', height: '50px' }} onClick={() => void zoomTo(2)}>
                         Zoom to 200%
                     </Button>
-                </DialogContent>
+                </DialogContent> */}
             </DialogSurface>
         </Dialog>
     );

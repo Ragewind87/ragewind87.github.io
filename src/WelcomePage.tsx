@@ -3,7 +3,7 @@ import * as React from 'react';
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
 import { mainBgColor, navPanelColor } from './Root';
 import SelfPortrait from './Media/joehc4.jpg';
-import { Open24Regular } from '@fluentui/react-icons';
+import { Open20Regular, Open24Regular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
 import jkResume from './Media/jk_resume_v19.pdf';
@@ -95,7 +95,6 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         src={SelfPortrait}
                                         alt="Self Portrait"
                                         style={{
-                                            // maxWidth: '100%',
                                             maxHeight: '200px',
                                             borderRadius: '8px',
                                             border: '1px solid black',
@@ -126,7 +125,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     }}
                                 >
                                     <Button
-                                        onClick={() => setShowResumeDialog(true)}
+                                        onClick={onResumeClicked}
                                         appearance="transparent"
                                         style={{
                                             marginLeft: '5px',
@@ -144,7 +143,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     >
                                         <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                                             <span>View my Resume</span>
-                                            <Open24Regular />
+                                            <Open20Regular />
                                         </span>
                                     </Button>
                                 </div>
