@@ -61,10 +61,6 @@ const imageStyle: React.CSSProperties = {
 
 const skillStyle: React.CSSProperties = { fontStyle: 'italic', fontSize: '12px', color: 'rgb(210, 180, 140)' };
 
-// interface IWelcomePageProps {
-//     setShowResumeDialog: React.Dispatch<React.SetStateAction<boolean>>;
-// }
-
 export const WelcomePage: React.FunctionComponent = () => {
     const [showResumeDialog, setShowResumeDialog] = React.useState(false);
     const leftPanelStyle: React.CSSProperties = {

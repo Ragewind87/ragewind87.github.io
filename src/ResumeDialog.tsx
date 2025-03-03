@@ -11,8 +11,6 @@ import {
 
 import { Dismiss20Regular } from '@fluentui/react-icons';
 import '@react-pdf-viewer/core/lib/styles/index.css';
-// import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import { DialogContent } from '@fluentui/react';
 
 interface CustomZoomPlugin extends Plugin {
@@ -33,7 +31,6 @@ const customZoomPlugin = (): CustomZoomPlugin => {
         zoomTo: (scale: number | SpecialZoomLevel) => {
             const zoom = store.get('zoom');
             if (zoom) {
-                // Zoom to that scale
                 zoom(scale);
             }
         },
@@ -50,7 +47,7 @@ export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResu
     const containerRef = React.useRef<HTMLDivElement>(null);
 
     if (containerRef.current) {
-        const scaleFactor = 1; // Set this to the appropriate scale factor
+        const scaleFactor = 1;
         containerRef.current.style.setProperty('--scale-factor', scaleFactor.toString());
     }
 
@@ -66,7 +63,6 @@ export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResu
     };
 
     const height = 95;
-    // var width = height / 1.294;
     const width = height / 1.26;
 
     return (
@@ -98,7 +94,6 @@ export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResu
                 }}
             >
                 <DialogTitle style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    {/* <span style={{ fontSize: '24px', fontWeight: 'bold' }}>Resume</span> */}
                     <Button
                         appearance="subtle"
                         onClick={onCloseButtonClick}
@@ -107,34 +102,18 @@ export const ResumeDialog: React.FC<IResumeDialogProps> = ({ isOpen, setShowResu
                         <Dismiss20Regular fill="black" />
                     </Button>
                 </DialogTitle>
-
-                {/* <div
-                    style={{
-                        flex: 1,
-                        overflow: 'hidden',
-                    }}
-                ></div> */}
-                {/* <DialogContent> */}
-                {/* <div style={{ height: '80vh', padding: '0px' }}> */}
-                {/* <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`}> */}
-
                 <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`}>
                     <Viewer
                         fileUrl={pdfFile}
                         defaultScale={SpecialZoomLevel.PageFit}
-                        plugins={[customZoomPluginInstance]}
+                        // plugins={[customZoomPluginInstance]}
                     />
                 </Worker>
-                {/* </div> */}
                 <DialogContent>
                     <Button style={{ backgroundColor: 'black', height: '50px' }} onClick={() => void zoomTo(2)}>
                         Zoom to 200%
                     </Button>
                 </DialogContent>
-
-                {/* </Worker> */}
-                {/* </div> */}
-                {/* </DialogContent> */}
             </DialogSurface>
         </Dialog>
     );
