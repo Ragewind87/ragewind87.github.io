@@ -131,7 +131,7 @@ export const Root: React.FunctionComponent = () => {
                                 <div className={styles.icon}>
                                     <HouseIcon fill="white" width="25px" />
                                 </div>
-                                <span className={styles.linkText}>Welcome Page</span>
+                                <span className={styles.linkText}>Home Page</span>
                             </Button>
                         </Link>
                         <Link to={'ConnectFour'}>
