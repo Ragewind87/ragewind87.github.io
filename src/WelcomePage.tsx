@@ -107,7 +107,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 </div>
                                 <div style={{ fontSize: '18px', marginTop: '2px' }}>Full-Stack Developer</div>
                                 <div style={{ fontSize: '16px', lineHeight: '0.5' }}>4 years experience</div>
-                                <div style={{ fontSize: '16px', marginTop: '15px' }}>
+                                <div style={{ fontSize: '16px', marginTop: '15px', lineHeight: '1.2' }}>
                                     Software Engineer at{' '}
                                     <a
                                         href={politeMailAddress}
@@ -129,7 +129,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         appearance="transparent"
                                         style={{
                                             marginLeft: '5px',
-                                            paddingRight: '20px',
+                                            padding: '2px 5px 2px 5px',
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '10px',
@@ -168,15 +168,6 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 <li>Git</li>
                             </ul>
                         </div>
-                        {/* <div style={{ marginTop: '10px', fontSize: '22px' }}>
-                  <strong>Interests</strong>
-                  <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
-                      <li>Programming</li>
-                      <li>PC Gaming</li>
-                      <li>Mountain Biking</li>
-                      <li>Running</li>
-                  </ul>
-              </div> */}
                     </div>
                 </div>
 

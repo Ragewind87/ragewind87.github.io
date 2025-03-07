@@ -7,6 +7,7 @@
         "@fluentui/react-components": "^9.57.0",
         "@fluentui/react-icons": "^2.0.271",
         "@react-pdf-viewer/core": "^3.12.0",
+        "@react-pdf-viewer/default-layout": "^3.12.0",
         "@types/jest": "^27.5.2",
         "@types/node": "^16.18.39",
         "@types/react": "^18.2.15",
