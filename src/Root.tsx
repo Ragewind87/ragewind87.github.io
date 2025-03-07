@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { type IDropdownOption } from '@fluentui/react';
 import { Button, makeStyles } from '@fluentui/react-components';
-import { Circle20Filled, Open24Regular } from '@fluentui/react-icons';
+import { CheckFilled } from '@fluentui/react-icons';
 import { HouseIcon } from './ConnectFour/Icons/HouseIcon.tsx';
 import whiteKnight from './ChessGame/Assets/whiteKnight.png';
+import { CircleBorder } from './ConnectFour/Icons/CircleBorder.tsx';
 
 export type PlayerOption = {
     id: string;
@@ -36,12 +37,12 @@ const useStyles = makeStyles({
         border: '2px solid black',
         borderRadius: '5px',
         width: '100%',
-        backgroundColor: 'rgb(95, 126, 70)',
+        backgroundColor: 'rgb(86, 114, 64)',
         transition: 'background-color 0.3s ease',
         boxShadow: '3px 3px 7px rgba(0, 0, 0, 0.51)',
         '&:hover': {
             border: 'none',
-            backgroundColor: 'rgb(130, 165, 101)',
+            backgroundColor: 'rgb(119, 151, 92)',
         },
     },
     linkText: {
@@ -92,6 +93,7 @@ const listHeadingStyle: React.CSSProperties = {
 const listItemStyle: React.CSSProperties = {
     lineHeight: '1.2',
     marginTop: '12px',
+    fontSize: '14px',
 };
 
 const listStyle: React.CSSProperties = {
@@ -134,7 +136,7 @@ export const Root: React.FunctionComponent = () => {
                         </Link>
                         <Link to={'ConnectFour'}>
                             <Button className={styles.button}>
-                                <Circle20Filled fill="white" width="25px" className={styles.icon} />
+                                <CircleBorder className={styles.icon} />
                                 <span className={styles.linkText}>Connect Four</span>
                             </Button>
                         </Link>
@@ -150,17 +152,23 @@ export const Root: React.FunctionComponent = () => {
                         </Link>
                     </div>
                     <div style={{ ...rightPanelSectionStyle, paddingLeft: '0px', maxHeight: '60%' }}>
-                        <h2 style={listHeadingStyle}>Site Todo List:</h2>
+                        <h3 style={listHeadingStyle}>Site Todo List:</h3>
                         <ul style={listStyle}>
-                            <li style={{ ...listItemStyle, marginTop: '0px', textDecoration: 'line-through' }}>
+                            <li style={{ ...listItemStyle, marginTop: '0px' }}>
+                                <CheckFilled fill="green" width="12px" style={{ marginRight: '8px' }} />
                                 Add LinkedIn section to Welcome Page right panel
                             </li>
                             <li style={listItemStyle}>
-                                Add clickable resume section that allows viewing and downloading
+                                <CheckFilled fill="green" width="12px" style={{ marginRight: '8px' }} />
+                                Clickable popout resume section
                             </li>
-                            <li style={listItemStyle}>Possibly add "confirm switch" dialog between games?</li>
+                            <li style={listItemStyle}>Convert "skills" to use fluent badges</li>
+                            <li style={listItemStyle}>
+                                Convert "skills" section to have strong / medium / weak sections
+                            </li>
+                            <li style={listItemStyle}>Confirm game switch dialog</li>
                         </ul>
-                        <h2 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h2>
+                        <h3 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h3>
                         <ul style={listStyle}>
                             <li style={{ ...listItemStyle, marginTop: '0px' }}>Add async network gameplay</li>
                             <li style={listItemStyle}>Possibly add Auth0 login</li>

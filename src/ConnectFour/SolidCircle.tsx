@@ -1,6 +1,7 @@
 import React from 'react';
 
 export type ISvgProps = {
+    className?: string;
     width?: string;
     height?: string;
     fill?: string;
