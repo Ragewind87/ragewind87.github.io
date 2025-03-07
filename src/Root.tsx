@@ -155,13 +155,9 @@ export const Root: React.FunctionComponent = () => {
                         <h3 style={listHeadingStyle}>Site Todo List:</h3>
                         <ul style={listStyle}>
                             <li style={{ ...listItemStyle, marginTop: '0px' }}>
-                                <CheckFilled fill="green" width="12px" style={{ marginRight: '8px' }} />
                                 Add LinkedIn section to Welcome Page right panel
                             </li>
-                            <li style={listItemStyle}>
-                                <CheckFilled fill="green" width="12px" style={{ marginRight: '8px' }} />
-                                Clickable popout resume section
-                            </li>
+                            <li style={listItemStyle}>Clickable popout resume section</li>
                             <li style={listItemStyle}>Convert "skills" to use fluent badges</li>
                             <li style={listItemStyle}>
                                 Convert "skills" section to have strong / medium / weak sections
