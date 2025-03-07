@@ -36,12 +36,12 @@ const useStyles = makeStyles({
         border: '2px solid black',
         borderRadius: '5px',
         width: '100%',
-        backgroundColor: 'rgb(100, 100, 100)',
+        backgroundColor: 'rgb(95, 126, 70)',
         transition: 'background-color 0.3s ease',
         boxShadow: '3px 3px 7px rgba(0, 0, 0, 0.51)',
         '&:hover': {
             border: 'none',
-            backgroundColor: 'rgb(141, 141, 141)',
+            backgroundColor: 'rgb(130, 165, 101)',
         },
     },
     linkText: {

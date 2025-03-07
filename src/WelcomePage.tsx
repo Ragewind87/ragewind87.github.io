@@ -97,7 +97,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         style={{
                                             maxHeight: '200px',
                                             borderRadius: '8px',
-                                            border: '1px solid black',
+                                            border: '1px solid white',
                                             marginBottom: '10px',
                                         }}
                                     />
