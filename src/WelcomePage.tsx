@@ -7,6 +7,7 @@ import { Open20Regular } from '@fluentui/react-icons';
 import { Badge, Button } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
 import jkResume from './Media/jk_resume_v19.pdf';
+import TextBadge from './SimpleComponents/TextBadge';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
@@ -153,22 +154,29 @@ export const WelcomePage: React.FunctionComponent = () => {
                         <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
                             <strong>Skills</strong>
                             <strong>Strong</strong>
-                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-                                <Badge>React</Badge>
-                                <Badge>TypeScript</Badge>
-                                <Badge>C#</Badge>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    flexWrap: 'wrap',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <TextBadge>React</TextBadge>
+                                <TextBadge>TypeScript</TextBadge>
+                                <TextBadge>C#</TextBadge>
                             </div>
                             <strong>Proficient</strong>
                             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-                                <Badge>.NET OData WebAPI</Badge>
-                                <Badge>Git</Badge>
-                                <Badge>SQL Server</Badge>
+                                <TextBadge>.NET OData WebAPI</TextBadge>
+                                <TextBadge>Git</TextBadge>
+                                <TextBadge>SQL Server</TextBadge>
                             </div>
 
                             <strong>Familiar</strong>
                             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-                                <Badge>Javascript</Badge>
-                                <Badge>CSS</Badge>
+                                <TextBadge>Javascript</TextBadge>
+                                <TextBadge>CSS</TextBadge>
                             </div>
 
                             {/* <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
