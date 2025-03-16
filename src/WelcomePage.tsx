@@ -1,10 +1,10 @@
 import { Stack } from '@fluentui/react';
 import * as React from 'react';
 import CordyTank from './ConnectFour/Icons/cordyTank.png';
-import { mainBgColor, navPanelColor } from './Root';
+import { navPanelColor } from './Root';
 import SelfPortrait from './Media/joehc4.jpg';
-import { Open20Regular, Open24Regular } from '@fluentui/react-icons';
-import { Button } from '@fluentui/react-components';
+import { Open20Regular } from '@fluentui/react-icons';
+import { Badge, Button } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
 import jkResume from './Media/jk_resume_v19.pdf';
 
@@ -150,9 +150,28 @@ export const WelcomePage: React.FunctionComponent = () => {
                             </div>
                         </div>
                         <hr style={{ borderTop: '0.2px solid white', margin: '20px 0px 25px 0px' }} />
-                        <div style={{ fontSize: '22px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
                             <strong>Skills</strong>
-                            <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
+                            <strong>Strong</strong>
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                                <Badge>React</Badge>
+                                <Badge>TypeScript</Badge>
+                                <Badge>C#</Badge>
+                            </div>
+                            <strong>Proficient</strong>
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                                <Badge>.NET OData WebAPI</Badge>
+                                <Badge>Git</Badge>
+                                <Badge>SQL Server</Badge>
+                            </div>
+
+                            <strong>Familiar</strong>
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                                <Badge>Javascript</Badge>
+                                <Badge>CSS</Badge>
+                            </div>
+
+                            {/* <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
                                 <li>
                                     React&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
                                 </li>
@@ -166,7 +185,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 <li>SQL Server</li>
                                 <li>Javascript / CSS</li>
                                 <li>Git</li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>

@@ -163,6 +163,7 @@ export const Root: React.FunctionComponent = () => {
                                 Convert "skills" section to have strong / medium / weak sections
                             </li>
                             <li style={listItemStyle}>Confirm game switch dialog</li>
+                            <li style={listItemStyle}>Add light theme</li>
                         </ul>
                         <h3 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h3>
                         <ul style={listStyle}>
