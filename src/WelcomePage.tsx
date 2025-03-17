@@ -60,7 +60,14 @@ const imageStyle: React.CSSProperties = {
     padding: '20px',
 };
 
-const skillStyle: React.CSSProperties = { fontStyle: 'italic', fontSize: '12px', color: 'rgb(210, 180, 140)' };
+const badgeHeadingStyle: React.CSSProperties = { fontSize: '15px', fontWeight: '600', margin: '12px 0 4px 0' };
+
+const badgeContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: '3px',
+};
 
 export const WelcomePage: React.FunctionComponent = () => {
     const [showResumeDialog, setShowResumeDialog] = React.useState(false);
@@ -78,8 +85,8 @@ export const WelcomePage: React.FunctionComponent = () => {
     };
 
     return (
-        <>
-            <Stack horizontal={true} style={{ flexGrow: 1, gap: '15px' }}>
+        <div style={{ flexGrow: 1 }}>
+            <Stack horizontal style={{ gap: '15px', height: '100%' }}>
                 {/* Left Panel */}
                 <div style={leftPanelStyle}>
                     <div style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
@@ -157,51 +164,33 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 flexDirection: 'column',
                                 flexWrap: 'wrap',
                                 textAlign: 'left',
+                                overflow: 'hidden',
                             }}
                         >
-                            <strong style={{ textAlign: 'center', fontSize: '28px' }}>Skills</strong>
-                            <strong style={{ margin: '10px 0 5px 0' }}>Strong</strong>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    flexWrap: 'wrap',
-                                    gap: '3px',
-                                }}
-                            >
+                            <strong style={{ textAlign: 'center', fontSize: '24px' }}>Skill Set</strong>
+                            <strong style={badgeHeadingStyle}>Strong</strong>
+                            <div style={badgeContainerStyle}>
                                 <TextBadge>React</TextBadge>
                                 <TextBadge>TypeScript</TextBadge>
-                                <TextBadge>C#</TextBadge>
                             </div>
-                            <strong style={{ margin: '10px 0 5px 0' }}>Proficient</strong>
-
-                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '3px' }}>
+                            <strong style={badgeHeadingStyle}>Proficient</strong>
+                            <div style={badgeContainerStyle}>
+                                <TextBadge>C#</TextBadge>
                                 <TextBadge>.NET OData WebAPI</TextBadge>
                                 <TextBadge>Git</TextBadge>
-                                <TextBadge>SQL Server</TextBadge>
                             </div>
-
-                            <strong style={{ margin: '10px 0 5px 0' }}>Familiar</strong>
-                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '3px' }}>
+                            <strong style={badgeHeadingStyle}>Experienced</strong>
+                            <div style={badgeContainerStyle}>
+                                <TextBadge>Redux Toolkit</TextBadge>
+                                <TextBadge>SQL Server</TextBadge>
                                 <TextBadge>Javascript</TextBadge>
                                 <TextBadge>CSS</TextBadge>
                             </div>
-
-                            {/* <ul style={{ listStyleType: 'disc', textAlign: 'left', fontSize: '18px' }}>
-                                <li>
-                                    React&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
-                                </li>
-                                <li>
-                                    TypeScript&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
-                                </li>
-                                <li>
-                                    C#&nbsp;&nbsp;<span style={skillStyle}>(strong)</span>
-                                </li>
-                                <li>.NET OData WebAPI</li>
-                                <li>SQL Server</li>
-                                <li>Javascript / CSS</li>
-                                <li>Git</li>
-                            </ul> */}
+                            <strong style={badgeHeadingStyle}>Familiar</strong>
+                            <div style={badgeContainerStyle}>
+                                <TextBadge>C</TextBadge>
+                                <TextBadge>Java</TextBadge>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,6 +234,6 @@ export const WelcomePage: React.FunctionComponent = () => {
                     />
                 )}
             </div>
-        </>
+        </div>
     );
 };

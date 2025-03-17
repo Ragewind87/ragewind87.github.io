@@ -159,7 +159,8 @@ const gameGridContainerStyle: React.CSSProperties = {
     display: 'flex',
     flexGrow: 3,
     justifyContent: 'center',
-    border: '0px 2px 2px 2px solid black',
+    border: '2px solid black',
+    borderRadius: '5px',
     padding: '1.5%',
     backgroundColor: 'rgb(74, 74, 74)',
     boxShadow: '10px 10px 15px black',
@@ -195,7 +196,7 @@ const rootContainerStyle: React.CSSProperties = {
     flexDirection: 'row',
     flexGrow: 1,
     justifyContent: 'center',
-    gap: '20px',
+    gap: '15px',
     // margin: '15px 15px 0px 0px',
 };
 
@@ -575,7 +576,8 @@ export const ConnectFour: React.FunctionComponent = (properties) => {
         alignItems: 'center',
         alignContent: 'center',
         height: '100%',
-        boxShadow: '10px 10px 15px black',
+        borderRadius: '5px',
+        // boxShadow: '10px 10px 15px black',
     };
 
     return (

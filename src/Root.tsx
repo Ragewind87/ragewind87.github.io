@@ -77,7 +77,6 @@ const rightPanelSectionStyle: React.CSSProperties = {
     flexGrow: 1,
     backgroundColor: navPanelColor,
     alignContent: 'center',
-
     gap: '10px',
     padding: '15px',
     border: '2px solid black',
@@ -94,6 +93,13 @@ const listItemStyle: React.CSSProperties = {
     lineHeight: '1.2',
     marginTop: '12px',
     fontSize: '14px',
+};
+
+const listItemStyle2: React.CSSProperties = {
+    lineHeight: '1.2',
+    marginTop: '12px',
+    fontSize: '14px',
+    textDecoration: 'line-through',
 };
 
 const listStyle: React.CSSProperties = {
@@ -152,7 +158,7 @@ export const Root: React.FunctionComponent = () => {
                         </Link>
                     </div>
                     <div style={{ ...rightPanelSectionStyle, paddingLeft: '0px', maxHeight: '60%' }}>
-                        <h3 style={listHeadingStyle}>Site Todo List:</h3>
+                        <h4 style={listHeadingStyle}>Site ToDo List:</h4>
                         <ul style={listStyle}>
                             <li style={{ ...listItemStyle, marginTop: '0px' }}>
                                 Add LinkedIn section to Welcome Page right panel
@@ -165,7 +171,7 @@ export const Root: React.FunctionComponent = () => {
                             <li style={listItemStyle}>Confirm game switch dialog</li>
                             <li style={listItemStyle}>Add light theme</li>
                         </ul>
-                        <h3 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h3>
+                        <h4 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h4>
                         <ul style={listStyle}>
                             <li style={{ ...listItemStyle, marginTop: '0px' }}>Add async network gameplay</li>
                             <li style={listItemStyle}>Possibly add Auth0 login</li>
