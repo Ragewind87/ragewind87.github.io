@@ -151,30 +151,38 @@ export const WelcomePage: React.FunctionComponent = () => {
                             </div>
                         </div>
                         <hr style={{ borderTop: '0.2px solid white', margin: '20px 0px 25px 0px' }} />
-                        <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
-                            <strong>Skills</strong>
-                            <strong>Strong</strong>
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                flexWrap: 'wrap',
+                                textAlign: 'left',
+                            }}
+                        >
+                            <strong style={{ textAlign: 'center', fontSize: '28px' }}>Skills</strong>
+                            <strong style={{ margin: '10px 0 5px 0' }}>Strong</strong>
                             <div
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'row',
                                     flexWrap: 'wrap',
-                                    justifyContent: 'center',
+                                    gap: '3px',
                                 }}
                             >
                                 <TextBadge>React</TextBadge>
                                 <TextBadge>TypeScript</TextBadge>
                                 <TextBadge>C#</TextBadge>
                             </div>
-                            <strong>Proficient</strong>
-                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                            <strong style={{ margin: '10px 0 5px 0' }}>Proficient</strong>
+
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '3px' }}>
                                 <TextBadge>.NET OData WebAPI</TextBadge>
                                 <TextBadge>Git</TextBadge>
                                 <TextBadge>SQL Server</TextBadge>
                             </div>
 
-                            <strong>Familiar</strong>
-                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                            <strong style={{ margin: '10px 0 5px 0' }}>Familiar</strong>
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '3px' }}>
                                 <TextBadge>Javascript</TextBadge>
                                 <TextBadge>CSS</TextBadge>
                             </div>
