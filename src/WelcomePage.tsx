@@ -53,7 +53,7 @@ const headerTextStyle: React.CSSProperties = {
 
 const imageStyle: React.CSSProperties = {
     maxWidth: '100%',
-    maxHeight: '85%',
+    maxHeight: '55%',
     width: 'auto',
     height: 'auto',
     objectFit: 'contain',
@@ -170,7 +170,9 @@ export const WelcomePage: React.FunctionComponent = () => {
                             <strong style={{ textAlign: 'center', fontSize: '24px' }}>Skill Set</strong>
                             <strong style={badgeHeadingStyle}>Strong</strong>
                             <div style={badgeContainerStyle}>
-                                <TextBadge>React</TextBadge>
+                                <TextBadge>
+                                    <span style={{ cursor: 'pointer' }}>React</span>
+                                </TextBadge>
                                 <TextBadge>TypeScript</TextBadge>
                             </div>
                             <strong style={badgeHeadingStyle}>Proficient</strong>
@@ -188,6 +190,9 @@ export const WelcomePage: React.FunctionComponent = () => {
                             </div>
                             <strong style={badgeHeadingStyle}>Familiar</strong>
                             <div style={badgeContainerStyle}>
+                                <TextBadge>Azure</TextBadge>
+                                <TextBadge>Kubernetes</TextBadge>
+                                <TextBadge>Terraform</TextBadge>
                                 <TextBadge>C</TextBadge>
                                 <TextBadge>Java</TextBadge>
                             </div>
@@ -197,20 +202,31 @@ export const WelcomePage: React.FunctionComponent = () => {
 
                 {/* Main Panel */}
                 <div style={cardStyle}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 'auto' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            textAlign: 'center',
+                            alignItems: 'center',
+                            margin: 'auto',
+                            flexGrow: 1,
+                            justifyContent: 'space-evenly',
+                            padding: '30px',
+                        }}
+                    >
                         <div style={headerTextStyle}>
-                            <span>{'Welcome to Cordy Game Hub!'}</span>
+                            <span>{'Welcome to my Portfolio Game Hub!'}</span>
                             <span>{'ONWARD!'}</span>
                         </div>
                         <img className="faint-glow" style={imageStyle} src={CordyTank} alt="Cordy Tank" />
+                        <div style={{ fontSize: '20px', marginTop: '15px', display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ lineHeight: '18px' }}>I made this site to help sharpen my skills.</span>
+                            <span>I enjoy working with React and TypeScript.</span>
+                            <span style={{ marginTop: '15px' }}>Explore the games and have fun!</span>
+                        </div>
                     </div>
                     <div style={footerStyle}>
                         <div>
-                            I made this site to help sharpen my skills. I enjoy working with React and TypeScript.{' '}
-                            <br />
-                            Explore the games and have fun!
-                        </div>
-                        <div style={{ marginTop: '25px' }}>
                             The artwork for this site was created by a talented friend. <br />
                             For inquiries, contact me at&nbsp;
                             <span>

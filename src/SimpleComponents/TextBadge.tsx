@@ -10,6 +10,7 @@ const useStyles = makeStyles({
         fontWeight: '500',
         border: '1px solid #7a7a7a',
         color: '#333',
+        cursor: 'default',
         ':hover': {
             backgroundColor: 'rgb(179, 179, 179)',
             border: '1px solid #5a5a5a',
@@ -24,7 +25,7 @@ export interface ITextBadgeProps {
 
 export const TextBadge: React.FC<ITextBadgeProps> = ({ children }) => {
     const classes = useStyles();
-    return <div className={classes.badge}>{children}</div>;
+    return <span className={classes.badge}>{children}</span>;
 };
 
 export default TextBadge;
