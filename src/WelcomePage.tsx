@@ -7,7 +7,7 @@ import { Open20Regular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
 import jkResume from './Media/jk_resume_v19.pdf';
-import TextBadge from './SimpleComponents/TextBadge';
+import { TextBadge } from './SimpleComponents/TextBadge';
 import GithubLogo from './Media/github-logo.png';
 import LinkedinLogo from './Media/linkedin-logo.png';
 
@@ -203,7 +203,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         rel="noopener noreferrer"
                                         style={{ ...socialMediaButtonStyle, backgroundColor: 'rgb(66, 66, 66)' }}
                                         onMouseOver={(e) => {
-                                            e.currentTarget.style.filter = 'brightness(1.3)';
+                                            e.currentTarget.style.filter = 'brightness(1.4)';
                                         }}
                                         onMouseOut={(e) => {
                                             e.currentTarget.style.filter = 'none';
@@ -221,7 +221,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         style={{
                                             width: '1px',
                                             height: '25px',
-                                            backgroundColor: 'white',
+                                            backgroundColor: 'rgb(145, 145, 145)',
                                             margin: '0 0 0 12px',
                                         }}
                                     ></div>
