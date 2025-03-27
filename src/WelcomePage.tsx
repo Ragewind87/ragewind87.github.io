@@ -81,7 +81,7 @@ const socialMediaButtonStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'transparent',
+    // backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
     minWidth: '30px',
@@ -137,11 +137,29 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 </div>
                                 <div style={{ fontSize: '18px', marginTop: '2px' }}>Full-Stack Developer</div>
                                 <div style={{ fontSize: '16px', lineHeight: '0.5' }}>4 years experience</div>
-                                <div style={{ fontSize: '16px', marginTop: '15px', lineHeight: '1.2' }}>
+                                <div
+                                    style={{
+                                        fontSize: '16px',
+                                        marginTop: '15px',
+                                        lineHeight: '1.2',
+                                        color: 'white',
+                                    }}
+                                >
                                     Software Engineer at{' '}
                                     <a
                                         href={politeMailAddress}
-                                        style={{ color: 'lightblue', textDecoration: 'underline' }}
+                                        style={{
+                                            color: 'white',
+                                            textDecoration: 'none',
+                                        }}
+                                        onMouseOver={(e) => {
+                                            e.currentTarget.style.color = 'lightblue';
+                                            e.currentTarget.style.textDecoration = 'none';
+                                        }}
+                                        onMouseOut={(e) => {
+                                            e.currentTarget.style.color = 'white';
+                                            e.currentTarget.style.textDecoration = 'none';
+                                        }}
                                     >
                                         PoliteMail
                                     </a>
@@ -163,10 +181,9 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         href={linkedInAddress}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        appearance="transparent"
                                         style={socialMediaButtonStyle}
                                         onMouseOver={(e) => {
-                                            e.currentTarget.style.filter = 'brightness(1.2)';
+                                            e.currentTarget.style.filter = 'brightness(1.25)';
                                         }}
                                         onMouseOut={(e) => {
                                             e.currentTarget.style.filter = 'none';
@@ -184,15 +201,12 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         href={githubAddress}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        appearance="transparent"
-                                        style={socialMediaButtonStyle}
+                                        style={{ ...socialMediaButtonStyle, backgroundColor: 'rgb(66, 66, 66)' }}
                                         onMouseOver={(e) => {
-                                            e.currentTarget.style.filter = 'brightness(1.2)';
-                                            e.currentTarget.style.backgroundColor = 'rgb(66, 66, 66)';
+                                            e.currentTarget.style.filter = 'brightness(1.3)';
                                         }}
                                         onMouseOut={(e) => {
                                             e.currentTarget.style.filter = 'none';
-                                            e.currentTarget.style.backgroundColor = 'transparent';
                                         }}
                                     >
                                         <img
@@ -202,11 +216,21 @@ export const WelcomePage: React.FunctionComponent = () => {
                                             }}
                                         />
                                     </Button>
+
+                                    <div
+                                        style={{
+                                            width: '1px',
+                                            height: '25px',
+                                            backgroundColor: 'white',
+                                            margin: '0 0 0 12px',
+                                        }}
+                                    ></div>
+
                                     <Button
                                         onClick={onResumeClicked}
                                         appearance="transparent"
                                         style={{
-                                            padding: '2px 5px 2px 5px',
+                                            padding: '2px 5px 2px 12px',
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '10px',
@@ -239,9 +263,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                             <strong style={{ textAlign: 'center', fontSize: '24px' }}>Skill Set</strong>
                             <strong style={badgeHeadingStyle}>Strong</strong>
                             <div style={badgeContainerStyle}>
-                                <TextBadge>
-                                    <span style={{ cursor: 'pointer' }}>React</span>
-                                </TextBadge>
+                                <TextBadge>React</TextBadge>
                                 <TextBadge>TypeScript</TextBadge>
                             </div>
                             <strong style={badgeHeadingStyle}>Proficient</strong>
@@ -252,10 +274,10 @@ export const WelcomePage: React.FunctionComponent = () => {
                             </div>
                             <strong style={badgeHeadingStyle}>Experienced</strong>
                             <div style={badgeContainerStyle}>
-                                <TextBadge>Redux Toolkit</TextBadge>
-                                <TextBadge>SQL Server</TextBadge>
-                                <TextBadge>Javascript</TextBadge>
                                 <TextBadge>CSS</TextBadge>
+                                <TextBadge>Javascript</TextBadge>
+                                <TextBadge>SQL Server</TextBadge>
+                                <TextBadge>Redux Toolkit</TextBadge>
                             </div>
                             <strong style={badgeHeadingStyle}>Familiar</strong>
                             <div style={badgeContainerStyle}>
