@@ -78,7 +78,7 @@ const rightPanelSectionStyle: React.CSSProperties = {
     backgroundColor: navPanelColor,
     alignContent: 'center',
     gap: '10px',
-    padding: '15px',
+    padding: '20px',
     border: '2px solid black',
     borderRadius: '5px',
 };
@@ -92,7 +92,7 @@ const listHeadingStyle: React.CSSProperties = {
 const listItemStyle: React.CSSProperties = {
     lineHeight: '1.2',
     marginTop: '12px',
-    fontSize: '14px',
+    fontSize: '15px',
 };
 
 const listItemStyle2: React.CSSProperties = {
@@ -157,7 +157,9 @@ export const Root: React.FunctionComponent = () => {
                             </Button>
                         </Link>
                     </div>
-                    <div style={{ ...rightPanelSectionStyle, paddingLeft: '0px', maxHeight: '60%' }}>
+                    <div
+                        style={{ ...rightPanelSectionStyle, paddingLeft: '0px', paddingTop: '30px', maxHeight: '60%' }}
+                    >
                         <h4 style={listHeadingStyle}>Site ToDo List:</h4>
                         <ul style={listStyle}>
                             <li style={{ ...listItemStyle, marginTop: '0px' }}>

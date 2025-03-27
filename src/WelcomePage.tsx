@@ -4,14 +4,17 @@ import CordyTank from './ConnectFour/Icons/cordyTank.png';
 import { navPanelColor } from './Root';
 import SelfPortrait from './Media/joehc4.jpg';
 import { Open20Regular } from '@fluentui/react-icons';
-import { Badge, Button } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
 import jkResume from './Media/jk_resume_v19.pdf';
 import TextBadge from './SimpleComponents/TextBadge';
+import GithubLogo from './Media/github-logo.png';
+import LinkedinLogo from './Media/linkedin-logo.png';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
 const politeMailAddress = 'https://politemail.com/';
+const githubAddress = 'https://github.com/Ragewind87';
 
 const footerStyle: React.CSSProperties = {
     width: '100%',
@@ -60,13 +63,32 @@ const imageStyle: React.CSSProperties = {
     padding: '20px',
 };
 
-const badgeHeadingStyle: React.CSSProperties = { fontSize: '15px', fontWeight: '600', margin: '12px 0 4px 0' };
+const badgeHeadingStyle: React.CSSProperties = {
+    fontSize: '15px',
+    color: 'rgb(151, 177, 133)',
+    fontWeight: '600',
+    margin: '12px 0 4px 0',
+};
 
 const badgeContainerStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: '3px',
+};
+
+const socialMediaButtonStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    minWidth: '30px',
+    minHeight: '30px',
+    maxWidth: '30px',
+    maxHeight: '30px',
+    borderRadius: '5px',
 };
 
 export const WelcomePage: React.FunctionComponent = () => {
@@ -129,14 +151,61 @@ export const WelcomePage: React.FunctionComponent = () => {
                                         display: 'flex',
                                         flexDirection: 'row',
                                         justifyContent: 'center',
-                                        marginTop: '15px',
+                                        alignItems: 'center',
+                                        marginTop: '25px',
+                                        gap: '7px',
+                                        height: '100%', // Ensure the div takes full height
+                                        maxHeight: '40px',
                                     }}
                                 >
+                                    <Button
+                                        as="a"
+                                        href={linkedInAddress}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        appearance="transparent"
+                                        style={socialMediaButtonStyle}
+                                        onMouseOver={(e) => {
+                                            e.currentTarget.style.filter = 'brightness(1.2)';
+                                        }}
+                                        onMouseOut={(e) => {
+                                            e.currentTarget.style.filter = 'none';
+                                        }}
+                                    >
+                                        <img
+                                            src={LinkedinLogo}
+                                            style={{
+                                                maxHeight: '30px',
+                                            }}
+                                        />
+                                    </Button>
+                                    <Button
+                                        as="a"
+                                        href={githubAddress}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        appearance="transparent"
+                                        style={socialMediaButtonStyle}
+                                        onMouseOver={(e) => {
+                                            e.currentTarget.style.filter = 'brightness(1.2)';
+                                            e.currentTarget.style.backgroundColor = 'rgb(66, 66, 66)';
+                                        }}
+                                        onMouseOut={(e) => {
+                                            e.currentTarget.style.filter = 'none';
+                                            e.currentTarget.style.backgroundColor = 'transparent';
+                                        }}
+                                    >
+                                        <img
+                                            src={GithubLogo}
+                                            style={{
+                                                maxHeight: '28px',
+                                            }}
+                                        />
+                                    </Button>
                                     <Button
                                         onClick={onResumeClicked}
                                         appearance="transparent"
                                         style={{
-                                            marginLeft: '5px',
                                             padding: '2px 5px 2px 5px',
                                             display: 'flex',
                                             alignItems: 'center',
