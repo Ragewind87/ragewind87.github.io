@@ -117,7 +117,6 @@ export const WelcomePage: React.FunctionComponent = () => {
                             style={{
                                 padding: '15px',
                                 width: '100%',
-                                margin: 'auto',
                             }}
                         >
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -252,7 +251,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                             </div>
                         </div>
                         <hr style={{ borderTop: '0.2px solid white', margin: '20px 0px 25px 0px' }} />
-                        <Stack style={{ justifyContent: 'space-between' }}>
+                        <Stack style={{ justifyContent: 'space-between', height: '100%' }}>
                             <div
                                 style={{
                                     display: 'flex',
@@ -290,7 +289,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     <TextBadge>Java</TextBadge>
                                 </div>
                             </div>
-                            <div style={{ fontSize: '12px', marginTop: 'auto' }}>Last updated 1/11/2026 1:16 AM</div>
+                            <div style={{ fontSize: '12px' }}>Last updated 1/11/2026 1:16 AM</div>
                         </Stack>
                     </Stack>
                 </div>
