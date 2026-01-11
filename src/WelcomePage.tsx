@@ -289,7 +289,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     <TextBadge>Java</TextBadge>
                                 </div>
                             </div>
-                            <div style={{ fontSize: '12px' }}>Last updated 1/11/2026 1:16 AM</div>
+                            <div style={{ fontSize: '12px' }}>Last updated 1/11/2026 1:48 AM</div>
                         </Stack>
                     </Stack>
                 </div>
