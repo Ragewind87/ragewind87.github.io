@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7c2b57d6.css",
-    "main.js": "/static/js/main.4a215784.js",
+    "main.js": "/static/js/main.0fc7c98f.js",
     "static/media/whiteQueen3.png": "/static/media/whiteQueen3.0b31f3b6ae1415c213e9.png",
     "static/media/whiteKing3.png": "/static/media/whiteKing3.b00b9dab154ea4b31a81.png",
     "static/media/whitePawn3.png": "/static/media/whitePawn3.461ded9b3ab33b3684b6.png",
@@ -19,7 +19,7 @@
     "static/media/skyeWindow.png": "/static/media/skyeWindow.2987d2ede49dda3a23a4.png",
     "static/media/skyeWindowWin.png": "/static/media/skyeWindowWin.d322a47641338a81c3d2.png",
     "static/media/skyeIcon.png": "/static/media/skyeIcon.893ef422bdae3657d04a.png",
-    "static/media/jk_resume_v221.pdf": "/static/media/jk_resume_v221.32cc59b175c05485028e.pdf",
+    "static/media/jk_resume_v23.pdf": "/static/media/jk_resume_v23.2d4879275ffea5a526db.pdf",
     "static/media/biskyBg.png": "/static/media/biskyBg.e53cfde593f5991c093e.png",
     "static/media/blackBishop1.png": "/static/media/blackBishop1.7797752756925ac6f260.png",
     "static/media/duckWindow.png": "/static/media/duckWindow.59843296aeb9f7e69835.png",
@@ -66,10 +66,10 @@
     "static/media/emptyCellTransparent.png": "/static/media/emptyCellTransparent.77187cfba340d838a263.png",
     "index.html": "/index.html",
     "main.7c2b57d6.css.map": "/static/css/main.7c2b57d6.css.map",
-    "main.4a215784.js.map": "/static/js/main.4a215784.js.map"
+    "main.0fc7c98f.js.map": "/static/js/main.0fc7c98f.js.map"
   },
   "entrypoints": [
     "static/css/main.7c2b57d6.css",
-    "static/js/main.4a215784.js"
+    "static/js/main.0fc7c98f.js"
   ]
 }
