@@ -18,7 +18,11 @@ const githubAddress = 'https://github.com/Ragewind87';
 
 const lastUpdatedString = 'Last updated  1/11/2026 3:04pm';
 const badgeHeadingColor = 'rgb(151, 177, 133)';
-const accentColor = 'rgb(110, 150, 79)';
+
+const accentStyle: React.CSSProperties = {
+    color: 'rgb(110, 150, 79)',
+    fontWeight: 'bold',
+};
 
 const footerStyle: React.CSSProperties = {
     width: '100%',
@@ -341,14 +345,12 @@ export const WelcomePage: React.FunctionComponent = () => {
                         >
                             <span>
                                 I built this site to deliberately sharpen my front-end skills, with a focus on{' '}
-                                <span style={{ color: accentColor, fontWeight: 'bold' }}>React</span> and{' '}
-                                <span style={{ color: accentColor, fontWeight: 'bold' }}>TypeScript</span>.
+                                <span style={accentStyle}>React</span> and <span style={accentStyle}>TypeScript</span>{' '}
+                                and <span style={accentStyle}>CSS</span>.
                             </span>
                             <span>
-                                The codebase uses{' '}
-                                <span style={{ color: accentColor, fontWeight: 'bold' }}>minimal generative AI</span> by
-                                design; nearly all implementation is hand-written to maximize learning and technical
-                                depth.
+                                The codebase uses <span style={accentStyle}>minimal generative AI</span> by design;
+                                nearly all implementation is hand-written to maximize learning and technical depth.
                             </span>
                             <span>
                                 The site currently features two React-driven games, with additional pages and
