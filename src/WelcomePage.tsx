@@ -6,7 +6,7 @@ import SelfPortrait from './Media/joehc4.jpg';
 import { Open20Regular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
-import jkResume from './Media/jk_resume_v221.pdf';
+import jkResume from './Media/jk_resume_v23.pdf';
 import { TextBadge } from './SimpleComponents/TextBadge';
 import GithubLogo from './Media/github-logo.png';
 import LinkedinLogo from './Media/linkedin-logo.png';
