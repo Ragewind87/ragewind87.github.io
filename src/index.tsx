@@ -29,6 +29,16 @@ const router = createBrowserRouter([
             },
         ],
     },
+    {
+        path: 'ConnectFour',
+        element: <ConnectFour />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: 'Chess',
+        element: <TspChess />,
+        errorElement: <ErrorPage />,
+    },
 ]);
 
 ReactDOM.createRoot(document.querySelector('#root')!).render(
