@@ -16,6 +16,8 @@ const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
 const politeMailAddress = 'https://politemail.com/';
 const githubAddress = 'https://github.com/Ragewind87';
 
+const lastUpdatedString = 'Last updated  1/11/2026 3:04pm';
+
 const footerStyle: React.CSSProperties = {
     width: '100%',
     padding: '15px',
@@ -56,7 +58,7 @@ const headerTextStyle: React.CSSProperties = {
 
 const imageStyle: React.CSSProperties = {
     maxWidth: '100%',
-    maxHeight: '55%',
+    maxHeight: '35%',
     width: 'auto',
     height: 'auto',
     objectFit: 'contain',
@@ -261,7 +263,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     overflow: 'hidden',
                                 }}
                             >
-                                <strong style={{ textAlign: 'center', fontSize: '24px' }}>Skill Set</strong>
+                                <strong style={{ textAlign: 'center', fontSize: '24px' }}>Skillset</strong>
                                 <strong style={badgeHeadingStyle}>Strong</strong>
                                 <div style={badgeContainerStyle}>
                                     <TextBadge>React</TextBadge>
@@ -289,7 +291,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     <TextBadge>Java</TextBadge>
                                 </div>
                             </div>
-                            <div style={{ fontSize: '12px' }}>Last updated 1/11/2026 1:48 AM</div>
+                            <div style={{ fontSize: '12px' }}>{lastUpdatedString}</div>
                         </Stack>
                     </Stack>
                 </div>
@@ -314,11 +316,29 @@ export const WelcomePage: React.FunctionComponent = () => {
                             <span>{'ONWARD!'}</span>
                         </div>
                         <img className="faint-glow" style={imageStyle} src={CordyTank} alt="Cordy Tank" />
-                        <div style={{ fontSize: '20px', marginTop: '15px', display: 'flex', flexDirection: 'column' }}>
-                            <span style={{ lineHeight: '18px' }}>I made this site to help sharpen my skills.</span>
-                            <span>I enjoy working with React and TypeScript.</span>
-                            <span style={{ marginTop: '15px' }}>Explore the games and have fun!</span>
-                        </div>
+                        <Stack
+                            tokens={{ childrenGap: '20px' }}
+                            style={{
+                                fontSize: '20px',
+                                marginTop: '15px',
+                                maxWidth: '80%',
+                                textAlign: 'left',
+                                lineHeight: '22px',
+                            }}
+                        >
+                            <span>
+                                I built this site to deliberately sharpen my front-end skills, with a focus on React and
+                                TypeScript.
+                            </span>
+                            <span>
+                                The codebase uses minimal generative AI by design; nearly all implementation is
+                                hand-written to maximize learning and technical depth.
+                            </span>
+                            <span>
+                                The site currently features two React-driven games, with additional pages and
+                                functionality planned over time.
+                            </span>
+                        </Stack>
                     </div>
                     <div style={footerStyle}>
                         <div>

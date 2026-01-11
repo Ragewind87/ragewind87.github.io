@@ -160,23 +160,26 @@ export const Root: React.FunctionComponent = () => {
                     <div
                         style={{ ...rightPanelSectionStyle, paddingLeft: '0px', paddingTop: '30px', maxHeight: '60%' }}
                     >
-                        <h4 style={listHeadingStyle}>Site ToDo List:</h4>
+                        <h4 style={listHeadingStyle}>Site To Do List:</h4>
                         <ul style={listStyle}>
                             <li style={{ ...listItemStyle, marginTop: '0px' }}>
-                                Add LinkedIn section to Welcome Page right panel
+                                Make the site mobile responsive (badly needed)
                             </li>
-                            <li style={listItemStyle}>Clickable popout resume section</li>
-                            <li style={listItemStyle}>Convert "skills" to use fluent badges</li>
-                            <li style={listItemStyle}>
-                                Convert "skills" section to have strong / medium / weak sections
+                            <li style={{ ...listItemStyle, marginTop: '10px' }}>
+                                Convert styling from all inline to CSS modules
                             </li>
-                            <li style={listItemStyle}>Confirm game switch dialog</li>
-                            <li style={listItemStyle}>Add light theme</li>
+                            <li style={{ ...listItemStyle, marginTop: '10px' }}>
+                                Make the left and right panel shown at all times
+                            </li>
+                            <li style={{ ...listItemStyle, marginTop: '10px' }}>
+                                Add "Formal Education" section to the left panel
+                            </li>
                         </ul>
                         <h4 style={{ ...listHeadingStyle, marginTop: '10px' }}>Stretch Goals:</h4>
                         <ul style={listStyle}>
-                            <li style={{ ...listItemStyle, marginTop: '0px' }}>Add async network gameplay</li>
-                            <li style={listItemStyle}>Possibly add Auth0 login</li>
+                            <li style={{ ...listItemStyle, marginTop: '0px' }}>
+                                Add page describing Godot game I'm working on
+                            </li>
                         </ul>
                     </div>
                 </div>
