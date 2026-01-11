@@ -17,6 +17,8 @@ const politeMailAddress = 'https://politemail.com/';
 const githubAddress = 'https://github.com/Ragewind87';
 
 const lastUpdatedString = 'Last updated  1/11/2026 3:04pm';
+const badgeHeadingColor = 'rgb(151, 177, 133)';
+const accentColor = 'rgb(110, 150, 79)';
 
 const footerStyle: React.CSSProperties = {
     width: '100%',
@@ -67,7 +69,7 @@ const imageStyle: React.CSSProperties = {
 
 const badgeHeadingStyle: React.CSSProperties = {
     fontSize: '15px',
-    color: 'rgb(151, 177, 133)',
+    color: badgeHeadingColor,
     fontWeight: '600',
     margin: '12px 0 4px 0',
 };
@@ -268,12 +270,14 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 <div style={badgeContainerStyle}>
                                     <TextBadge>React</TextBadge>
                                     <TextBadge>TypeScript</TextBadge>
+                                    <TextBadge>C#</TextBadge>
                                 </div>
                                 <strong style={badgeHeadingStyle}>Proficient</strong>
                                 <div style={badgeContainerStyle}>
-                                    <TextBadge>C#</TextBadge>
                                     <TextBadge>.NET OData WebAPI</TextBadge>
                                     <TextBadge>Git</TextBadge>
+                                    <TextBadge>Async patterns</TextBadge>
+                                    <TextBadge>Browser DevTools</TextBadge>
                                 </div>
                                 <strong style={badgeHeadingStyle}>Experienced</strong>
                                 <div style={badgeContainerStyle}>
@@ -281,14 +285,23 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     <TextBadge>Javascript</TextBadge>
                                     <TextBadge>SQL Server</TextBadge>
                                     <TextBadge>Redux Toolkit</TextBadge>
+                                    <TextBadge>Custom Hooks</TextBadge>
+                                    <TextBadge>Responsive Design</TextBadge>
+                                    <TextBadge>ESLint / Prettier</TextBadge>
                                 </div>
                                 <strong style={badgeHeadingStyle}>Familiar</strong>
                                 <div style={badgeContainerStyle}>
-                                    <TextBadge>Azure</TextBadge>
-                                    <TextBadge>Kubernetes</TextBadge>
-                                    <TextBadge>Terraform</TextBadge>
+                                    <TextBadge>Azure DevOps</TextBadge>
                                     <TextBadge>C</TextBadge>
                                     <TextBadge>Java</TextBadge>
+                                    <TextBadge>Vite</TextBadge>
+                                    <TextBadge>Java</TextBadge>
+                                </div>
+                                <strong style={badgeHeadingStyle}>Exposure to</strong>
+                                <div style={badgeContainerStyle}>
+                                    <TextBadge>Kubernetes</TextBadge>
+                                    <TextBadge>Terraform</TextBadge>
+                                    <TextBadge>Databricks</TextBadge>
                                 </div>
                             </div>
                             <div style={{ fontSize: '12px' }}>{lastUpdatedString}</div>
@@ -327,12 +340,15 @@ export const WelcomePage: React.FunctionComponent = () => {
                             }}
                         >
                             <span>
-                                I built this site to deliberately sharpen my front-end skills, with a focus on React and
-                                TypeScript.
+                                I built this site to deliberately sharpen my front-end skills, with a focus on{' '}
+                                <span style={{ color: accentColor, fontWeight: 'bold' }}>React</span> and{' '}
+                                <span style={{ color: accentColor, fontWeight: 'bold' }}>TypeScript</span>.
                             </span>
                             <span>
-                                The codebase uses minimal generative AI by design; nearly all implementation is
-                                hand-written to maximize learning and technical depth.
+                                The codebase uses{' '}
+                                <span style={{ color: accentColor, fontWeight: 'bold' }}>minimal generative AI</span> by
+                                design; nearly all implementation is hand-written to maximize learning and technical
+                                depth.
                             </span>
                             <span>
                                 The site currently features two React-driven games, with additional pages and

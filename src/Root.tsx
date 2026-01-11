@@ -160,7 +160,21 @@ export const Root: React.FunctionComponent = () => {
                     <div
                         style={{ ...rightPanelSectionStyle, paddingLeft: '0px', paddingTop: '30px', maxHeight: '60%' }}
                     >
-                        <h4 style={listHeadingStyle}>Site To Do List:</h4>
+                        <h4 style={listHeadingStyle}>
+                            Site{'  '}
+                            <span
+                                style={{
+                                    fontSize: '26px',
+                                    fontWeight: 'extra-bold',
+                                    fontFamily: '"Courier New", Courier, monospace',
+                                    color: '#6aff6a',
+                                }}
+                            >
+                                //todo
+                            </span>
+                            {'  '}
+                            List:
+                        </h4>
                         <ul style={listStyle}>
                             <li style={{ ...listItemStyle, marginTop: '0px' }}>
                                 Make the site mobile responsive (badly needed)
