@@ -140,13 +140,13 @@ export const Root: React.FunctionComponent = () => {
                                 <span className={styles.linkText}>Home Page</span>
                             </Button>
                         </Link>
-                        <Link to={'ConnectFour'}>
+                        <Link to={'/ConnectFour'}>
                             <Button className={styles.button}>
                                 <CircleBorder className={styles.icon} />
                                 <span className={styles.linkText}>Connect Four</span>
                             </Button>
                         </Link>
-                        <Link to={'Chess'}>
+                        <Link to={'/Chess'}>
                             <Button className={styles.button}>
                                 <img
                                     src={whiteKnight}

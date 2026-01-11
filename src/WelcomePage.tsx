@@ -100,6 +100,7 @@ export const WelcomePage: React.FunctionComponent = () => {
         backgroundColor: navPanelColor,
         border: '2px solid black',
         borderRadius: '5px',
+        display: 'flex',
     };
 
     const onResumeClicked = () => {
@@ -111,7 +112,7 @@ export const WelcomePage: React.FunctionComponent = () => {
             <Stack horizontal style={{ gap: '15px', height: '100%' }}>
                 {/* Left Panel */}
                 <div style={leftPanelStyle}>
-                    <div style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
+                    <Stack style={{ textAlign: 'center', color: 'white', padding: '10px' }}>
                         <div
                             style={{
                                 padding: '15px',
@@ -251,44 +252,47 @@ export const WelcomePage: React.FunctionComponent = () => {
                             </div>
                         </div>
                         <hr style={{ borderTop: '0.2px solid white', margin: '20px 0px 25px 0px' }} />
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                flexWrap: 'wrap',
-                                textAlign: 'left',
-                                overflow: 'hidden',
-                            }}
-                        >
-                            <strong style={{ textAlign: 'center', fontSize: '24px' }}>Skill Set</strong>
-                            <strong style={badgeHeadingStyle}>Strong</strong>
-                            <div style={badgeContainerStyle}>
-                                <TextBadge>React</TextBadge>
-                                <TextBadge>TypeScript</TextBadge>
+                        <Stack style={{ justifyContent: 'space-between' }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    flexWrap: 'wrap',
+                                    textAlign: 'left',
+                                    overflow: 'hidden',
+                                }}
+                            >
+                                <strong style={{ textAlign: 'center', fontSize: '24px' }}>Skill Set</strong>
+                                <strong style={badgeHeadingStyle}>Strong</strong>
+                                <div style={badgeContainerStyle}>
+                                    <TextBadge>React</TextBadge>
+                                    <TextBadge>TypeScript</TextBadge>
+                                </div>
+                                <strong style={badgeHeadingStyle}>Proficient</strong>
+                                <div style={badgeContainerStyle}>
+                                    <TextBadge>C#</TextBadge>
+                                    <TextBadge>.NET OData WebAPI</TextBadge>
+                                    <TextBadge>Git</TextBadge>
+                                </div>
+                                <strong style={badgeHeadingStyle}>Experienced</strong>
+                                <div style={badgeContainerStyle}>
+                                    <TextBadge>CSS</TextBadge>
+                                    <TextBadge>Javascript</TextBadge>
+                                    <TextBadge>SQL Server</TextBadge>
+                                    <TextBadge>Redux Toolkit</TextBadge>
+                                </div>
+                                <strong style={badgeHeadingStyle}>Familiar</strong>
+                                <div style={badgeContainerStyle}>
+                                    <TextBadge>Azure</TextBadge>
+                                    <TextBadge>Kubernetes</TextBadge>
+                                    <TextBadge>Terraform</TextBadge>
+                                    <TextBadge>C</TextBadge>
+                                    <TextBadge>Java</TextBadge>
+                                </div>
                             </div>
-                            <strong style={badgeHeadingStyle}>Proficient</strong>
-                            <div style={badgeContainerStyle}>
-                                <TextBadge>C#</TextBadge>
-                                <TextBadge>.NET OData WebAPI</TextBadge>
-                                <TextBadge>Git</TextBadge>
-                            </div>
-                            <strong style={badgeHeadingStyle}>Experienced</strong>
-                            <div style={badgeContainerStyle}>
-                                <TextBadge>CSS</TextBadge>
-                                <TextBadge>Javascript</TextBadge>
-                                <TextBadge>SQL Server</TextBadge>
-                                <TextBadge>Redux Toolkit</TextBadge>
-                            </div>
-                            <strong style={badgeHeadingStyle}>Familiar</strong>
-                            <div style={badgeContainerStyle}>
-                                <TextBadge>Azure</TextBadge>
-                                <TextBadge>Kubernetes</TextBadge>
-                                <TextBadge>Terraform</TextBadge>
-                                <TextBadge>C</TextBadge>
-                                <TextBadge>Java</TextBadge>
-                            </div>
-                        </div>
-                    </div>
+                            <div style={{ fontSize: '12px', marginTop: 'auto' }}>Last updated 1/11/2026 1:16 AM</div>
+                        </Stack>
+                    </Stack>
                 </div>
 
                 {/* Main Panel */}
@@ -303,6 +307,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                             flexGrow: 1,
                             justifyContent: 'space-evenly',
                             padding: '30px',
+                            height: '100%',
                         }}
                     >
                         <div style={headerTextStyle}>

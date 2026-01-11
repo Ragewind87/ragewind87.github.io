@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import ErrorPage from './ErrorPage.tsx';
@@ -9,7 +9,7 @@ import { ConnectFour } from './ConnectFour/ConnectFour.tsx';
 import { WelcomePage } from './WelcomePage.tsx';
 import { Root } from './Root.tsx';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: '/',
         element: <Root />,
@@ -29,16 +29,16 @@ const router = createBrowserRouter([
             },
         ],
     },
-    {
-        path: 'ConnectFour',
-        element: <ConnectFour />,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: 'Chess',
-        element: <TspChess />,
-        errorElement: <ErrorPage />,
-    },
+    // {
+    //     path: 'ConnectFour',
+    //     element: <ConnectFour />,
+    //     errorElement: <ErrorPage />,
+    // },
+    // {
+    //     path: 'Chess',
+    //     element: <TspChess />,
+    //     errorElement: <ErrorPage />,
+    // },
 ]);
 
 ReactDOM.createRoot(document.querySelector('#root')!).render(
