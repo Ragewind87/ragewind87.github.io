@@ -285,11 +285,12 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 </div>
                                 <strong style={badgeHeadingStyle}>Experienced</strong>
                                 <div style={badgeContainerStyle}>
-                                    <TextBadge>CSS</TextBadge>
-                                    <TextBadge>Javascript</TextBadge>
                                     <TextBadge>SQL Server</TextBadge>
                                     <TextBadge>Redux Toolkit</TextBadge>
+                                    <TextBadge>Fluent UI</TextBadge>
                                     <TextBadge>Custom Hooks</TextBadge>
+                                    <TextBadge>CSS</TextBadge>
+                                    <TextBadge>Javascript</TextBadge>
                                     <TextBadge>Responsive Design</TextBadge>
                                     <TextBadge>ESLint / Prettier</TextBadge>
                                 </div>
@@ -299,13 +300,14 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     <TextBadge>C</TextBadge>
                                     <TextBadge>Java</TextBadge>
                                     <TextBadge>Vite</TextBadge>
-                                    <TextBadge>Java</TextBadge>
+                                    <TextBadge>Jest</TextBadge>
                                 </div>
                                 <strong style={badgeHeadingStyle}>Exposure to</strong>
                                 <div style={badgeContainerStyle}>
                                     <TextBadge>Kubernetes</TextBadge>
                                     <TextBadge>Terraform</TextBadge>
                                     <TextBadge>Databricks</TextBadge>
+                                    <TextBadge>React Testing Library</TextBadge>
                                 </div>
                             </div>
                             <div style={{ fontSize: '12px' }}>{lastUpdatedString}</div>
