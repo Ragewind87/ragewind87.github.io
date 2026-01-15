@@ -16,7 +16,7 @@ const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
 const politeMailAddress = 'https://politemail.com/';
 const githubAddress = 'https://github.com/Ragewind87';
 
-const lastUpdatedString = 'Last updated  1/11/2026 3:04pm';
+const lastUpdatedString = `Last updated:\u00A0\u00A0\u00A01/14/2026 11:07pm`;
 const badgeHeadingColor = 'rgb(151, 177, 133)';
 
 const accentStyle: React.CSSProperties = {
@@ -144,7 +144,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     Joseph Kurtz
                                 </div>
                                 <div style={{ fontSize: '18px', marginTop: '2px' }}>Full-Stack Developer</div>
-                                <div style={{ fontSize: '16px', lineHeight: '0.5' }}>4 years experience</div>
+                                <div style={{ fontSize: '16px', lineHeight: '0.5' }}>5 years experience</div>
                                 <div
                                     style={{
                                         fontSize: '16px',
@@ -304,6 +304,8 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 </div>
                                 <strong style={badgeHeadingStyle}>Exposure to</strong>
                                 <div style={badgeContainerStyle}>
+                                    <TextBadge>Python</TextBadge>
+                                    <TextBadge>Stripe</TextBadge>
                                     <TextBadge>Kubernetes</TextBadge>
                                     <TextBadge>Terraform</TextBadge>
                                     <TextBadge>Databricks</TextBadge>
