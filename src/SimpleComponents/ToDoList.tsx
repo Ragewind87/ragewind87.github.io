@@ -1,8 +1,6 @@
 import { makeStyles } from '@fluentui/react-components';
 
-export interface IToDoListProps {
-    // children: React.ReactNode;
-}
+export interface IToDoListProps {}
 
 const ToDoList: React.FC<IToDoListProps> = () => {
     const styles = useStyles();

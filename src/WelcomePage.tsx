@@ -60,7 +60,16 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     href={githubAddress}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={mergeClasses(styles.socialButton, styles.githubButton)}
+                                    className={styles.socialButton}
+                                    style={{
+                                        backgroundColor: 'rgb(66, 66, 66)',
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.currentTarget.style.filter = 'brightness(1.4)';
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.currentTarget.style.filter = 'none';
+                                    }}
                                 >
                                     <img src={GithubLogo} style={{ maxHeight: '28px' }} />
                                 </Button>
@@ -219,12 +228,6 @@ const useStyles = makeStyles({
         backgroundColor: 'transparent',
         ':hover': {
             filter: 'brightness(1.25)',
-        },
-    },
-    githubButton: {
-        backgroundColor: 'rgb(66, 66, 66)',
-        ':hover': {
-            filter: 'brightness(1.4)',
         },
     },
     divider: {
