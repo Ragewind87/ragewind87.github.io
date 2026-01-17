@@ -1,23 +1,21 @@
 import { Stack } from '@fluentui/react';
 import * as React from 'react';
-import CordyTank from './ConnectFour/Icons/cordyTank.png';
+import GoatTank from './ConnectFour/Icons/cordyTank.png';
 import { navPanelColor } from './Root';
 import SelfPortrait from './Media/joehc4.jpg';
 import { Open20Regular } from '@fluentui/react-icons';
 import { Button, makeStyles, mergeClasses } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
 import jkResume from './Media/jk_resume_v23.pdf';
-import { TextBadge } from './SimpleComponents/TextBadge';
 import GithubLogo from './Media/github-logo.png';
 import LinkedinLogo from './Media/linkedin-logo.png';
+import SkillsetList from './SimpleComponents/SkillsetList';
 
 const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
-const politeMailAddress = 'https://politemail.com/';
+const politeMailAddress = 'https://www.linkedin.com/company/politemailsoftware/posts/?feedView=all';
 const githubAddress = 'https://github.com/Ragewind87';
 
-const lastUpdatedString = `Last updated:\u00A0\u00A0\u00A01/16/2026 11:54pm`;
-const badgeHeadingColor = 'rgb(151, 177, 133)';
 const cardColor = 'rgb(74, 74, 74)';
 
 export const WelcomePage: React.FunctionComponent = () => {
@@ -62,7 +60,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                                     href={githubAddress}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`${styles.socialButton} ${styles.githubButton}`}
+                                    className={mergeClasses(styles.socialButton, styles.githubButton)}
                                 >
                                     <img src={GithubLogo} style={{ maxHeight: '28px' }} />
                                 </Button>
@@ -80,54 +78,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                             </div>
                         </div>
                         <hr className={styles.hr} />
-                        <Stack style={{ justifyContent: 'space-between', height: '100%' }}>
-                            <div className={styles.skillsetContainer}>
-                                <strong className={styles.skillsetTitle}>Skillset</strong>
-                                <strong className={styles.badgeHeading}>Strong</strong>
-                                <div className={styles.badgeContainer}>
-                                    <TextBadge>React</TextBadge>
-                                    <TextBadge>TypeScript</TextBadge>
-                                    <TextBadge>C#</TextBadge>
-                                    <TextBadge>.NET OData WebAPI</TextBadge>
-                                </div>
-                                <strong className={styles.badgeHeading}>Proficient</strong>
-                                <div className={styles.badgeContainer}>
-                                    <TextBadge>SQL Server</TextBadge>
-                                    <TextBadge>Git</TextBadge>
-                                    <TextBadge>Async patterns</TextBadge>
-                                    <TextBadge>Browser DevTools</TextBadge>
-                                </div>
-                                <strong className={styles.badgeHeading}>Experienced</strong>
-                                <div className={styles.badgeContainer}>
-                                    <TextBadge>Redux Toolkit</TextBadge>
-                                    <TextBadge>Fluent UI</TextBadge>
-                                    <TextBadge>Custom Hooks</TextBadge>
-                                    <TextBadge>CSS</TextBadge>
-                                    <TextBadge>Javascript</TextBadge>
-                                    <TextBadge>Responsive Design</TextBadge>
-                                    <TextBadge>ESLint / Prettier</TextBadge>
-                                </div>
-                                <strong className={styles.badgeHeading}>Familiar</strong>
-                                <div className={styles.badgeContainer}>
-                                    <TextBadge>Azure DevOps</TextBadge>
-                                    <TextBadge>Azure Cosmos DB</TextBadge>
-                                    <TextBadge>C</TextBadge>
-                                    <TextBadge>Java</TextBadge>
-                                    <TextBadge>Vite</TextBadge>
-                                    <TextBadge>Jest</TextBadge>
-                                </div>
-                                <strong className={styles.badgeHeading}>Exposure to</strong>
-                                <div className={styles.badgeContainer}>
-                                    <TextBadge>Python</TextBadge>
-                                    <TextBadge>Stripe</TextBadge>
-                                    <TextBadge>Kubernetes</TextBadge>
-                                    <TextBadge>Terraform</TextBadge>
-                                    <TextBadge>Databricks</TextBadge>
-                                    <TextBadge>React Testing Library</TextBadge>
-                                </div>
-                            </div>
-                            <div className={styles.lastUpdated}>{lastUpdatedString}</div>
-                        </Stack>
+                        <SkillsetList />
                     </Stack>
                 </div>
 
@@ -138,11 +89,7 @@ export const WelcomePage: React.FunctionComponent = () => {
                             <span>{'Welcome to my Portfolio Game Hub!'}</span>
                             <span>{'ONWARD!'}</span>
                         </div>
-                        <img
-                            className={mergeClasses('faint-glow', styles.cordyImage)}
-                            src={CordyTank}
-                            alt="Cordy Tank"
-                        />
+                        <img className={mergeClasses('faint-glow', styles.cordyImage)} src={GoatTank} alt="Goat Tank" />
                         <Stack tokens={{ childrenGap: '20px' }} className={styles.mainStack}>
                             <span>
                                 I built this site to deliberately sharpen my front-end skills, with a focus on{' '}
@@ -151,9 +98,8 @@ export const WelcomePage: React.FunctionComponent = () => {
                                 <span className={styles.accent}>CSS</span>.
                             </span>
                             <span>
-                                The codebase uses <span className={styles.accent}>minimal generative AI</span> by
-                                design; nearly all implementation is hand-written to maximize learning and technical
-                                depth.
+                                The codebase uses <span className={styles.accent}>limited generative AI</span> by
+                                design; most implementation is hand-written to maximize learning and technical depth.
                             </span>
                             <span>
                                 The site currently features two React-driven games, with additional pages and
@@ -306,32 +252,6 @@ const useStyles = makeStyles({
         borderTop: '0.2px solid white',
         margin: '20px 0px 25px 0px',
     },
-    skillsetContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        textAlign: 'left',
-        overflow: 'hidden',
-    },
-    skillsetTitle: {
-        textAlign: 'center',
-        fontSize: '24px',
-    },
-    badgeHeading: {
-        fontSize: '15px',
-        color: badgeHeadingColor,
-        fontWeight: 600,
-        margin: '12px 0 4px 0',
-    },
-    badgeContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: '3px',
-    },
-    lastUpdated: {
-        fontSize: '12px',
-    },
     card: {
         border: '2px solid black',
         borderRadius: '7px',
@@ -376,7 +296,7 @@ const useStyles = makeStyles({
         padding: '20px',
     },
     mainStack: {
-        fontSize: '20px',
+        fontSize: '18px',
         marginTop: '15px',
         maxWidth: '80%',
         textAlign: 'left',
