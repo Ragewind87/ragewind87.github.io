@@ -1,5 +1,14 @@
 import { makeStyles } from '@fluentui/react-components';
 
+export interface ITextBadgeProps {
+    children: React.ReactNode;
+}
+
+export const TextBadge: React.FC<ITextBadgeProps> = ({ children }) => {
+    const classes = useStyles();
+    return <span className={classes.badge}>{children}</span>;
+};
+
 const useStyles = makeStyles({
     badge: {
         display: 'inline-block',
@@ -18,14 +27,5 @@ const useStyles = makeStyles({
         },
     },
 });
-
-export interface ITextBadgeProps {
-    children: React.ReactNode;
-}
-
-export const TextBadge: React.FC<ITextBadgeProps> = ({ children }) => {
-    const classes = useStyles();
-    return <span className={classes.badge}>{children}</span>;
-};
 
 export default TextBadge;
