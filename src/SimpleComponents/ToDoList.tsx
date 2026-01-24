@@ -14,7 +14,6 @@ const ToDoList: React.FC<IToDoListProps> = () => {
             </h4>
             <ul className={styles.list}>
                 <li className={styles.listItemFirst}>Make the site mobile responsive (badly needed)</li>
-                <li className={styles.listItem}>Convert styling from all inline to CSS modules</li>
                 <li className={styles.listItem}>Make the left and right panel shown at all times</li>
                 <li className={styles.listItem}>Add "Formal Education" section to the left panel</li>
                 <li className={styles.listItem}>

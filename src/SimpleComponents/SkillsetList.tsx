@@ -1,10 +1,9 @@
 import { makeStyles } from '@fluentui/react-components';
 import TextBadge from './TextBadge';
 import { Stack } from '@fluentui/react';
+import { lastUpdatedString } from 'src/WelcomePage';
 
 export interface ISkillsetListProps {}
-
-const lastUpdatedString = `Last updated:\u00A0\u00A0\u00A01/17/2026 4:00pm`;
 
 const SkillsetList: React.FC<ISkillsetListProps> = () => {
     const styles = useStyles();

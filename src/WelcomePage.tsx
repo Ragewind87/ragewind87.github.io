@@ -6,7 +6,7 @@ import SelfPortrait from './Media/joehc4.jpg';
 import { Open20Regular } from '@fluentui/react-icons';
 import { Button, makeStyles, mergeClasses } from '@fluentui/react-components';
 import { ResumeDialog } from './ResumeDialog';
-import jkResume from './Media/jk_resume_v23.pdf';
+import jkResume from './Media/jk_resume_v24.pdf';
 import GithubLogo from './Media/github-logo.png';
 import LinkedinLogo from './Media/linkedin-logo.png';
 import SkillsetList from './SimpleComponents/SkillsetList';
@@ -15,6 +15,7 @@ const contactEmail = 'ragewind48@gmail.com';
 const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
 const politeMailAddress = 'https://www.linkedin.com/company/politemailsoftware/posts/?feedView=all';
 const githubAddress = 'https://github.com/Ragewind87';
+export const lastUpdatedString = `Last updated:\u00A0\u00A0\u00A01/24/2026 3:15pm`;
 
 const cardColor = 'rgb(74, 74, 74)';
 
