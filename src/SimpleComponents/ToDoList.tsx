@@ -1,4 +1,5 @@
 import { makeStyles } from '@fluentui/react-components';
+import { navPanelColor } from './SkillsetList';
 
 export interface IToDoListProps {}
 
@@ -27,8 +28,6 @@ const ToDoList: React.FC<IToDoListProps> = () => {
         </div>
     );
 };
-
-export const navPanelColor = 'rgb(36, 36, 36)';
 
 const useStyles = makeStyles({
     container: {

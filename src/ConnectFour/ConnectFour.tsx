@@ -3,7 +3,6 @@ import '../index.css';
 import './ConnectFour.css';
 import { type IDropdownOption, Stack } from '@fluentui/react';
 import Xarrow, { Xwrapper } from 'react-xarrows';
-
 import { GridSlot, type IGridSectionProps, type IMainGrid, Status as CellStatus } from './GridSlot.tsx';
 import KayBearIcon from './Icons/Kaybear/kaybearIcon.png';
 import KayBearBg from './Icons/Kaybear/kaybearBg.png';
@@ -22,9 +21,9 @@ import BiskyBg from './Icons/Bisky/biskyBg.png';
 import BiskyWindow from './Icons/Bisky/biskyWindow.png';
 import BiskyWindowWin from './Icons/Bisky/biskyWindowWin.png';
 import { PlayerSelectionDialog, type PlayerChoice } from './PlayerSelectionDialog.tsx';
-import { navPanelColor } from 'src/Root.tsx';
 import { ArrowReset24Filled } from '@fluentui/react-icons';
 import { Button, makeStyles } from '@fluentui/react-components';
+import { navPanelColor } from 'src/constants.ts';
 
 type ArrowStartEnd = {
     start: string;

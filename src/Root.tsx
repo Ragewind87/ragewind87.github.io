@@ -6,6 +6,17 @@ import { HouseIcon } from './ConnectFour/Icons/HouseIcon.tsx';
 import whiteKnight from './ChessGame/Assets/whiteKnight.png';
 import { CircleBorder } from './ConnectFour/Icons/CircleBorder.tsx';
 import ToDoList from './SimpleComponents/ToDoList.tsx';
+import { Stack } from '@fluentui/react';
+import SelfPortrait from './Media/joehc4.jpg';
+import { Open20Regular } from '@fluentui/react-icons';
+import GithubLogo from './Media/github-logo.png';
+import LinkedinLogo from './Media/linkedin-logo.png';
+import SkillsetList from './SimpleComponents/SkillsetList';
+import { ResumeDialog } from './ResumeDialog.tsx';
+import jkResume from './Media/jk_resume_v24.pdf';
+import { mainBgColor, navPanelColor } from './constants.ts';
+import { githubAddress, linkedInAddress, politeMailAddress } from './WelcomePage.tsx';
+import { useWindowWidth } from './Hooks/useWindowWidth.tsx';
 
 export type PlayerOption = {
     id: string;
@@ -26,20 +37,100 @@ export type IAppProps = {
     key: string;
 };
 
-export async function loader() {
-    const contacts: PlayerOption[] = [];
-    return contacts;
-}
-
 export const Root: React.FunctionComponent = () => {
+    const width = useWindowWidth();
+    const [showResumeDialog, setShowResumeDialog] = React.useState(false);
+    const onResumeClicked = () => {
+        setShowResumeDialog(true);
+    };
+    const leftPanelStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: 'column',
+        width: width <= 1000 ? '50%' : 'auto',
+        minWidth: '22vw',
+        padding: '15px',
+        backgroundColor: navPanelColor,
+        border: '2px solid black',
+        borderRadius: '5px',
+    };
+    const rightPanelStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: 'column',
+        width: width <= 1000 ? '50%' : 'auto',
+        minWidth: '22vw',
+        height: '100%',
+        gap: '10px',
+    };
     const styles = useStyles();
     return (
         <div className={styles.root}>
             <div className={styles.mainLayout}>
+                {/* Left Panel */}
+                <div style={leftPanelStyle}>
+                    <Stack className={styles.leftPanelStack}>
+                        <div className={styles.portraitLink}>
+                            <a href={linkedInAddress} target="_blank" rel="noopener noreferrer">
+                                <img src={SelfPortrait} alt="Self Portrait" className={styles.portraitImg} />
+                            </a>
+                            <div className={styles.name}>Joseph Kurtz</div>
+                            <div className={styles.title}>Full-Stack Developer</div>
+                            <div className={styles.experience}>5 years experience</div>
+                            <div className={styles.company}>
+                                Software Engineer at{' '}
+                                <a href={politeMailAddress} target="_blank" rel="noopener noreferrer">
+                                    PoliteMail
+                                </a>
+                            </div>
+                            <div className={styles.socialRow}>
+                                <Button
+                                    as="a"
+                                    href={linkedInAddress}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.socialButton}
+                                >
+                                    <img src={LinkedinLogo} style={{ maxHeight: '30px' }} />
+                                </Button>
+                                <Button
+                                    as="a"
+                                    href={githubAddress}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.socialButton}
+                                    style={{
+                                        backgroundColor: 'rgb(66, 66, 66)',
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.currentTarget.style.filter = 'brightness(1.4)';
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.currentTarget.style.filter = 'none';
+                                    }}
+                                >
+                                    <img src={GithubLogo} style={{ maxHeight: '28px' }} />
+                                </Button>
+                                <div className={styles.divider}></div>
+                                <Button
+                                    onClick={onResumeClicked}
+                                    appearance="transparent"
+                                    className={styles.resumeButton}
+                                >
+                                    <span className={styles.resumeButtonContent}>
+                                        <span>View my Resume</span>
+                                        <Open20Regular />
+                                    </span>
+                                </Button>
+                            </div>
+                        </div>
+                        <hr className={styles.hr} />
+                        <SkillsetList />
+                    </Stack>
+                </div>
+
                 <Outlet />
 
                 {/* Right Panel */}
-                <div className={styles.rightPanel}>
+                <div style={rightPanelStyle}>
                     <div className={styles.rightPanelSectionTop}>
                         <Link to={'/'}>
                             <Button className={styles.button} appearance="secondary">
@@ -69,12 +160,13 @@ export const Root: React.FunctionComponent = () => {
                     <ToDoList />
                 </div>
             </div>
+
+            {showResumeDialog && (
+                <ResumeDialog isOpen={showResumeDialog} setShowResumeDialog={setShowResumeDialog} pdfFile={jkResume} />
+            )}
         </div>
     );
 };
-
-export const navPanelColor = 'rgb(36, 36, 36)';
-const mainBgColor = 'rgb(43, 43, 43)';
 
 const useStyles = makeStyles({
     root: {
@@ -89,15 +181,6 @@ const useStyles = makeStyles({
         justifyContent: 'space-between',
         height: '96vh',
         gap: '20px',
-    },
-    rightPanel: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1,
-        minWidth: '18vw',
-        maxWidth: '18vw',
-        height: '100%',
-        gap: '10px',
     },
     rightPanelSectionTop: {
         display: 'flex',
@@ -134,5 +217,102 @@ const useStyles = makeStyles({
         height: '25px',
         color: 'white',
         marginRight: '8px',
+    },
+    leftPanelStack: {
+        textAlign: 'center',
+        color: 'white',
+        padding: '10px',
+        height: '100%',
+    },
+    portraitLink: {
+        padding: '15px',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    portraitImg: {
+        maxHeight: '200px',
+        borderRadius: '8px',
+        border: '1px solid white',
+        marginBottom: '10px',
+    },
+    name: {
+        fontSize: '24px',
+        fontWeight: 'bold',
+        textShadow: '2px 2px 3px black',
+    },
+    title: {
+        fontSize: '18px',
+        marginTop: '2px',
+    },
+    experience: {
+        fontSize: '16px',
+        lineHeight: '0.5',
+    },
+    company: {
+        fontSize: '16px',
+        marginTop: '15px',
+        lineHeight: '1.2',
+        color: 'white',
+        '& a': {
+            color: 'white',
+            textDecoration: 'none',
+            ':hover': {
+                color: 'lightblue',
+                textDecoration: 'none',
+            },
+        },
+    },
+    socialRow: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '25px',
+        gap: '7px',
+        height: '100%',
+        maxHeight: '40px',
+    },
+    socialButton: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: 'none',
+        cursor: 'pointer',
+        minWidth: '30px',
+        minHeight: '30px',
+        maxWidth: '30px',
+        maxHeight: '30px',
+        borderRadius: '5px',
+        backgroundColor: 'transparent',
+        ':hover': {
+            filter: 'brightness(1.25)',
+        },
+    },
+    divider: {
+        width: '1px',
+        height: '25px',
+        backgroundColor: 'rgb(145, 145, 145)',
+        margin: '0 0 0 12px',
+    },
+    resumeButton: {
+        padding: '2px 5px 2px 12px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        color: 'white',
+        ':hover': {
+            color: 'lightblue',
+        },
+    },
+    resumeButtonContent: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '5px',
+    },
+    hr: {
+        borderTop: '0.2px solid white',
+        margin: '20px 0px 25px 0px',
     },
 });
