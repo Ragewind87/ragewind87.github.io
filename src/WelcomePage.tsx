@@ -5,7 +5,7 @@ import { makeStyles, mergeClasses } from '@fluentui/react-components';
 import { useWindowWidth } from './Hooks/useWindowWidth';
 import { cardColor } from './constants';
 
-export const lastUpdatedString = `Last updated:\u00A0\u00A0\u00A01/24/2026 3:15pm`;
+export const lastUpdatedString = `Last updated:\u00A0\u00A0\u00A02/04/2026 12:39am`;
 export const contactEmail = 'ragewind48@gmail.com';
 export const linkedInAddress = 'https://www.linkedin.com/in/jwkurtz44/';
 export const politeMailAddress = 'https://www.linkedin.com/company/politemailsoftware/posts/?feedView=all';
