@@ -2,11 +2,13 @@ import { makeStyles } from '@fluentui/react-components';
 import TextBadge from './TextBadge';
 import { Stack } from '@fluentui/react';
 import { lastUpdatedString } from 'src/WelcomePage';
+import { useWindowWidth } from 'src/Hooks/useWindowWidth';
 
 export interface ISkillsetListProps {}
 
 const SkillsetList: React.FC<ISkillsetListProps> = () => {
     const styles = useStyles();
+    const width = useWindowWidth();
     return (
         <Stack style={{ justifyContent: 'space-between', height: '100%' }}>
             <div className={styles.skillsetContainer}>
@@ -24,33 +26,37 @@ const SkillsetList: React.FC<ISkillsetListProps> = () => {
                     <TextBadge>Git</TextBadge>
                     <TextBadge>Async patterns</TextBadge>
                 </div>
-                <strong className={styles.badgeHeading}>Experienced</strong>
-                <div className={styles.badgeContainer}>
-                    <TextBadge>Redux Toolkit</TextBadge>
-                    <TextBadge>CSS</TextBadge>
-                    <TextBadge>Javascript</TextBadge>
-                    <TextBadge>Responsive Design</TextBadge>
-                </div>
-                <strong className={styles.badgeHeading}>Familiar</strong>
-                <div className={styles.badgeContainer}>
-                    <TextBadge>Azure DevOps</TextBadge>
-                    <TextBadge>Cosmos DB</TextBadge>
-                    <TextBadge>C</TextBadge>
-                    <TextBadge>Java</TextBadge>
-                    <TextBadge>Vite</TextBadge>
-                    <TextBadge>Jest</TextBadge>
-                </div>
-                <strong className={styles.badgeHeading}>Exposure to</strong>
-                <div className={styles.badgeContainer}>
-                    <TextBadge>Python</TextBadge>
-                    <TextBadge>Stripe</TextBadge>
-                    <TextBadge>Storybook</TextBadge>
-                    <TextBadge>Kubernetes</TextBadge>
-                    <TextBadge>Terraform</TextBadge>
-                    <TextBadge>Databricks</TextBadge>
-                    <TextBadge>Mongo DB</TextBadge>
-                    <TextBadge>React Testing Library</TextBadge>
-                </div>
+                {width > 400 && (
+                    <>
+                        <strong className={styles.badgeHeading}>Experienced</strong>
+                        <div className={styles.badgeContainer}>
+                            <TextBadge>Redux Toolkit</TextBadge>
+                            <TextBadge>CSS</TextBadge>
+                            <TextBadge>Javascript</TextBadge>
+                            <TextBadge>Responsive Design</TextBadge>
+                        </div>
+                        <strong className={styles.badgeHeading}>Familiar</strong>
+                        <div className={styles.badgeContainer}>
+                            <TextBadge>Azure DevOps</TextBadge>
+                            <TextBadge>Cosmos DB</TextBadge>
+                            <TextBadge>C</TextBadge>
+                            <TextBadge>Java</TextBadge>
+                            <TextBadge>Vite</TextBadge>
+                            <TextBadge>Jest</TextBadge>
+                        </div>
+                        <strong className={styles.badgeHeading}>Exposure to</strong>
+                        <div className={styles.badgeContainer}>
+                            <TextBadge>Python</TextBadge>
+                            <TextBadge>Stripe</TextBadge>
+                            <TextBadge>Storybook</TextBadge>
+                            <TextBadge>Kubernetes</TextBadge>
+                            <TextBadge>Terraform</TextBadge>
+                            <TextBadge>Databricks</TextBadge>
+                            <TextBadge>Mongo DB</TextBadge>
+                            <TextBadge>React Testing Library</TextBadge>
+                        </div>
+                    </>
+                )}
             </div>
             <div className={styles.lastUpdated}>{lastUpdatedString}</div>
         </Stack>
