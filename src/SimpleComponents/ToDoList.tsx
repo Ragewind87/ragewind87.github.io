@@ -14,8 +14,14 @@ const ToDoList: React.FC<IToDoListProps> = () => {
                 List:
             </h4>
             <ul className={styles.list}>
-                <li className={styles.listItemFirst}>Make the site mobile responsive (badly needed)</li>
-                <li className={styles.listItem}>Make the left and right panel shown at all times</li>
+                <li className={styles.listItemFirst}>
+                    Make the site mobile responsive →{' '}
+                    <span style={{ color: 'red', fontWeight: 'bold' }}>in progress</span>
+                </li>
+                <li className={styles.listItem}>
+                    Make the left and right panel shown at all times →{' '}
+                    <span style={{ color: 'red', fontWeight: 'bold' }}>in progress</span>
+                </li>
                 <li className={styles.listItem}>Add "Formal Education" section to the left panel</li>
                 <li className={styles.listItem}>
                     Make skillset section tabular; add alternate "soft skillset" section
