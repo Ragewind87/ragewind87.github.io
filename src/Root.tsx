@@ -68,6 +68,18 @@ export const Root: React.FunctionComponent = () => {
         height: '96vh',
         gap: '20px',
     };
+    const rightPanelSectionTopStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: 1,
+        backgroundColor: navPanelColor,
+        alignContent: 'center',
+        gap: '10px',
+        padding: '20px',
+        border: '2px solid black',
+        borderRadius: '5px',
+        maxHeight: width > 400 ? '40%' : undefined,
+    };
 
     const styles = useStyles();
     return (
@@ -139,7 +151,7 @@ export const Root: React.FunctionComponent = () => {
 
                 {/* Right Panel */}
                 <div style={rightPanelStyle}>
-                    <div className={styles.rightPanelSectionTop}>
+                    <div style={rightPanelSectionTopStyle}>
                         <Link to={'/'}>
                             <Button className={styles.button} appearance="secondary">
                                 <div className={styles.icon}>
@@ -183,18 +195,7 @@ const useStyles = makeStyles({
         color: 'white',
         padding: '15px',
     },
-    rightPanelSectionTop: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1,
-        backgroundColor: navPanelColor,
-        alignContent: 'center',
-        gap: '10px',
-        padding: '20px',
-        border: '2px solid black',
-        borderRadius: '5px',
-        maxHeight: '40%',
-    },
+
     button: {
         height: '45px',
         border: '2px solid black',
