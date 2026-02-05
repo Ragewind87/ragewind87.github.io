@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { type IDropdownOption } from '@fluentui/react';
 import { Button, makeStyles } from '@fluentui/react-components';
 import { HouseIcon } from './ConnectFour/Icons/HouseIcon.tsx';
 import whiteKnight from './ChessGame/Assets/whiteKnight.png';
@@ -18,27 +17,9 @@ import { mainBgColor, navPanelColor } from './constants.ts';
 import { githubAddress, linkedInAddress, politeMailAddress } from './WelcomePage.tsx';
 import { useWindowWidth } from './Hooks/useWindowWidth.tsx';
 
-export type PlayerOption = {
-    id: string;
-    name: string;
-    icon: string;
-    normalCell: string;
-    wincell: string;
-    background: string;
-    dropdown: IDropdownOption;
-};
-
-export type Player = {
-    id: number;
-    options?: PlayerOption;
-};
-
-export type IAppProps = {
-    key: string;
-};
-
 export const Root: React.FunctionComponent = () => {
-    const width = useWindowWidth();
+    const styles = useStyles();
+    const { isMobile, isSmallScreen } = useWindowWidth();
     const [showResumeDialog, setShowResumeDialog] = React.useState(false);
     const onResumeClicked = () => {
         setShowResumeDialog(true);
@@ -46,7 +27,7 @@ export const Root: React.FunctionComponent = () => {
     const leftPanelStyle: React.CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
-        width: width <= 1000 && width > 400 ? '50%' : 'auto',
+        width: isSmallScreen ? '50%' : 'auto',
         minWidth: '22vw',
         padding: '15px',
         backgroundColor: navPanelColor,
@@ -56,14 +37,14 @@ export const Root: React.FunctionComponent = () => {
     const rightPanelStyle: React.CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
-        width: width <= 1000 && width > 400 ? '50%' : 'auto',
+        width: isSmallScreen ? '50%' : 'auto',
         minWidth: '22vw',
         height: '100%',
         gap: '10px',
     };
     const mainLayoutStyle: React.CSSProperties = {
         display: 'flex',
-        flexDirection: width > 400 ? 'row' : 'column',
+        flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
         height: '96vh',
         gap: '20px',
@@ -78,10 +59,9 @@ export const Root: React.FunctionComponent = () => {
         padding: '20px',
         border: '2px solid black',
         borderRadius: '5px',
-        maxHeight: width > 400 ? '40%' : undefined,
+        maxHeight: isMobile ? undefined : '40%',
     };
 
-    const styles = useStyles();
     return (
         <div className={styles.root}>
             <div style={mainLayoutStyle}>
@@ -177,7 +157,7 @@ export const Root: React.FunctionComponent = () => {
                             </Button>
                         </Link>
                     </div>
-                    {width > 400 && <ToDoList />}
+                    {!isMobile && <ToDoList />}
                 </div>
             </div>
 
@@ -195,7 +175,6 @@ const useStyles = makeStyles({
         color: 'white',
         padding: '15px',
     },
-
     button: {
         height: '45px',
         border: '2px solid black',

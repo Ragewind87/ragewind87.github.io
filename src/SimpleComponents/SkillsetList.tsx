@@ -8,7 +8,8 @@ export interface ISkillsetListProps {}
 
 const SkillsetList: React.FC<ISkillsetListProps> = () => {
     const styles = useStyles();
-    const width = useWindowWidth();
+    const isMobile = useWindowWidth();
+
     return (
         <Stack style={{ justifyContent: 'space-between', height: '100%' }}>
             <div className={styles.skillsetContainer}>
@@ -26,7 +27,7 @@ const SkillsetList: React.FC<ISkillsetListProps> = () => {
                     <TextBadge>Git</TextBadge>
                     <TextBadge>Async patterns</TextBadge>
                 </div>
-                {width > 400 && (
+                {!isMobile && (
                     <>
                         <strong className={styles.badgeHeading}>Experienced</strong>
                         <div className={styles.badgeContainer}>
@@ -63,7 +64,6 @@ const SkillsetList: React.FC<ISkillsetListProps> = () => {
     );
 };
 
-export const navPanelColor = 'rgb(36, 36, 36)';
 const badgeHeadingColor = 'rgb(151, 177, 133)';
 
 const useStyles = makeStyles({

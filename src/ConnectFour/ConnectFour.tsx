@@ -52,10 +52,6 @@ export type Player = {
     options?: IPlayerOption;
 };
 
-export type IAppProps = {
-    key: string;
-};
-
 const playerOptions: IPlayerOption[] = [
     {
         id: 'kayBear',

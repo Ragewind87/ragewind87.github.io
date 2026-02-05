@@ -13,48 +13,48 @@ export const githubAddress = 'https://github.com/Ragewind87';
 
 export const WelcomePage: React.FunctionComponent = () => {
     const styles = useStyles();
-    const width = useWindowWidth();
-    if (width > 1000) {
-        return (
-            <div className={styles.card}>
-                <div className={styles.mainPanel}>
-                    <div className={styles.headerText}>
-                        <span>{'Welcome to my Portfolio Game Hub!'}</span>
-                        <span>{'ONWARD!'}</span>
-                    </div>
-                    <img className={mergeClasses('faint-glow', styles.cordyImage)} src={GoatTank} alt="Goat Tank" />
-                    <Stack tokens={{ childrenGap: '20px' }} className={styles.mainStack}>
-                        <span>
-                            I built this site to deliberately sharpen my front-end skills, with a focus on{' '}
-                            <span className={styles.accent}>React</span> and{' '}
-                            <span className={styles.accent}>TypeScript</span> and{' '}
-                            <span className={styles.accent}>CSS</span>.
-                        </span>
-                        <span>
-                            The codebase uses <span className={styles.accent}>limited generative AI</span> by design;
-                            most implementation is hand-written to maximize learning and technical depth.
-                        </span>
-                        <span>
-                            The site currently features two React-driven games, with additional pages and functionality
-                            planned over time.
-                        </span>
-                    </Stack>
+    const isFullScreen = useWindowWidth();
+
+    return isFullScreen ? (
+        <div className={styles.card}>
+            <div className={styles.mainPanel}>
+                <div className={styles.headerText}>
+                    <span>{'Welcome to my Portfolio Game Hub!'}</span>
+                    <span>{'ONWARD!'}</span>
                 </div>
-                <div className={styles.footer}>
-                    <div>
-                        The artwork for this site was created by a talented friend. <br />
-                        For inquiries, contact me at&nbsp;
-                        <span>
-                            <a href={`mailto:${contactEmail}`} className={styles.mailLink}>
-                                {contactEmail}
-                            </a>
-                        </span>
-                    </div>
+                <img className={mergeClasses('faint-glow', styles.cordyImage)} src={GoatTank} alt="Goat Tank" />
+                <Stack tokens={{ childrenGap: '20px' }} className={styles.mainStack}>
+                    <span>
+                        I built this site to deliberately sharpen my front-end skills, with a focus on{' '}
+                        <span className={styles.accent}>React</span> and{' '}
+                        <span className={styles.accent}>TypeScript</span> and <span className={styles.accent}>CSS</span>
+                        .
+                    </span>
+                    <span>
+                        The codebase uses <span className={styles.accent}>limited generative AI</span> by design; most
+                        implementation is hand-written to maximize learning and technical depth.
+                    </span>
+                    <span>
+                        The site currently features two React-driven games, with additional pages and functionality
+                        planned over time.
+                    </span>
+                </Stack>
+            </div>
+            <div className={styles.footer}>
+                <div>
+                    The artwork for this site was created by a talented friend. <br />
+                    For inquiries, contact me at&nbsp;
+                    <span>
+                        <a href={`mailto:${contactEmail}`} className={styles.mailLink}>
+                            {contactEmail}
+                        </a>
+                    </span>
                 </div>
             </div>
-        );
-    }
-    return <></>;
+        </div>
+    ) : (
+        <></>
+    );
 };
 
 const useStyles = makeStyles({
