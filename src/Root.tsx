@@ -46,7 +46,7 @@ export const Root: React.FunctionComponent = () => {
     const leftPanelStyle: React.CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
-        width: width <= 1000 ? '50%' : 'auto',
+        width: width <= 1000 && width > 400 ? '50%' : 'auto',
         minWidth: '22vw',
         padding: '15px',
         backgroundColor: navPanelColor,
@@ -56,15 +56,23 @@ export const Root: React.FunctionComponent = () => {
     const rightPanelStyle: React.CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
-        width: width <= 1000 ? '50%' : 'auto',
+        width: width <= 1000 && width > 400 ? '50%' : 'auto',
         minWidth: '22vw',
         height: '100%',
         gap: '10px',
     };
+    const mainLayoutStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: width > 400 ? 'row' : 'column',
+        justifyContent: 'space-between',
+        height: '96vh',
+        gap: '20px',
+    };
+
     const styles = useStyles();
     return (
         <div className={styles.root}>
-            <div className={styles.mainLayout}>
+            <div style={mainLayoutStyle}>
                 {/* Left Panel */}
                 <div style={leftPanelStyle}>
                     <Stack className={styles.leftPanelStack}>
@@ -157,7 +165,7 @@ export const Root: React.FunctionComponent = () => {
                             </Button>
                         </Link>
                     </div>
-                    <ToDoList />
+                    {width > 400 && <ToDoList />}
                 </div>
             </div>
 
@@ -174,13 +182,6 @@ const useStyles = makeStyles({
         height: '100%',
         color: 'white',
         padding: '15px',
-    },
-    mainLayout: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        height: '96vh',
-        gap: '20px',
     },
     rightPanelSectionTop: {
         display: 'flex',
