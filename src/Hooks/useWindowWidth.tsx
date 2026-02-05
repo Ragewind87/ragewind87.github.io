@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 const MOBILE_LIMIT = 525;
-const COMPRESSED_LIMIT = 1000;
+const COMPRESSED_LIMIT = 1100;
 
 export function useWindowWidth() {
     const [width, setWidth] = React.useState(window.innerWidth);

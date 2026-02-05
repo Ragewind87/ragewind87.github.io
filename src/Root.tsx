@@ -16,6 +16,7 @@ import jkResume from './Media/jk_resume_v24.pdf';
 import { mainBgColor, navPanelColor } from './constants.ts';
 import { githubAddress, linkedInAddress, politeMailAddress } from './WelcomePage.tsx';
 import { useWindowWidth } from './Hooks/useWindowWidth.tsx';
+import LastUpdated from './SimpleComponents/LastUpdated.tsx';
 
 export const Root: React.FunctionComponent = () => {
     const styles = useStyles();
@@ -156,6 +157,11 @@ export const Root: React.FunctionComponent = () => {
                                 <span className={styles.linkText}>TSP Chess</span>
                             </Button>
                         </Link>
+                        {isMobile && (
+                            <div style={{ display: 'flex', alignSelf: 'center', marginTop: 'auto' }}>
+                                <LastUpdated />
+                            </div>
+                        )}
                     </div>
                     {!isMobile && <ToDoList />}
                 </div>

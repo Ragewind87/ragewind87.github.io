@@ -1,14 +1,12 @@
 import { makeStyles } from '@fluentui/react-components';
 import TextBadge from './TextBadge';
 import { Stack } from '@fluentui/react';
-import { lastUpdatedString } from 'src/WelcomePage';
 import { useWindowWidth } from 'src/Hooks/useWindowWidth';
+import LastUpdated from './LastUpdated';
 
-export interface ISkillsetListProps {}
-
-const SkillsetList: React.FC<ISkillsetListProps> = () => {
+const SkillsetList: React.FC = () => {
     const styles = useStyles();
-    const isMobile = useWindowWidth();
+    const { isMobile } = useWindowWidth();
 
     return (
         <Stack style={{ justifyContent: 'space-between', height: '100%' }}>
@@ -27,15 +25,15 @@ const SkillsetList: React.FC<ISkillsetListProps> = () => {
                     <TextBadge>Git</TextBadge>
                     <TextBadge>Async patterns</TextBadge>
                 </div>
+                <strong className={styles.badgeHeading}>Experienced</strong>
+                <div className={styles.badgeContainer}>
+                    <TextBadge>Redux Toolkit</TextBadge>
+                    <TextBadge>CSS</TextBadge>
+                    <TextBadge>Javascript</TextBadge>
+                    <TextBadge>Responsive Design</TextBadge>
+                </div>
                 {!isMobile && (
                     <>
-                        <strong className={styles.badgeHeading}>Experienced</strong>
-                        <div className={styles.badgeContainer}>
-                            <TextBadge>Redux Toolkit</TextBadge>
-                            <TextBadge>CSS</TextBadge>
-                            <TextBadge>Javascript</TextBadge>
-                            <TextBadge>Responsive Design</TextBadge>
-                        </div>
                         <strong className={styles.badgeHeading}>Familiar</strong>
                         <div className={styles.badgeContainer}>
                             <TextBadge>Azure DevOps</TextBadge>
@@ -59,7 +57,7 @@ const SkillsetList: React.FC<ISkillsetListProps> = () => {
                     </>
                 )}
             </div>
-            <div className={styles.lastUpdated}>{lastUpdatedString}</div>
+            {!isMobile && <LastUpdated />}
         </Stack>
     );
 };
@@ -89,9 +87,6 @@ const useStyles = makeStyles({
         flexDirection: 'row',
         flexWrap: 'wrap',
         gap: '3px',
-    },
-    lastUpdated: {
-        fontSize: '12px',
     },
 });
 
