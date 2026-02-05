@@ -1,5 +1,5 @@
 import { makeStyles } from '@fluentui/react-components';
-import { navPanelColor } from './SkillsetList';
+import { navPanelColor } from 'src/constants';
 
 export interface IToDoListProps {}
 

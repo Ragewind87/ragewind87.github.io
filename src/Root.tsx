@@ -11,7 +11,7 @@ import { Open20Regular } from '@fluentui/react-icons';
 import GithubLogo from './Media/github-logo.png';
 import LinkedinLogo from './Media/linkedin-logo.png';
 import SkillsetList from './SimpleComponents/SkillsetList';
-import { ResumeDialog } from './ResumeDialog.tsx';
+import { ResumeDialog } from './SimpleComponents/ResumeDialog.tsx';
 import jkResume from './Media/jk_resume_v24.pdf';
 import { mainBgColor, navPanelColor } from './constants.ts';
 import { githubAddress, linkedInAddress, politeMailAddress } from './WelcomePage.tsx';
@@ -20,7 +20,7 @@ import { useWindowWidth } from './Hooks/useWindowWidth.tsx';
 export const Root: React.FunctionComponent = () => {
     const styles = useStyles();
     const { isMobile, isSmallScreen } = useWindowWidth();
-    const [showResumeDialog, setShowResumeDialog] = React.useState(false);
+    const [showResumeDialog, setShowResumeDialog] = React.useState<boolean>(false);
     const onResumeClicked = () => {
         setShowResumeDialog(true);
     };

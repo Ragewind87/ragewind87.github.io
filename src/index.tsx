@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import ErrorPage from './ErrorPage.tsx';
+import ErrorPage from './SimpleComponents/ErrorPage.tsx';
 import TspChess from './ChessGame/Components/TspChess.js';
 import { ConnectFour } from './ConnectFour/ConnectFour.tsx';
 import { WelcomePage } from './WelcomePage.tsx';
