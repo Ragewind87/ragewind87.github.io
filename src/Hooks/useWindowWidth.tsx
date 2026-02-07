@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const MOBILE_LIMIT = 525;
+const MOBILE_LIMIT = 575;
 const COMPRESSED_LIMIT = 1100;
 
 export function useWindowWidth() {
